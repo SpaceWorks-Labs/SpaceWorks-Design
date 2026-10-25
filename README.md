@@ -4,10 +4,10 @@ The Space Works design system: brand guidelines, logo masters, icons, fonts, des
 pattern specs. Use it as a git submodule in any Space Works project so every surface draws from one source.
 
 ```bash
-git submodule add https://github.com/SpaceWorks-HQ/SpaceWorks-Design.git design
+git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design.git design
 ```
 
-**Browse it at [spaceworks-hq.github.io/SpaceWorks-Design](https://spaceworks-hq.github.io/SpaceWorks-Design/)**: the logo
+**Browse it at [spaceworks-labs.github.io/SpaceWorks-Design](https://spaceworks-labs.github.io/SpaceWorks-Design/)**: the logo
 masters, colours, type, voice, every design token and the UI specs, published from this repository by
 `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 
@@ -74,7 +74,7 @@ See [brand/README.md](brand/README.md) for asset selection and [fonts/README.md]
 
 Space Works design assets in this repository are licensed under the
 **[GNU Affero General Public License v3](LICENSE)** (`AGPL-3.0-or-later`), the same as
-[Space Works](https://github.com/SpaceWorks-HQ/SpaceWorks).
+[Space Works](https://github.com/SpaceWorks-Labs/SpaceWorks).
 
 Third-party material keeps its own licence and is not relicensed: the fonts in `fonts/` (see
 `fonts/LICENSES/` and [fonts/README.md](fonts/README.md)) and the Yuyu reference boards in

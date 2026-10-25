@@ -5,11 +5,11 @@ import starlightLinksValidator from 'starlight-links-validator';
 import { satteri } from '@astrojs/markdown-satteri';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
 
-// GitHub Pages serves the site at https://spaceworks-hq.github.io/SpaceWorks-Design/. Set
+// GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design/. Set
 // DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
-const site = process.env.DESIGN_SITE_URL || 'https://spaceworks-hq.github.io';
+const site = process.env.DESIGN_SITE_URL || 'https://spaceworks-labs.github.io';
 const base = '/SpaceWorks-Design';
-const repo = 'https://github.com/SpaceWorks-HQ/SpaceWorks-Design';
+const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design';
 
 export default defineConfig({
   site,
