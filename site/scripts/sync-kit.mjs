@@ -54,10 +54,10 @@ for (const { file, slug, order, label } of specPages) {
     '---',
     `title: "${title}"`,
     `sidebar: { order: ${order}, label: "${label}" }`,
-    `editUrl: https://github.com/SpaceWorks-HQ/SpaceWorks-Design/edit/main/docs/${file}`,
+    `editUrl: https://github.com/SpaceWorks-Labs/SpaceWorks-Design/edit/main/docs/${file}`,
     '---',
     '',
-    `:::note[Source]\nThis page is published from [\`docs/${file}\`](https://github.com/SpaceWorks-HQ/SpaceWorks-Design/blob/main/docs/${file}). Edit it there.\n:::`,
+    `:::note[Source]\nThis page is published from [\`docs/${file}\`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design/blob/main/docs/${file}). Edit it there.\n:::`,
     '',
   ].join('\n');
   writeFileSync(join(specs, `${slug}.md`), frontmatter + source.slice(match[0].length));
