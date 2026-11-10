@@ -7,7 +7,7 @@ pattern specs. Use it as a git submodule in any Space Works project so every sur
 git submodule add https://github.com/SpaceWorks-HQ/SpaceWorks-Design.git design
 ```
 
-**Browse it at [spaceworks-hq.github.io/SpaceWorks-Design](https://spaceworks-hq.github.io/SpaceWorks-Design/)**: the logo
+**Browse it at [spaceworks-hq.github.io/SpaceWorks-Design](https://spaceworks-labs.github.io/SpaceWorks-Design/)**: the logo
 masters, colours, type, voice, every design token and the UI specs, published from this repository by
 `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 
