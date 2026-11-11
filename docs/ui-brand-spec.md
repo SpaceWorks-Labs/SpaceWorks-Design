@@ -154,13 +154,10 @@ The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) 
 sidebar: ink 13.23, muted 5.23, accent-ink 5.52. On `sidebar-hover`: ink 14.06, muted 5.55. On the dark
 Deep Ink sidebar: ink 13.60, muted 7.04; on the dark `sidebar-hover`: ink 10.41, muted 5.39.
 
-> **Dark ratios elsewhere in this document** (component and status-pill tables in sections B onward) were
-> measured on the earlier Deep Ink dark set and are kept as history. Where they disagree with A.1, A.2 or
-> A.3, those three win.
 
 | Fill · label | Light rest / hover / active | Dark rest / hover / active |
 |---|---|---|
-| `accent` · `on-accent` | 5.68 / 6.24 / 6.78 | 4.61 / 5.22 / 5.89 |
+| `accent` · `on-accent` | 5.68 / 6.24 / 6.78 | 5.68 / 6.24 / 6.78 |
 | `emphasis` · ink | 5.51 / 5.99 / 6.55 | same |
 | `success` · ink | 13.23 / 10.99 / 8.99 | same |
 | `warn` · ink | 10.37 / 8.66 / 7.11 | same |
@@ -321,30 +318,30 @@ Palette copies that must move in the same batch:
 The button family stays closed (`desk-button*`). Every variant keeps `min-h-11` and
 `focus-visible:outline-2 outline-offset-2 outline-focus`. The family drops `hover:-translate-y-0.5`,
 `hover:shadow-*` and `disabled:opacity-50`. Disabled is explicit: `bg-surface text-muted border-line`
-(light 4.99, dark 7.29).
+(light 4.99, dark 8.88).
 
 | Variant | Rest | Hover | Active | Light r/h/a | Dark r/h/a |
 |---|---|---|---|---|---|
-| `desk-button-primary` (staff main) | `bg-accent text-on-accent` | `bg-accent-hover` | `bg-accent-active` | 5.68 / 6.24 / 6.78 | 4.61 / 5.22 / 5.89 |
+| `desk-button-primary` (staff main) | `bg-accent text-on-accent` | `bg-accent-hover` | `bg-accent-active` | 5.68 / 6.24 / 6.78 | 5.68 / 6.24 / 6.78 |
 | `desk-button-brand` (ex `-secondary`; public/member main) | `bg-brand text-on-brand border-brand-boundary` | `bg-brand-hover` | `bg-brand-active` | default = primary; tenants proven by H.5 | |
-| `desk-button` (neutral; the outline "secondary") | `bg-panel text-ink border-line` | `bg-hover` | `bg-line` | 14.75 / 11.95 / 9.60 | 11.49 / 9.84 / 8.67 |
-| `desk-button-ghost` | `text-accent-ink`, no fill | `bg-accent-soft` | `bg-accent-soft text-ink` | 6.16 / 5.16 / 12.37 | 6.61 / 5.60 / 9.72 |
+| `desk-button` (neutral; the outline "secondary") | `bg-panel text-ink border-line` | `bg-hover` | `bg-line` | 14.75 / 11.95 / 9.60 | 15.47 / 12.68 / 8.76 |
+| `desk-button-ghost` | `text-accent-ink`, no fill | `bg-accent-soft` | `bg-accent-soft text-ink` | 6.16 / 5.16 / 12.37 | 7.00 / 6.20 / 13.70 |
 | `desk-button-emphasis` (new; the one bold public CTA, never in staff chrome) | `bg-emphasis text-on-emphasis` | `-hover` | `-active` | 5.51 / 5.99 / 6.55 | same |
 | `desk-button-danger` (final confirm) | `bg-danger text-on-danger` | `bg-danger-hover` | `bg-danger-active` | 5.96 / 7.66 / 8.80 | 7.77 / 8.99 / 10.06 |
-| `desk-button-danger-outline` (new; "Delete organisation…") | `bg-panel text-danger border-danger` | `text-danger-hover border-danger-hover` | same + `bg-hover` | 6.47 / 8.31 / 6.73 | 6.57 / 7.79 / 6.68 |
+| `desk-button-danger-outline` (new; "Delete organisation…") | `bg-panel text-danger border-danger` | `text-danger-hover border-danger-hover` | same + `bg-hover` | 6.47 / 8.31 / 6.73 | 8.84 / 10.22 / 8.38 |
 | `desk-button-success` / `-warn` (kept in Phase 1, folded into primary/neutral in Phase 6) | `bg-success\|warn text-on-*` | `-hover` | `-active` | 13.23/10.99/8.99 · 10.37/8.66/7.11 | same |
 
 | Element | Rest | Hover | Selected / current | Ratios (light · dark) |
 |---|---|---|---|---|
-| Sidebar item (text-only, D9) | `text-ink` on `sidebar` | `bg-sidebar-hover` | `bg-sidebar-active text-on-accent font-semibold`, `aria-current="page"` | 13.23 / 14.06 / 5.68 (pill vs field 5.52) · 13.60 / 9.84 / 4.61 (pill vs field 4.61) |
-| Sidebar sub-item (reference org5: indented, smaller) | `text-muted` 14/20 | `text-ink` | `text-ink font-semibold`, no fill | 5.23 · 7.92 |
-| Underline tab | `text-muted` | `text-ink` | `text-ink font-semibold` + 2 px `accent` underline | underline 5.68 · 4.61 |
-| Segmented control | track `bg-surface border-line` | `text-ink` | thumb `bg-panel border-outline text-ink` | thumb boundary 3.55 · 3.06 |
-| Table / list row | `bg-panel` | `bg-hover` | `bg-accent-soft` + checked box | 14.75 / 11.95 / 12.37 · 11.49 / 9.84 / 9.72 |
-| Input | `bg-panel border-outline text-ink`, placeholder `text-muted` | `border-ink` | focus: `border-accent` + ring | boundary 3.55 · 3.06 |
+| Sidebar item (text-only, D9) | `text-ink` on `sidebar` | `bg-sidebar-hover` | `bg-sidebar-active text-on-accent font-semibold`, `aria-current="page"` | 13.23 / 14.06 / 5.68 (pill vs field 5.52) · 13.60 / 10.41 / 5.68 (pill vs field 2.40) |
+| Sidebar sub-item (reference org5: indented, smaller) | `text-muted` 14/20 | `text-ink` | `text-ink font-semibold`, no fill | 5.23 · 7.04 |
+| Underline tab | `text-muted` | `text-ink` | `text-ink font-semibold` + 2 px `accent` underline | underline 5.68 · 3.41 on bg, 2.73 on panel |
+| Segmented control | track `bg-surface border-line` | `text-ink` | thumb `bg-panel border-outline text-ink` | thumb boundary 3.55 · 5.61 |
+| Table / list row | `bg-panel` | `bg-hover` | `bg-accent-soft` + checked box | 14.75 / 11.95 / 12.37 · 15.47 / 12.68 / 13.70 |
+| Input | `bg-panel border-outline text-ink`, placeholder `text-muted` | `border-ink` | focus: `border-accent` + ring | boundary 3.55 · 5.61 |
 | Search field (p.16 citron field) | `bg-sidebar border-transparent`, `Search` icon | `bg-sidebar-hover` | ring | text 13.23, placeholder 5.23 · dark `bg-surface` |
-| Invalid field | `border-danger` + message `text-danger` | | | 6.47 · 6.57 |
-| Link | `text-accent-ink`, underline on hover | | | 5.68 · 7.83 |
+| Invalid field | `border-danger` + message `text-danger` | | | 6.47 · 8.84 |
+| Link | `text-accent-ink`, underline on hover | | | 5.68 · 8.76 |
 | Theme toggle | **Light / Dark only** (D11) | | | |
 
 Counters (unread, cart): `bg-emphasis text-on-emphasis` (5.51), at full opacity.
@@ -369,13 +366,13 @@ padding 8–10. The **word is mandatory and the icon is optional.** Neither sour
 
 | Tone | Light | Dark |
 |---|---|---|
-| success | `bg-success text-on-success` (13.23) | `bg-success-soft text-success-ink` (7.86) |
-| warn | `bg-warn text-on-warn` (10.37) | `bg-warn-soft text-warn-ink` (6.53) |
-| info | `bg-info text-on-info` (9.23) | `bg-info-soft text-info-ink` (5.89) |
+| success | `bg-success text-on-success` (13.23) | `bg-success-soft text-success-ink` (12.54) |
+| warn | `bg-warn text-on-warn` (10.37) | `bg-warn-soft text-warn-ink` (10.87) |
+| info | `bg-info text-on-info` (9.23) | `bg-info-soft text-info-ink` (10.21) |
 | emphasis | `bg-emphasis text-on-emphasis` (5.51) | same |
-| accent | `bg-accent-soft text-accent-ink` (5.16) | same (5.60) |
-| danger (danger-zone vocabulary) | `bg-panel border border-danger-line text-danger` (6.47) | same (6.57) |
-| neutral | `bg-surface border border-line text-ink` (12.64) | same (12.52) |
+| accent | `bg-accent-soft text-accent-ink` (5.16) | same (6.20) |
+| danger (danger-zone vocabulary) | `bg-panel border border-danger-line text-danger` (6.47) | same (8.84) |
+| neutral | `bg-surface border border-line text-ink` (12.64) | same (17.14) |
 
 | Domain · status (backend value) → tone · word |
 |---|
@@ -423,9 +420,9 @@ not a separate monospace family. Keep `pre` text wrapping on narrow screens.
 
 | Token / class | Size / line | Family · weight | Tracking | Use |
 |---|---|---|---|---|
-| `text-display` | 72/76 (mobile 44/48) | Outfit 800 | −0.02em | public landing hero |
+| `text-display` | 72/76 (mobile 44/48) | Gilroy 800 | −0.02em | public landing hero |
 | `text-display-sub` | 32/38 (mobile 24/30) | Outfit 400 | 0 | optional sub-line under a display/heading on public and auth only |
-| `text-heading` | 48/52 (mobile 34/40) | Outfit 800 | −0.015em | public section heads, auth brand panel |
+| `text-heading` | 48/52 (mobile 34/40) | Gilroy 800 | −0.015em | public section heads, auth brand panel |
 | `.title-page` (brand Subheading) | 32/38 (mobile 26/32) | Outfit 600 | −0.01em | one h1 per page |
 | `.title-panel` (between Body and Subheading) | 20/28 | Outfit 600 | −0.005em | card and panel titles |
 | `.title-section` | 16/24 | Outfit 600 | 0 | section titles, list-row titles |
@@ -562,7 +559,7 @@ This replaces `components/icons.tsx` and `staffNavIcons.tsx`. The old nav-icon s
 
 | Site | Today → measured | Replacement |
 |---|---|---|
-| `features/staff/panels/DashboardPanel.tsx:77–80,83,91` | `text-on-accent/75` (3.90), `text-on-secondary/75`, `text-on-success/75`, `text-on-warn/75`, `text-bg/80` on danger (3.90), `text-bg` | `StatCard`: a neutral panel with Gilroy-600 number in `text-{tone}-ink` and a full-opacity label. The secondary tone becomes `emphasis`. |
+| `features/staff/panels/DashboardPanel.tsx:77–80,83,91` | `text-on-accent/75` (3.90), `text-on-secondary/75`, `text-on-success/75`, `text-on-warn/75`, `text-bg/80` on danger (3.90), `text-bg` | `StatCard`: a neutral panel with Outfit-600 number in `text-{tone}-ink` and a full-opacity label. The secondary tone becomes `emphasis`. |
 | `features/inventory/PublicInventoryParts.tsx:67` | `text-on-secondary/80` counter (4.22) | `text-on-brand` |
 | `components/ui/StatusStepper.tsx:55` | `opacity-70` on fills | full opacity, `text-caption` |
 | `features/inventory/RequestSummary.tsx:23,30` | `opacity-80` | `text-muted` |
@@ -581,7 +578,7 @@ This replaces `components/icons.tsx` and `staffNavIcons.tsx`. The old nav-icon s
 | `features/members/MemberAdmission.tsx:44`, `MemberArea.tsx:149`, `MemberReferrals.tsx:67,80`, `MemberVerifierPanel.tsx:20` | `text-success` | `text-success-ink` |
 | `features/staff/MembershipAdmissionSettings.tsx:70`, `panels/MachineTypesPanel.tsx:100`, `SetupChecklist.tsx:22`, `StaffBookingForm.tsx:63` | `text-success` | `text-success-ink` |
 | `features/members/MemberCertifications.tsx:18`, `MemberDashboardSections.tsx:122`, `features/staff/MembershipAdmissionSettings.tsx:56` | `text-warn` | `text-warn-ink` |
-| `features/staff/handover/IssueDialog.tsx:59` | `border-warn/40 bg-warn/10 text-warn` | `border-warn bg-warn-soft text-warn-ink` (5.54 light / 6.53 dark) |
+| `features/staff/handover/IssueDialog.tsx:59` | `border-warn/40 bg-warn/10 text-warn` | `border-warn bg-warn-soft text-warn-ink` (5.54 light / 10.87 dark) |
 | `styles/components.css:191–192` | `hover:text-accent` | `hover:text-accent-ink` |
 | `features/staff/PlatformDashboardPanel.tsx` (×5) | `text-brand` (**undefined today**) | `text-accent-ink`. After the rename, `text-brand` would otherwise become a fill used as text. |
 | `features/staff/panels/QueuesReturnRequestModal.tsx`, `features/staff/EvidenceRetentionPanel.tsx` | `text-warning` (undefined) | `text-warn-ink` |
