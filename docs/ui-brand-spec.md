@@ -55,15 +55,15 @@ The maths is WCAG 2.x relative luminance. It reproduces the PDF's own tested pai
 
 | # | Decision | Source / why |
 |---|---|---|
-| D1 | The light canvas is Warm Cream with white cards. **Superseded 11 November 2026 (SpaceWorks decisions 225, 275, 300):** dark is a true-black page (`bg` `#000000`) with three near-black layers carrying a faint Maker Teal + Cream lift (`surface` 10 % + 4 %, `panel` 14 % + 7 %, `hover` 20 % + 11 %), Cream text, Citron focus and desaturated brand accents. Token names are unchanged; the Deep Ink set survives only as the `.sw-island-dark` subtree. | owner: "professional, clean, and a better dark theme palette" |
-| D2 | `accent` = **Maker Teal** in light. In dark (0.12) it stays **Maker Teal** `#006E63` with Cream labels (5.68:1); it is 3.41:1 on the black page, 3.02:1 on `surface` and 2.73:1 on `panel`, so a selected teal fill on `panel` is paired with a label, not relied on alone. | brand-mix. |
+| D1 | The light canvas is Warm Cream with white cards. **Superseded 11 November 2026 (SpaceWorks decisions 225, 316):** dark is one solid black neutral family: a `#000000` page and neutral grey layers (`surface` `#0B0B0B`, `panel` `#141414`, `hover` `#1C1C1C`) with no green-tinted surfaces. Teal, Citron and Orange are accents only, never a surface. Text is Cream, focus is Citron. Token names are unchanged. The Deep Ink set survives only as the light-mode `.sw-island-dark` subtree; in dark, `:root.dark .sw-island-dark` re-joins the black family so a dark page never shows a green field. | owner: "single solid black everywhere, no mixing of pure black and green dark" (decision 316) |
+| D2 | `accent` = **Maker Teal** in light. In dark it stays **Maker Teal** `#006E63` with Cream labels (5.68:1); it is 3.41:1 on the black page, 3.20:1 on `surface` and 2.99:1 on `panel`, so a selected teal fill on `panel` is paired with a label, not relied on alone. | brand-mix. |
 | D3 | `secondary` is renamed **`brand`** (the action colour of a stranger-facing surface; default = accent; tenant-overridable). **`emphasis` = Workshop Orange**: Space Works' own, never tenant-overridable, one bold moment per layout. | brand p.9 "teal = primary · actions; orange = energy · emphasis"; p.13 "use one bold moment" |
 | D4 | **Danger is sampled from the UX reference boards**, because the brand has no red: `#B91C1C` text/fill, `#991B1B` hover, `#FCA5A5` card border (dark text). | reference org5 danger zone (sampled, C.0) |
 | D5 | Solid `*-soft` tokens replace every `bg-{tone}/NN`. **Translucent text is banned.** | Codex (1): `text-on-accent/75` on teal = 3.90:1 |
 | D6 | Status = **word** (mandatory) on a soft pill. Light mode uses the brand-tested solid pastel + ink pairs; dark mode uses soft + tone-ink. Icons are optional. | brand p.10 "add a word or icon to every status"; UX spec P10 tinted pills |
 | D7 | **Typography, superseded 11 November 2026 (decision 299):** only the FREE Gilroy weights ship, Light 300 and ExtraBold 800. Display headings use Gilroy ExtraBold, light display text uses Gilroy Light, and everything else (body, labels, controls, IDs) uses Outfit 400–700 (OFL). Unbounded 500–600 (OFL) for one short accent phrase. The paid Gilroy Regular/Medium/Semibold/Bold are never shipped. The 15 October 2026 four-weight arrangement is withdrawn. | owner: "I am not planning to buy a licence" |
-| D8 | Shape follows the brand's own product mock (p.16, measured): controls r 10, window/cards r 16, tags fully round, **no shadows**, hairlines = Deep Ink @ 18 % in light; in dark the `line` hairline is Teal 28 % + Cream 18 % and is **decorative, about 2:1** (2.21 on black, 1.96 on `surface`, 1.77 on `panel`), never the only thing that identifies a control. The UX reference uses pill buttons; one token switches it. | brand p.16 vector; UX spec P11 |
-| D9 | Light-mode sidebar = **Citron field** with Deep Ink labels and a filled teal active item. Dark-mode sidebar = Deep Ink. **The nav is text-only.** Neither the brand mock (p.16) nor the UX reference (org5) puts icons in the sidebar. | brand p.16; reference org5 |
+| D8 | Shape follows the brand's own product mock (p.16, measured): controls r 10, window/cards r 16, tags fully round, **no shadows**, hairlines = Deep Ink @ 18 % in light; in dark the `line` hairline is neutral `#2C2C2C` and is **decorative, about 1.3 to 1.5:1** (1.50 on black, 1.41 on `surface`, 1.32 on `panel`), never the only thing that identifies a control. The UX reference uses pill buttons; one token switches it. | brand p.16 vector; UX spec P11 |
+| D9 | Light-mode sidebar = **Citron field** with Deep Ink labels and a filled teal active item. Dark-mode sidebar = solid near-black `#0B0B0B` (decision 316). **The nav is text-only.** Neither the brand mock (p.16) nor the UX reference (org5) puts icons in the sidebar. | brand p.16; reference org5 |
 | D10 | Attention counters and low-stock tags use `emphasis` (orange + ink; p.16 "2 left" is an orange tag). `danger` is reserved for destructive actions and errors. | brand p.16 |
 | D11 | **No "System" theme option.** The existing Light/Dark toggle stays as it is. | owner |
 | D12 | Logo masters are exported directly from the Figma component library into `logo/`. All three horizontal variants are supplied as masters, including reversed and one-colour ink. | current Figma component library |
@@ -77,57 +77,57 @@ The maths is WCAG 2.x relative luminance. It reproduces the PDF's own tested pai
 | Token | Light | Source (light) | Dark | Source (dark) |
 |---|---|---|---|---|
 | `bg` | `255 244 232` #FFF4E8 | brand | `0 0 0` #000000 | release 0.12 recipe (decisions 275, 300) |
-| `surface` | `246 236 224` #F6ECE0 | brand-mix: Cream + 4% Ink | `10 21 19` #0A1513 | release 0.12 recipe (decisions 275, 300) |
-| `panel` | `255 255 255` #FFFFFF | brand (white card, p.4/p.16) | `18 32 30` #12201E | release 0.12 recipe (decisions 275, 300) |
-| `hover` | `239 230 219` #EFE6DB | brand-mix: Cream + 7% Ink | `28 49 45` #1C312D | release 0.12 recipe (decisions 275, 300) |
-| `line` | `213 208 198` #D5D0C6 | brand-mix: Cream + 18% Ink (p.16 rules = Ink @ 18%) | `46 75 69` #2E4B45 | release 0.12 recipe (decisions 275, 300) |
-| `outline` | `130 138 131` #828A83 | brand-mix: Cream + 53% Ink | `128 155 146` #809B92 | release 0.12 recipe (decisions 275, 300) |
+| `surface` | `246 236 224` #F6ECE0 | brand-mix: Cream + 4% Ink | `11 11 11` #0B0B0B | release 0.12 recipe (decisions 275, 300) |
+| `panel` | `255 255 255` #FFFFFF | brand (white card, p.4/p.16) | `20 20 20` #141414 | release 0.12 recipe (decisions 275, 300) |
+| `hover` | `239 230 219` #EFE6DB | brand-mix: Cream + 7% Ink | `28 28 28` #1C1C1C | release 0.12 recipe (decisions 275, 300) |
+| `line` | `213 208 198` #D5D0C6 | brand-mix: Cream + 18% Ink (p.16 rules = Ink @ 18%) | `44 44 44` #2C2C2C | release 0.12 recipe (decisions 275, 300) |
+| `outline` | `130 138 131` #828A83 | brand-mix: Cream + 53% Ink | `120 120 120` #787878 | release 0.12 recipe (decisions 275, 300) |
 | `ink` | `20 44 42` #142C2A | brand | `255 244 232` #FFF4E8 | brand (reversed text) |
-| `muted` | `91 104 99` #5B6863 | brand-mix: Ink + 30% Cream | `179 180 170` #B3B4AA | release 0.12 recipe (decisions 275, 300) |
+| `muted` | `91 104 99` #5B6863 | brand-mix: Ink + 30% Cream | `172 172 172` #ACACAC | release 0.12 recipe (decisions 275, 300) |
 | `focus` | `0 110 99` #006E63 | = accent-ink | `223 255 143` #DFFF8F | release 0.12 recipe (decisions 275, 300) |
 | `accent` | `0 110 99` #006E63 | brand | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
 | `accent-hover` | `2 103 93` #02675D | brand-mix: accent + 10% Ink | `2 103 93` #02675D | release 0.12 recipe (decisions 275, 300) |
 | `accent-active` | `4 97 88` #046158 | brand-mix: accent + 20% Ink | `4 97 88` #046158 | release 0.12 recipe (decisions 275, 300) |
 | `on-accent` | `255 244 232` #FFF4E8 | brand (tested pair 5.68) | `255 244 232` #FFF4E8 | release 0.12 recipe (decisions 275, 300) |
-| `accent-soft` | `224 238 236` #E0EEEC | brand-mix: panel + 12% accent | `15 44 41` #0F2C29 | release 0.12 recipe (decisions 275, 300) |
+| `accent-soft` | `224 238 236` #E0EEEC | brand-mix: panel + 12% accent | `18 29 28` #121D1C | release 0.12 recipe (decisions 275, 300) |
 | `accent-ink` | `0 110 99` #006E63 | brand | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
 | `brand` | `0 110 99` #006E63 | = accent (tenant-overridable) | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
 | `brand-hover` | `2 103 93` #02675D | = accent-hover (tenant-overridable) | `2 103 93` #02675D | release 0.12 recipe (decisions 275, 300) |
 | `brand-active` | `4 97 88` #046158 | = accent-active (tenant-overridable) | `4 97 88` #046158 | release 0.12 recipe (decisions 275, 300) |
 | `on-brand` | `255 244 232` #FFF4E8 | = on-accent | `255 244 232` #FFF4E8 | release 0.12 recipe (decisions 275, 300) |
-| `brand-soft` | `224 238 236` #E0EEEC | = accent-soft (tenant-overridable) | `15 44 41` #0F2C29 | release 0.12 recipe (decisions 275, 300) |
+| `brand-soft` | `224 238 236` #E0EEEC | = accent-soft (tenant-overridable) | `18 29 28` #121D1C | release 0.12 recipe (decisions 275, 300) |
 | `brand-ink` | `0 110 99` #006E63 | = accent-ink (tenant-overridable) | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
 | `brand-boundary` | `0 110 99` #006E63 | = brand-ink | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
 | `emphasis` | `255 116 71` #FF7447 | brand | `255 116 71` #FF7447 | brand |
 | `emphasis-hover` | `255 129 87` #FF8157 | brand-mix: emphasis + 10% Cream | `255 129 87` #FF8157 | brand-mix: emphasis + 10% Cream |
 | `emphasis-active` | `255 142 103` #FF8E67 | brand-mix: emphasis + 20% Cream | `255 142 103` #FF8E67 | brand-mix: emphasis + 20% Cream |
 | `on-emphasis` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `emphasis-soft` | `255 238 233` #FFEEE9 | brand-mix: panel + 12% emphasis | `35 38 33` #232621 | release 0.12 recipe (decisions 275, 300) |
+| `emphasis-soft` | `255 238 233` #FFEEE9 | brand-mix: panel + 12% emphasis | `34 26 23` #221A17 | release 0.12 recipe (decisions 275, 300) |
 | `success` | `223 255 143` #DFFF8F | brand | `223 255 143` #DFFF8F | brand |
 | `success-hover` | `203 234 133` #CBEA85 | brand-mix: success + 10% Ink | `203 234 133` #CBEA85 | brand-mix: success + 10% Ink |
 | `success-active` | `182 213 123` #B6D57B | brand-mix: success + 20% Ink | `182 213 123` #B6D57B | brand-mix: success + 20% Ink |
 | `on-success` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `success-soft` | `251 255 242` #FBFFF2 | brand-mix: panel + 12% success | `32 48 38` #203026 | release 0.12 recipe (decisions 275, 300) |
+| `success-soft` | `251 255 242` #FBFFF2 | brand-mix: panel + 12% success | `32 34 27` #20221B | release 0.12 recipe (decisions 275, 300) |
 | `success-ink` | `83 109 73` #536D49 | brand-mix: Citron + 69% Ink | `233 252 170` #E9FCAA | release 0.12 recipe (decisions 275, 300) |
 | `warn` | `255 212 71` #FFD447 | brand | `255 212 71` #FFD447 | brand |
 | `warn-hover` | `232 195 68` #E8C344 | brand-mix: warn + 10% Ink | `232 195 68` #E8C344 | brand-mix: warn + 10% Ink |
 | `warn-active` | `208 178 65` #D0B241 | brand-mix: warn + 20% Ink | `208 178 65` #D0B241 | brand-mix: warn + 20% Ink |
 | `on-warn` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `warn-soft` | `255 250 233` #FFFAE9 | brand-mix: panel + 12% warn | `35 45 33` #232D21 | release 0.12 recipe (decisions 275, 300) |
+| `warn-soft` | `255 250 233` #FFFAE9 | brand-mix: panel + 12% warn | `34 32 23` #222017 | release 0.12 recipe (decisions 275, 300) |
 | `warn-ink` | `105 104 52` #696834 | brand-mix: Yellow + 64% Ink | `255 222 119` #FFDE77 | release 0.12 recipe (decisions 275, 300) |
 | `info` | `181 205 255` #B5CDFF | brand | `181 205 255` #B5CDFF | brand |
 | `info-hover` | `165 189 234` #A5BDEA | brand-mix: info + 10% Ink | `165 189 234` #A5BDEA | brand-mix: info + 10% Ink |
 | `info-active` | `149 173 212` #95ADD4 | brand-mix: info + 20% Ink | `149 173 212` #95ADD4 | brand-mix: info + 20% Ink |
 | `on-info` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `info-soft` | `246 249 255` #F6F9FF | brand-mix: panel + 12% info | `29 44 46` #1D2C2E | release 0.12 recipe (decisions 275, 300) |
+| `info-soft` | `246 249 255` #F6F9FF | brand-mix: panel + 12% info | `30 31 34` #1E1F22 | release 0.12 recipe (decisions 275, 300) |
 | `info-ink` | `81 105 123` #51697B | brand-mix: Sky + 62% Ink | `203 217 248` #CBD9F8 | release 0.12 recipe (decisions 275, 300) |
 | `danger` | `185 28 28` #B91C1C | Ref (sampled #B91C1C) | `252 165 165` #FCA5A5 | Ref (sampled #FCA5A5) |
 | `danger-hover` | `153 27 27` #991B1B | Ref (sampled #991B1B) | `253 185 182` #FDB9B6 | Ref-mix: #FCA5A5 + 25% Cream |
 | `danger-active` | `133 30 29` #851E1D | Ref-mix: #991B1B + 15% Ink | `253 201 195` #FDC9C3 | Ref-mix: #FCA5A5 + 45% Cream |
 | `on-danger` | `255 244 232` #FFF4E8 | brand | `20 44 42` #142C2A | brand |
 | `danger-line` | `252 165 165` #FCA5A5 | Ref (sampled, danger-zone card border) | `124 98 97` #7C6261 | Ref-mix: Ink + 45% #FCA5A5 |
-| `sidebar` | `223 255 143` #DFFF8F | brand (p.16 sidebar) | `20 44 42` #142C2A | brand (Deep Ink) |
-| `sidebar-hover` | `242 255 210` #F2FFD2 | brand-mix: Citron + 60% white | `32 64 60` #20403C | release 0.12 recipe (decisions 275, 300) |
+| `sidebar` | `223 255 143` #DFFF8F | brand (p.16 sidebar) | `11 11 11` #0B0B0B | release 0.12 recipe (decisions 275, 300) |
+| `sidebar-hover` | `242 255 210` #F2FFD2 | brand-mix: Citron + 60% white | `28 28 28` #1C1C1C | release 0.12 recipe (decisions 275, 300) |
 | `sidebar-active` | `0 110 99` #006E63 | brand (p.16 active item) | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
 | `--shadow-color` | `20 44 42` | brand (overlays only) | `20 44 42` | brand |
 
@@ -141,18 +141,18 @@ Universal background set: `bg`, `surface`, `panel`, `hover`, plus the five softs
 
 | Text token | Light: bg / surface / panel / hover · worst soft | Dark: bg / surface / panel / hover · worst soft |
 |---|---|---|
-| `ink` | 13.60 / 12.64 / 14.75 / 11.95 · 12.37 | 19.36 / 17.14 / 15.47 / 12.68 · 12.80 |
-| `muted` | 5.37 / 4.99 / 5.83 / 4.72 · 4.88 | 10.03 / 8.88 / 8.01 / 6.57 · 6.63 |
-| `accent-ink` (= default `brand-ink`, `focus`) | 5.68 / 5.28 / 6.16 / 4.99 · 5.16 | 8.76 / 7.75 / 7.00 / 5.74 · 5.79 |
-| `success-ink` | 5.30 / 4.93 / 5.75 / 4.66 · 4.82 | 18.97 / 16.79 / 15.16 / 12.43 · 12.54 |
-| `warn-ink` | 5.33 / 4.96 / 5.78 / 4.69 · 4.85 | 15.97 / 14.14 / 12.76 / 10.46 · 10.56 |
-| `info-ink` | 5.29 / 4.92 / 5.74 / 4.65 · 4.82 | 14.82 / 13.12 / 11.85 / 9.71 · 9.80 |
-| `danger` (text and fill) | 5.96 / 5.54 / 6.47 / 5.24 · 5.43 | 11.06 / 9.80 / 8.84 / 7.25 · 7.32 |
+| `ink` | 13.60 / 12.64 / 14.75 / 11.95 · 12.37 | 19.36 / 18.14 / 16.98 / 15.71 · 14.82 |
+| `muted` | 5.37 / 4.99 / 5.83 / 4.72 · 4.88 | 9.25 / 8.67 / 8.12 / 7.51 · 7.08 |
+| `accent-ink` (= default `brand-ink`, `focus`) | 5.68 / 5.28 / 6.16 / 4.99 · 5.16 | 8.76 / 8.21 / 7.68 / 7.11 · 6.71 |
+| `success-ink` | 5.30 / 4.93 / 5.75 / 4.66 · 4.82 | 18.97 / 17.78 / 16.64 / 15.39 · 14.52 |
+| `warn-ink` | 5.33 / 4.96 / 5.78 / 4.69 · 4.85 | 15.97 / 14.97 / 14.01 / 12.96 · 12.23 |
+| `info-ink` | 5.29 / 4.92 / 5.74 / 4.65 · 4.82 | 14.82 / 13.89 / 13.00 / 12.03 · 11.35 |
+| `danger` (text and fill) | 5.96 / 5.54 / 6.47 / 5.24 · 5.43 | 11.06 / 10.37 / 9.71 / 8.98 · 8.47 |
 
-The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) and **5.74 in dark**
-(`accent-ink` on `hover`; dark ratios recomputed for the 0.12 true-black set). On the light Citron
+The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) and **6.71 in dark**
+(`accent-ink` on `success-soft`; dark ratios recomputed for the solid-black set, decision 316). On the light Citron
 sidebar: ink 13.23, muted 5.23, accent-ink 5.52. On `sidebar-hover`: ink 14.06, muted 5.55. On the dark
-Deep Ink sidebar: ink 13.60, muted 7.04; on the dark `sidebar-hover`: ink 10.41, muted 5.39.
+sidebar (`#0B0B0B`): ink 18.14, muted 8.67; on the dark `sidebar-hover`: ink 15.71, muted 7.51.
 
 
 | Fill · label | Light rest / hover / active | Dark rest / hover / active |
@@ -166,11 +166,11 @@ Deep Ink sidebar: ink 13.60, muted 7.04; on the dark `sidebar-hover`: ink 10.41,
 
 | Non-text (≥3:1) | Light vs bg / surface / panel (/ sidebar) | Dark |
 |---|---|---|
-| `focus` | 5.68 / 5.28 / 6.16 / 5.52 | 18.84 / 16.68 / 15.06 / 13.60 |
-| `outline` (form-control boundary, needs ≥3:1) | 3.27 / 3.04 / 3.55 | 7.02 / 6.22 / 5.61 |
-| `accent` as a selected fill (nav pill, tab underline) | 5.68 / 5.28 / 6.16 / 5.52 | 3.41 / 3.02 / 2.73 / 3.41 |
-| `danger-line` (decorative card border) | 1.90 vs panel | 3.02 vs panel |
-| `line` (decorative hairline, about 2:1 in dark; control edges use `outline`, not `line`) | 1.42 / 1.32 / 1.54 | 2.21 / 1.96 / 1.77 (ink on line 8.76) |
+| `focus` | 5.68 / 5.28 / 6.16 / 5.52 | 18.84 / 17.66 / 16.53 / 17.66 |
+| `outline` (form-control boundary, needs ≥3:1) | 3.27 / 3.04 / 3.55 | 4.76 / 4.46 / 4.17 |
+| `accent` as a selected fill (nav pill, tab underline) | 5.68 / 5.28 / 6.16 / 5.52 | 3.41 / 3.20 / 2.99 / 3.20 |
+| `danger-line` (decorative card border) | 1.90 vs panel | 3.31 vs panel |
+| `line` (decorative hairline, about 1.3 to 1.5:1 in dark; control edges use `outline`, not `line`) | 1.42 / 1.32 / 1.54 | 1.50 / 1.41 / 1.32 (ink on line 12.87) |
 
 Banned translucent cases (measured): `on-accent/75` on teal is 3.90 and `/80` is 4.22. Cream at 80 % on
 danger is 3.90. Orange text on cream is 2.47.
@@ -241,57 +241,57 @@ braces in comments inside these blocks.
   :root.dark {
     color-scheme: dark;
     --color-bg: 0 0 0;
-    --color-surface: 10 21 19;
-    --color-panel: 18 32 30;
-    --color-hover: 28 49 45;
-    --color-line: 46 75 69;
-    --color-outline: 128 155 146;
+    --color-surface: 11 11 11;
+    --color-panel: 20 20 20;
+    --color-hover: 28 28 28;
+    --color-line: 44 44 44;
+    --color-outline: 120 120 120;
     --color-ink: 255 244 232;
-    --color-muted: 179 180 170;
+    --color-muted: 172 172 172;
     --color-focus: 223 255 143;
     --color-accent: 0 110 99;
     --color-accent-hover: 2 103 93;
     --color-accent-active: 4 97 88;
     --color-on-accent: 255 244 232;
-    --color-accent-soft: 15 44 41;
+    --color-accent-soft: 18 29 28;
     --color-accent-ink: 128 177 166;
     --color-brand: 0 110 99;
     --color-brand-hover: 2 103 93;
     --color-brand-active: 4 97 88;
     --color-on-brand: 255 244 232;
-    --color-brand-soft: 15 44 41;
+    --color-brand-soft: 18 29 28;
     --color-brand-ink: 128 177 166;
     --color-brand-boundary: 128 177 166;
     --color-emphasis: 255 116 71;
     --color-emphasis-hover: 255 129 87;
     --color-emphasis-active: 255 142 103;
     --color-on-emphasis: 20 44 42;
-    --color-emphasis-soft: 35 38 33;
+    --color-emphasis-soft: 34 26 23;
     --color-success: 223 255 143;
     --color-success-hover: 203 234 133;
     --color-success-active: 182 213 123;
     --color-on-success: 20 44 42;
-    --color-success-soft: 32 48 38;
+    --color-success-soft: 32 34 27;
     --color-success-ink: 233 252 170;
     --color-warn: 255 212 71;
     --color-warn-hover: 232 195 68;
     --color-warn-active: 208 178 65;
     --color-on-warn: 20 44 42;
-    --color-warn-soft: 35 45 33;
+    --color-warn-soft: 34 32 23;
     --color-warn-ink: 255 222 119;
     --color-info: 181 205 255;
     --color-info-hover: 165 189 234;
     --color-info-active: 149 173 212;
     --color-on-info: 20 44 42;
-    --color-info-soft: 29 44 46;
+    --color-info-soft: 30 31 34;
     --color-info-ink: 203 217 248;
     --color-danger: 252 165 165;
     --color-danger-hover: 253 185 182;
     --color-danger-active: 253 201 195;
     --color-on-danger: 20 44 42;
     --color-danger-line: 124 98 97;
-    --color-sidebar: 20 44 42;
-    --color-sidebar-hover: 32 64 60;
+    --color-sidebar: 11 11 11;
+    --color-sidebar-hover: 28 28 28;
     --color-sidebar-active: 0 110 99;
     --color-scrim: 0 0 0;
     --shadow-color: 0 0 0;
@@ -318,29 +318,29 @@ Palette copies that must move in the same batch:
 The button family stays closed (`desk-button*`). Every variant keeps `min-h-11` and
 `focus-visible:outline-2 outline-offset-2 outline-focus`. The family drops `hover:-translate-y-0.5`,
 `hover:shadow-*` and `disabled:opacity-50`. Disabled is explicit: `bg-surface text-muted border-line`
-(light 4.99, dark 8.88).
+(light 4.99, dark 8.67).
 
 | Variant | Rest | Hover | Active | Light r/h/a | Dark r/h/a |
 |---|---|---|---|---|---|
 | `desk-button-primary` (staff main) | `bg-accent text-on-accent` | `bg-accent-hover` | `bg-accent-active` | 5.68 / 6.24 / 6.78 | 5.68 / 6.24 / 6.78 |
 | `desk-button-brand` (ex `-secondary`; public/member main) | `bg-brand text-on-brand border-brand-boundary` | `bg-brand-hover` | `bg-brand-active` | default = primary; tenants proven by H.5 | |
-| `desk-button` (neutral; the outline "secondary") | `bg-panel text-ink border-line` | `bg-hover` | `bg-line` | 14.75 / 11.95 / 9.60 | 15.47 / 12.68 / 8.76 |
-| `desk-button-ghost` | `text-accent-ink`, no fill | `bg-accent-soft` | `bg-accent-soft text-ink` | 6.16 / 5.16 / 12.37 | 7.00 / 6.20 / 13.70 |
+| `desk-button` (neutral; the outline "secondary") | `bg-panel text-ink border-line` | `bg-hover` | `bg-line` | 14.75 / 11.95 / 9.60 | 16.98 / 15.71 / 12.87 |
+| `desk-button-ghost` | `text-accent-ink`, no fill | `bg-accent-soft` | `bg-accent-soft text-ink` | 6.16 / 5.16 / 12.37 | 7.68 / 7.19 / 15.89 |
 | `desk-button-emphasis` (new; the one bold public CTA, never in staff chrome) | `bg-emphasis text-on-emphasis` | `-hover` | `-active` | 5.51 / 5.99 / 6.55 | same |
 | `desk-button-danger` (final confirm) | `bg-danger text-on-danger` | `bg-danger-hover` | `bg-danger-active` | 5.96 / 7.66 / 8.80 | 7.77 / 8.99 / 10.06 |
-| `desk-button-danger-outline` (new; "Delete organisation…") | `bg-panel text-danger border-danger` | `text-danger-hover border-danger-hover` | same + `bg-hover` | 6.47 / 8.31 / 6.73 | 8.84 / 10.22 / 8.38 |
+| `desk-button-danger-outline` (new; "Delete organisation…") | `bg-panel text-danger border-danger` | `text-danger-hover border-danger-hover` | same + `bg-hover` | 6.47 / 8.31 / 6.73 | 9.71 / 11.22 / 10.38 |
 | `desk-button-success` / `-warn` (kept in Phase 1, folded into primary/neutral in Phase 6) | `bg-success\|warn text-on-*` | `-hover` | `-active` | 13.23/10.99/8.99 · 10.37/8.66/7.11 | same |
 
 | Element | Rest | Hover | Selected / current | Ratios (light · dark) |
 |---|---|---|---|---|
-| Sidebar item (text-only, D9) | `text-ink` on `sidebar` | `bg-sidebar-hover` | `bg-sidebar-active text-on-accent font-semibold`, `aria-current="page"` | 13.23 / 14.06 / 5.68 (pill vs field 5.52) · 13.60 / 10.41 / 5.68 (pill vs field 2.40) |
-| Sidebar sub-item (reference org5: indented, smaller) | `text-muted` 14/20 | `text-ink` | `text-ink font-semibold`, no fill | 5.23 · 7.04 |
-| Underline tab | `text-muted` | `text-ink` | `text-ink font-semibold` + 2 px `accent` underline | underline 5.68 · 3.41 on bg, 2.73 on panel |
-| Segmented control | track `bg-surface border-line` | `text-ink` | thumb `bg-panel border-outline text-ink` | thumb boundary 3.55 · 5.61 |
-| Table / list row | `bg-panel` | `bg-hover` | `bg-accent-soft` + checked box | 14.75 / 11.95 / 12.37 · 15.47 / 12.68 / 13.70 |
-| Input | `bg-panel border-outline text-ink`, placeholder `text-muted` | `border-ink` | focus: `border-accent` + ring | boundary 3.55 · 5.61 |
+| Sidebar item (text-only, D9) | `text-ink` on `sidebar` | `bg-sidebar-hover` | `bg-sidebar-active text-on-accent font-semibold`, `aria-current="page"` | 13.23 / 14.06 / 5.68 (pill vs field 5.52) · 18.14 / 15.71 / 5.68 (pill vs field 3.20) |
+| Sidebar sub-item (reference org5: indented, smaller) | `text-muted` 14/20 | `text-ink` | `text-ink font-semibold`, no fill | 5.23 · 8.67 |
+| Underline tab | `text-muted` | `text-ink` | `text-ink font-semibold` + 2 px `accent` underline | underline 5.68 · 3.41 on bg, 2.99 on panel |
+| Segmented control | track `bg-surface border-line` | `text-ink` | thumb `bg-panel border-outline text-ink` | thumb boundary 3.55 · 4.17 |
+| Table / list row | `bg-panel` | `bg-hover` | `bg-accent-soft` + checked box | 14.75 / 11.95 / 12.37 · 16.98 / 15.71 / 15.89 |
+| Input | `bg-panel border-outline text-ink`, placeholder `text-muted` | `border-ink` | focus: `border-accent` + ring | boundary 3.55 · 4.17 |
 | Search field (p.16 citron field) | `bg-sidebar border-transparent`, `Search` icon | `bg-sidebar-hover` | ring | text 13.23, placeholder 5.23 · dark `bg-surface` |
-| Invalid field | `border-danger` + message `text-danger` | | | 6.47 · 8.84 |
+| Invalid field | `border-danger` + message `text-danger` | | | 6.47 · 9.71 |
 | Link | `text-accent-ink`, underline on hover | | | 5.68 · 8.76 |
 | Theme toggle | **Light / Dark only** (D11) | | | |
 
@@ -366,13 +366,13 @@ padding 8–10. The **word is mandatory and the icon is optional.** Neither sour
 
 | Tone | Light | Dark |
 |---|---|---|
-| success | `bg-success text-on-success` (13.23) | `bg-success-soft text-success-ink` (12.54) |
-| warn | `bg-warn text-on-warn` (10.37) | `bg-warn-soft text-warn-ink` (10.87) |
-| info | `bg-info text-on-info` (9.23) | `bg-info-soft text-info-ink` (10.21) |
+| success | `bg-success text-on-success` (13.23) | `bg-success-soft text-success-ink` (14.52) |
+| warn | `bg-warn text-on-warn` (10.37) | `bg-warn-soft text-warn-ink` (12.41) |
+| info | `bg-info text-on-info` (9.23) | `bg-info-soft text-info-ink` (11.63) |
 | emphasis | `bg-emphasis text-on-emphasis` (5.51) | same |
-| accent | `bg-accent-soft text-accent-ink` (5.16) | same (6.20) |
-| danger (danger-zone vocabulary) | `bg-panel border border-danger-line text-danger` (6.47) | same (8.84) |
-| neutral | `bg-surface border border-line text-ink` (12.64) | same (17.14) |
+| accent | `bg-accent-soft text-accent-ink` (5.16) | same (7.19) |
+| danger (danger-zone vocabulary) | `bg-panel border border-danger-line text-danger` (6.47) | same (9.71) |
+| neutral | `bg-surface border border-line text-ink` (12.64) | same (18.14) |
 
 | Domain · status (backend value) → tone · word |
 |---|
@@ -578,7 +578,7 @@ This replaces `components/icons.tsx` and `staffNavIcons.tsx`. The old nav-icon s
 | `features/members/MemberAdmission.tsx:44`, `MemberArea.tsx:149`, `MemberReferrals.tsx:67,80`, `MemberVerifierPanel.tsx:20` | `text-success` | `text-success-ink` |
 | `features/staff/MembershipAdmissionSettings.tsx:70`, `panels/MachineTypesPanel.tsx:100`, `SetupChecklist.tsx:22`, `StaffBookingForm.tsx:63` | `text-success` | `text-success-ink` |
 | `features/members/MemberCertifications.tsx:18`, `MemberDashboardSections.tsx:122`, `features/staff/MembershipAdmissionSettings.tsx:56` | `text-warn` | `text-warn-ink` |
-| `features/staff/handover/IssueDialog.tsx:59` | `border-warn/40 bg-warn/10 text-warn` | `border-warn bg-warn-soft text-warn-ink` (5.54 light / 10.87 dark) |
+| `features/staff/handover/IssueDialog.tsx:59` | `border-warn/40 bg-warn/10 text-warn` | `border-warn bg-warn-soft text-warn-ink` (5.54 light / 12.41 dark) |
 | `styles/components.css:191–192` | `hover:text-accent` | `hover:text-accent-ink` |
 | `features/staff/PlatformDashboardPanel.tsx` (×5) | `text-brand` (**undefined today**) | `text-accent-ink`. After the rename, `text-brand` would otherwise become a fill used as text. |
 | `features/staff/panels/QueuesReturnRequestModal.tsx`, `features/staff/EvidenceRetentionPanel.tsx` | `text-warning` (undefined) | `text-warn-ink` |
