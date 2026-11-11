@@ -55,14 +55,14 @@ The maths is WCAG 2.x relative luminance. It reproduces the PDF's own tested pai
 
 | # | Decision | Source / why |
 |---|---|---|
-| D1 | The light canvas is Warm Cream with white cards. Dark mode is built **only from the brand's reversed pairings**: `bg` = Deep Ink, raised surfaces = Ink mixed with 3/6/11 % Cream, text = Warm Cream, accents = brand. **No black.** | brand p.7 (reversed on Ink / Teal); owner rule |
-| D2 | `accent` = **Maker Teal** in light. In dark it is **Teal + 34 % Cream** (#579C90) with Deep Ink labels. | brand-mix. Brand teal on Deep Ink is 2.36:1, under the 3:1 a selected-state fill needs (SC 1.4.11). |
+| D1 | The light canvas is Warm Cream with white cards. **Superseded 11 November 2026 (SpaceWorks decisions 225, 275, 300):** dark is a true-black page (`bg` `#000000`) with three near-black layers carrying a faint Maker Teal + Cream lift (`surface` 10 % + 4 %, `panel` 14 % + 7 %, `hover` 20 % + 11 %), Cream text, Citron focus and desaturated brand accents. Token names are unchanged; the Deep Ink set survives only as the `.sw-island-dark` subtree. | owner: "professional, clean, and a better dark theme palette" |
+| D2 | `accent` = **Maker Teal** in light. In dark (0.12) it stays **Maker Teal** `#006E63` with Cream labels (5.68:1); it is 3.41:1 on the black page, 3.02:1 on `surface` and 2.73:1 on `panel`, so a selected teal fill on `panel` is paired with a label, not relied on alone. | brand-mix. |
 | D3 | `secondary` is renamed **`brand`** (the action colour of a stranger-facing surface; default = accent; tenant-overridable). **`emphasis` = Workshop Orange**: Space Works' own, never tenant-overridable, one bold moment per layout. | brand p.9 "teal = primary · actions; orange = energy · emphasis"; p.13 "use one bold moment" |
 | D4 | **Danger is sampled from the UX reference boards**, because the brand has no red: `#B91C1C` text/fill, `#991B1B` hover, `#FCA5A5` card border (dark text). | reference org5 danger zone (sampled, C.0) |
 | D5 | Solid `*-soft` tokens replace every `bg-{tone}/NN`. **Translucent text is banned.** | Codex (1): `text-on-accent/75` on teal = 3.90:1 |
 | D6 | Status = **word** (mandatory) on a soft pill. Light mode uses the brand-tested solid pastel + ink pairs; dark mode uses soft + tone-ink. Icons are optional. | brand p.10 "add a word or icon to every status"; UX spec P10 tinted pills |
-| D7 | **Typography updated by the owner, 15 October 2026:** Gilroy Regular 400 / Medium 500 / Semibold 600 / Bold 700 for all everyday text and headings. Unbounded 500–600 for one short accent phrase. This supersedes the previous Outfit body and free-weight-only restriction. | owner; current Figma p.11–12 |
-| D8 | Shape follows the brand's own product mock (p.16, measured): controls r 10, window/cards r 16, tags fully round, **no shadows**, hairlines = Deep Ink @ 18 %. The UX reference uses pill buttons; one token switches it. | brand p.16 vector; UX spec P11 |
+| D7 | **Typography, superseded 11 November 2026 (decision 299):** only the FREE Gilroy weights ship, Light 300 and ExtraBold 800. Display headings use Gilroy ExtraBold, light display text uses Gilroy Light, and everything else (body, labels, controls, IDs) uses Outfit 400–700 (OFL). Unbounded 500–600 (OFL) for one short accent phrase. The paid Gilroy Regular/Medium/Semibold/Bold are never shipped. The 15 October 2026 four-weight arrangement is withdrawn. | owner: "I am not planning to buy a licence" |
+| D8 | Shape follows the brand's own product mock (p.16, measured): controls r 10, window/cards r 16, tags fully round, **no shadows**, hairlines = Deep Ink @ 18 % in light; in dark the `line` hairline is Teal 28 % + Cream 18 % and is **decorative, about 2:1** (2.21 on black, 1.96 on `surface`, 1.77 on `panel`), never the only thing that identifies a control. The UX reference uses pill buttons; one token switches it. | brand p.16 vector; UX spec P11 |
 | D9 | Light-mode sidebar = **Citron field** with Deep Ink labels and a filled teal active item. Dark-mode sidebar = Deep Ink. **The nav is text-only.** Neither the brand mock (p.16) nor the UX reference (org5) puts icons in the sidebar. | brand p.16; reference org5 |
 | D10 | Attention counters and low-stock tags use `emphasis` (orange + ink; p.16 "2 left" is an orange tag). `danger` is reserved for destructive actions and errors. | brand p.16 |
 | D11 | **No "System" theme option.** The existing Light/Dark toggle stays as it is. | owner |
@@ -76,59 +76,59 @@ The maths is WCAG 2.x relative luminance. It reproduces the PDF's own tested pai
 
 | Token | Light | Source (light) | Dark | Source (dark) |
 |---|---|---|---|---|
-| `bg` | `255 244 232` #FFF4E8 | brand | `20 44 42` #142C2A | brand (reversed ground) |
-| `surface` | `246 236 224` #F6ECE0 | brand-mix: Cream + 4% Ink | `27 50 48` #1B3230 | brand-mix: Ink + 3% Cream |
-| `panel` | `255 255 255` #FFFFFF | brand (white card, p.4/p.16) | `34 56 53` #223835 | brand-mix: Ink + 6% Cream |
-| `hover` | `239 230 219` #EFE6DB | brand-mix: Cream + 7% Ink | `46 66 63` #2E423F | brand-mix: Ink + 11% Cream |
-| `line` | `213 208 198` #D5D0C6 | brand-mix: Cream + 18% Ink (p.16 rules = Ink @ 18%) | `55 74 71` #374A47 | brand-mix: Ink + 15% Cream |
-| `outline` | `130 138 131` #828A83 | brand-mix: Cream + 53% Ink | `119 128 122` #77807A | brand-mix: Ink + 42% Cream |
+| `bg` | `255 244 232` #FFF4E8 | brand | `0 0 0` #000000 | release 0.12 recipe (decisions 275, 300) |
+| `surface` | `246 236 224` #F6ECE0 | brand-mix: Cream + 4% Ink | `10 21 19` #0A1513 | release 0.12 recipe (decisions 275, 300) |
+| `panel` | `255 255 255` #FFFFFF | brand (white card, p.4/p.16) | `18 32 30` #12201E | release 0.12 recipe (decisions 275, 300) |
+| `hover` | `239 230 219` #EFE6DB | brand-mix: Cream + 7% Ink | `28 49 45` #1C312D | release 0.12 recipe (decisions 275, 300) |
+| `line` | `213 208 198` #D5D0C6 | brand-mix: Cream + 18% Ink (p.16 rules = Ink @ 18%) | `46 75 69` #2E4B45 | release 0.12 recipe (decisions 275, 300) |
+| `outline` | `130 138 131` #828A83 | brand-mix: Cream + 53% Ink | `128 155 146` #809B92 | release 0.12 recipe (decisions 275, 300) |
 | `ink` | `20 44 42` #142C2A | brand | `255 244 232` #FFF4E8 | brand (reversed text) |
-| `muted` | `91 104 99` #5B6863 | brand-mix: Ink + 30% Cream | `192 190 181` #C0BEB5 | brand-mix: Cream + 27% Ink |
-| `focus` | `0 110 99` #006E63 | = accent-ink | `163 196 184` #A3C4B8 | = accent-ink |
-| `accent` | `0 110 99` #006E63 | brand | `87 156 144` #579C90 | brand-mix: Teal + 34% Cream |
-| `accent-hover` | `2 103 93` #02675D | brand-mix: accent + 10% Ink | `104 165 153` #68A599 | brand-mix: accent + 10% Cream |
-| `accent-active` | `4 97 88` #046158 | brand-mix: accent + 20% Ink | `121 174 162` #79AEA2 | brand-mix: accent + 20% Cream |
-| `on-accent` | `255 244 232` #FFF4E8 | brand (tested pair 5.68) | `20 44 42` #142C2A | brand |
-| `accent-soft` | `224 238 236` #E0EEEC | brand-mix: panel + 12% accent | `40 68 64` #284440 | brand-mix: panel + 12% accent |
-| `accent-ink` | `0 110 99` #006E63 | brand | `163 196 184` #A3C4B8 | brand-mix: dark accent + 45% Cream |
-| `brand` | `0 110 99` #006E63 | = accent (tenant-overridable) | `87 156 144` #579C90 | = accent (tenant-overridable) |
-| `brand-hover` | `2 103 93` #02675D | = accent-hover (tenant-overridable) | `104 165 153` #68A599 | = accent-hover (tenant-overridable) |
-| `brand-active` | `4 97 88` #046158 | = accent-active (tenant-overridable) | `121 174 162` #79AEA2 | = accent-active (tenant-overridable) |
-| `on-brand` | `255 244 232` #FFF4E8 | = on-accent | `20 44 42` #142C2A | = on-accent |
-| `brand-soft` | `224 238 236` #E0EEEC | = accent-soft (tenant-overridable) | `40 68 64` #284440 | = accent-soft (tenant-overridable) |
-| `brand-ink` | `0 110 99` #006E63 | = accent-ink (tenant-overridable) | `163 196 184` #A3C4B8 | = accent-ink (tenant-overridable) |
-| `brand-boundary` | `0 110 99` #006E63 | = brand-ink | `163 196 184` #A3C4B8 | = brand-ink |
+| `muted` | `91 104 99` #5B6863 | brand-mix: Ink + 30% Cream | `179 180 170` #B3B4AA | release 0.12 recipe (decisions 275, 300) |
+| `focus` | `0 110 99` #006E63 | = accent-ink | `223 255 143` #DFFF8F | release 0.12 recipe (decisions 275, 300) |
+| `accent` | `0 110 99` #006E63 | brand | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
+| `accent-hover` | `2 103 93` #02675D | brand-mix: accent + 10% Ink | `2 103 93` #02675D | release 0.12 recipe (decisions 275, 300) |
+| `accent-active` | `4 97 88` #046158 | brand-mix: accent + 20% Ink | `4 97 88` #046158 | release 0.12 recipe (decisions 275, 300) |
+| `on-accent` | `255 244 232` #FFF4E8 | brand (tested pair 5.68) | `255 244 232` #FFF4E8 | release 0.12 recipe (decisions 275, 300) |
+| `accent-soft` | `224 238 236` #E0EEEC | brand-mix: panel + 12% accent | `15 44 41` #0F2C29 | release 0.12 recipe (decisions 275, 300) |
+| `accent-ink` | `0 110 99` #006E63 | brand | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
+| `brand` | `0 110 99` #006E63 | = accent (tenant-overridable) | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
+| `brand-hover` | `2 103 93` #02675D | = accent-hover (tenant-overridable) | `2 103 93` #02675D | release 0.12 recipe (decisions 275, 300) |
+| `brand-active` | `4 97 88` #046158 | = accent-active (tenant-overridable) | `4 97 88` #046158 | release 0.12 recipe (decisions 275, 300) |
+| `on-brand` | `255 244 232` #FFF4E8 | = on-accent | `255 244 232` #FFF4E8 | release 0.12 recipe (decisions 275, 300) |
+| `brand-soft` | `224 238 236` #E0EEEC | = accent-soft (tenant-overridable) | `15 44 41` #0F2C29 | release 0.12 recipe (decisions 275, 300) |
+| `brand-ink` | `0 110 99` #006E63 | = accent-ink (tenant-overridable) | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
+| `brand-boundary` | `0 110 99` #006E63 | = brand-ink | `128 177 166` #80B1A6 | release 0.12 recipe (decisions 275, 300) |
 | `emphasis` | `255 116 71` #FF7447 | brand | `255 116 71` #FF7447 | brand |
 | `emphasis-hover` | `255 129 87` #FF8157 | brand-mix: emphasis + 10% Cream | `255 129 87` #FF8157 | brand-mix: emphasis + 10% Cream |
 | `emphasis-active` | `255 142 103` #FF8E67 | brand-mix: emphasis + 20% Cream | `255 142 103` #FF8E67 | brand-mix: emphasis + 20% Cream |
 | `on-emphasis` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `emphasis-soft` | `255 238 233` #FFEEE9 | brand-mix: panel + 12% emphasis | `61 63 55` #3D3F37 | brand-mix: panel + 12% emphasis |
+| `emphasis-soft` | `255 238 233` #FFEEE9 | brand-mix: panel + 12% emphasis | `35 38 33` #232621 | release 0.12 recipe (decisions 275, 300) |
 | `success` | `223 255 143` #DFFF8F | brand | `223 255 143` #DFFF8F | brand |
 | `success-hover` | `203 234 133` #CBEA85 | brand-mix: success + 10% Ink | `203 234 133` #CBEA85 | brand-mix: success + 10% Ink |
 | `success-active` | `182 213 123` #B6D57B | brand-mix: success + 20% Ink | `182 213 123` #B6D57B | brand-mix: success + 20% Ink |
 | `on-success` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `success-soft` | `251 255 242` #FBFFF2 | brand-mix: panel + 12% success | `57 80 64` #395040 | brand-mix: panel + 12% success |
-| `success-ink` | `83 109 73` #536D49 | brand-mix: Citron + 69% Ink | `223 255 143` #DFFF8F | brand |
+| `success-soft` | `251 255 242` #FBFFF2 | brand-mix: panel + 12% success | `32 48 38` #203026 | release 0.12 recipe (decisions 275, 300) |
+| `success-ink` | `83 109 73` #536D49 | brand-mix: Citron + 69% Ink | `233 252 170` #E9FCAA | release 0.12 recipe (decisions 275, 300) |
 | `warn` | `255 212 71` #FFD447 | brand | `255 212 71` #FFD447 | brand |
 | `warn-hover` | `232 195 68` #E8C344 | brand-mix: warn + 10% Ink | `232 195 68` #E8C344 | brand-mix: warn + 10% Ink |
 | `warn-active` | `208 178 65` #D0B241 | brand-mix: warn + 20% Ink | `208 178 65` #D0B241 | brand-mix: warn + 20% Ink |
 | `on-warn` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `warn-soft` | `255 250 233` #FFFAE9 | brand-mix: panel + 12% warn | `61 75 55` #3D4B37 | brand-mix: panel + 12% warn |
-| `warn-ink` | `105 104 52` #696834 | brand-mix: Yellow + 64% Ink | `255 212 71` #FFD447 | brand |
+| `warn-soft` | `255 250 233` #FFFAE9 | brand-mix: panel + 12% warn | `35 45 33` #232D21 | release 0.12 recipe (decisions 275, 300) |
+| `warn-ink` | `105 104 52` #696834 | brand-mix: Yellow + 64% Ink | `255 222 119` #FFDE77 | release 0.12 recipe (decisions 275, 300) |
 | `info` | `181 205 255` #B5CDFF | brand | `181 205 255` #B5CDFF | brand |
 | `info-hover` | `165 189 234` #A5BDEA | brand-mix: info + 10% Ink | `165 189 234` #A5BDEA | brand-mix: info + 10% Ink |
 | `info-active` | `149 173 212` #95ADD4 | brand-mix: info + 20% Ink | `149 173 212` #95ADD4 | brand-mix: info + 20% Ink |
 | `on-info` | `20 44 42` #142C2A | brand (tested pair) | `20 44 42` #142C2A | brand (tested pair) |
-| `info-soft` | `246 249 255` #F6F9FF | brand-mix: panel + 12% info | `52 74 77` #344A4D | brand-mix: panel + 12% info |
-| `info-ink` | `81 105 123` #51697B | brand-mix: Sky + 62% Ink | `181 205 255` #B5CDFF | brand |
+| `info-soft` | `246 249 255` #F6F9FF | brand-mix: panel + 12% info | `29 44 46` #1D2C2E | release 0.12 recipe (decisions 275, 300) |
+| `info-ink` | `81 105 123` #51697B | brand-mix: Sky + 62% Ink | `203 217 248` #CBD9F8 | release 0.12 recipe (decisions 275, 300) |
 | `danger` | `185 28 28` #B91C1C | Ref (sampled #B91C1C) | `252 165 165` #FCA5A5 | Ref (sampled #FCA5A5) |
 | `danger-hover` | `153 27 27` #991B1B | Ref (sampled #991B1B) | `253 185 182` #FDB9B6 | Ref-mix: #FCA5A5 + 25% Cream |
 | `danger-active` | `133 30 29` #851E1D | Ref-mix: #991B1B + 15% Ink | `253 201 195` #FDC9C3 | Ref-mix: #FCA5A5 + 45% Cream |
 | `on-danger` | `255 244 232` #FFF4E8 | brand | `20 44 42` #142C2A | brand |
 | `danger-line` | `252 165 165` #FCA5A5 | Ref (sampled, danger-zone card border) | `124 98 97` #7C6261 | Ref-mix: Ink + 45% #FCA5A5 |
 | `sidebar` | `223 255 143` #DFFF8F | brand (p.16 sidebar) | `20 44 42` #142C2A | brand (Deep Ink) |
-| `sidebar-hover` | `242 255 210` #F2FFD2 | brand-mix: Citron + 60% white | `46 66 63` #2E423F | = hover |
-| `sidebar-active` | `0 110 99` #006E63 | brand (p.16 active item) | `87 156 144` #579C90 | = accent |
+| `sidebar-hover` | `242 255 210` #F2FFD2 | brand-mix: Citron + 60% white | `32 64 60` #20403C | release 0.12 recipe (decisions 275, 300) |
+| `sidebar-active` | `0 110 99` #006E63 | brand (p.16 active item) | `0 110 99` #006E63 | release 0.12 recipe (decisions 275, 300) |
 | `--shadow-color` | `20 44 42` | brand (overlays only) | `20 44 42` | brand |
 
 Removed: `--color-accent-bright` (a pastel; cream on it would be 1.97), `--color-secondary*`,
@@ -141,17 +141,22 @@ Universal background set: `bg`, `surface`, `panel`, `hover`, plus the five softs
 
 | Text token | Light: bg / surface / panel / hover · worst soft | Dark: bg / surface / panel / hover · worst soft |
 |---|---|---|
-| `ink` | 13.60 / 12.64 / 14.75 / 11.95 · 12.37 | 13.60 / 12.52 / 11.49 / 9.84 · 8.08 |
-| `muted` | 5.37 / 4.99 / 5.83 / 4.72 · 4.88 | 7.92 / 7.29 / 6.69 / 5.73 · 4.71 |
-| `accent-ink` (= default `brand-ink`, `focus`) | 5.68 / 5.28 / 6.16 / 4.99 · 5.16 | 7.83 / 7.21 / 6.61 / 5.67 · 4.65 |
-| `success-ink` | 5.30 / 4.93 / 5.75 / 4.66 · 4.82 | 13.23 / 12.19 / 11.18 / 9.58 · 7.86 |
-| `warn-ink` | 5.33 / 4.96 / 5.78 / 4.69 · 4.85 | 10.37 / 9.55 / 8.76 / 7.50 · 6.16 |
-| `info-ink` | 5.29 / 4.92 / 5.74 / 4.65 · 4.82 | 9.23 / 8.50 / 7.80 / 6.68 · 5.49 |
-| `danger` (text and fill) | 5.96 / 5.54 / 6.47 / 5.24 · 5.43 | 7.77 / 7.16 / 6.57 / 5.62 · 4.62 |
+| `ink` | 13.60 / 12.64 / 14.75 / 11.95 · 12.37 | 19.36 / 17.14 / 15.47 / 12.68 · 12.80 |
+| `muted` | 5.37 / 4.99 / 5.83 / 4.72 · 4.88 | 10.03 / 8.88 / 8.01 / 6.57 · 6.63 |
+| `accent-ink` (= default `brand-ink`, `focus`) | 5.68 / 5.28 / 6.16 / 4.99 · 5.16 | 8.76 / 7.75 / 7.00 / 5.74 · 5.79 |
+| `success-ink` | 5.30 / 4.93 / 5.75 / 4.66 · 4.82 | 18.97 / 16.79 / 15.16 / 12.43 · 12.54 |
+| `warn-ink` | 5.33 / 4.96 / 5.78 / 4.69 · 4.85 | 15.97 / 14.14 / 12.76 / 10.46 · 10.56 |
+| `info-ink` | 5.29 / 4.92 / 5.74 / 4.65 · 4.82 | 14.82 / 13.12 / 11.85 / 9.71 · 9.80 |
+| `danger` (text and fill) | 5.96 / 5.54 / 6.47 / 5.24 · 5.43 | 11.06 / 9.80 / 8.84 / 7.25 · 7.32 |
 
-The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) and **4.62 in dark**
-(`danger` on `success-soft`). On the light Citron sidebar: ink 13.23, muted 5.23, accent-ink 5.52. On
-`sidebar-hover`: ink 14.06, muted 5.55. On the dark Deep Ink sidebar: ink 13.60, muted 7.92.
+The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) and **5.74 in dark**
+(`accent-ink` on `hover`; dark ratios recomputed for the 0.12 true-black set). On the light Citron
+sidebar: ink 13.23, muted 5.23, accent-ink 5.52. On `sidebar-hover`: ink 14.06, muted 5.55. On the dark
+Deep Ink sidebar: ink 13.60, muted 7.04; on the dark `sidebar-hover`: ink 10.41, muted 5.39.
+
+> **Dark ratios elsewhere in this document** (component and status-pill tables in sections B onward) were
+> measured on the earlier Deep Ink dark set and are kept as history. Where they disagree with A.1, A.2 or
+> A.3, those three win.
 
 | Fill · label | Light rest / hover / active | Dark rest / hover / active |
 |---|---|---|
@@ -164,11 +169,11 @@ The worst cell in the whole matrix is **4.65 in light** (`info-ink` on `hover`) 
 
 | Non-text (≥3:1) | Light vs bg / surface / panel (/ sidebar) | Dark |
 |---|---|---|
-| `focus` | 5.68 / 5.28 / 6.16 / 5.52 | 7.83 / 7.21 / 6.61 / 7.83 |
-| `outline` (form-control boundary) | 3.27 / 3.04 / 3.55 | 3.62 / 3.33 / 3.06 |
-| `accent` as a selected fill (nav pill, tab underline) | 5.68 / 5.28 / 6.16 / 5.52 | 4.61 / 4.25 / 3.89 / 4.61 |
-| `danger-line` (decorative card border) | 1.90 vs panel | 2.24 vs panel |
-| `line` (decorative hairline) | 1.42 / 1.32 / 1.54 | ink on line 8.67 |
+| `focus` | 5.68 / 5.28 / 6.16 / 5.52 | 18.84 / 16.68 / 15.06 / 13.60 |
+| `outline` (form-control boundary, needs ≥3:1) | 3.27 / 3.04 / 3.55 | 7.02 / 6.22 / 5.61 |
+| `accent` as a selected fill (nav pill, tab underline) | 5.68 / 5.28 / 6.16 / 5.52 | 3.41 / 3.02 / 2.73 / 3.41 |
+| `danger-line` (decorative card border) | 1.90 vs panel | 3.02 vs panel |
+| `line` (decorative hairline, about 2:1 in dark; control edges use `outline`, not `line`) | 1.42 / 1.32 / 1.54 | 2.21 / 1.96 / 1.77 (ink on line 8.76) |
 
 Banned translucent cases (measured): `on-accent/75` on teal is 3.90 and `/80` is 4.22. Cream at 80 % on
 danger is 3.90. Orange text on cream is 2.47.
@@ -238,60 +243,61 @@ braces in comments inside these blocks.
   }
   :root.dark {
     color-scheme: dark;
-    --color-bg: 20 44 42;
-    --color-surface: 27 50 48;
-    --color-panel: 34 56 53;
-    --color-hover: 46 66 63;
-    --color-line: 55 74 71;
-    --color-outline: 119 128 122;
+    --color-bg: 0 0 0;
+    --color-surface: 10 21 19;
+    --color-panel: 18 32 30;
+    --color-hover: 28 49 45;
+    --color-line: 46 75 69;
+    --color-outline: 128 155 146;
     --color-ink: 255 244 232;
-    --color-muted: 192 190 181;
-    --color-focus: 163 196 184;
-    --color-accent: 87 156 144;
-    --color-accent-hover: 104 165 153;
-    --color-accent-active: 121 174 162;
-    --color-on-accent: 20 44 42;
-    --color-accent-soft: 40 68 64;
-    --color-accent-ink: 163 196 184;
-    --color-brand: 87 156 144;
-    --color-brand-hover: 104 165 153;
-    --color-brand-active: 121 174 162;
-    --color-on-brand: 20 44 42;
-    --color-brand-soft: 40 68 64;
-    --color-brand-ink: 163 196 184;
-    --color-brand-boundary: 163 196 184;
+    --color-muted: 179 180 170;
+    --color-focus: 223 255 143;
+    --color-accent: 0 110 99;
+    --color-accent-hover: 2 103 93;
+    --color-accent-active: 4 97 88;
+    --color-on-accent: 255 244 232;
+    --color-accent-soft: 15 44 41;
+    --color-accent-ink: 128 177 166;
+    --color-brand: 0 110 99;
+    --color-brand-hover: 2 103 93;
+    --color-brand-active: 4 97 88;
+    --color-on-brand: 255 244 232;
+    --color-brand-soft: 15 44 41;
+    --color-brand-ink: 128 177 166;
+    --color-brand-boundary: 128 177 166;
     --color-emphasis: 255 116 71;
     --color-emphasis-hover: 255 129 87;
     --color-emphasis-active: 255 142 103;
     --color-on-emphasis: 20 44 42;
-    --color-emphasis-soft: 61 63 55;
+    --color-emphasis-soft: 35 38 33;
     --color-success: 223 255 143;
     --color-success-hover: 203 234 133;
     --color-success-active: 182 213 123;
     --color-on-success: 20 44 42;
-    --color-success-soft: 57 80 64;
-    --color-success-ink: 223 255 143;
+    --color-success-soft: 32 48 38;
+    --color-success-ink: 233 252 170;
     --color-warn: 255 212 71;
     --color-warn-hover: 232 195 68;
     --color-warn-active: 208 178 65;
     --color-on-warn: 20 44 42;
-    --color-warn-soft: 61 75 55;
-    --color-warn-ink: 255 212 71;
+    --color-warn-soft: 35 45 33;
+    --color-warn-ink: 255 222 119;
     --color-info: 181 205 255;
     --color-info-hover: 165 189 234;
     --color-info-active: 149 173 212;
     --color-on-info: 20 44 42;
-    --color-info-soft: 52 74 77;
-    --color-info-ink: 181 205 255;
+    --color-info-soft: 29 44 46;
+    --color-info-ink: 203 217 248;
     --color-danger: 252 165 165;
     --color-danger-hover: 253 185 182;
     --color-danger-active: 253 201 195;
     --color-on-danger: 20 44 42;
     --color-danger-line: 124 98 97;
     --color-sidebar: 20 44 42;
-    --color-sidebar-hover: 46 66 63;
-    --color-sidebar-active: 87 156 144;
-    --shadow-color: 20 44 42;
+    --color-sidebar-hover: 32 64 60;
+    --color-sidebar-active: 0 110 99;
+    --color-scrim: 0 0 0;
+    --shadow-color: 0 0 0;
   }
 ```
 
@@ -305,7 +311,7 @@ Palette copies that must move in the same batch:
 | `public/member-pwa/offline.css` | `#1e333f` → `#142C2A`, focus `#f9cd68` → `#A3C4B8` |
 | `scripts/member-pwa.ts`, `scripts/kiosk-pwa.ts` | icon rasters come from `app-icon.svg` |
 | `public/spaceworks-logo.svg` | replace with `symbol.svg` |
-| `index.html` | `theme-color` `#FFF4E8` (light) / `#142C2A` (dark) |
+| `index.html` | `theme-color` `#FFF4E8` (light) / `#000000` (dark, true black) |
 | `backend/config/unfold.py` `COLORS.primary` | a brand-mix ramp: 50–400 = Teal + 90/75/55/35/15 % Cream, 500 = Teal, 600–950 = Teal + 15/30/45/60/75 % Ink |
 
 ---
@@ -398,47 +404,47 @@ pill, upcoming = neutral.
 
 | Role | Family | Weights | Files |
 |---|---|---|---|
-| Headings and titles | Gilroy | 600, 700 | `Gilroy-SemiBold.woff`, `Gilroy-Bold.woff` |
-| Body, labels, controls and IDs | Gilroy | 400, 500, 600, 700 | `Gilroy-Regular.woff`, `Gilroy-Medium.woff`, plus the heading files |
+| Display headings | Gilroy | 800 | `Gilroy-ExtraBold.woff2` |
+| Light display text | Gilroy | 300 | `Gilroy-Light.woff2` |
+| Body, labels, controls, IDs and every other weight | Outfit | 400–700 | `Outfit-Variable.woff2` |
 | One short expressive accent | Unbounded | 500, 600 | `Unbounded-Variable.woff2` |
 
-The four Gilroy files were converted from the owner's installed fonts without subsetting or changing outlines.
-See `fonts/README.md` for provenance. Legacy Gilroy 300/800 and Outfit files remain for compatibility;
-they are not the defaults for new surfaces. The logo wordmark is supplied as vector outlines.
+Gilroy ships only in its two free weights under `LICENSES/Gilroy-Free-Font-EULA.txt`; Outfit and Unbounded
+are SIL OFL. See `fonts/README.md`. The logo wordmark is supplied as vector outlines.
 
 ### D.2 Self-hosted CSS
 
 Import `tokens/tokens.css`. Use `var(--font-sans)` for body and `var(--font-display)` for headings.
-Both resolve to Gilroy. `var(--font-accent)` resolves to Unbounded with Gilroy as fallback.
-Use explicit line heights and `font-synthesis: none`. IDs and code use Gilroy with tabular figures,
+`--font-display` resolves to Gilroy (use weight 800, or 300 for light display text); `--font-sans` resolves to Outfit. `var(--font-accent)` resolves to Unbounded with Outfit as fallback.
+Use explicit line heights and `font-synthesis: none`. IDs and code use Outfit with tabular figures,
 not a separate monospace family. Keep `pre` text wrapping on narrow screens.
 
 ### D.3 Type scale tokens (family + weight)
 
 | Token / class | Size / line | Family · weight | Tracking | Use |
 |---|---|---|---|---|
-| `text-display` | 72/76 (mobile 44/48) | Gilroy 600 | −0.02em | public landing hero |
-| `text-display-sub` | 32/38 (mobile 24/30) | Gilroy 400 | 0 | optional sub-line under a display/heading on public and auth only |
-| `text-heading` | 48/52 (mobile 34/40) | Gilroy 600 | −0.015em | public section heads, auth brand panel |
-| `.title-page` (brand Subheading) | 32/38 (mobile 26/32) | Gilroy 600 | −0.01em | one h1 per page |
-| `.title-panel` (between Body and Subheading) | 20/28 | Gilroy 600 | −0.005em | card and panel titles |
-| `.title-section` | 16/24 | Gilroy 600 | 0 | section titles, list-row titles |
-| Stat number / big display number | 32/38 (hero stats 48/52) | Gilroy 600 + `tabular-nums` | −0.01em | `StatCard`, report totals |
-| Date-chip numeral | 20/24 | Gilroy 600 + `tabular-nums` | 0 | `DateChip` |
-| `text-body` | 16/24 | Gilroy 400 | 0 | body, descriptions, inputs |
-| `text-label` | 14/20 | Gilroy 500 | 0 | nav items, form labels, meta, dense table cells |
-| Button label | 14/20 (large 16/24) | Gilroy 600 | 0 | `desk-button*` |
-| `.col-header` | 14/20 | Gilroy 600, sentence case, `text-accent-ink` | 0 | table headers (p.16) |
-| Inline strong / pill emphasis | inherit | Gilroy 700 | 0 | `<strong>`, pill counts |
-| `text-caption` | 12/16 | Gilroy 500 | 0.01em | pills, timestamps, helper text |
-| `.eyebrow` | 12/16 | Gilroy 600 uppercase | 0.08em | category kicker, `text-muted` (p.17) |
-| IDs / shelf codes | inherit | Gilroy 500 + `tabular-nums` | 0 | `text-accent-ink` under a title (p.17), `text-ink` in cells |
+| `text-display` | 72/76 (mobile 44/48) | Outfit 800 | −0.02em | public landing hero |
+| `text-display-sub` | 32/38 (mobile 24/30) | Outfit 400 | 0 | optional sub-line under a display/heading on public and auth only |
+| `text-heading` | 48/52 (mobile 34/40) | Outfit 800 | −0.015em | public section heads, auth brand panel |
+| `.title-page` (brand Subheading) | 32/38 (mobile 26/32) | Outfit 600 | −0.01em | one h1 per page |
+| `.title-panel` (between Body and Subheading) | 20/28 | Outfit 600 | −0.005em | card and panel titles |
+| `.title-section` | 16/24 | Outfit 600 | 0 | section titles, list-row titles |
+| Stat number / big display number | 32/38 (hero stats 48/52) | Outfit 600 + `tabular-nums` | −0.01em | `StatCard`, report totals |
+| Date-chip numeral | 20/24 | Outfit 600 + `tabular-nums` | 0 | `DateChip` |
+| `text-body` | 16/24 | Outfit 400 | 0 | body, descriptions, inputs |
+| `text-label` | 14/20 | Outfit 500 | 0 | nav items, form labels, meta, dense table cells |
+| Button label | 14/20 (large 16/24) | Outfit 600 | 0 | `desk-button*` |
+| `.col-header` | 14/20 | Outfit 600, sentence case, `text-accent-ink` | 0 | table headers (p.16) |
+| Inline strong / pill emphasis | inherit | Outfit 700 | 0 | `<strong>`, pill counts |
+| `text-caption` | 12/16 | Outfit 500 | 0.01em | pills, timestamps, helper text |
+| `.eyebrow` | 12/16 | Outfit 600 uppercase | 0.08em | category kicker, `text-muted` (p.17) |
+| IDs / shelf codes | inherit | Outfit 500 + `tabular-nums` | 0 | `text-accent-ink` under a title (p.17), `text-ink` in cells |
 | `text-accent` | 48/56 (mobile 32/40) | Unbounded 500 (600 allowed) | −0.01em | **one** phrase per layout: landing hero, auth brand panel, the empty-state hero; never in staff chrome |
 
 ### D.4 `font-mono` decision (Codex 4)
 
 There are 235 occurrences on 227 lines in 126 files, plus `.eyebrow`, `.chip` and `.status-box` in CSS.
-**Migrate, do not alias.** IDs and codes move to Gilroy with `tabular-nums` (brand p.17 wants clear IDs in the UI family, not a mono). Secrets, digests and JSON use Gilroy with the `.code-text` utility (`font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.02em`) — **owner rule: no monospace family** (PLAN §0.4 supersedes this spec). The site lists are in H.6.
+**Migrate, do not alias.** IDs and codes move to Outfit with `tabular-nums` (brand p.17 wants clear IDs in the UI family, not a mono). Secrets, digests and JSON use Outfit with the `.code-text` utility (`font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.02em`) — **owner rule: no monospace family** (PLAN §0.4 supersedes this spec). The site lists are in H.6.
 
 ---
 
@@ -651,7 +657,7 @@ Changes the contract implies:
 
 ### H.6 `font-mono` migration (Codex 4)
 
-**A. → `.code-text` on Gilroy** (57 sites; machine strings; owner rule — no `font-code`/monospace family).
+**A. → `.code-text` on Outfit** (57 sites; machine strings; owner rule — no `font-code`/monospace family).
 
 | Kind | Sites |
 |---|---|
@@ -744,9 +750,9 @@ these tests live only in the main checkout (they are gitignored), so the updated
 | 11 | Seven exact sRGB colours; neutral first, accent second (p.9, p.13) | all tokens | A.1 provenance; `test_token_provenance`; hex-literal guard |
 | 12 | Tested text pairs; **orange text on cream banned** (p.10) | all text | no `emphasis-ink` token exists; guard bans `text-emphasis`; contrast guard ≥4.5 universal matrix |
 | 13 | Every status = colour + word or icon (p.10) | `StatusPill`, stepper, availability, machine states | `StatusPill` requires a `label: string` prop (TS non-optional, non-empty); axe; test that every C status maps to a word |
-| 14 | Gilroy leads; Unbounded **one accent per layout** (p.11–12) | Gilroy 600 on every heading and number; Gilroy for UI text; accent on landing, auth, empty hero | `font-accent` only through `<AccentHeadline>`; a test mounts each page and asserts ≤1 `[data-accent]`; guard bans raw `font-accent` outside that component |
+| 14 | Gilroy ExtraBold leads display, Outfit does UI text; Unbounded **one accent per layout** (p.11–12) | Gilroy 800 on display headings, Outfit 600 on other headings and numbers; Outfit for UI text; accent on landing, auth, empty hero | `font-accent` only through `<AccentHeadline>`; a test mounts each page and asserts ≤1 `[data-accent]`; guard bans raw `font-accent` outside that component |
 | 15 | Type scale 72/76, 48/52, 32/38, 16/24, 14/20, accent 48/56 (p.12) | D.3 | Tailwind `fontSize` defines only these (+ derived 20/28, 12/16); guard bans arbitrary `text-[NNpx]` |
-| 16 | Clear IDs and shelf codes (p.17) | tables, labels, item pages | `font-mono` removed (H.6); Gilroy 500 + `tabular-nums` (use Gilroy Medium for clear IDs) |
+| 16 | Clear IDs and shelf codes (p.17) | tables, labels, item pages | `font-mono` removed (H.6); Outfit 500 + `tabular-nums` (use Outfit Medium for clear IDs) |
 | 17 | Icons on a 24 grid, 2 px, rounded; label unfamiliar ones (p.14) | the G list only | lucide defaults; an `IconButton` with a required `label` prop; axe `button-name` |
 | 18 | One bold moment; align to a simple grid; let empty space work (p.13) | page layouts | one `desk-button-emphasis` per page (test); 4 px spacing scale only; no shadows or decoration (E) |
 | 19 | Voice: say "No parts added yet. Add your first item." / "Couldn't save. Try again." and skip "Oops! …", "Inventory database is empty" (p.15) | empty states, errors, toasts | `EmptyState` takes `nextStep` (required); a copy-lint list bans "Oops", "Something went wrong", "database is empty" and "asset ecosystem" |
@@ -774,5 +780,5 @@ these tests live only in the main checkout (they are gitignored), so the updated
 2. Citron sidebar (brand p.16) or the reference warm-neutral sidebar.
 3. Reversed horizontal is now supplied directly from the Figma component library.
 4. Tenant mid-tone primaries: accept the 15.8 % rejection (audit stored palettes first), or allow black as a functional-only label.
-5. The original Gilroy free-font EULA covers the legacy Light/ExtraBold files. The current 400–700 faces were supplied by the owner; see `fonts/README.md` for provenance and licensing.
+5. The Gilroy free-font EULA covers the two shipped Light/ExtraBold files; the paid weights are not shipped (decision 299). Outfit and Unbounded are OFL; see `fonts/README.md`.
 6. Copy changes: "Unpaid", "Partly returned", "N left", registration wording.

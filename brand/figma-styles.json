@@ -335,7 +335,7 @@
     {
       "name": "Space Works/Display",
       "fontName": {
-        "family": "Gilroy-SemiBold",
+        "family": "Gilroy-ExtraBold",
         "style": "☞"
       },
       "fontSize": 72,
@@ -351,7 +351,7 @@
     {
       "name": "Space Works/Heading 1",
       "fontName": {
-        "family": "Gilroy-SemiBold",
+        "family": "Outfit-SemiBold",
         "style": "☞"
       },
       "fontSize": 48,
@@ -367,7 +367,7 @@
     {
       "name": "Space Works/Heading 2",
       "fontName": {
-        "family": "Gilroy-SemiBold",
+        "family": "Outfit-SemiBold",
         "style": "☞"
       },
       "fontSize": 32,
@@ -383,7 +383,7 @@
     {
       "name": "Space Works/Heading 3",
       "fontName": {
-        "family": "Gilroy-SemiBold",
+        "family": "Outfit-SemiBold",
         "style": "☞"
       },
       "fontSize": 24,
@@ -399,7 +399,7 @@
     {
       "name": "Space Works/Body large",
       "fontName": {
-        "family": "Gilroy-Regular",
+        "family": "Outfit-Regular",
         "style": "☞"
       },
       "fontSize": 20,
@@ -415,7 +415,7 @@
     {
       "name": "Space Works/Body",
       "fontName": {
-        "family": "Gilroy-Regular",
+        "family": "Outfit-Regular",
         "style": "☞"
       },
       "fontSize": 16,
@@ -431,7 +431,7 @@
     {
       "name": "Space Works/Label",
       "fontName": {
-        "family": "Gilroy-SemiBold",
+        "family": "Outfit-SemiBold",
         "style": "☞"
       },
       "fontSize": 14,
@@ -447,7 +447,7 @@
     {
       "name": "Space Works/Caption",
       "fontName": {
-        "family": "Gilroy-Medium",
+        "family": "Outfit-Medium",
         "style": "☞"
       },
       "fontSize": 12,

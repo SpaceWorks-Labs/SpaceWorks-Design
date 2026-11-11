@@ -19,7 +19,7 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 | `logo/` | Ten vector masters exported directly from Figma, with matching 4× PNGs: `symbol`, `symbol-reversed`, `symbol-one-colour-ink`, `lockup-stacked`, `lockup-stacked-reversed`, `lockup-stacked-one-colour-ink`, `lockup-horizontal`, `lockup-horizontal-reversed`, `lockup-horizontal-one-colour-ink`, `app-icon` |
 | `mascot/` | **Patch**, the painted wolf mascot, cut from the approved concept sheets in `mascot/concept/` and traced to vector SVG: `patch.svg` (hero), `patch-animated.webp`/`.svg`/`.gif` (the 7-second sneeze loop) and its eight `frames/`, plus `walk/` (the walking pose, walk cycle and its frames) and `walk-left/` (the approved left-facing walk), with high-resolution PNGs. `mascot/original/` keeps every piece's exact pixels from the sheets (lossless) and `mascot/compressed/` has lighter SVGs, `.svgz` and small WebPs. `mascot/dark/` is every piece with a thin Warm Cream sticker border for dark surfaces only (full SVGs, lossless PNGs, WebPs and GIFs, plus lite SVGs, `.svgz` and small WebPs in `dark/compressed/`). Story and usage rules in `mascot/README.md` |
 | `icons/` | `favicon.svg`, PNG app icons (16, 32, 180, 192, 512) and the 1200×630 social card |
-| `fonts/` | Gilroy Regular, Medium, Semibold and Bold (WOFF), plus Unbounded (WOFF2). Legacy faces retained for existing consumers. See `fonts/README.md`. |
+| `fonts/` | Gilroy Light and ExtraBold (the free weights only, WOFF2), Outfit and Unbounded (OFL, WOFF2). See `fonts/README.md`. |
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
 | `docs/` | `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
 | `screenshots/ux/` | Screenshots of Space Works UX in Space Works Events (light, dark and phone), used by the site's UX pages |
@@ -31,8 +31,8 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 - **Colours:** Deep Ink `#142C2A`, Maker Teal `#006E63`, Workshop Orange `#FF7447`, Citron `#DFFF8F`,
   Sky Blue `#B5CDFF`, Warm Yellow `#FFD447`, Warm Cream `#FFF4E8`. Neutral first, accent second. Never
   orange text on cream. Every status pairs colour with a word or icon.
-- **Type:** Gilroy Semibold/Bold for headings, Gilroy Regular/Medium for body and interface text,
-  Unbounded for one short accent phrase per layout.
+- **Type:** Gilroy ExtraBold for display headings, Gilroy Light for light display text (the only Gilroy
+  weights that ship), Outfit for body and interface text, Unbounded for one short accent phrase per layout.
 - **Logo:** use the masters as supplied — no stretching, rotating, recolouring or effects. Clear space is
   a quarter of the symbol height on every side. Symbol at least 48 px; primary lockup at least 180 px wide.
 - **Mascot:** Patch, an African painted wolf carrying a wrench. Painted wolves vote by sneezing and look
