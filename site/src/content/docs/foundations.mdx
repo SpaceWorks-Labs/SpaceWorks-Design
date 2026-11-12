@@ -1,0 +1,36 @@
+---
+title: Foundations
+description: The building blocks every Space Works screen is made of, colour tokens, theming, contrast, type, shape, spacing, elevation and icons, and where each is specified.
+tableOfContents: false
+sidebar: { label: Overview }
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Foundations are the values every screen is built from. They live in [`tokens/`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/tree/main/tokens)
+as CSS variables and JSON, and are the same in the web app, the sibling apps and the native apps. Use a token,
+never a typed-in value: that is what keeps light and dark, tenant colours and reduced motion working.
+
+## Colour and theming
+
+<CardGrid>
+  <LinkCard title="Design tokens" description="Every colour token in light and dark, side by side, generated from tokens.json." href="/tokens/reference/" />
+  <LinkCard title="Token values and contrast" description="Where every value comes from, and the computed contrast of each text token on every surface." href="/specs/ui-brand-spec/tokens/" />
+  <LinkCard title="Paste-ready CSS" description="The complete token block for index.css, light and dark." href="/specs/ui-brand-spec/index-css/" />
+  <LinkCard title="Theming" description="Light, dark and system: the token layer, the switch, the pre-paint script and a live demo." href="/theming/" />
+</CardGrid>
+
+## Type, shape and icons
+
+<CardGrid>
+  <LinkCard title="Type in the product" description="Faces and roles, the self-hosted CSS, the type-scale tokens and the mono decision." href="/specs/ui-brand-spec/typography/" />
+  <LinkCard title="Shape, spacing and elevation" description="Radii, borders, shadows, the spacing scale and the motion values." href="/specs/ui-brand-spec/shape-and-spacing/" />
+  <LinkCard title="Iconography" description="The icon set, sizes and the rules for using it." href="/specs/ui-brand-spec/icons/" />
+  <LinkCard title="Motion" description="Durations, easings and distances, and every animation built from them." href="/motion/tokens/" />
+</CardGrid>
+
+## Related
+
+- The brand these values come from: [Colour](/brand/colour/) and [Typography](/brand/typography/).
+- Why the dark palette looks the way it does: [Lessons learned](/lessons-learned/).
+- How components use the foundations: [Components and patterns](/ux/introduction/).

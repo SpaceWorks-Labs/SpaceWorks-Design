@@ -4,6 +4,8 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { syncThemeReveal } from './sync-theme-reveal.mjs';
+import { KIT_FAMILIES, syncMotionKit } from './sync-motion-kit.mjs';
+import { rewriteMovedAnchors, syncSplits } from './sync-split.mjs';
 
 export function syncExtra({ root, site, kit, assets }) {
   const generated = join(site, 'src', 'styles', 'generated');
@@ -49,13 +51,18 @@ export function syncExtra({ root, site, kit, assets }) {
     "docs/motion.md": "/motion/principles/",
     "docs/theming.md": "/theming/",
     "docs/lessons-learned.md": "/lessons-learned/",
-    "docs/design-changes-0.12.0.md": "/whats-new/",
+    "docs/design-changes-0.12.0.md": "/whats-new-v2/",
+    "docs/whats-new-v2.0.md": "/whats-new-v2/",
     "docs/product-rules.md": "/rules/",
+    "docs/delivery.md": "/delivery/",
     "docs/ui-brand-spec.md": "/specs/ui-brand-spec/",
     "docs/ux-spec.md": "/specs/ux-patterns/",
     "docs/ux-screens-longtail.md": "/specs/ux-long-tail-screens/",
     "motion/box-open/README.md": "/motion/box-open/",
     "motion/theme-reveal/README.md": "/motion/theme-reveal/",
+    "motion/README.md": "/motion/kit/",
+    "docs/decisions.md": "/decisions/",
+    ...Object.fromEntries(KIT_FAMILIES.map(([slug]) => [`motion/${slug}/README.md`, `/motion/${slug}/`])),
   };
   const prepare = (source, baseDir) => {
     let fence = false;
@@ -107,12 +114,9 @@ export function syncExtra({ root, site, kit, assets }) {
     return mdx;
   };
 
-  docPage({
-    file: 'docs/motion.md',
-    out: 'motion/principles.md',
-    fallbackTitle: 'Motion principles and catalogue',
-    frontmatter: 'sidebar: { order: 1, label: "Principles and catalogue" }',
-  });
+  // Long docs (motion, product rules, delivery, lessons, decisions, the three specs) become an overview plus one page
+  // per part: see split-docs.mjs. Their Markdown sources stay single files.
+  const moved = syncSplits({ root, docsDir, repo, prepare });
   docPage({
     file: 'docs/theming.md',
     out: 'theming.mdx',
@@ -122,25 +126,12 @@ export function syncExtra({ root, site, kit, assets }) {
       "import ThemeDemo from '../../components/ThemeDemo.astro';\n\nPick a theme and the sample UI re-themes with the real tokens. It is scoped to the demo, so the page around it keeps your own theme.\n\n<ThemeDemo />\n\n",
   });
   docPage({
-    file: 'docs/design-changes-0.12.0.md',
-    out: 'whats-new.mdx',
-    fallbackTitle: 'What changed in design and UX in 0.12.0',
-    frontmatter: 'description: The dark-mode shift, the logo animation, every animation and the UX improvements in SpaceWorks 0.12.0.\nsidebar: { label: "What is new in 0.12.0" }',
+    file: 'docs/whats-new-v2.0.md',
+    out: 'whats-new-v2.mdx',
+    fallbackTitle: "What's new in v2.0",
+    frontmatter: 'description: "Space Works Design System v2.0, which ships alongside SpaceWorks 0.12.0: the dark-mode shift, the logo animation, every animation and the UX improvements."\nsidebar: { label: "What\'s new in v2.0" }',
     intro:
       "import DarkShift from '../../components/DarkShift.astro';\n\n## Dark mode, before and after\n\nEvery swatch below is generated from the token files, so it cannot drift.\n\n<DarkShift />\n\n",
-  });
-  docPage({
-    file: 'docs/product-rules.md',
-    out: 'rules.md',
-    fallbackTitle: 'Space Works product rules',
-    title: 'Space Works product rules',
-    frontmatter: 'description: The rules every Space Works product follows, from modularity and tenancy to money, accessibility and testing.',
-  });
-  docPage({
-    file: 'docs/lessons-learned.md',
-    out: 'lessons-learned.md',
-    fallbackTitle: 'Lessons learned',
-    frontmatter: 'description: Colour matching in light and dark, and the other design lessons behind the Space Works palette.',
   });
 
   // Box-open loader: live demos, then the README's usage, sizes, timing and accessibility.
@@ -155,4 +146,6 @@ export function syncExtra({ root, site, kit, assets }) {
   }
 
   syncThemeReveal({ root, kit, generated, docsDir, repo, prepare, splitTitle });
+  syncMotionKit({ root, kit, docsDir, repo, prepare, splitTitle });
+  rewriteMovedAnchors(docsDir, moved, repo);
 }

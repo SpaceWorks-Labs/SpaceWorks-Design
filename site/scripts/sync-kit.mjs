@@ -4,10 +4,10 @@
 //   logo/ icons/ fonts/ tokens/ mascot/ brand/  ->  public/kit/...  (served for preview and download)
 //   screenshots/ references/yuyu/       ->  public/kit/...      (UX screenshots and reference boards)
 //   logo/*.svg                          ->  src/assets/kit/     (header logo and hero art)
-//   docs/*.md                           ->  src/content/docs/specs/  (rendered spec pages)
+//   docs/*.md, motion/*/README.md       ->  src/content/docs/...  (rendered pages; see sync-extra.mjs and sync-split.mjs)
 //
 // Every destination is generated and git-ignored. Edit the sources at the repository root.
-import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { syncExtra } from './sync-extra.mjs';
@@ -28,6 +28,11 @@ for (const folder of ['logo', 'icons', 'fonts', 'tokens', 'mascot', 'screenshots
 }
 cpSync(join(root, 'brand', 'space-works-brand-guidelines-v1.pdf'), join(kit, 'brand', 'space-works-brand-guidelines-v1.pdf'));
 cpSync(join(root, 'brand', 'guidelines', 'png'), join(kit, 'brand', 'guidelines'), { recursive: true });
+// Brand guidelines v2 (the design system v2.0 book): the PDF and its page renders, when they have been built.
+for (const [from, to] of [
+  [join(root, 'brand', 'space-works-brand-guidelines-v2.pdf'), join(kit, 'brand', 'space-works-brand-guidelines-v2.pdf')],
+  [join(root, 'brand', 'guidelines-v2', 'png'), join(kit, 'brand', 'guidelines-v2')],
+]) if (existsSync(from)) cpSync(from, to, { recursive: true });
 // Reference boards get URL-safe names ("Sign in, invites & account.png" -> "sign-in-invites-account.png").
 mkdirSync(join(kit, 'references', 'yuyu'), { recursive: true });
 for (const file of readdirSync(join(root, 'references', 'yuyu')).filter((f) => f.endsWith('.png'))) {
@@ -40,41 +45,6 @@ for (const file of readdirSync(join(root, 'logo')).filter((f) => f.endsWith('.sv
 }
 cpSync(join(root, 'tokens', 'tokens.json'), join(assets, 'tokens.json'));
 
-// Spec pages: the first "# Heading" becomes the page title; the rest is published unchanged.
-const pageRoutes = {
-  motion: '/motion/principles/',
-  theming: '/theming/',
-  'lessons-learned': '/lessons-learned/',
-  'design-changes-0.12.0': '/whats-new/',
-  'product-rules': '/rules/',
-  'ux-spec': '/specs/ux-patterns/',
-  'ux-screens-longtail': '/specs/ux-long-tail-screens/',
-  'ui-brand-spec': '/specs/ui-brand-spec/',
-};
-const specPages = [
-  { file: 'ui-brand-spec.md', slug: 'ui-brand-spec', order: 1, label: 'UI brand spec' },
-  { file: 'ux-spec.md', slug: 'ux-patterns', order: 2, label: 'Space Works UX spec' },
-  { file: 'ux-screens-longtail.md', slug: 'ux-long-tail-screens', order: 3, label: 'Long-tail screens' },
-];
-for (const { file, slug, order, label } of specPages) {
-  const source = readFileSync(join(root, 'docs', file), 'utf8').replace(/^﻿/, '')
-    .replace(/\]\((motion|theming|lessons-learned|design-changes-0\.12\.0|product-rules|ux-spec|ux-screens-longtail|ui-brand-spec)\.md(#[^)]*)?\)/g, (_all, name, hash = '') => `](${pageRoutes[name]}${hash})`);
-  const match = source.match(/^#\s+(.+)\r?\n/);
-  if (!match) throw new Error(`docs/${file} must start with a "# Title" line`);
-  const title = match[1].trim().replace(/"/g, '\\"');
-  const frontmatter = [
-    '---',
-    `title: "${title}"`,
-    `sidebar: { order: ${order}, label: "${label}" }`,
-    `editUrl: https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/edit/main/docs/${file}`,
-    '---',
-    '',
-    `:::note[Source]\nThis page is published from [\`docs/${file}\`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/blob/main/docs/${file}). Edit it there.\n:::`,
-    '',
-  ].join('\n');
-  writeFileSync(join(specs, `${slug}.md`), frontmatter + source.slice(match[0].length));
-}
-
 syncExtra({ root, site, kit, assets });
 
-console.log('sync-kit: copied logo, icons, fonts, tokens, mascot, screenshots, brand pages, reference boards and 3 specs');
+console.log('sync-kit: copied logo, icons, fonts, tokens, mascot, screenshots, brand pages and reference boards; rendered the docs');

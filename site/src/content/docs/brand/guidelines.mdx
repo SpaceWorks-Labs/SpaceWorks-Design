@@ -1,6 +1,6 @@
 ---
 title: Brand guidelines
-description: The Space Works brand guidelines v1, all 17 pages, plus the PDF.
+description: The Space Works brand guidelines, v2 (50 pages, current) and v1 (17 pages), with both PDFs.
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
@@ -9,9 +9,28 @@ import GuidelineGallery from '../../../components/GuidelineGallery.astro';
 The brand guidelines are the source of truth for the logo, colour, type, icons and voice. Everything else
 on this site follows them.
 
-<LinkButton href="/SpaceWorks-Design-System/kit/brand/space-works-brand-guidelines-v1.pdf" icon="download">Download the PDF</LinkButton>
+There are two books. **Version 2** is part of Space Works Design System v2.0: it keeps everything from v1 that is
+still true and adds light and dark, motion and the product. Where the two differ, v2 wins. **Version 1** is kept
+unchanged for reference.
 
-## All 17 pages
+<div class="sw-actions">
+  <LinkButton href="/SpaceWorks-Design-System/kit/brand/space-works-brand-guidelines-v2.pdf" icon="download">Brand guidelines v2 (PDF)</LinkButton>
+  <LinkButton href="/SpaceWorks-Design-System/kit/brand/space-works-brand-guidelines-v1.pdf" icon="download" variant="secondary">Download the PDF</LinkButton>
+</div>
+
+## Brand guidelines v2
+
+All 50 pages. Select a page to open it at full size (1440 × 1000). The book is built from HTML in
+[`brand/guidelines-v2/`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/tree/main/brand/guidelines-v2), with every
+colour, contrast ratio and loader frame taken from the shipped tokens and CSS.
+
+<GuidelineGallery dir="brand/guidelines-v2" count={50} label="Brand guidelines v2" />
+
+## Brand guidelines v1
+
+The PDF is the "Download the PDF" button above.
+
+### All 17 pages
 
 Select a page to open it at full size (1440 × 1000).
 

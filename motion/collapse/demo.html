@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collapse and disclosure chevrons</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="collapse.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.tg{font:inherit;display:flex;align-items:center;gap:8px;min-height:44px;width:100%;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;padding:0 12px;color:rgb(var(--color-ink));cursor:pointer}.tg svg{flex:none}.pane{padding:12px 4px;display:grid;gap:6px}.sw-collapse[hidden]{display:none}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Collapse and disclosure chevrons</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Toggle each group. The panel opens with grid rows and a fade; the arrow turns. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><button class="tg" id="b1" aria-expanded="false" aria-controls="c1"><svg class="sw-chevron sw-chevron-flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>More (3)</button><div id="c1" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Reports</span><span>Audit log</span><span>Integrations</span></div></div></div></section>
+<section><button class="tg" id="b2" aria-expanded="false" aria-controls="c2"><svg class="sw-chevron sw-chevron-turn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>Collapsible section</button><div id="c2" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Section content that pushes the page down.</span></div></div></div></section>
+<section><button class="tg" id="b3" aria-expanded="false" aria-controls="c3"><span style="flex:1;text-align:left">How do I reset a password?</span><svg class="sw-chevron-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div id="c3" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Use the link on the sign-in page.</span></div></div></div></section>
+</main>
+<script>
+[1,2,3].forEach(function(i){var b=document.getElementById("b"+i),c=document.getElementById("c"+i);
+ b.onclick=function(){var open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!open));
+  if(!open){c.hidden=false;c.removeAttribute("inert");c.dataset.state="open"}else{c.setAttribute("inert","");c.dataset.state="closed";setTimeout(function(){if(c.dataset.state==="closed")c.hidden=true},200)}}});
+</script>
+</body>
+</html>

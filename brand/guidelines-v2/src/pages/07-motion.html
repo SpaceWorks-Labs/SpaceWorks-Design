@@ -1,0 +1,179 @@
+<!-- ===== 07 Motion: principles ===== -->
+<section class="pg citron th-light" data-sec="07 / Motion" data-toc="Motion">
+  <div class="in">
+    <h1>Motion shows what changed.</h1>
+    <p class="sub">It never decorates. If removing an animation loses no information, keep it short or drop it.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+      <ol class="num-list body">
+        <li><span class="no">01</span><span><b>Animate content, not chrome.</b> On a page change only the main area moves; sidebar and top bar stay still.</span></li>
+        <li><span class="no">02</span><span><b>Transform and opacity only.</b> No layout properties. Collapses use grid rows 0fr to 1fr, never <span class="code">height</span>.</span></li>
+        <li><span class="no">03</span><span><b>Enter decelerates, exit accelerates,</b> and exits are shorter than entrances.</span></li>
+        <li><span class="no">04</span><span><b>Nothing on an interaction path runs longer than 240 ms.</b> Longer motion is page- or brand-level and never blocks input.</span></li>
+        <li><span class="no">05</span><span><b>Hover is colour only</b>, 120 ms. No lift, scale or shadow. The Space Works mark is the single exception.</span></li>
+      </ol>
+      <ol class="num-list body">
+        <li><span class="no">06</span><span><b>One loader:</b> the box that opens. Never loop anything else, except two decorative touches that reduced motion switches off.</span></li>
+        <li><span class="no">07</span><span><b>Reduced motion is a floor, not a flag.</b> Every animation has a still version that carries the same information.</span></li>
+        <li><span class="no">08</span><span><b>No hover animation on touch.</b> Gate on <span class="code">@media (hover: hover)</span>; keyboard focus still plays.</span></li>
+        <li><span class="no">09</span><span><b>Both themes, every time.</b> Motion is colour-neutral, so it behaves the same in light and dark.</span></li>
+        <li><span class="no">10</span><span><b>Never block navigation on an animation.</b> A slow page settles after 160 ms and the route goes on.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 Motion: tokens and curves ===== -->
+<section class="pg cream th-light" data-sec="07 / Motion">
+  <div class="in">
+    <h1>Three durations. Three curves.</h1>
+    <p class="sub">Tokens in <span class="code">tokens/tokens.css</span> and under <span class="code">motion</span> in <span class="code">tokens.json</span>. Use names, not numbers.</p>
+    <div class="ct">
+      <div class="g3">
+        <div class="card line" style="padding:20px">
+          <div class="row" style="justify-content:space-between"><b>--sw-ease-standard</b><span class="xs mut">most movement</span></div>
+          <svg viewBox="-12 -12 224 224" style="width:100%;height:200px;margin-top:12px" fill="none">
+            <rect x="0" y="0" width="200" height="200" style="stroke:rgb(var(--color-line))"/>
+            <path d="M0 200L40 200M200 0L0 0" style="stroke:rgb(var(--color-outline))" stroke-dasharray="3 3"/>
+            <path d="M0 200C40 200 0 0 200 0" style="stroke:rgb(var(--color-accent))" stroke-width="4"/>
+            <circle cx="40" cy="200" r="5" style="fill:rgb(var(--color-emphasis))"/><circle cx="0" cy="0" r="5" style="fill:rgb(var(--color-emphasis))"/>
+          </svg>
+          <div class="code sm mt8">cubic-bezier(0.2, 0, 0, 1)</div>
+        </div>
+        <div class="card line" style="padding:20px">
+          <div class="row" style="justify-content:space-between"><b>--sw-ease-enter</b><span class="xs mut">arrivals, decelerate</span></div>
+          <svg viewBox="-12 -12 224 224" style="width:100%;height:200px;margin-top:12px" fill="none">
+            <rect x="0" y="0" width="200" height="200" style="stroke:rgb(var(--color-line))"/>
+            <path d="M0 200L32 0M200 0L60 0" style="stroke:rgb(var(--color-outline))" stroke-dasharray="3 3"/>
+            <path d="M0 200C32 0 60 0 200 0" style="stroke:rgb(var(--color-accent))" stroke-width="4"/>
+            <circle cx="32" cy="0" r="5" style="fill:rgb(var(--color-emphasis))"/><circle cx="60" cy="0" r="5" style="fill:rgb(var(--color-emphasis))"/>
+          </svg>
+          <div class="code sm mt8">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        </div>
+        <div class="card line" style="padding:20px">
+          <div class="row" style="justify-content:space-between"><b>--sw-ease-exit</b><span class="xs mut">departures, accelerate</span></div>
+          <svg viewBox="-12 -12 224 224" style="width:100%;height:200px;margin-top:12px" fill="none">
+            <rect x="0" y="0" width="200" height="200" style="stroke:rgb(var(--color-line))"/>
+            <path d="M0 200L80 200M200 0L200 0" style="stroke:rgb(var(--color-outline))" stroke-dasharray="3 3"/>
+            <path d="M0 200C80 200 200 0 200 0" style="stroke:rgb(var(--color-accent))" stroke-width="4"/>
+            <circle cx="80" cy="200" r="5" style="fill:rgb(var(--color-emphasis))"/><circle cx="200" cy="0" r="5" style="fill:rgb(var(--color-emphasis))"/>
+          </svg>
+          <div class="code sm mt8">cubic-bezier(0.4, 0, 1, 1)</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:28px">
+        <div>
+          <div class="lbl">Durations · interface</div>
+          <div class="mt12 sm">
+            <div class="row" style="align-items:center;gap:12px"><span style="width:120px">--sw-dur-fast</span><div style="height:18px;width:120px;border-radius:5px;background:rgb(var(--color-accent))"></div><b>120 ms</b><span class="mut">press, hover, exits, menus</span></div>
+            <div class="row mt8" style="align-items:center;gap:12px"><span style="width:120px">--sw-dur-base</span><div style="height:18px;width:180px;border-radius:5px;background:rgb(var(--color-accent))"></div><b>180 ms</b><span class="mut">overlays, indicators</span></div>
+            <div class="row mt8" style="align-items:center;gap:12px"><span style="width:120px">--sw-dur-slow</span><div style="height:18px;width:240px;border-radius:5px;background:rgb(var(--color-accent))"></div><b>240 ms</b><span class="mut">route settle, drawers</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="lbl">Distances · zero on kiosk, TV and reduced motion</div>
+          <table class="tb mt8" style="font-size:14px"><tbody>
+            <tr><td class="code">--sw-enter-y</td><td>8 px</td><td class="mut">arrival rise</td><td class="code">--sw-pop-scale</td><td>0.98</td><td class="mut">dialog pop</td></tr>
+            <tr><td class="code">--sw-pop-offset</td><td>4 px</td><td class="mut">menu drop</td><td class="code">--sw-slide-x</td><td>100 %</td><td class="mut">drawer slide</td></tr>
+          </tbody></table>
+          <p class="xs mut mt12">Brand-level motion is longer on purpose and never on the input path: theme reveal 720 ms, splash 1600 ms, mark 2200 ms, loader 4400 ms.</p>
+        </div>
+      </div>
+      <div class="lbl mt24">Anatomy of a dialog · open, then close</div>
+      <div class="mt12" style="position:relative;height:74px">
+        <div style="position:absolute;left:0;top:0;width:180px;height:30px;border-radius:6px;background:rgb(var(--color-info));color:rgb(var(--color-on-info));font-size:12px;font-weight:600;padding:7px 10px">Scrim fade · 180 · standard</div>
+        <div style="position:absolute;left:0;top:38px;width:180px;height:30px;border-radius:6px;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));font-size:12px;font-weight:600;padding:7px 10px">Pop in · 180 · enter</div>
+        <div style="position:absolute;left:196px;top:38px;width:420px;height:30px;border-radius:6px;border:1px dashed rgb(var(--color-outline));font-size:12px;padding:7px 10px" class="mut">Open: focus inside, layer interactive</div>
+        <div style="position:absolute;left:632px;top:38px;width:120px;height:30px;border-radius:6px;background:rgb(var(--color-emphasis));color:rgb(var(--color-on-emphasis));font-size:12px;font-weight:600;padding:7px 10px">Out · 120 · exit</div>
+        <div style="position:absolute;left:632px;top:0;width:120px;height:30px;border-radius:6px;background:rgb(var(--color-info));color:rgb(var(--color-on-info));font-size:12px;font-weight:600;padding:7px 10px">Scrim · 120</div>
+        <p class="xs" style="position:absolute;left:780px;right:0;top:4px">Arrives from 0.98 scale and 4 px; leaves faster than it came. While closing it stays mounted but inert, so nothing can focus it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 Motion: which where ===== -->
+<section class="pg cream th-light" data-sec="07 / Motion">
+  <div class="in">
+    <h1>Which animation, where.</h1>
+    <p class="sub">When the situation occurs, use the listed default. Don't invent a new animation for a situation that has one.</p>
+    <div class="ct">
+      <table class="tb" style="font-size:14px">
+        <thead><tr><th style="width:250px">Situation</th><th style="width:330px">Use</th><th style="width:300px">Timing</th><th>Don't</th></tr></thead>
+        <tbody>
+          <tr><td>Page or panel loading</td><td>LogoLoader, 72 px, centred, with a label</td><td>4400 ms loop</td><td>Generic spinner, progress bar</td></tr>
+          <tr><td>Button busy</td><td>BoxSpinner mono, <span class="code">aria-busy</span></td><td>16–24 px, currentColor</td><td>Change the button width</td></tr>
+          <tr><td>Route change</td><td>View Transition on the main area only</td><td>out 90 ms · in 240 ms + 8 px rise</td><td>Animate sidebar or top bar</td></tr>
+          <tr><td>Sidebar or tab switch</td><td>One sliding indicator box</td><td>180 ms · standard</td><td>Repaint each item</td></tr>
+          <tr><td>Dialog · drawer · menu · toast</td><td>pop · drawer · menu · toast, scrim fades</td><td>enter 120–240 ms · exit 120–180 ms</td><td>Unmount without the exit</td></tr>
+          <tr><td>Expand a group</td><td>Collapse (grid rows)</td><td>180 ms open · 120 ms close</td><td>Animate <span class="code">height</span></td></tr>
+          <tr><td>List first appears</td><td>Stagger rise, first eight items</td><td>200 ms, 30 ms apart, 6 px</td><td>Re-run on every refetch</td></tr>
+          <tr><td>Marketing scroll</td><td>Reveal once on entry</td><td>640 ms</td><td>Replay on scroll back up</td></tr>
+          <tr><td>Hover on anything</td><td>Colour only</td><td>120 ms</td><td>Translate, scale, lift</td></tr>
+          <tr><td>The Space Works logo</td><td>AnimatedLogoMark: fold, then open</td><td>600 + 1600 ms, once</td><td>Loop it, animate a tenant logo</td></tr>
+          <tr><td>Success</td><td>Status toast · verify stamp</td><td>180 ms in · stamp 420 ms</td><td>Confetti in staff or kiosk flows</td></tr>
+          <tr><td>Theme switch</td><td>Circle reveal from the toggle</td><td>720 ms; cross-fade fallback</td><td>Fade surfaces one by one</td></tr>
+          <tr><td>Kiosk and TV</td><td>Fades only; slide fade on displays</td><td>400 ms</td><td>Anything that repaints while idle</td></tr>
+        </tbody>
+      </table>
+      <p class="sm mut mt12">Never animated: layout properties, text swaps in forms, validation errors, focus rings, tables on sort or filter, anything while a person types.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 Motion: reduced, touch, kiosk ===== -->
+<section class="pg cream th-light" data-sec="07 / Motion">
+  <div class="in">
+    <h1>Still is a design too.</h1>
+    <p class="sub">Reduced motion, touch screens and shared displays each get their own, equally finished version.</p>
+    <div class="ct">
+      <div class="g3">
+        <div class="card line" style="height:420px">
+          <div class="lbl">Reduced motion</div>
+          <div class="row mt16" style="gap:16px;align-items:center">
+            <div style="width:84px"><div class="sw-box once g-light frz" style="--t:1600;width:84px;aspect-ratio:136/126">{{box}}</div></div>
+            <p class="sm">Loader, splash and mark show the still, open logo.</p>
+          </div>
+          <ul class="bul sm mt16">
+            <li>Durations drop to 0, distances to 0; only fades remain.</li>
+            <li>Scroll is instant; View Transitions are skipped.</li>
+            <li>The scroll story becomes a plain page, top to bottom.</li>
+            <li>Patch shows frame one; the 404 “z” stops.</li>
+          </ul>
+          <p class="xs mut" style="position:absolute;left:24px;bottom:20px;right:24px"><span class="code">@media (prefers-reduced-motion: reduce)</span></p>
+        </div>
+        <div class="card line" style="height:420px">
+          <div class="lbl">Touch</div>
+          <div class="row mt16" style="gap:16px;align-items:center">
+            <div style="width:84px"><img src="../../../logo/symbol.svg" alt="" style="width:84px;display:block"></div>
+            <p class="sm">A tap never starts the mark's hover opening.</p>
+          </div>
+          <ul class="bul sm mt16">
+            <li>Hover effects stick on touch, so gate them on <span class="code">(hover: hover)</span>.</li>
+            <li>Pointer-enter from <span class="code">pointerType "touch"</span> is ignored.</li>
+            <li>Keyboard <span class="code">:focus-visible</span> still plays it.</li>
+            <li>Phone sheets rise from the edge they dock to.</li>
+          </ul>
+          <p class="xs mut" style="position:absolute;left:24px;bottom:20px;right:24px">Applies to the web app on tablets and to the native apps.</p>
+        </div>
+        <div class="card th-dark" style="height:420px;background:rgb(var(--color-panel))">
+          <div class="lbl">Kiosk and TV</div>
+          <div class="row mt16" style="gap:16px;align-items:center">
+            <div style="width:84px;height:78px;border-radius:10px;border:1px solid rgb(var(--color-outline));display:flex;align-items:center;justify-content:center" class="xs">400 ms<br>fade</div>
+            <p class="sm">Shared screens never slide, scale or loop.</p>
+          </div>
+          <ul class="bul sm mt16">
+            <li><span class="code">.sw-kiosk</span> and <span class="code">.sw-tv</span> zero every distance token.</li>
+            <li>Display slides cross-fade once, so a Raspberry Pi stays idle between slides.</li>
+            <li>No confetti, no delight touches in kiosk flows.</li>
+            <li>No mascot loops on shared screens.</li>
+          </ul>
+          <p class="xs mut" style="position:absolute;left:24px;bottom:20px;right:24px">Distances: 0 px, scale 1, slide 0 %.</p>
+        </div>
+      </div>
+      <div class="row mt24" style="align-items:center;gap:20px">
+        <a class="qr" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/motion/principles/" style="width:84px;height:84px;padding:6px">{{qr:motion}}</a>
+        <p class="sm">Every animation in the product (where, why, tokens, trigger, reduced motion, dark): <b>spaceworks-labs.github.io/SpaceWorks-Design-System/motion/principles/</b> and <span class="code">docs/motion.md</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>

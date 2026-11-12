@@ -1,0 +1,32 @@
+/* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `styles/motion.css` and the hover rules in `features/hub/hub.css`, `features/docs/docs.css`.
+   Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
+/* Buttons: colours ease in 120 ms; pressing sinks the control to 0.98. Focus rings are untouched. */
+:is(.desk-button, .desk-button-primary, .desk-button-brand, .desk-button-emphasis, .desk-button-success,
+  .desk-button-warn, .desk-button-danger, .desk-button-ghost, .desk-button-danger-outline, .desk-tab, .desk-nav-item) {
+  transition-property: color, background-color, border-color, transform;
+  transition-duration: var(--sw-dur-fast);
+  transition-timing-function: var(--sw-ease-standard);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(.desk-button, .desk-button-primary, .desk-button-brand, .desk-button-emphasis, .desk-button-success,
+    .desk-button-warn, .desk-button-danger, .desk-button-ghost, .desk-button-danger-outline):active:not(:disabled, [aria-disabled="true"]) {
+    transform: scale(0.98);
+  }
+}
+
+/* Example skin for the button classes above (the app's own buttons come from the Tailwind component layer). */
+.desk-button-primary { background-color: rgb(var(--color-accent)); color: rgb(var(--color-on-accent)); border: 1px solid transparent; border-radius: 999px; padding: 8px 16px; min-height: 40px; cursor: pointer; font: inherit; }
+.desk-button-primary:hover, .desk-button-primary.is-hover { background-color: rgb(var(--color-accent-hover)); }
+.desk-button { background-color: transparent; color: rgb(var(--color-ink)); border: 1px solid rgb(var(--color-outline)); border-radius: 999px; padding: 8px 16px; min-height: 40px; cursor: pointer; font: inherit; }
+.desk-button:hover, .desk-button.is-hover { background-color: rgb(var(--color-hover)); }
+/* ".is-active" and ".is-hover" mirror :active and :hover so a still capture or a demo can force the state. */
+.desk-button-primary.is-active, .desk-button.is-active { transform: scale(0.98); }
+
+/* Colour-only hover for cards, rows, tabs and links: 120 ms, nothing moves. */
+.sw-hover { transition: color 120ms, background-color 120ms, border-color 120ms; }
+.sw-card-hover { border: 1px solid rgb(var(--color-line)); background: rgb(var(--color-panel)); border-radius: 16px; }
+.sw-card-hover:hover, .sw-card-hover.is-hover { border-color: rgb(var(--color-outline)); }
+.sw-row-hover:hover, .sw-row-hover.is-hover { background: rgb(var(--color-hover)); color: rgb(var(--color-ink)); }
+.sw-link-hover { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; transition: text-decoration-color 120ms; }
+.sw-link-hover:hover, .sw-link-hover.is-hover { text-decoration-color: rgb(var(--color-ink)); }
+@media (prefers-reduced-motion: reduce) { .sw-hover { transition-duration: 0.01ms; } }

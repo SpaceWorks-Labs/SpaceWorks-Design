@@ -3,13 +3,21 @@
 // (never on touch; reduced motion keeps it still). The wordmark is the last path of the lockup master.
 import BoxMark from './BoxMark.astro';
 import Wordmark from './Wordmark.astro';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 const base = import.meta.env.BASE_URL;
+// The design system version (VERSION at the repository root, e.g. 2.0.0) shown as "v2.0", linking to what changed.
+const [major, minor] = readFileSync(join(process.cwd(), '..', 'VERSION'), 'utf8').trim().split('.');
+const version = `v${major}.${minor}`;
 ---
 
-<a href={base} class="sw-site-title" aria-label="Space Works Design, home">
-  <BoxMark height={30} variant="once" />
-  <Wordmark />
-</a>
+<span class="sw-title-row">
+  <a href={base} class="sw-site-title" aria-label="Space Works Design System, home">
+    <BoxMark height={30} variant="once" />
+    <Wordmark />
+  </a>
+  <a href={`${base.replace(/\/$/, '')}/whats-new-v2/`} class="sw-version" title={`Space Works Design System ${version}: what's new`}>{version}</a>
+</span>
 
 <script>
   import { bindLogoHover } from './logoHover';
@@ -20,6 +28,25 @@ const base = import.meta.env.BASE_URL;
 </script>
 
 <style>
+  .sw-title-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .sw-version {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.3rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .sw-version:hover {
+    border-color: var(--sl-color-text-accent);
+  }
   .sw-site-title {
     display: inline-flex;
     align-items: center;

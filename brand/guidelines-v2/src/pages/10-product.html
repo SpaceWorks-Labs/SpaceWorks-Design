@@ -1,0 +1,132 @@
+<!-- ===== 10 Product: components ===== -->
+<section class="pg split th-light" data-sec="10 / Product" data-toc="Components, UX, rules and accessibility">
+  <div class="bleed th-dark" style="position:absolute;left:720px;top:0;right:0;bottom:0;background:rgb(var(--color-bg))"></div>
+  <div class="in">
+    <h1>Components, calm.</h1>
+    <p class="sub" style="width:640px">44 px controls, 10 px corners, 16 px cards, round pills. No shadows except on layers that float.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:128px">
+      <div class="cmp">
+        <div class="lbl">Buttons · rest</div>
+        <div class="row mt12" style="flex-wrap:wrap;gap:10px"><span class="btn primary">Save</span><span class="btn neutral">Cancel</span><span class="btn ghost">Edit</span><span class="btn emph">Join now</span><span class="btn danger">Delete</span><span class="btn dis">Disabled</span></div>
+        <div class="lbl mt24">Fields</div>
+        <div class="row mt12" style="gap:12px"><div class="field" style="flex:1">Item name</div><div class="field focus" style="flex:1">Arduino|</div></div>
+        <div class="lbl mt24">Tabs · segmented · pills</div>
+        <div class="row mt12" style="gap:28px;align-items:flex-end">
+          <div class="row" style="gap:20px;font-size:15px"><span style="font-weight:600;border-bottom:2px solid rgb(var(--color-accent));padding-bottom:6px">Overview</span><span style="color:rgb(var(--color-muted));padding-bottom:8px">History</span><span style="color:rgb(var(--color-muted));padding-bottom:8px">Evidence</span></div>
+          <div class="seg"><span class="on">Week</span><span>Month</span></div>
+        </div>
+        <div class="row mt16" style="gap:8px"><span class="pill success">Available</span><span class="pill info">Reserved</span><span class="pill warn">Maintenance</span><span class="pill emph">3</span></div>
+        <div class="lbl mt24">Card</div>
+        <div class="card mt12" style="padding:18px"><div class="row" style="justify-content:space-between"><b>Laser cutter</b><span class="pill accent">Running</span></div><p class="xs mut mt8">Booked until 16:30 · Bay 2</p></div>
+        <div class="lbl mt24">Primary · rest, hover, active</div>
+        <div class="row mt12" style="gap:10px;align-items:center"><span class="btn primary">Save</span><span class="btn primary" style="background:rgb(var(--color-accent-hover))">Save</span><span class="btn primary" style="background:rgb(var(--color-accent-active))">Save</span><span class="xs mut">label {{cr:light.on-accent/light.accent}} · {{cr:light.on-accent/light.accent-hover}} · {{cr:light.on-accent/light.accent-active}}</span></div>
+      </div>
+      <div class="cmp th-dark">
+        <div class="lbl">Buttons · rest</div>
+        <div class="row mt12" style="flex-wrap:wrap;gap:10px"><span class="btn primary">Save</span><span class="btn neutral">Cancel</span><span class="btn ghost">Edit</span><span class="btn emph">Join now</span><span class="btn danger">Delete</span><span class="btn dis">Disabled</span></div>
+        <div class="lbl mt24">Fields</div>
+        <div class="row mt12" style="gap:12px"><div class="field" style="flex:1">Item name</div><div class="field focus" style="flex:1">Arduino|</div></div>
+        <div class="lbl mt24">Tabs · segmented · pills</div>
+        <div class="row mt12" style="gap:28px;align-items:flex-end">
+          <div class="row" style="gap:20px;font-size:15px"><span style="font-weight:600;border-bottom:2px solid rgb(var(--color-accent));padding-bottom:6px">Overview</span><span style="color:rgb(var(--color-muted));padding-bottom:8px">History</span><span style="color:rgb(var(--color-muted));padding-bottom:8px">Evidence</span></div>
+          <div class="seg"><span class="on">Week</span><span>Month</span></div>
+        </div>
+        <div class="row mt16" style="gap:8px"><span class="pill success">Available</span><span class="pill info">Reserved</span><span class="pill warn">Maintenance</span><span class="pill emph">3</span></div>
+        <div class="lbl mt24">Card</div>
+        <div class="card mt12" style="padding:18px"><div class="row" style="justify-content:space-between"><b>Laser cutter</b><span class="pill accent">Running</span></div><p class="xs mut mt8">Booked until 16:30 · Bay 2</p></div>
+        <div class="lbl mt24">Primary · rest, hover, active</div>
+        <div class="row mt12" style="gap:10px;align-items:center"><span class="btn primary">Save</span><span class="btn primary" style="background:rgb(var(--color-accent-hover))">Save</span><span class="btn primary" style="background:rgb(var(--color-accent-active))">Save</span><span class="xs mut">label {{cr:dark.on-accent/dark.accent}} · {{cr:dark.on-accent/dark.accent-hover}} · {{cr:dark.on-accent/dark.accent-active}}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10 Product: UX patterns ===== -->
+<section class="pg cream th-light" data-sec="10 / Product">
+  <div class="in">
+    <h1>Patterns that carry over.</h1>
+    <p class="sub">What SpaceWorks 0.12.0 settled. Every Space Works app copies these rather than reinventing them.</p>
+    <div class="ct">
+      <div class="g3" style="row-gap:22px">
+        <div><div class="lbl">Ask areas, not modules</div><p class="sm mt8">Setup asks which areas a space runs. What is off is hidden everywhere. Never show internal words.</p></div>
+        <div><div class="lbl">Settings by intent</div><p class="sm mt8">Seven groups (Space, People, Areas, Money, Communication, Integrations, Administration), search over all, one line of help per row.</p></div>
+        <div><div class="lbl">Views per role</div><p class="sm mt8">Each area manager sees their whole area; the Space Manager sees it all, grouped by area with totals.</p></div>
+        <div><div class="lbl">Five states, not one</div><p class="sm mt8">Design loading, empty, no results, offline and error-with-retry for every list, in both themes.</p></div>
+        <div><div class="lbl">Shared pager and confirm</div><p class="sm mt8">Every list uses the one pager; every destructive action a real confirm dialog with a close button.</p></div>
+        <div><div class="lbl">Dialogs that stay put</div><p class="sm mt8">Close on the backdrop only if press and release both land there, so a text selection dragged out never closes it.</p></div>
+        <div><div class="lbl">Scroll that remembers</div><p class="sm mt8">Back restores the position; a new page starts at the top. Focus moves only on a real page change.</p></div>
+        <div><div class="lbl">Bulk actions</div><p class="sm mt8">A sticky bar appears with the count and a “Clear selection” action.</p></div>
+        <div><div class="lbl">Search knows synonyms</div><p class="sm mt8">The palette matches both names of a page: Home and dashboard, Notifications and Inbox.</p></div>
+        <div><div class="lbl">Colours that fix themselves</div><p class="sm mt8">A space picks two colours; the product shows where they apply, checks both themes and offers a one-click fix instead of refusing.</p></div>
+        <div><div class="lbl">Simple and advanced</div><p class="sm mt8">Card Studio offers Quick and Advanced modes on the same document, and shows the photo consent notice where the photo is taken.</p></div>
+        <div><div class="lbl">Motion with a fallback</div><p class="sm mt8">A scroll story always has a static version for reduced motion and phones.</p></div>
+      </div>
+      <div class="row mt24" style="align-items:center;gap:20px">
+        <a class="qr" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/ux/patterns/" style="width:84px;height:84px;padding:6px">{{qr:ux}}</a>
+        <p class="sm">Layouts, navigation and screen specs, with screenshots in light, dark and phone: <b>spaceworks-labs.github.io/SpaceWorks-Design-System/ux/patterns/</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10 Product: rules ===== -->
+<section class="pg citron th-light" data-sec="10 / Product">
+  <div class="in">
+    <h1>Product rules, in short.</h1>
+    <p class="sub">What every Space Works product follows, from the main app to the phone apps.</p>
+    <div class="ct">
+      <div class="g4" style="row-gap:26px">
+        <div><div class="h3">Areas</div><p class="sm mt8">Everything optional is an area with one registry key. Off means gone everywhere. Switching off keeps data; purge is a separate, deliberate step.</p></div>
+        <div><div class="h3">Role views</div><p class="sm mt8">Permissions are actions, not role names. Each person sees only what their role holds; the server refuses too.</p></div>
+        <div><div class="h3">One space, one scope</div><p class="sm mt8">Every record belongs to one space and every query is scoped. Public pages never show locations, QR codes or evidence.</p></div>
+        <div><div class="h3">Audit trail</div><p class="sm mt8">Every state change writes an append-only audit entry. Evidence is immutable. No issue without a scan and a photo.</p></div>
+        <div><div class="h3">Money</div><p class="sm mt8">Record the debt first, add a payment rail second. Minor units with currency, never floats. Idempotent, and the ledger is permanent.</p></div>
+        <div><div class="h3">Analytics</div><p class="sm mt8">Counts only: how many, by channel and day, never who. Web, iOS, Android and API clients are tagged.</p></div>
+        <div><div class="h3">API</div><p class="sm mt8">Every endpoint in OpenAPI with typed errors. The same authority on web and native tokens; 429 with Retry-After.</p></div>
+        <div><div class="h3">Code size</div><p class="sm mt8">About 200 lines per file, 300 at most. Split by responsibility behind a thin barrel; split first, then add.</p></div>
+        <div><div class="h3">Install in one line</div><p class="sm mt8">One command asks every question first, changes nothing until you confirm, and runs again to update.</p></div>
+        <div><div class="h3">Hosted or hybrid</div><p class="sm mt8">One space, many spaces, or a platform. The website can live here or elsewhere with this as the API.</p></div>
+        <div><div class="h3">Words</div><p class="sm mt8">Every string translated as a whole sentence with real plurals. Error codes stay stable; messages translate.</p></div>
+        <div><div class="h3">Tests</div><p class="sm mt8">Test what people can observe. The baseline is zero failures, and no test is ever deleted.</p></div>
+      </div>
+      <div class="mt24" style="border-radius:12px;padding:14px 18px;background:rgb(var(--b-deep-ink));color:rgb(var(--b-warm-cream));display:flex;align-items:center;gap:18px">
+        <span class="lbl-ink" style="color:rgb(var(--b-citron))">Install</span><span class="code" style="font-size:15px">curl -fsSL https://github.com/SpaceWorks-Labs/SpaceWorks/releases/latest/download/install.sh | sh</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10 Product: accessibility ===== -->
+<section class="pg cream th-light" data-sec="10 / Product">
+  <div class="in">
+    <h1>The accessibility floor.</h1>
+    <p class="sub">Not a target to aim at. The level nothing ships below, in light and dark, with no allow-list.</p>
+    <div class="ct">
+      <div class="g4">
+        <div class="card line"><div class="d800" style="font-size:52px">4.5 : 1</div><p class="sm mt8">Text against every surface it can sit on, including hover and soft fills.</p></div>
+        <div class="card line"><div class="d800" style="font-size:52px">3 : 1</div><p class="sm mt8">Icons, control edges (<span class="code">outline</span>) and focus rings.</p></div>
+        <div class="card line"><div class="d800" style="font-size:52px">44 px</div><p class="sm mt8">Every control's height. One checkbox and radio size.</p></div>
+        <div class="card line"><div class="d800" style="font-size:52px">2 + 2</div><p class="sm mt8">Focus ring: 2 px wide, 2 px offset, opaque <span class="code">focus</span> token.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:32px">
+        <ul class="bul body">
+          <li><b>A word for every status.</b> Colour is never the only cue; charts add a dash per series.</li>
+          <li><b>No translucent text</b>, and never <span class="code">focus:outline-none</span>.</li>
+          <li><b>Everything works from the keyboard.</b> The skip link target always renders; collapsed content is unmounted.</li>
+          <li><b>Accessible names match the visible label.</b> Icon-only buttons are named.</li>
+        </ul>
+        <ul class="bul body">
+          <li><b>Reduced motion is honoured</b> everywhere, with a still version that carries the same information.</li>
+          <li><b>Loaders speak:</b> <span class="code">role="status"</span> with a polite label; busy buttons set <span class="code">aria-busy</span>; error toasts are alerts.</li>
+          <li><b>Both themes are tested:</b> axe in component tests, and a browser suite (WCAG 2.1 AA, light and dark journeys) fails the build on any violation.</li>
+          <li><b>Tenant colours are proven</b> readable in both themes before they render.</li>
+        </ul>
+      </div>
+      <div class="row mt32" style="gap:16px;align-items:center">
+        <span class="btn primary" style="outline:2px solid rgb(var(--color-focus));outline-offset:2px">Focused button</span>
+        <div class="th-dark" style="padding:10px 14px;border-radius:12px;background:rgb(var(--color-bg))"><span class="btn neutral" style="outline:2px solid rgb(var(--color-focus));outline-offset:2px">Focused in dark</span></div>
+        <p class="sm mut">Teal ring on light ({{cr:light.focus/light.bg}} : 1), Citron ring on dark ({{cr:dark.focus/dark.bg}} : 1).</p>
+      </div>
+    </div>
+  </div>
+</section>

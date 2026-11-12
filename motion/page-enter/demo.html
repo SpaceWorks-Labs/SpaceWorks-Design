@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page enter</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="page-enter.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid>*{min-height:56px}.show{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.show>*{min-height:90px}.sw-hub-area-panel{min-height:90px;display:grid;place-items:center}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Page enter</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Replay each entrance. The stagger moves the first eight cards 30 ms apart; the showcase cards rise in turn; the area panel wipes in. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><h2>Stagger (sw-stagger)</h2><div class="row"><button class="btn" data-r="st">Replay</button></div><div id="st" class="grid sw-stagger"><div class="card">1</div><div class="card">2</div><div class="card">3</div><div class="card">4</div><div class="card">5</div><div class="card">6</div><div class="card">7</div><div class="card">8</div></div></section>
+<section><h2>Showcase cards (sw-auth-showcase)</h2><div class="row"><button class="btn" data-r="sc">Replay</button></div><div id="sc" class="show sw-auth-showcase"><div class="card">Card one</div><div class="card">Card two</div><div class="card">Card three</div></div></section>
+<section><h2>Areas panel (sw-hub-area-panel)</h2><div class="row"><button class="btn" data-r="ar">Replay</button></div><div id="ar" class="card sw-hub-area-panel">Area panel: wipes in top to bottom</div></section>
+</main>
+<script>
+document.querySelectorAll("[data-r]").forEach(function(b){b.onclick=function(){var el=document.getElementById(b.dataset.r);var n=el.cloneNode(true);el.replaceWith(n)}});
+</script>
+</body>
+</html>
