@@ -60,11 +60,9 @@ platform colour type) and not re-derive them.
 | Sidebar | `#DFFF8F` (Citron) | `#0B0B0B` | 13.23 | 18.14 | `ink` on the sidebar |
 | Sidebar active item | `#006E63` | `#006E63` | 5.68 | 5.68 | `on-accent` label on it |
 | Scrim (dialog backdrop) | `#142C2A` | `#000000` | n/a | n/a | see lesson 17 |
-| Chart: accent | `#006E63` | `#80B1A6` | 6.16 | 7.68 | `panel` |
-| Chart: info | `#51697B` | `#B5CDFF` | 5.74 | 11.53 | `panel` |
-| Chart: success | `#536D49` | `#DFFF8F` | 5.75 | 16.53 | `panel` |
-| Chart: warn | `#696834` | `#FFD447` | 5.78 | 12.95 | `panel` |
-| Chart: danger | `#B91C1C` | `#FCA5A5` | 6.47 | 9.71 | `panel` |
+| Chart edge (SW-380) | `#142C2A` | `#FFF4E8` | 14.75 | 16.98 | `panel` (12.64 / 18.14 on `surface`, 13.60 / 19.36 on `bg`); the mark boundary |
+| Chart fills 1-5 (SW-380) | same bright brand colours | same | 1.11 to 6.16 | 2.99 to 16.53 | `panel`; fills alone may miss 3:1, the edge carries it |
+| Chart: danger | `#B91C1C` | `#FCA5A5` | 6.47 | 9.71 | `panel`; not a series colour |
 | Loader: box under-face | `#354845` | `#66625D` | 9.70 | 3.04 | `panel` (8.94 / 3.47 on `bg`) |
 | Loader: spark | `#142C2A` | `#FFF4E8` | 14.75 | 16.98 | `panel` |
 | Loader: seam | `#142C2A` | `#000000` | 14.75 | n/a | `panel`; in dark the seam is the page colour on purpose (lesson 24) |
@@ -217,14 +215,19 @@ Things this table shows at a glance:
 - *Problem.* The chart default used the same fills as the UI, and dark charts reused light-mode inks, which are
   dim on black. Teal marks on the dark panel were too weak, and a colour-blind reader could not tell two series
   apart.
-- *Rule.* Series colours come from a chart token set, one list for light and one for dark. Light uses the
-  `*-ink` shades (darker, readable on white); dark uses the brighter fills or `accent-ink`. A series' colour is
-  chosen by hashing its identity so it does not change when sorted or filtered, and each series also gets a
-  dash pattern so colour is never the only cue.
-- *Values.* See the pairing table. Order: accent, info, success, warn, danger. Dashes: solid, `8 4`, `2 4`,
-  `10 3 2 3`.
-- *Enforced.* `tokens.json` `chart`; `chrome.css` maps `--chart-*` per theme.
+- *Rule.* Series colours come from a chart token set. A series' colour is chosen by hashing its identity so it
+  does not change when sorted or filtered, and each series also gets a dash pattern so colour is never the only
+  cue.
+- *Values.* Dashes: solid, `8 4`, `2 4`, `10 3 2 3`.
+- *Enforced.* `tokens.json` `chart`; `chrome.css` defines `--chart-*`.
 - *Source.* Design repo `a1869a2`; app `chrome.css`.
+- *Updated by SW-380 (Design System v2.0): same brights plus an edge.* The original rule (light uses the dull
+  `*-ink` shades, dark uses `accent-ink` and the brighter fills) is replaced. Series 1-5 are now the five bright
+  brand colours (teal, orange, citron, sky, yellow), identical in light and dark, because one brand palette
+  should look the same everywhere. The 3:1 graphics contrast that the dull inks used to buy now comes from
+  `--chart-edge` instead: a 1px edge on every filled mark and a 4px casing under 2px lines (Deep Ink in light,
+  Warm Cream in dark, at least 12:1 on every chart background). Never dull a fill to pass contrast; add or
+  strengthen the edge. Red is not a series colour. The `accent-ink` rule in lesson 5 still holds for text.
 
 ### Tenant and custom brand colours
 
@@ -274,7 +277,7 @@ Things this table shows at a glance:
   get the one overlay shadow.
 - *Values.* `scrim` light `#142C2A`, dark `#000000`; `--shadow-color` light `20 44 42`, dark `0 0 0`; overlay
   shadow `0 2px 6px rgb(var(--shadow-color)/.06), 0 12px 32px rgb(var(--shadow-color)/.10)`.
-- *Source.* Design repo `tokens.json`, README changelog (scrim added 0.12.0); design spec E.
+- *Source.* Design repo `tokens.json`, README changelog (scrim added in v2.0); design spec E.
 
 **18. The mascot on dark gets a thin Cream sticker border.**
 - *Problem.* Patch's thick dark outline nearly vanishes on dark surfaces: 1.0 to 2.3:1 against Deep Ink, against
@@ -467,6 +470,21 @@ Things this table shows at a glance:
 - *Rule.* Each lesson above that has an enforcement is also a regression check. When a bug is found only in one
   theme, add the assertion that would have caught it before fixing the screen.
 - *Source.* App `docs/INVARIANTS.md`.
+
+**39. Define an animation's states and check its frames, not only its curves.**
+- *Problem.* The logo box animation had smooth curves and passing tests, yet in dark black holes opened in the
+  side of the box while the flaps moved, and in light the closed box showed two orange faces. Each piece was right
+  on its own: the dark master cuts its faces short under the front flaps (a cap filled them, but only near shut);
+  a flap's colour switched at a chosen angle instead of when it turned edge-on; the rising flap was painted under
+  the lid it stands in front of; and four flaps folding together passed through each other. Nobody had written
+  down what a correct frame looks like, so nothing failed.
+- *Rule.* Write the states down first (rest = the static logo exactly; shut = one solid shape, one orange face;
+  colour changes only edge-on; paint order = depth order) and test them on rendered frames in both themes: exact
+  frames (pause, rewind with a negative `animation-delay`), the whole cycle at 60 fps, on a loud page colour so
+  transparency shows. A shape drawn in two masters (light and reversed) must be checked in both: what one master
+  covers, the other may leave open.
+- *Enforced.* `scripts/check-box-frames.mjs` (headless Edge); app `boxOpen.frames.test.ts`.
+- *Source.* Decision 381; design repo `motion/box-open/README.md` "Known-good states".
 
 ---
 

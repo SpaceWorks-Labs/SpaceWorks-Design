@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Route transition</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="route-transition.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.shell{display:grid;grid-template-columns:150px 1fr;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;min-height:260px;background:rgb(var(--color-bg))}.side{background:rgb(var(--color-sidebar,var(--color-surface)));border-right:1px solid rgb(var(--color-line));padding:12px;display:grid;gap:6px;align-content:start}.side a{padding:8px 10px;border-radius:8px;color:rgb(var(--color-ink));text-decoration:none;cursor:pointer}.side a[aria-current=page]{background:rgb(var(--color-accent-soft))}.pg{padding:20px;display:grid;gap:10px;align-content:start}.pg h3{margin:0;font-size:1.3rem}.bar{height:10px;border-radius:5px;background:rgb(var(--color-line))}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Route transition</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Click a link: only the content region changes (the sidebar stays put). Pick a direction to see the settle distance change. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><div class="row" role="group" aria-label="Direction"><label>Direction <select id="dir"><option>forward</option><option>lateral</option><option>back</option><option>fade</option></select></label><span id="mode"></span></div>
+<div class="shell"><nav class="side" aria-label="Demo"><a data-p="0" aria-current="page">Requests</a><a data-p="1">Inventory</a><a data-p="2">Members</a></nav><div data-sw-main class="pg" id="main"></div></div></section>
+</main>
+<script>
+var pages=[["Requests","Loans waiting for a handover."],["Inventory","Tools and where they live."],["Members","People who borrow."]];
+var main=document.getElementById("main"),dir=document.getElementById("dir"),cur=-1;
+var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.getElementById("mode").textContent=(document.startViewTransition&&!reduced)?"View Transition":"CSS fallback (.sw-route-enter)";
+function render(i){cur=i;main.innerHTML="<h3>"+pages[i][0]+"</h3><p>"+pages[i][1]+"</p><div class=bar></div><div class=bar style=width:70%></div><div class=bar style=width:45%></div>";
+ document.querySelectorAll(".side a").forEach(function(a,k){k===i?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")})}
+function go(i){var h=document.documentElement;h.dataset.swNav=dir.value;main.dataset.swEnter=dir.value;
+ if(document.startViewTransition&&!reduced){h.dataset.swVt="route";var t=document.startViewTransition(function(){render(i)});t.finished.finally(function(){delete h.dataset.swVt})}
+ else{render(i);if(!reduced){main.classList.remove("sw-route-enter");void main.offsetWidth;main.classList.add("sw-route-enter")}}}
+document.querySelectorAll(".side a").forEach(function(a){a.onclick=function(){go(+a.dataset.p)}});render(0);
+</script>
+</body>
+</html>

@@ -11,6 +11,9 @@
 The Space Works design system: brand guidelines, logo masters, icons, fonts, design tokens and the UX
 pattern specs. Use it as a git submodule in any Space Works project so every surface draws from one source.
 
+**Version: Space Works Design System v2.0** (`VERSION` = `2.0.0`), which ships alongside SpaceWorks 0.12.0. What
+changed is in [`docs/whats-new-v2.0.md`](docs/whats-new-v2.0.md).
+
 ```bash
 git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System.git design
 ```
@@ -23,7 +26,7 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 
 | Folder | What it holds |
 |---|---|
-| `brand/` | `space-works-brand-guidelines-v1.pdf` — the source of truth for logo, colour, type, icons and voice |
+| `brand/` | `space-works-brand-guidelines-v2.pdf` (current, 50 pages, built from `brand/guidelines-v2/`) and `space-works-brand-guidelines-v1.pdf` — the source of truth for logo, colour, type, icons and voice; where they differ, v2 wins |
 | `logo/` | Ten vector masters exported directly from Figma, with matching 4× PNGs: `symbol`, `symbol-reversed`, `symbol-one-colour-ink`, `lockup-stacked`, `lockup-stacked-reversed`, `lockup-stacked-one-colour-ink`, `lockup-horizontal`, `lockup-horizontal-reversed`, `lockup-horizontal-one-colour-ink`, `app-icon` |
 | `mascot/` | **Patch**, the painted wolf mascot, cut from the approved concept sheets in `mascot/concept/` and traced to vector SVG: `patch.svg` (hero), `patch-animated.webp`/`.svg`/`.gif` (the 7-second sneeze loop) and its eight `frames/`, plus `walk/` (the walking pose, walk cycle and its frames) and `walk-left/` (the approved left-facing walk), with high-resolution PNGs. `mascot/original/` keeps every piece's exact pixels from the sheets (lossless) and `mascot/compressed/` has lighter SVGs, `.svgz` and small WebPs. `mascot/dark/` is every piece with a thin Warm Cream sticker border for dark surfaces only (full SVGs, lossless PNGs, WebPs and GIFs, plus lite SVGs, `.svgz` and small WebPs in `dark/compressed/`). Story and usage rules in `mascot/README.md` |
 | `icons/` | `favicon.svg`, PNG app icons (16, 32, 180, 192, 512) and the 1200×630 social card |
@@ -31,11 +34,12 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
 | `motion/box-open/` | The **box-open loader**, the loading animation used everywhere in Space Works: `box-open.css`, the SVG markup, a standalone `demo.html` and the React components (`LogoLoader`, `BoxSpinner`, `BoxArt`). Usage, sizes, timing and accessibility in `motion/box-open/README.md` |
 | `motion/theme-reveal/` | The **theme reveal**, the light/dark switch animation (circle growing from the toggle, 720 ms, cross-fade fallback, instant under reduced motion): `theme-reveal.css`, framework-free `theme-reveal.js`, a standalone `demo.html`, the app's React files and an animated preview. Usage in `motion/theme-reveal/README.md` |
+| `motion/README.md` | The **motion kit index**: every animation in the product (49 rows) mapped to a reusable folder (`route-transition/`, `page-enter/`, `scroll-reveal/`, `overlays/`, `toast/`, `sidebar/`, `collapse/`, `skeleton/`, `hover-press/`, `feedback/`, `delight/`, `kiosk-display/`, plus `box-open/`, `theme-reveal/`, `search/`). Each folder has framework-free CSS from the app, `react/` copies, a light/dark `demo.html`, animated previews and a README (where, why, tokens, trigger, reduced motion, dark, do and don't) |
 | `docs/` | `motion.md` (**every animation in the product**: where, why, tokens, plus the "which animation to use" guide and the logo hover rule), `theming.md` (**how to implement the light/dark switch** with these tokens: tokens, `html.dark`, pre-paint script, React and plain-JS examples), `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
-| `docs/` (more) | `product-rules.md` (rules the product enforces in its UI), `lessons-learned.md` (what went wrong and what we do now) and `design-changes-0.12.0.md` (every design change in the 0.12.0 release) |
+| `docs/` (more) | `product-rules.md` (the product and engineering rules every SpaceWorks-Labs product follows, with a per-product checklist), `decisions.md` (every design decision and its reason), `lessons-learned.md` (what went wrong and what we do now) and `whats-new-v2.0.md` (what's new in Design System v2.0, which ships alongside SpaceWorks 0.12.0) |
 | `tokens/previews/` | Rendered previews of the colour tokens, light and dark |
 | `screenshots/ux/` | Screenshots of Space Works UX in Space Works Events (light, dark and phone), used by the site's UX pages |
-| `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time |
+| `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time, and `scripts/split-docs.mjs` lists which long docs are published as an overview plus one page per part (the Markdown here stays one file) |
 | `references/yuyu/` | The reference boards from [Yuyu](https://github.com/twilighty-abhi/yuyu) that inspired Space Works UX |
 
 ## Brand at a glance
@@ -68,11 +72,12 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 
 ## Changelog
 
+- **Motion kit added in Design System v2.0** in `motion/`: twelve new animation families (route transition, page enter, scroll reveal and pinned hero, overlays, toast, sidebar indicator, collapse and chevrons, skeleton and progress, hover and press, feedback, delight, kiosk and display), each reusable like the box-open loader (CSS copied from the app, `react/` copies, `demo.html`, animated previews checked by `scripts/check-previews.mjs`, README), indexed in `motion/README.md`. `docs/motion.md` gains the animations the audit found missing (splash flight, chevrons, card tilt, logo flap pop and others). The site has a page per family under Motion, plus a "Design decisions" page from `docs/decisions.md`.
 - **Theme reveal template** added in `motion/theme-reveal/`: the light-to-dark circle reveal as a reusable template (CSS, framework-free JS with `switchTheme(next, originEl)`, `demo.html`, the app's React files, animated preview checked by `scripts/check-previews.mjs`). `docs/theming.md` gains a "Switch animation" section; the design site's own theme toggle and the Theming demo now use it, and there is a new Motion page, Theme switch.
 
-### SpaceWorks 0.12.0 token sync
+### v2.0 token sync (ships alongside SpaceWorks 0.12.0)
 
-- **README banner** added: `brand/readme/banner-light.svg` and `banner-dark.svg` (1280×320, rounded corners, the lockup masters, the seven brand colours; text uses a system-font fallback stack, no external references), shown through a `<picture>` that follows the reader's colour scheme.
+- **README banner** added: `brand/readme/banner-light.svg` and `banner-dark.svg` (1280×320, rounded corners, the lockup masters, the seven brand colours; text is outlined from Gilroy ExtraBold and Outfit by `brand/readme/make-banner.py`, so GitHub shows the brand fonts; no external references), shown through a `<picture>` that follows the reader's colour scheme.
 - **`docs/motion.md` and `docs/theming.md` added.** `motion.md` catalogues every shipped animation (where, why, tokens, trigger, reduced motion, dark), gives the "which animation to use where" defaults and the rules, including the new logo rule: **the Space Works mark opens (one-shot box opening, 1600 ms) on hover and keyboard focus everywhere it appears; it never loops except as the loader; tenant logos never animate; no hover animation on touch; reduced motion shows the static mark.** `theming.md` documents the light/dark switch (token layer, `html.dark`, system preference, pre-paint script, meta theme-color, React and plain examples). `motion/box-open/` documents the hover/focus one-shot usage.
 - **Dark theme is one solid black family** (decision 316, superseding the green-tinted dark of 275/300). Neutral
   surfaces only, no green or teal tint; teal, Citron and orange stay accents.

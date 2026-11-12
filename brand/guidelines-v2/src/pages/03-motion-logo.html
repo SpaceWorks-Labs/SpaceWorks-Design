@@ -1,0 +1,154 @@
+<!-- ===== 03 Logo in motion: intro ===== -->
+<section class="pg black th-dark" data-sec="03 / Logo in motion" data-toc="Logo in motion and loader">
+  <div class="in">
+    <h1>The box opens.</h1>
+    <p class="sub">One piece of artwork, generated from the logo masters, plays three jobs. Nothing else in the brand moves like this.</p>
+    <div class="ct">
+      <div class="g3" style="gap:24px">
+        <div class="card" style="background:rgb(var(--color-panel));height:470px">
+          <div class="sw-box once g-dark frz" style="--t:700;width:220px;aspect-ratio:136/126;margin:18px auto 0">{{box}}</div>
+          <div class="lbl mt24">Splash · once per cold load</div>
+          <div class="d800 mt12" style="font-size:44px">1600 ms</div>
+          <p class="body mt12">On a cold page load the box opens, then flies into the header logo. The first screen is never blank.</p>
+        </div>
+        <div class="card" style="background:rgb(var(--color-panel));height:470px">
+          <div class="sw-box loop g-dark frz" style="--t:3200;width:220px;aspect-ratio:136/126;margin:18px auto 0">{{box}}</div>
+          <div class="lbl mt24">Loader · loops while loading</div>
+          <div class="d800 mt12" style="font-size:44px">4400 ms</div>
+          <p class="body mt12">Open, hold, fold shut, repeat. The only loading indicator in the product, from a page down to a button.</p>
+        </div>
+        <div class="card" style="background:rgb(var(--color-panel));height:470px">
+          <div class="sw-box hov g-dark frz" style="--t:560;width:220px;aspect-ratio:136/126;margin:18px auto 0">{{box}}</div>
+          <div class="lbl mt24">Hover and focus · once</div>
+          <div class="d800 mt12" style="font-size:44px">600 + 1600 ms</div>
+          <p class="body mt12">Point at the mark, or tab to it, and it folds shut and opens back. Every Space Works logo, never a tenant's.</p>
+        </div>
+      </div>
+      <div class="row mt24" style="align-items:center;gap:20px">
+        <a class="qr" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/motion/box-open/" style="width:84px;height:84px;padding:6px">{{qr:boxopen}}</a>
+        <p class="sm">See all three play: <b>spaceworks-labs.github.io/SpaceWorks-Design-System/motion/box-open/</b><br><span class="mut">Frames on the following pages are frozen from the shipped CSS, <span class="code">motion/box-open/box-open.css</span>, not redrawn.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 Splash ===== -->
+<section class="pg cream th-light" data-sec="03 / Logo in motion">
+  <div class="in">
+    <h1>Splash: one opening.</h1>
+    <p class="sub">Plays once on a cold load, before the app mounts. Flaps open bottom-left, top-left, bottom-right, top-right.</p>
+    <div class="ct">
+      <div class="lbl">Light · on Warm Cream</div>
+      <div class="card line mt12" style="padding:6px 8px">{{strip:once:light:0|Closed,200,400|Flaps lift,600,800|Open,1000|Settle,1200|Sparks,1400,1600|Open logo}}</div>
+      <div class="lbl mt24">Dark · on #000</div>
+      <div class="card th-dark mt12" style="padding:6px 8px;background:rgb(var(--color-bg));color:rgb(var(--color-ink))">{{strip:once:dark:0|Closed,200,400|Flaps lift,600,800|Open,1000|Settle,1200|Sparks,1400,1600|Open logo}}</div>
+      <div class="g3 mt24 sm">
+        <p><b>Inline, before the app.</b> A generated block in <span class="code">index.html</span> shows it, so a slow first load still shows the brand, then hands off to the header logo.</p>
+        <p><b>Background follows the theme.</b> Warm Cream <span class="code">{{hex:light.bg}}</span> in light, <span class="code">{{hex:dark.bg}}</span> in dark; the meta theme colour matches.</p>
+        <p><b>Reduced motion.</b> The still, open logo shows at once. Total time on screen is about 1.2 to 1.6 s, never a wall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 Loader loop ===== -->
+<section class="pg cream th-light" data-sec="03 / Logo in motion">
+  <div class="in">
+    <h1>Loader: open, hold, fold, repeat.</h1>
+    <p class="sub">A 4400 ms cycle for anything that loads for an unknown time. It replaces ring spinners and skeleton shimmer.</p>
+    <div class="ct">
+      <div class="card line" style="padding:6px 8px">{{strip:loop:light:0|Closed,400|Opening,800,1200,1600|Open,2000|Hold,2400,2800|Folding,3200,3600,4000|Closed}}</div>
+      <div class="card th-dark mt12" style="padding:6px 8px;background:rgb(var(--color-panel))">{{strip:loop:dark:0|Closed,400|Opening,800,1200,1600|Open,2000|Hold,2400,2800|Folding,3200,3600,4000|Closed}}</div>
+      <div class="mt24">
+        <div class="tl">
+          <div style="width:3.2%;background:rgb(var(--color-surface))"></div>
+          <div style="width:29.3%;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent))">Open · flap by flap</div>
+          <div style="width:30.7%;background:rgb(var(--color-success));color:rgb(var(--color-on-success))">Hold open</div>
+          <div style="width:21.2%;background:rgb(var(--color-emphasis));color:rgb(var(--color-on-emphasis))">Fold shut</div>
+          <div style="width:15.6%;background:rgb(var(--color-surface));color:rgb(var(--color-ink))">Rest</div>
+        </div>
+        <div class="ticks"><span style="left:0;transform:none">0</span><span style="left:32.5%">1.4 s</span><span style="left:63.2%">2.8 s</span><span style="left:84.4%">3.7 s</span><span style="left:100%;transform:translateX(-100%)">4.4 s</span></div>
+      </div>
+      <div class="g3 mt24 sm">
+        <p><b>Flaps are stepped, never interpolated.</b> Each flap's <span class="code">matrix()</span> is sampled 160 times per cycle and played with <span class="code">steps(1, end)</span>. Browsers glitch when they blend two matrices near edge-on.</p>
+        <p><b>Colours per theme.</b> Box faces are the masters' own colours. Under-face <span class="code">{{hex:loader.light.under}}</span> light, <span class="code">{{hex:loader.dark.under}}</span> dark; spark <span class="code">{{hex:loader.light.spark}}</span> / <span class="code">{{hex:loader.dark.spark}}</span>; the dark seam is the page colour so it vanishes on black.</p>
+        <p><b>Fixed aspect 136 : 126.</b> Width = height × 136 ÷ 126. The box never changes size while it plays, so nothing around it moves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 Hover ===== -->
+<section class="pg cream th-light" data-sec="03 / Logo in motion">
+  <div class="in">
+    <h1>Hover and focus: fold, then open.</h1>
+    <p class="sub">From the resting logo the box folds shut in 600 ms and opens back in 1600 ms. No hold, no snap at either end.</p>
+    <div class="ct">
+      <div class="tl" style="height:34px">
+        <div style="width:27.27%;background:rgb(var(--color-emphasis));color:rgb(var(--color-on-emphasis))">Fold shut · 600 ms · the loader's fold</div>
+        <div style="width:72.73%;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent))">Open · 1600 ms · the splash opening</div>
+      </div>
+      <div class="card line mt12" style="padding:6px 8px">{{strip:hov:light:0|Resting logo,150,300,450,600|Shut,800,1000,1200,1400,1600,1900,2200|Resting logo}}</div>
+      <div class="card th-dark mt12" style="padding:6px 8px;background:rgb(var(--color-bg));color:rgb(var(--color-ink))">{{strip:hov:dark:0|Reversed,150,300,450,600|Shut,800,1000,1200,1400,1600,1900,2200|Reversed}}</div>
+      <div class="g4 mt24 sm">
+        <p><b>Starts</b> on pointer-enter of a mouse or pen, or on keyboard <span class="code">:focus-visible</span>. Never on touch: gate on <span class="code">@media (hover: hover)</span>.</p>
+        <p><b>Always finishes.</b> Leaving mid-way lets it finish; re-entering while it plays does not restart it. It never loops.</p>
+        <p><b>Reduced motion</b> shows the still mark. The mark never takes focus itself and never changes size.</p>
+        <p><b>One component</b> (<span class="code">AnimatedLogoMark</span>) draws every placement; a guard test fails the build otherwise. Tenant logos never animate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 Loader usage ===== -->
+<section class="pg cream th-light" data-sec="03 / Logo in motion">
+  <div class="in">
+    <h1>One loader, four sizes.</h1>
+    <p class="sub">Use the box wherever something loads. Never a generic spinner.</p>
+    <div class="ct">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div class="card line" style="height:300px">
+          <div class="lbl">LogoLoader · page or panel · 72 px</div>
+          <div style="display:flex;flex-direction:column;align-items:center;margin-top:34px">
+            <div class="sw-box loop g-light frz" style="--t:1600;height:72px;width:78px">{{box}}</div>
+            <p class="body mt16">Loading inventory…</p>
+            <p class="xs mut mt8"><span class="code">role="status"</span> with a polite label</p>
+          </div>
+        </div>
+        <div class="card th-dark" style="height:300px;background:rgb(var(--color-panel))">
+          <div class="lbl">Same loader in dark</div>
+          <div style="display:flex;flex-direction:column;align-items:center;margin-top:34px">
+            <div class="sw-box loop g-dark frz" style="--t:1600;height:72px;width:78px">{{box}}</div>
+            <p class="body mt16">Loading inventory…</p>
+            <p class="xs mut mt8">Reversed artwork, seam in the page colour</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px">
+        <div class="card line">
+          <div class="lbl">BoxSpinner · rows and fields · 16–24 px</div>
+          <div class="row mt16" style="align-items:center;gap:14px;border-top:1px solid rgb(var(--color-line));padding-top:14px">
+            <div class="sw-box loop g-light frz" style="--t:1200;height:20px;width:21.6px">{{box}}</div><span class="body">Arduino Uno</span><span class="xs mut" style="margin-left:auto">Checking stock…</span>
+          </div>
+          <div class="row mt12" style="align-items:center;gap:14px">
+            <div class="field" style="flex:1">Search parts <div class="sw-box loop g-light frz" style="--t:1200;height:18px;width:19.4px;margin-left:auto">{{box}}</div></div>
+          </div>
+        </div>
+        <div class="card line">
+          <div class="lbl">BoxSpinner mono · inside a button</div>
+          <div class="row mt16" style="flex-wrap:wrap;gap:12px">
+            <span class="btn primary" aria-busy="true"><span class="sw-box loop mono frz" style="--t:1200;height:18px;width:19.4px">{{box}}</span>Saving</span>
+            <span class="btn emph"><span class="sw-box loop mono frz" style="--t:1200;height:18px;width:19.4px">{{box}}</span>Paying</span>
+            <span class="btn danger"><span class="sw-box loop mono frz" style="--t:1200;height:18px;width:19.4px">{{box}}</span>Deleting</span>
+            <span class="btn neutral"><span class="sw-box loop mono frz" style="--t:1200;height:18px;width:19.4px">{{box}}</span>Loading</span>
+          </div>
+          <p class="xs mut mt12">Drawn in <span class="code">currentColor</span>, at the label size. The button keeps its width and sets <span class="code">aria-busy="true"</span>.</p>
+        </div>
+      </div>
+      <div class="row mt24 sm" style="gap:40px">
+        <p><span class="tag dont">Don't</span> ring spinners, progress bars for unknown time, shimmer sweeps, a spinner on every row at once.</p>
+        <p><span class="tag do">Do</span> pair a <span class="code">Skeleton</span> shape with one box for lists; the still open logo under reduced motion.</p>
+      </div>
+    </div>
+  </div>
+</section>

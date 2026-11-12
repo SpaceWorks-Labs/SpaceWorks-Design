@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { BOX, ensureBoxCss } from "../boxOpen/shared";
 import { HOVER_MS } from "../boxOpen/css";
 
@@ -11,6 +11,20 @@ const SYMBOL_BOX = {
 
 const reduced = () => { try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { return false; } };
 const focusVisible = (target: EventTarget | null) => { try { return target instanceof Element && target.matches(":focus-visible"); } catch { return false; } };
+/**
+ * The colour behind the mark: the first opaque background up the tree. The moving flaps are outlined in it (as the
+ * masters separate their parts with gaps of ground), so a sidebar or island ground shows no halo.
+ */
+function groundColour(start: Element | null): string | undefined {
+  for (let node = start; node; node = node.parentElement) {
+    const colour = getComputedStyle(node).backgroundColor;
+    if (!colour || colour === "transparent") continue;
+    // The last component of rgb()/rgba()/"... / a)" is the alpha only when there are four; three means opaque.
+    const parts = /\(([^)]*)\)$/.exec(colour)?.[1].split(/[\s,/]+/).filter(Boolean) ?? [];
+    if (parts.length < 4 || Number(parts[3]) >= 0.99) return colour;
+  }
+  return undefined;
+}
 
 /**
  * The hover/focus cycle laid over the symbol part of a mark: the box folds shut from the resting logo, then
@@ -26,12 +40,13 @@ export function LogoBoxOverlay({ shape, width, height, offset, surface, oneColou
   const root = useRef<HTMLSpanElement>(null);
   const [playing, setPlaying] = useState(false);
   const running = useRef(false);
+  const [ground, setGround] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const mark = root.current?.parentElement;
     if (!mark) return;
     const host = mark.closest("a, button") ?? mark;
-    const start = () => { if (!running.current && !reduced()) { running.current = true; setPlaying(true); } };
+    const start = () => { if (!running.current && !reduced()) { running.current = true; setGround(groundColour(mark)); setPlaying(true); } };
     const onEnter = (event: Event) => { if ((event as PointerEvent).pointerType !== "touch") start(); };
     const onFocus = (event: Event) => { if (focusVisible(event.target)) start(); };
     const overlay = root.current;
@@ -55,6 +70,6 @@ export function LogoBoxOverlay({ shape, width, height, offset, surface, oneColou
   return <span ref={root} className="sw-logo-box" aria-hidden="true"
     style={{ left: offset, top: offset, width: width * box.w / box.vw, height: height * box.h / box.vh }}>
     {playing ? <span className={`sw-box hov ${surface === "dark" ? "g-dark" : "g-light"}${mono ? " mono" : ""}`}
-      style={{ display: "block", ...(mono ? { color: "#142C2A" } : {}) }} dangerouslySetInnerHTML={{ __html: BOX }} /> : null}
+      style={{ display: "block", ...(ground ? { "--sw-ground": ground } : {}), ...(mono ? { color: "#142C2A" } : {}) } as CSSProperties} dangerouslySetInnerHTML={{ __html: BOX }} /> : null}
   </span>;
 }

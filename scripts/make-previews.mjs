@@ -1,5 +1,5 @@
 // Regenerates every preview image from the CURRENT sources, then writes scripts/previews.lock.json.
-//   node scripts/make-previews.mjs [palette|motion|theme-reveal]
+//   node scripts/make-previews.mjs [palette|motion|theme-reveal|motion-kit [family]]
 // Needs: sharp (resolved from site/node_modules), Microsoft Edge (override with EDGE_PATH).
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
@@ -7,6 +7,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { LOCK, ROOT, SOURCES, hashSources } from './lib-previews.mjs';
+import { motionKit } from './motion-kit-previews.mjs';
 
 const sharp = createRequire(join(ROOT, 'site', 'package.json'))('sharp');
 const rd = (rel) => readFileSync(join(ROOT, rel), 'utf8');
@@ -202,6 +203,14 @@ async function themeReveal() {
 if (!only || only === 'palette') await palettes();
 if (!only || only === 'motion') await motion();
 if (!only || only === 'theme-reveal') await themeReveal();
+// Motion kit families (route-transition, overlays, ...): node scripts/make-previews.mjs motion-kit [family]
+if (!only || only === 'motion-kit') await motionKit({ withBrowser, setPage, shot, sharp, out, FONT_CSS, only: only ? process.argv[3] : undefined });
+if (only === 'motion-kit') { // refresh only this group's hashes
+  const lock = JSON.parse(readFileSync(LOCK, 'utf8')), now = hashSources();
+  for (const [k, g] of Object.entries(SOURCES)) if (g === 'motion-kit') lock.sources[k] = now[k];
+  writeFileSync(LOCK, JSON.stringify(lock, null, 2) + '\n');
+  console.log('lock updated (motion-kit)');
+}
 if (only === 'theme-reveal') { // refresh only this group's hashes; the other previews were not regenerated
   const lock = JSON.parse(readFileSync(LOCK, 'utf8')), now = hashSources();
   for (const [k, g] of Object.entries(SOURCES)) if (g === 'theme-reveal') lock.sources[k] = now[k];

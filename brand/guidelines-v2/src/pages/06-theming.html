@@ -1,0 +1,81 @@
+<!-- ===== 06 Theming: both themes ===== -->
+<section class="pg split th-light" data-sec="06 / Light and dark" data-toc="Light and dark theming">
+  <div class="bleed th-dark" style="position:absolute;left:720px;top:0;right:0;bottom:0;background:rgb(var(--color-bg))"></div>
+  <div class="in">
+    <h1>Both themes, always.</h1>
+    <p class="sub" style="width:640px">The same screen, one class apart. Light is the default; dark is a saved choice or the system setting.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:128px">
+      <div>
+        <div class="con">
+          <div class="con-side">
+            <img class="lg-l" src="../../../logo/lockup-stacked.svg" alt="" style="width:118px"><img class="lg-d" src="../../../logo/lockup-stacked-reversed.svg" alt="" style="width:118px">
+            <div class="mt16"><div class="nav on">Inventory</div><div class="nav">Loans</div><div class="nav">Machines</div><div class="nav">Events</div><div class="nav">Reports</div><div class="nav">Settings</div></div>
+          </div>
+          <div class="con-main">
+            <div class="row" style="justify-content:space-between;align-items:center"><div style="font-size:22px;font-weight:600">Inventory</div><span class="btn primary" style="height:34px;font-size:13px;padding:0 12px">+ Add item</span></div>
+            <div class="srch mt12"><svg class="ic" viewBox="0 0 24 24" style="width:16px;height:16px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Search parts, tools or materials</div>
+            <div class="con-tb mt12">
+              <div class="con-r con-h"><span>Item</span><span>Location</span><span>Stock</span></div>
+              <div class="con-r"><span><b>Arduino Uno</b><br><span class="xs ink-acc">ARD-001</span></span><span>A-03</span><span><span class="pill success" style="height:22px;font-size:11px">12 available</span></span></div>
+              <div class="con-r"><span><b>Raspberry Pi 4</b><br><span class="xs ink-acc">RPI-004</span></span><span>A-04</span><span><span class="pill emph" style="height:22px;font-size:11px">2 left</span></span></div>
+              <div class="con-r"><span><b>Soldering station</b><br><span class="xs ink-acc">SOL-002</span></span><span>B-01</span><span><span class="pill accent" style="height:22px;font-size:11px">Issued</span></span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="bul sm mt24">
+          <li>Citron sidebar, white cards on Warm Cream, no borders needed.</li>
+          <li>Citron search field with a Deep Ink label.</li>
+        </ul>
+      </div>
+      <div class="th-dark">
+        <div class="con">
+          <div class="con-side">
+            <img class="lg-l" src="../../../logo/lockup-stacked.svg" alt="" style="width:118px"><img class="lg-d" src="../../../logo/lockup-stacked-reversed.svg" alt="" style="width:118px">
+            <div class="mt16"><div class="nav on">Inventory</div><div class="nav">Loans</div><div class="nav">Machines</div><div class="nav">Events</div><div class="nav">Reports</div><div class="nav">Settings</div></div>
+          </div>
+          <div class="con-main">
+            <div class="row" style="justify-content:space-between;align-items:center"><div style="font-size:22px;font-weight:600">Inventory</div><span class="btn primary" style="height:34px;font-size:13px;padding:0 12px">+ Add item</span></div>
+            <div class="srch mt12"><svg class="ic" viewBox="0 0 24 24" style="width:16px;height:16px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Search parts, tools or materials</div>
+            <div class="con-tb mt12">
+              <div class="con-r con-h"><span>Item</span><span>Location</span><span>Stock</span></div>
+              <div class="con-r"><span><b>Arduino Uno</b><br><span class="xs ink-acc">ARD-001</span></span><span>A-03</span><span><span class="pill success" style="height:22px;font-size:11px">12 available</span></span></div>
+              <div class="con-r"><span><b>Raspberry Pi 4</b><br><span class="xs ink-acc">RPI-004</span></span><span>A-04</span><span><span class="pill emph" style="height:22px;font-size:11px">2 left</span></span></div>
+              <div class="con-r"><span><b>Soldering station</b><br><span class="xs ink-acc">SOL-002</span></span><span>B-01</span><span><span class="pill accent" style="height:22px;font-size:11px">Issued</span></span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="bul sm mt24">
+          <li>Sidebar is the <span class="code">surface</span> layer with a 1 px <span class="code">line</span> edge; cards get a border, never a shadow.</li>
+          <li>Search becomes a <span class="code">surface</span> field with a Citron edge, not a glaring slab.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 Theming: rules ===== -->
+<section class="pg cream th-light" data-sec="06 / Light and dark">
+  <div class="in">
+    <h1>Theming rules.</h1>
+    <p class="sub">What changes between themes is values, artwork and edges. Names, layout and motion stay the same.</p>
+    <div class="ct">
+      <div class="g4" style="row-gap:28px">
+        <div><div class="no lbl">01 · One class</div><p class="sm mt8">Dark is <span class="code">html.dark</span>. Every colour is a token redefined under <span class="code">:root.dark</span>. Components read tokens, never hex.</p></div>
+        <div><div class="no lbl">02 · No flash</div><p class="sm mt8">A pre-paint script reads the saved choice before first paint. <span class="code">theme-color</span> is <span class="code">{{hex:light.bg}}</span> light and <span class="code">{{hex:dark.bg}}</span> dark.</p></div>
+        <div><div class="no lbl">03 · Artwork per theme</div><p class="sm mt8">Logo: full colour on light, reversed Cream on dark. Patch: <span class="code">mascot/dark/</span>. Box: the <span class="code">.dk</span> drawing. Illustrations ship as twins.</p></div>
+        <div><div class="no lbl">04 · Inks, not fills</div><p class="sm mt8">Coloured text and icons use <span class="code">*-ink</span>. Teal as text on black is <span class="code">{{hex:dark.accent-ink}}</span>, never <span class="code">{{hex:dark.accent}}</span>.</p></div>
+        <div><div class="no lbl">05 · Edges on black</div><p class="sm mt8">Cards and the sidebar get a 1 px <span class="code">line</span>. Anything a person must find (inputs, segmented controls) uses <span class="code">outline</span>, at least 3 : 1.</p></div>
+        <div><div class="no lbl">06 · Layers, not glow</div><p class="sm mt8">Raise by one lightness step: 0, 11, 20, 28. Never skip a step to make something pop, and never add a custom “elevated” grey.</p></div>
+        <div><div class="no lbl">07 · Islands rejoin</div><p class="sm mt8">A Deep Ink panel inside a light page (<span class="code">.sw-island-dark</span>) becomes the black family when the page goes dark. No green fields on black.</p></div>
+        <div><div class="no lbl">08 · Scrims and shadows</div><p class="sm mt8">Scrim is Deep Ink in light, black in dark. A dark dialog separates by being a raised panel with a line, not by its shadow.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px">
+        <div class="card line" style="padding:18px;height:150px"><span class="tag do">Light</span><div class="field mt12" style="height:40px">Email address</div><p class="xs mut mt8">outline {{cr:light.outline/light.panel}} : 1 on panel</p></div>
+        <div class="card th-dark" style="padding:18px;height:150px;background:rgb(var(--color-panel))"><span class="tag do">Dark</span><div class="field mt12" style="height:40px">Email address</div><p class="xs mut mt8">outline {{cr:dark.outline/dark.panel}} : 1 on panel</p></div>
+        <div class="card th-dark" style="padding:18px;height:150px;background:rgb(var(--color-panel))"><span class="tag dont">Don't</span><div class="field mt12" style="height:40px;border-color:rgb(var(--color-line))">Email address</div><p class="xs mut mt8">line {{cr:dark.line/dark.panel}} : 1, the field disappears</p></div>
+        <div class="card th-dark" style="padding:18px;height:150px;background:rgb(var(--color-panel))"><span class="tag dont">Don't</span><div class="mt12" style="height:40px;border-radius:10px;background:rgb(var(--b-citron));color:rgb(var(--b-deep-ink));display:flex;align-items:center;padding:0 14px;font-size:15px">Search</div><p class="xs mut mt8">a full Citron slab glares on black</p></div>
+      </div>
+      <p class="sm mt24"><b>Checklist for every new page:</b> tokens only · open it in light, dark and system with the OS flipped · themed logo and artwork · no flash on reload · charts use <span class="code">--chart-*</span> · new motion checked in both themes and under reduced motion.</p>
+    </div>
+  </div>
+</section>

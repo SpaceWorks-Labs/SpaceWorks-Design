@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll reveal and pinned hero</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="scroll-reveal.css">
+<script src="scroll-reveal.js"></script>
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.sw-hub-seq{--sw-hub-header-h:0px;margin:0 -16px}.sw-hub-seq-scene{background:rgb(var(--color-bg))}.sw-hub-seq-copy{text-align:center;padding:0!important}.sw-hub-seq-copy h2{font-size:2rem}.sw-hub-seq-stage{display:grid;place-items:start center}.sw-hub-seq-frame{width:min(620px,86%);height:260px;border-radius:16px;border:1px solid rgb(var(--color-line));background:rgb(var(--color-panel));display:grid;place-items:center}.sw-hub-seq-reveal{text-align:center}.sw-hub-seq-reveal h2{font-size:2rem}.rv{min-height:120px;display:grid;place-items:center}.spacer{height:30vh}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Scroll reveal and pinned hero</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Scroll down: reveal blocks arrive once; the pinned hero below walks copy, console and overview in one sticky scene (768 px and wider). Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section id="rv"><h2>Reveal on scroll (data-reveal)</h2><div class="card rv" data-reveal>Block one</div><div class="card rv" data-reveal>Block two</div><div class="card rv" data-reveal>Block three</div></section>
+<div class="sw-hub-seq" id="seq"><div class="sw-hub-seq-scene" data-seq="scene"><div class="sw-hub-seq-backdrop" data-seq="backdrop"></div><div class="sw-hub-seq-copy" data-seq="copy"><h2>Know where every tool is.</h2><p>Scroll</p></div><div class="sw-hub-seq-stage" data-seq="stage"><div class="sw-hub-seq-frame" data-seq="frame"><div data-seq="figure"><div data-seq="content">The console</div></div></div></div><div class="sw-hub-seq-reveal" data-seq="reveal"><h2>The whole overview</h2><p>Settled in</p></div></div></div>
+<div class="spacer"></div>
+</main>
+<script>
+SwScroll.initReveal(document.getElementById("rv"));
+SwScroll.initSequence(document.getElementById("seq"));
+</script>
+</body>
+</html>

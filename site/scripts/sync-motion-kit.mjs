@@ -1,0 +1,44 @@
+// Motion kit -> site. One page per animation family under the Motion sidebar group, built from the repo's own files:
+//   motion/<family>/            -> public/kit/motion/<family>/   (demo.html, css, previews: the live demo is an iframe of demo.html)
+//   motion/<family>/README.md   -> src/content/docs/motion/<family>.mdx (previews + live demo + the README sections)
+//   motion/README.md            -> src/content/docs/motion/kit.md (the index of every animation)
+// (docs/decisions.md is published by sync-split.mjs as an index plus one page per range.)
+import { cpSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { MOTION_SCENES } from '../../scripts/motion-scenes.mjs';
+
+export const KIT_FAMILIES = [
+  ['route-transition', 'Route transition'], ['page-enter', 'Page enter'], ['scroll-reveal', 'Scroll reveal and pinned hero'],
+  ['overlays', 'Overlays'], ['toast', 'Toast'], ['sidebar', 'Sidebar and tab indicator'], ['collapse', 'Collapse and chevrons'],
+  ['skeleton', 'Skeleton and progress'], ['hover-press', 'Hover and press'], ['feedback', 'Feedback'], ['delight', 'Delight'],
+  ['kiosk-display', 'Kiosk and display'], ['search', 'Search field'],
+];
+
+export function syncMotionKit({ root, kit, docsDir, repo, prepare, splitTitle }) {
+  const base = '/SpaceWorks-Design-System/kit/motion';
+  const tree = `${repo}/tree/main/motion`;
+  KIT_FAMILIES.forEach(([slug, label], index) => {
+    const dir = join(root, 'motion', slug);
+    if (!existsSync(join(dir, 'README.md'))) return;
+    cpSync(dir, join(kit, 'motion', slug), { recursive: true });
+    const raw = readFileSync(join(dir, 'README.md'), 'utf8').replace(/^﻿/, '');
+    const { title, body } = splitTitle(raw, label);
+    const intro = body.split(/\r?\n\r?\n/)[0].replace(/\r?\n/g, ' ');
+    const rest = body.replace(/^[\s\S]*?(?=^## Files)/m, '');
+    const scenes = MOTION_SCENES.filter((s) => s.family === slug);
+    const previews = scenes
+      .map((s) => `<figure class="sw-kit-prev"><div class="sw-kit-prev__row"><img src="${base}/${slug}/previews/${s.name}-light.webp" alt="${s.name}, light theme" loading="lazy" /><img src="${base}/${slug}/previews/${s.name}-dark.webp" alt="${s.name}, dark theme" loading="lazy" /></div><figcaption>${s.name.replace(/-/g, ' ')}: light, dark</figcaption></figure>`)
+      .join('\n');
+    writeFileSync(
+      join(docsDir, 'motion', `${slug}.mdx`),
+      `---\ntitle: "${title.replace(/"/g, '\\"')}"\ndescription: "${intro.replace(/"/g, '\\"').replace(/‵/g, '').slice(0, 280)}"\nsidebar: { order: ${10 + index}, label: "${label}" }\neditUrl: ${repo}/edit/main/motion/${slug}/README.md\n---\n\n${prepare(intro, 'motion/' + slug)}\n\n<div class="not-content sw-kit-prevs">\n${previews}\n</div>\n\n## Live demo\n\nThe page below is the real [\`demo.html\`](${base}/${slug}/demo.html) from the kit. Use its "Toggle dark" button for the dark theme.\n\n<iframe title="${label} demo" src="${base}/${slug}/demo.html" class="not-content" style="width:100%;height:520px;border:1px solid var(--sl-color-gray-5);border-radius:12px" loading="lazy"></iframe>\n\n${prepare(rest, 'motion/' + slug)}\n## Source\n\nCopied from [\`motion/${slug}/\`](${tree}/${slug}) on every build: the stylesheet, \`demo.html\`, \`react/\` copies of the app files and the \`previews/\`.\n`,
+    );
+  });
+
+  const index = readFileSync(join(root, 'motion', 'README.md'), 'utf8').replace(/^﻿/, '');
+  const { title: it, body: ib } = splitTitle(index, 'Motion kit');
+  writeFileSync(
+    join(docsDir, 'motion', 'kit.md'),
+    `---\ntitle: "${it.replace(/"/g, '\\"')}"\ndescription: Every animation in Space Works, which folder holds its reusable copy, where the app uses it and why.\nsidebar: { order: 5, label: "Every animation" }\neditUrl: ${repo}/edit/main/motion/README.md\n---\n\n${prepare(ib, 'motion')}`,
+  );
+}

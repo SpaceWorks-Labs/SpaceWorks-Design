@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="toast.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.tstack{position:absolute;right:12px;bottom:12px;display:grid;gap:8px;width:min(22rem,calc(100% - 24px))}.t{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-outline));border-radius:14px;padding:14px;display:grid;gap:8px;font-size:.9rem}.t.err p{color:rgb(var(--color-danger))}.t p{color:rgb(var(--color-ink))}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Toast</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Add a toast; it leaves by itself after four seconds or with Dismiss. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><div class="row"><button class="btn" data-t="ok">Saved</button><button class="btn ghost" data-t="err">Error</button></div><div class="stage"><div class="tstack" id="ts" aria-live="polite"></div></div></section>
+</main>
+<script>
+var ts=document.getElementById("ts");
+function add(err){var n=document.createElement("div");n.className="t sw-fx-toast"+(err?" err":"");n.dataset.state="open";n.setAttribute("role",err?"alert":"status");
+ n.innerHTML="<p>"+(err?"Could not save. Try again.":"Saved the loan record.")+"</p><div><button class='btn ghost'>Dismiss</button></div>";
+ var gone=false;function bye(){if(gone)return;gone=true;n.setAttribute("inert","");n.dataset.state="closed";setTimeout(function(){n.remove()},200)}
+ n.querySelector("button").onclick=bye;setTimeout(bye,4000);ts.appendChild(n)}
+document.querySelectorAll("[data-t]").forEach(function(b){b.onclick=function(){add(b.dataset.t==="err")}});
+</script>
+</body>
+</html>

@@ -25,10 +25,10 @@ const themes = ['light', 'dark'] as const;
           <button type="button" class="sw-sample__btn sw-sample__btn--ghost" aria-busy="true"><BoxMark height={18} variant="mono" /> Loading</button>
         </div>
         <p class="sw-demo-cap">Logo: folds shut, then opens, on hover or keyboard focus (2200 ms)</p>
-        <a href="#logo" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
+        <span tabindex="0" role="img" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
           <BoxMark height={40} variant="once" />
           <Wordmark height="2rem" />
-        </a>
+        </span>
       </section>
     ))
   }

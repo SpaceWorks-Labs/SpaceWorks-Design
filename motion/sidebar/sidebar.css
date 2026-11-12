@@ -1,0 +1,11 @@
+/* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `styles/motion.css`.
+   Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
+/* Sliding indicator (sidebar item, tab underline): one absolutely placed box moved by
+   useSlideIndicator. While it is placed, the item's own highlight steps aside. */
+.sw-indicator {
+  position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: transform var(--sw-dur-base) var(--sw-ease-standard);
+}
+[data-slide] a[aria-current="page"].sw-slide-item { background-color: transparent; border-color: transparent; }
+[data-slide] .desk-tab-active { border-bottom-color: transparent; }
+.sw-tab-indicator { border-bottom: 2px solid rgb(var(--color-accent-ink)); }
