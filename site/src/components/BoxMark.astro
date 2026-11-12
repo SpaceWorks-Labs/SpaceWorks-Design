@@ -1,0 +1,11 @@
+---
+// The animated box from motion/box-open/, inlined so it can follow the page theme. `variant`: "loop" (the loader
+// cycle), "once" (one shot, replayed by JS), "mono" (loop in the text colour) or "still" (nothing plays).
+import markup from '../assets/kit/box-open-markup.html?raw';
+interface Props { height?: number; variant?: 'loop' | 'once' | 'mono' | 'still'; class?: string }
+const { height = 72, variant = 'loop', class: extra = '' } = Astro.props;
+const width = Math.round((height * 136) / 126);
+const cls = variant === 'loop' ? 'loop' : variant === 'mono' ? 'loop mono' : variant === 'once' ? 'sw-box-hover' : '';
+---
+
+<span class:list={['sw-box', cls, extra]} aria-hidden="true" style={`display:inline-block;width:${width}px;height:${height}px`} set:html={markup} />

@@ -36,86 +36,58 @@
   --sl-badge-danger-text: var(--sw-ink);
 }
 
-/* Dark surfaces and semantic colours. */
-:root,
-:root[data-theme='dark'] {
-  color-scheme: dark;
-  --sl-color-white: var(--sw-cream);
-  --sl-color-gray-1: #efe6db;
-  --sl-color-gray-2: #c9d2cb;
-  --sl-color-gray-3: #a9b9b1;
-  --sl-color-gray-4: #728b81;
-  --sl-color-gray-5: #3c5650;
-  --sl-color-gray-6: #203d37;
-  --sl-color-gray-7: #19332e;
-  --sl-color-black: var(--sw-ink);
-  --sl-color-accent-low: #0b3a35;
-  --sl-color-accent: #65d6c2;
-  --sl-color-accent-high: #a6e8dc;
-  --sl-color-text: var(--sw-cream);
-  --sl-color-text-accent: var(--sl-color-accent);
-  --sl-color-text-invert: var(--sw-cream);
-  --sl-color-bg: var(--sw-ink);
-  --sl-color-bg-nav: #0f2321;
-  --sl-color-bg-sidebar: var(--sl-color-bg-nav);
-  --sl-color-bg-inline-code: var(--sl-color-gray-6);
-  --sl-color-bg-accent: var(--sw-teal);
-  --sl-color-hairline: var(--sl-color-gray-5);
-  --sl-color-hairline-light: var(--sl-color-hairline);
-  --sl-color-hairline-shade: var(--sl-color-hairline);
-  --sl-color-blue: var(--sw-sky);
-  --sl-color-blue-low: #20364a;
-  --sl-color-blue-high: var(--sw-sky);
-  --sl-color-green: var(--sw-citron);
-  --sl-color-green-low: #2b3d29;
-  --sl-color-green-high: var(--sw-citron);
+/* Starlight theme, mapped from the real product tokens (tokens/tokens.css, synced into
+   styles/generated/). Nothing here is a hex value: `:root` carries the light (Warm Cream) tokens and
+   `:root.dark` the solid-black ones, and ThemeProvider mirrors data-theme onto the `dark` class. The
+   attribute selector out-ranks Starlight's own `:root[data-theme]` blocks. */
+:root[data-theme] {
+  --sl-color-white: rgb(var(--color-ink));
+  --sl-color-gray-1: rgb(var(--color-ink));
+  --sl-color-gray-2: color-mix(in srgb, rgb(var(--color-ink)) 78%, rgb(var(--color-muted)));
+  --sl-color-gray-3: rgb(var(--color-muted));
+  --sl-color-gray-4: rgb(var(--color-outline));
+  --sl-color-gray-5: rgb(var(--color-line));
+  --sl-color-gray-6: rgb(var(--color-hover));
+  --sl-color-gray-7: rgb(var(--color-surface));
+  --sl-color-black: rgb(var(--color-bg));
+  --sl-color-accent-low: rgb(var(--color-accent-soft));
+  --sl-color-accent: rgb(var(--color-accent));
+  --sl-color-accent-high: rgb(var(--color-accent-ink));
+  --sl-color-text: rgb(var(--color-ink));
+  --sl-color-text-accent: rgb(var(--color-accent-ink));
+  --sl-color-text-invert: rgb(var(--color-on-accent));
+  --sl-color-bg: rgb(var(--color-bg));
+  --sl-color-bg-nav: rgb(var(--color-surface));
+  --sl-color-bg-sidebar: rgb(var(--color-surface));
+  --sl-color-bg-inline-code: rgb(var(--color-hover));
+  --sl-color-bg-accent: rgb(var(--color-accent));
+  --sl-color-hairline: rgb(var(--color-line));
+  --sl-color-hairline-light: rgb(var(--color-line));
+  --sl-color-hairline-shade: rgb(var(--color-line));
+  --sl-color-blue: rgb(var(--color-info));
+  --sl-color-blue-low: rgb(var(--color-info-soft));
+  --sl-color-blue-high: rgb(var(--color-info-ink));
+  --sl-color-green: rgb(var(--color-success));
+  --sl-color-green-low: rgb(var(--color-success-soft));
+  --sl-color-green-high: rgb(var(--color-success-ink));
   --sl-color-purple: var(--sl-color-green);
   --sl-color-purple-low: var(--sl-color-green-low);
   --sl-color-purple-high: var(--sl-color-green-high);
-  --sl-color-orange: var(--sw-yellow);
-  --sl-color-orange-low: #403b24;
-  --sl-color-orange-high: var(--sw-yellow);
-  --sl-color-red: var(--sw-orange);
-  --sl-color-red-low: #432f29;
-  --sl-color-red-high: var(--sw-orange);
-  --sw-panel: #19332e;
-  --sw-hover: var(--sl-color-gray-6);
-  --sw-focus: var(--sl-color-accent);
-  --sw-search-bg: var(--sl-color-bg-nav);
-  --sw-search-text: var(--sw-cream);
+  --sl-color-orange: rgb(var(--color-warn));
+  --sl-color-orange-low: rgb(var(--color-warn-soft));
+  --sl-color-orange-high: rgb(var(--color-warn-ink));
+  --sl-color-red: rgb(var(--color-danger));
+  --sl-color-red-low: color-mix(in srgb, rgb(var(--color-danger)) 12%, rgb(var(--color-panel)));
+  --sl-color-red-high: rgb(var(--color-danger));
+  --sw-panel: rgb(var(--color-panel));
+  --sw-hover: rgb(var(--color-hover));
+  --sw-focus: rgb(var(--color-focus));
+  --sw-search-bg: rgb(var(--color-panel));
+  --sw-search-text: rgb(var(--color-ink));
 }
 
-/* Light is selected by ThemeProvider before the page paints. */
-:root[data-theme='light'] {
-  color-scheme: light;
-  --sl-color-white: var(--sw-ink);
-  --sl-color-gray-1: var(--sw-ink);
-  --sl-color-gray-2: #34433f;
-  --sl-color-gray-3: #5b6863;
-  --sl-color-gray-4: #728078;
-  --sl-color-gray-5: #d5d0c6;
-  --sl-color-gray-6: #efe6db;
-  --sl-color-gray-7: #faf0e4;
-  --sl-color-black: var(--sw-cream);
-  --sl-color-accent-low: #e0efea;
-  --sl-color-accent: var(--sw-teal);
-  --sl-color-accent-high: #0b3a35;
-  --sl-color-text: var(--sw-ink);
-  --sl-color-bg: var(--sw-cream);
-  --sl-color-bg-nav: #ffffff;
-  --sl-color-bg-sidebar: var(--sw-cream);
-  --sl-color-blue-low: var(--sw-sky);
-  --sl-color-blue-high: var(--sw-ink);
-  --sl-color-green-low: var(--sw-citron);
-  --sl-color-green-high: var(--sw-ink);
-  --sl-color-orange-low: var(--sw-yellow);
-  --sl-color-orange-high: var(--sw-ink);
-  --sl-color-red-low: var(--sw-orange);
-  --sl-color-red-high: var(--sw-ink);
-  --sw-panel: #ffffff;
-  --sw-search-bg: var(--sw-citron);
-  --sw-search-text: var(--sw-ink);
-}
+:root[data-theme='dark'] { color-scheme: dark; }
+:root[data-theme='light'] { color-scheme: light; }
 
 /* Type, reading panels and keyboard focus. */
 body {
@@ -184,6 +156,8 @@ site-search > button[data-open-modal] kbd {
 
 /* Tables and numbered instructions. */
 .sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
   max-width: 100%;
   font-size: 0.9375rem;
 }

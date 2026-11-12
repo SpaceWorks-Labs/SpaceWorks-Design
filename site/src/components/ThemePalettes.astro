@@ -1,0 +1,71 @@
+---
+// Light and dark side by side: every semantic token as a swatch with its hex, each panel drawn in its own scoped
+// theme from tokens/tokens.json. Followed by the chart and loader colour groups.
+import tokens from '../assets/kit/tokens.json';
+
+const sets = [
+  { key: 'light', label: 'Light: Warm Cream', values: tokens.light as Record<string, string> },
+  { key: 'dark', label: 'Dark: solid black', values: tokens.dark as Record<string, string> },
+] as const;
+
+const surfaces = ['bg', 'surface', 'panel', 'hover', 'line', 'outline', 'ink', 'muted', 'focus'];
+const family = (name: string) => {
+  const base = name.replace(/^on-/, '').split('-')[0];
+  return surfaces.includes(base) ? 'Surfaces and text' : base[0].toUpperCase() + base.slice(1);
+};
+const names = Object.keys(tokens.light);
+const groups = new Map<string, string[]>();
+for (const n of names) groups.set(family(n), [...(groups.get(family(n)) ?? []), n]);
+const shown = [...groups];
+
+const chart = tokens.chart as Record<string, any>;
+const loader = tokens.loader as Record<string, any>;
+---
+
+<div class="sw-palettes not-content">
+  {
+    sets.map((set) => (
+      <section class:list={['sw-scope', 'sw-palette', { dark: set.key === 'dark' }]} aria-label={set.label}>
+        <h3 class="sw-palette__title">{set.label}</h3>
+        {shown.map(([group, list]) => (
+          <div class="sw-palette__group">
+            <h4>{group}</h4>
+            <ul>
+              {list.map((n) => (
+                <li>
+                  <span class="sw-chip" style={`background:${set.values[n]}`} aria-hidden="true" />
+                  <code>{n}</code>
+                  <code class="sw-palette__hex">{set.values[n]}</code>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <div class="sw-palette__group">
+          <h4>Chart series</h4>
+          <ul>
+            {chart.order.map((n: string) => (
+              <li>
+                <span class="sw-chip" style={`background:${chart[set.key][n]}`} aria-hidden="true" />
+                <code>chart-{n}</code>
+                <code class="sw-palette__hex">{chart[set.key][n]}</code>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="sw-palette__group">
+          <h4>Box-open loader</h4>
+          <ul>
+            {Object.entries(loader[set.key]).map(([n, hex]) => (
+              <li>
+                <span class="sw-chip" style={`background:${hex}`} aria-hidden="true" />
+                <code>loader-{n}</code>
+                <code class="sw-palette__hex">{hex as string}</code>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+</div>

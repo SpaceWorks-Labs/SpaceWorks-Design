@@ -1,10 +1,13 @@
 import {
-  FLAP_KEYS, arcOpacity, capOpacity, flapFace, flapTransform, loopAngle, openAngle, wallOpacity, type FlapKey,
+  FLAP_KEYS, arcOpacity, capOpacity, flapFace, flapTransform, hoverAngle, loopAngle, openAngle, wallOpacity, type FlapKey,
 } from "./geometry";
 
 /** Duration of the one-shot opening (ms) and of one loader cycle (ms). */
 export const OPEN_MS = 1600;
 export const LOOP_MS = 4400;
+/** Hover/focus cycle: fold shut (FOLD_MS) then the one-shot opening (OPEN_MS); starts and ends on the resting logo. */
+export const FOLD_MS = 600;
+export const HOVER_MS = FOLD_MS + OPEN_MS;
 /**
  * Flap keyframes are dense (one per frame at 60 fps for the opening) and played with steps(1,end): browsers
  * interpolate two matrix() values by decomposing them, which drifts the hinge and glitches near edge-on, so
@@ -31,20 +34,21 @@ function flapKeyframes(name: string, key: FlapKey, angle: AngleFn, n: number): s
 }
 
 // Every sample is emitted: opacity keyframes interpolate linearly, so dropping unchanged samples would smear a ramp across the gap.
-function curveKeyframes(name: string, value: (t: number) => number): string {
+function curveKeyframes(name: string, value: (t: number) => number, n = SAMPLES): string {
   const rows: string[] = [];
-  for (let i = 0; i <= SAMPLES; i++) rows.push(`${pct(i)}{opacity:${value(i / SAMPLES)}}`);
+  for (let i = 0; i <= n; i++) rows.push(`${pct(i, n)}{opacity:${value(i / n)}}`);
   return `@keyframes ${name}{${rows.join("")}}`;
 }
 
 const meanCap = (angle: AngleFn) => (t: number) => capOpacity((["tl", "br"] as const).map(key => angle(key, t)));
 const meanWall = (angle: AngleFn) => (t: number) => wallOpacity(FLAP_KEYS.map(key => angle(key, t)));
-function arcCurve(key: FlapKey) {
+function arcCurve(key: FlapKey, angle: AngleFn = openAngle, from = 0) {
   const dt = 1 / 400;
-  const speed = (t: number) => Math.abs(openAngle(key, t + dt) - openAngle(key, t)) / dt;
+  const speed = (t: number) => Math.abs(angle(key, t + dt) - angle(key, t)) / dt;
   let peak = 0;
-  for (let i = 0; i < 400; i++) peak = Math.max(peak, speed(i / 400));
-  return (t: number) => (t > 0.97 ? 0 : arcOpacity(speed(t), peak));
+  for (let i = Math.floor(from * 400); i < 400; i++) peak = Math.max(peak, speed(i / 400));
+  // `from`: arcs only show while opening, so the fold that precedes the opening stays dark.
+  return (t: number) => (t > 0.97 || t < from ? 0 : arcOpacity(speed(t), peak));
 }
 
 const BASE = `.sw-box{position:relative;--sw-under:#354845;--sw-spark:#142C2A;--sw-seam:#142C2A}
@@ -79,9 +83,31 @@ function loop(): string {
   return run + FLAP_KEYS.map(key => flapKeyframes("sw-boxl", key, loopAngle, LOOP_SAMPLES)).join("") + curveKeyframes("sw-boxl-w", meanWall(loopAngle)) + curveKeyframes("sw-boxl-p", meanCap(loopAngle));
 }
 
+/**
+ * Hover/focus cycle (`.sw-box.hov`): fold shut, then open, no hold. Same generators as the loader and the
+ * opening; the sparks reuse the opening's timing remapped onto the opening part of the cycle.
+ */
+function hover(): string {
+  const fold = FOLD_MS / HOVER_MS;
+  const angle: AngleFn = (key, t) => hoverAngle(key, t, fold);
+  const at = (p: number) => `${Math.round((fold + (1 - fold) * p) * 10000) / 100}%`;
+  const N = 132;
+  const run = FLAP_KEYS.map(key => `.sw-box.hov .f-${key}{animation:sw-boxh-${key} ${HOVER_MS}ms steps(1,end) both}`
+    + `.sw-box.hov .a-${key}{animation:sw-boxh-a-${key} ${HOVER_MS}ms linear both}`).join("")
+    + `.sw-box.hov .w{animation:sw-boxh-w ${HOVER_MS}ms linear both}.sw-box.hov .p{animation:sw-boxh-p ${HOVER_MS}ms linear both}`
+    + `.sw-box.hov .k{animation:sw-boxh-spark ${HOVER_MS}ms ease-out both}.sw-box.hov .r{animation:sw-boxh-tick ${HOVER_MS}ms linear both}`;
+  const sparks = `@keyframes sw-boxh-spark{0%,${at(0.66)}{opacity:0;transform:scale(.3)}${at(0.77)}{opacity:1;transform:scale(1.15)}${at(0.85)}{transform:scale(1)}${at(0.91)}{opacity:1}100%{opacity:0;transform:scale(1)}}`
+    + `@keyframes sw-boxh-tick{0%,${at(0.64)}{opacity:0}${at(0.74)},${at(0.88)}{opacity:1}100%{opacity:0}}`;
+  const frames = FLAP_KEYS.map(key => flapKeyframes("sw-boxh", key, angle, N)
+    + curveKeyframes(`sw-boxh-a-${key}`, arcCurve(key, angle, fold), N)).join("")
+    + curveKeyframes("sw-boxh-w", meanWall(angle), N) + curveKeyframes("sw-boxh-p", meanCap(angle), N);
+  return run + sparks + frames;
+}
+
 /** All box CSS. `mode` limits it to what a host needs (index.html only plays the one-shot). */
 export function boxOpenCss(mode: "once" | "all" = "all"): string {
-  return [BASE, once(), mode === "all" ? loop() : ""].join("\n");
+  return [BASE, once(), mode === "all" ? `${loop()}
+${hover()}` : ""].join("\n");
 }
 
 /**

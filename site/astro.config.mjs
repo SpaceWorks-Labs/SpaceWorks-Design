@@ -3,13 +3,15 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import { satteri } from '@astrojs/markdown-satteri';
+import { readFileSync } from 'node:fs';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
 
-// GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design/. Set
+// GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design-System/. Set
 // DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
 const site = process.env.DESIGN_SITE_URL || 'https://spaceworks-labs.github.io';
-const base = '/SpaceWorks-Design';
-const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design';
+const base = '/SpaceWorks-Design-System';
+const tokens = JSON.parse(readFileSync(new URL('../tokens/tokens.json', import.meta.url), 'utf8'));
+const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System';
 
 export default defineConfig({
   site,
@@ -32,17 +34,26 @@ export default defineConfig({
       social: [{ icon: 'github', label: 'GitHub', href: repo }],
       editLink: { baseUrl: `${repo}/edit/main/site/` },
       lastUpdated: true,
-      customCss: ['./src/styles/fonts.css', './src/styles/custom.css', './src/styles/kit.css'],
+      customCss: [
+        './src/styles/fonts.css',
+        './src/styles/generated/tokens.css',
+        './src/styles/generated/tokens-scope.css',
+        './src/styles/generated/box-open.css',
+        './src/styles/generated/theme-reveal.css',
+        './src/styles/custom.css',
+        './src/styles/kit.css',
+      ],
       components: {
         ThemeProvider: './src/components/ThemeProvider.astro',
         ThemeSelect: './src/components/ThemeSelect.astro',
+        SiteTitle: './src/components/SiteTitle.astro',
       },
       expressiveCode: {
         themes: ['github-light', 'github-dark'],
         styleOverrides: {
           borderRadius: '10px',
           borderColor: 'var(--sl-color-hairline)',
-          codeBackground: 'var(--sw-panel)',
+          codeBackground: ({ theme }) => (theme.type === 'dark' ? tokens.dark.panel : tokens.light.panel),
           frames: { shadowColor: 'transparent' },
         },
       },
@@ -61,6 +72,10 @@ export default defineConfig({
             'brand/guidelines',
           ],
         },
+        { label: 'New', items: ['whats-new'] },
+        { label: 'Rules', items: ['rules'] },
+        { label: 'Motion', items: ['motion/principles', 'motion/box-open', 'motion/theme-reveal', 'motion/tokens'] },
+        { label: 'Guides', items: ['theming', 'lessons-learned'] },
         { label: 'Tokens', items: ['tokens/using-the-kit', 'tokens/reference'] },
         { label: 'UX', items: ['ux/introduction', 'ux/patterns', 'ux/gallery', 'ux/inspiration'] },
         { label: 'Specs', items: [{ autogenerate: { directory: 'specs' } }] },

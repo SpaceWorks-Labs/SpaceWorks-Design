@@ -1,0 +1,13 @@
+---
+title: Motion tokens
+description: Durations, easings and distances for every Space Works animation, with live previews.
+sidebar: { order: 4 }
+---
+
+import MotionTokens from '../../../components/MotionTokens.astro';
+
+The values below come straight from [`tokens/tokens.json`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/blob/main/tokens/tokens.json)
+and ship as CSS variables in `tokens/tokens.css`. Always animate with the token, never a literal number, so kiosk and TV
+screens and reduced motion can zero the distances and keep only the fade.
+
+<MotionTokens />

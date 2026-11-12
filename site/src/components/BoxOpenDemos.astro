@@ -1,0 +1,47 @@
+---
+// Live box-open loader demos: page loader, inline sizes, mono in a button, hover-to-open logo, light and dark
+// side by side (each in its own scoped theme), with the one-shot replayable.
+import BoxMark from './BoxMark.astro';
+import Wordmark from './Wordmark.astro';
+const themes = ['light', 'dark'] as const;
+---
+
+<div class="sw-demo-pair not-content">
+  {
+    themes.map((t) => (
+      <section class:list={['sw-scope', 'sw-sample', { dark: t === 'dark' }]} aria-label={`${t} theme demos`}>
+        <h4 class="sw-demo-title">{t === 'light' ? 'Light' : 'Dark'}</h4>
+        <p class="sw-demo-cap">Page loader, 72px</p>
+        <div role="status" aria-label="Loading"><BoxMark height={72} variant="loop" /></div>
+        <p class="sw-demo-cap">Inline, 16 / 20 / 24px</p>
+        <div class="sw-sample__row">
+          <BoxMark height={16} variant="loop" />
+          <BoxMark height={20} variant="loop" />
+          <BoxMark height={24} variant="loop" />
+        </div>
+        <p class="sw-demo-cap">Mono, in a button (takes the text colour)</p>
+        <div class="sw-sample__row">
+          <button type="button" class="sw-sample__btn" aria-busy="true"><BoxMark height={18} variant="mono" /> Saving</button>
+          <button type="button" class="sw-sample__btn sw-sample__btn--ghost" aria-busy="true"><BoxMark height={18} variant="mono" /> Loading</button>
+        </div>
+        <p class="sw-demo-cap">Logo: folds shut, then opens, on hover or keyboard focus (2200 ms)</p>
+        <a href="#logo" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
+          <BoxMark height={40} variant="once" />
+          <Wordmark height="2rem" />
+        </a>
+      </section>
+    ))
+  }
+</div>
+<p class="sw-demo-cap">
+  Under <code>prefers-reduced-motion: reduce</code> every demo above shows the still, open logo. Touch devices never start the
+  hover cycle.
+</p>
+
+<script>
+  import { bindLogoHover } from './logoHover';
+  document.querySelectorAll<HTMLElement>('[data-replay]').forEach((link) => {
+    const mark = link.querySelector<HTMLElement>('.sw-box');
+    if (mark) bindLogoHover(link, mark);
+  });
+</script>

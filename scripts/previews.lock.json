@@ -1,0 +1,11 @@
+{
+  "note": "Written by scripts/make-previews.mjs; verified by scripts/check-previews.mjs",
+  "sources": {
+    "tokens/tokens.json": "3a98fd9ee98d05127339788934bd31477b7efb52669492b0ee9503ac042205a3",
+    "motion/box-open/box-open.css": "cea624aa3fbffd7af102decd4ee14da766edb135b965d0c0921631360c8eb655",
+    "motion/box-open/box-open-markup.html": "f3d825d7fb8ccd1b6fb8f9103f9a92fd7a4d2a1e64e38a8e9a339cdb8d6b73dd",
+    "motion/theme-reveal/theme-reveal.css": "37e54eb99e07e78b89bd7d7a67d058667764d0ea7b5b7a33d3854e49918c04b3",
+    "motion/theme-reveal/theme-reveal.js": "003b31cb641ae34f77344b30698d225be56f1f1c7c3505b87c77aa23348863d7",
+    "motion/theme-reveal/demo.html": "f175151686492f510d86f2dc9ad303aa3e63f55108042c42ec04dc1f3705a43d"
+  }
+}
