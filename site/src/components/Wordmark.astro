@@ -1,0 +1,9 @@
+---
+// The "Space Works" wordmark: the last path of the horizontal lockup master, filled with the text colour.
+import lockup from '../assets/kit/lockup-horizontal.svg?raw';
+interface Props { height?: string; class?: string }
+const { height = '1.9rem', class: extra = '' } = Astro.props;
+const d = [...lockup.matchAll(/<path d="([^"]+)"/g)].pop()![1];
+---
+
+<svg class={extra} viewBox="76 0 284 58" role="img" aria-label="Space Works" fill="currentColor" style={`height:${height};width:auto`}><path d={d}></path></svg>

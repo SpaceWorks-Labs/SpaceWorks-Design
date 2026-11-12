@@ -8,7 +8,7 @@
   "scripts": {
     "sync": "node scripts/sync-kit.mjs",
     "dev": "npm run sync && astro dev",
-    "build": "npm run sync && astro build",
+    "build": "npm run sync && node scripts/check-tokens.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

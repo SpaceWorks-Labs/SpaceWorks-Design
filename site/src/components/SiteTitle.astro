@@ -1,0 +1,31 @@
+---
+// Header logo: the Space Works box plus wordmark. The box plays the one-shot opening on hover and keyboard focus
+// (never on touch; reduced motion keeps it still). The wordmark is the last path of the lockup master.
+import BoxMark from './BoxMark.astro';
+import Wordmark from './Wordmark.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<a href={base} class="sw-site-title" aria-label="Space Works Design, home">
+  <BoxMark height={30} variant="once" />
+  <Wordmark />
+</a>
+
+<script>
+  import { bindLogoHover } from './logoHover';
+  document.querySelectorAll<HTMLElement>('.sw-site-title').forEach((link) => {
+    const mark = link.querySelector<HTMLElement>('.sw-box');
+    if (mark) bindLogoHover(link, mark);
+  });
+</script>
+
+<style>
+  .sw-site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    color: var(--sl-color-white);
+    text-decoration: none;
+  }
+</style>

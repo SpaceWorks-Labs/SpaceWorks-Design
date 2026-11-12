@@ -1,0 +1,41 @@
+{
+ "deepInk": {
+  "bg": "#142C2A",
+  "surface": "#193935",
+  "panel": "#1F433F",
+  "hover": "#254D48",
+  "line": "#4D6D67",
+  "outline": "#93A198",
+  "ink": "#FFF4E8",
+  "muted": "#C7C4BA",
+  "focus": "#DFFF8F",
+  "accent-soft": "#1A4A45",
+  "accent-ink": "#ABC8BC",
+  "emphasis-soft": "#2F4640",
+  "success-soft": "#2C5045",
+  "warn-soft": "#2F4D40",
+  "info-soft": "#2A4D4C",
+  "sidebar": "#113532",
+  "sidebar-hover": "#254D48"
+ },
+ "greenTinted": {
+  "bg": "#000000",
+  "surface": "#0A1513",
+  "panel": "#12201E",
+  "hover": "#1C312D",
+  "line": "#2E4B45",
+  "outline": "#809B92",
+  "ink": "#FFF4E8",
+  "muted": "#B3B4AA",
+  "focus": "#DFFF8F",
+  "accent-soft": "#0F2C29",
+  "accent-ink": "#80B1A6",
+  "emphasis-soft": "#232621",
+  "success-soft": "#203026",
+  "warn-soft": "#232D21",
+  "info-soft": "#1D2C2E",
+  "sidebar": "#142C2A",
+  "sidebar-hover": "#20403C"
+ },
+ "_note": "Superseded dark palettes, copied once from git history (5cf062e Deep Ink dark; 7dca9a4 black page with green-tinted layers) so the before/after table needs no git at build time."
+}

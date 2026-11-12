@@ -5,11 +5,13 @@ description: The seven Space Works colours, how to balance them, and the text pa
 
 import ColorGrid from '../../../components/ColorGrid.astro';
 import Pairings from '../../../components/Pairings.astro';
+import ThemeDemo from '../../../components/ThemeDemo.astro';
+import ThemePalettes from '../../../components/ThemePalettes.astro';
 
 ## Seven colours. One clear system.
 
 Exact sRGB values: three core colours, three accents and a warm canvas. These come straight from
-[`tokens/tokens.json`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design/blob/main/tokens/tokens.json).
+[`tokens/tokens.json`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/blob/main/tokens/tokens.json).
 
 <ColorGrid />
 
@@ -41,6 +43,16 @@ Use only tested text pairings, and add a word or an icon to every status.
 - Normal text needs **≥ 4.5:1**; large text needs **≥ 3:1**. Large means 24 px regular or 18.7 px bold.
 - **Avoid orange text on cream.** It only reaches 2.47:1.
 - Ratios follow WCAG 2.2 *Contrast (Minimum)* and *Use of Color*.
+
+## Light and dark, side by side
+
+Dark is one solid black neutral family (`#000000` page, `#0B0B0B`, `#141414` and `#1C1C1C` layers) with no green tint;
+teal, Citron and orange are accents only. Light is Warm Cream with white cards. Switch the live preview to see the
+same UI in each theme, then read every token below.
+
+<ThemeDemo />
+
+<ThemePalettes />
 
 The full light and dark palettes the app uses, with every ratio computed, are in the
 [token reference](/tokens/reference/) and the [UI brand spec](/specs/ui-brand-spec/).
