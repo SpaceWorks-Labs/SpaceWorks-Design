@@ -2,8 +2,8 @@
   "note": "Written by scripts/make-previews.mjs; verified by scripts/check-previews.mjs",
   "sources": {
     "tokens/tokens.json": "9979fa53c3dbeaa186e931bc1d549f306136dfdbf3a36df8e4cbb1efda4ac492",
-    "motion/box-open/box-open.css": "1c746ec8c1892f2b7748b1de8e4dd4d8fc2f69c11c95b82751b68b71537d2a57",
-    "motion/box-open/box-open-markup.html": "0e85ea78c2ecb5b9433a83b391c738359322525ba209cfa1b4eeb8dc27ee7b32",
+    "motion/box-open/box-open.css": "1b676290716bddefea71895165165428e2612d7c698f8d2af992166438d3a837",
+    "motion/box-open/box-open-markup.html": "812a82c1700fdbc83618af6efa129ac2e805148bed877f588561c550276aaf7d",
     "motion/theme-reveal/theme-reveal.css": "37e54eb99e07e78b89bd7d7a67d058667764d0ea7b5b7a33d3854e49918c04b3",
     "motion/theme-reveal/theme-reveal.js": "003b31cb641ae34f77344b30698d225be56f1f1c7c3505b87c77aa23348863d7",
     "motion/theme-reveal/demo.html": "f175151686492f510d86f2dc9ad303aa3e63f55108042c42ec04dc1f3705a43d",
@@ -20,6 +20,7 @@
     "motion/feedback/feedback.css": "194f2e45719fe44c342385690412fb3c332ca38e8a559edf1953c0bd1f9a3e2d",
     "motion/delight/delight.css": "a3830f2f6b7f00d94dd646c804a16731b8155efb55a94a4900df6be7368dad72",
     "motion/kiosk-display/kiosk-display.css": "bbb66e03ebf773c7fb05ee0420fe2a250ccced0f95a0793ca32d118d72308bc3",
+    "motion/search/search.css": "74b622f422ef2e2b35bb0f420db308f5572241df209b93c71270861d3982da05",
     "motion/route-transition/demo.html": "0b5eb1420c971a54d4c12cc92a63222f5696ff28880bbdc3a2552b47962475d3",
     "motion/page-enter/demo.html": "8dd23a89d829ecc1c395002d86a0ba6cb176eec8b6e7e60c0302a5572a00204f",
     "motion/overlays/demo.html": "20a54f8e798c4d81ee7efce4e7f1b928d7f2e2b7d4aabdd0d0b05da2d6a5eaba",
@@ -32,7 +33,6 @@
     "motion/feedback/demo.html": "ed7457f58befef751d28f0a1e53907e451b8541c79f654520165fa8b3e73f8ea",
     "motion/delight/demo.html": "83469c8a60805f14b1e5f3338aa9ade018854ba3cfa9fb82ff3a9c4b701932b2",
     "motion/kiosk-display/demo.html": "b03ffcaa0b0fa13e09d1c9aa1a3520a195a4c7ac68e1b001fe62b7d3921e03da",
-    "motion/search/search.css": "74b622f422ef2e2b35bb0f420db308f5572241df209b93c71270861d3982da05",
     "motion/search/demo.html": "9daa01c5865dd4923d84af460be4bf6b281e7ec61b652a70b5b27abaf078f81e"
   }
 }

@@ -506,3 +506,14 @@ Things this table shows at a glance:
 3. Controls need an `outline` edge; `line` is decoration on black (lesson 3).
 4. Tenant colours must be derived and proven in both themes, and fixed rather than rejected (lessons 14, 15).
 5. One generated token source, plus tests that read it, stops every consumer drifting (lessons 35, 36).
+
+
+**40. Test every flap's identity, not just the number of colours.**
+- *Problem.* The earlier closed-lid fix hid two flaps and recoloured reverse faces. A total colour count alone
+  could pass while the orange flap changed to green, or the dark mark became entirely cream.
+- *Rule.* Follow the same named flap through every frame. The closed lid must expose four substantial regions
+  in the logo's arrangement: two orange and two green in both themes. Check region positions as well as counts;
+  mono and forced-colours variants still need four separate regions. Retain the no-hole and depth-order checks.
+- *Enforced.* App `boxOpen.frames.test.ts` and design `scripts/check-box-frames.mjs`; generate CSS, markup,
+  the inline splash and the design copies together. This corrects lesson 39's one-orange-face shut-state rule.
+- *Source.* SW-389, superseding that part of SW-381.

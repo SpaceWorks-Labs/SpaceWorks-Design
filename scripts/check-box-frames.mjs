@@ -9,15 +9,15 @@
 //   rest    the resting frames (hover start and end, opening end, loader hold, no mode) are pixel-identical to the
 //           static masters (symbol, symbol-reversed) at 48 px, 1x and 3x;
 //   shut    the shut frames of all three cycles match a reference shut box drawn from the same geometry
-//           (react/boxOpen/geometry.ts) and, in light, show exactly one orange face;
+//           (react/boxOpen/geometry.ts) and show four regions, two orange and two green;
 //   frames  every frame at 60 fps of hov, loop and once, drawn on a magenta page: no transparent hole inside the
 //           cube's silhouette (thin cut lines aside; the open box's interior is allowed while it is open), and at
-//           most two orange faces in light, exactly one while shut.
+//           most two orange faces, exactly two orange and two green while shut (mono keeps four regions).
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -34,6 +34,10 @@ const DUR = { hov: ms('hov'), loop: ms('loop'), once: ms('once') };
 const FOLD = 600 / DUR.hov; // FOLD_MS / HOVER_MS in react/boxOpen/css.ts
 const ANGLE = { once: G.openAngle, loop: G.loopAngle, hov: (key, t) => G.hoverAngle(key, t, FOLD) };
 const OUTLINE = Number(/--sw-ramp-w:([\d.]+)px/.exec(CSS)?.[1] ?? 0);
+const PALETTE = ['#006E63', '#FF7447', '#FF7447', '#006E63'];
+// SW-389: product marks keep the reversed master's geometry and cream body, with full-colour flaps.
+const masterFor = (theme) => logoMasters[theme === 'light' ? 'symbol' : 'symbol-reversed'].paths.map((p, i, all) =>
+  i < all.length - 4 ? p : { ...p, fill: PALETTE[i - all.length + 4] });
 const GROUND = { light: '#FFF4E8', dark: '#000000' };
 const MAGENTA = '#FF00FF';
 
@@ -43,34 +47,43 @@ async function withBrowser(fn) {
   const port = 9300 + Math.floor(Math.random() * 500);
   const dir = mkdtempSync(join(tmpdir(), 'sw-box-frames-'));
   const proc = spawn(edge, ['--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${dir}`,
-    '--disable-extensions', '--hide-scrollbars', 'about:blank'], { stdio: 'ignore' });
+    '--disable-extensions', '--hide-scrollbars', 'about:blank'], { stdio: 'ignore', windowsHide: true });
+  let launchError; proc.on('error', error => { launchError = error; });
+  let ws;
   try {
     let list;
     for (let i = 0; i < 60 && !list; i++) {
+      if (launchError) throw launchError;
       try { list = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); } catch { await new Promise((r) => setTimeout(r, 250)); }
     }
-    const ws = new WebSocket(list.find((t) => t.type === 'page').webSocketDebuggerUrl);
+    if (!list) throw new Error('Edge did not expose CDP within 15 seconds (sandbox launch unavailable).');
+    ws = new WebSocket(list.find((t) => t.type === 'page').webSocketDebuggerUrl);
     await new Promise((r) => (ws.onopen = r));
     let id = 0; const pending = new Map();
     ws.onmessage = (m) => { const d = JSON.parse(m.data); if (d.id && pending.has(d.id)) { pending.get(d.id)(d); pending.delete(d.id); } };
     const send = (method, params = {}) => new Promise((res, rej) => {
-      const n = ++id; pending.set(n, (d) => (d.error ? rej(new Error(JSON.stringify(d.error))) : res(d.result)));
+      const n = ++id;
+      const timer = setTimeout(() => { pending.delete(n); rej(new Error(`Edge stopped responding to ${method} (sandbox CDP unavailable).`)); }, 10000);
+      pending.set(n, (d) => { clearTimeout(timer); d.error ? rej(new Error(JSON.stringify(d.error))) : res(d.result); });
       ws.send(JSON.stringify({ id: n, method, params }));
     });
     await send('Page.enable');
     return await fn(send);
-  } finally { proc.kill(); await new Promise((r) => setTimeout(r, 800)); try { rmSync(dir, { recursive: true, force: true }); } catch {} }
+  } finally { ws?.close(); proc.kill(); await new Promise((r) => setTimeout(r, 800)); const target = resolve(dir);
+    if (dirname(target) !== resolve(tmpdir()) || !basename(target).startsWith('sw-box-frames-')) throw new Error('Refusing unexpected browser profile cleanup path.');
+    try { rmSync(target, { recursive: true, force: true }); } catch {} }
 }
 
 /** One page per scene: `body` at (PAD, PAD), size w x h, captured as raw RGBA. */
 function stage(send) {
   let frameId;
   return {
-    async open(theme, bg, w, h, scale, body) {
+    async open(theme, bg, w, h, scale, body, forced = false) {
+      await send('Emulation.setEmulatedMedia', { features: [{ name: 'forced-colors', value: forced ? 'active' : 'none' }, { name: 'prefers-color-scheme', value: theme }] });
       await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: scale, mobile: false });
       frameId ??= (await send('Page.getFrameTree')).frameTree.frame.id;
       await send('Page.setDocumentContent', { frameId, html: `<!doctype html><html class="${theme === 'dark' ? 'dark' : ''}"><head><meta charset="utf-8"><style>${CSS}
-        body{margin:0;background:${bg};width:${w}px;height:${h}px;overflow:hidden;position:relative}</style><style id="t"></style></head><body>${body}</body></html>` });
+        body{forced-color-adjust:none;margin:0;background:${bg};width:${w}px;height:${h}px;overflow:hidden;position:relative}.sw-box{forced-color-adjust:auto}</style><style id="t"></style></head><body>${body}</body></html>` });
     },
     async at(time) {
       await send('Runtime.evaluate', { expression: `document.getElementById('t').textContent='.sw-box *,.sw-box{animation-play-state:paused!important;animation-delay:-${time}ms!important}';document.body.offsetHeight;new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))`, awaitPromise: true });
@@ -83,8 +96,8 @@ function stage(send) {
   };
 }
 const box = (cls, x, y, w, h, ground) => `<div class="sw-box ${cls}" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px${ground ? `;--sw-ground:${ground}` : ''}">${MARK}</div>`;
-const svgAt = (x, y, w, h, inner) => `<svg viewBox="0 0 136 126" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px;overflow:visible">${inner}</svg>`;
-const paths = (list, attrs = (p) => `fill="${p.fill}"`) => list.map((p) => `<path ${attrs(p)} d="${p.d}"/>`).join('');
+const svgAt = (x, y, w, h, inner) => `<svg viewBox="0 0 136 126" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px;overflow:visible;forced-color-adjust:auto">${inner}</svg>`;
+const paths = (list, attrs = (p) => `fill="${p.fill}"`) => list.map((p, i) => `<path ${attrs(p, i)} d="${p.d}"/>`).join('');
 const diff = (a, b) => { let n = 0; for (let i = 0; i < a.data.length; i += 4) if (a.data[i] !== b.data[i] || a.data[i + 1] !== b.data[i + 1] || a.data[i + 2] !== b.data[i + 2]) n++; return n; };
 
 /**
@@ -92,10 +105,10 @@ const diff = (a, b) => { let n = 0; for (let i = 0; i < a.data.length; i += 4) i
  * animated parts carry will-change so they take the same compositing path as in the running cycle (see rest).
  */
 function shutReference(theme) {
-  const lt = theme === 'light', master = logoMasters[lt ? 'symbol' : 'symbol-reversed'].paths, flaps = master.slice(-4);
+  const lt = theme === 'light', master = masterFor(theme), flaps = master.slice(-4);
   const fillOf = (key) => flaps[G.FLAP_KEYS.indexOf(key)].fill;
-  const outer = (key) => (!lt || key === 'tr' ? fillOf(key) : fillOf('tl'));
-  const cap = lt ? '' : `<g style="will-change:opacity">${paths(logoMasters.symbol.paths.slice(0, 2), () => `fill="${flaps[0].fill}"`)}</g>`;
+  const outer = fillOf;
+  const cap = lt ? '' : `<g style="will-change:opacity">${paths(logoMasters.symbol.paths.slice(0, 2), () => 'fill="#FFF4E8"')}</g>`;
   const lid = G.FLAP_SLOTS.filter((s) => s.layer === undefined || s.layer === G.flapLayer(180)).map(({ key }) =>
     `<path fill="${outer(key)}" stroke="${GROUND[theme]}" stroke-width="${OUTLINE}" stroke-linejoin="round" paint-order="stroke" style="will-change:transform" transform="${G.flapTransform(key, 180)}" d="${flaps[G.FLAP_KEYS.indexOf(key)].d}"/>`).join('');
   return paths(master.slice(0, -4)) + cap + lid;
@@ -109,7 +122,7 @@ await withBrowser(async (send) => {
   /* rest: pixel-identical to the static masters */
   for (const scale of [1, 3]) for (const theme of ['light', 'dark']) {
     const H = 48, W = H * 136 / 126, PAD = 12, VW = Math.ceil(W + 2 * PAD), VH = H + 2 * PAD;
-    const master = logoMasters[theme === 'light' ? 'symbol' : 'symbol-reversed'].paths;
+    const master = masterFor(theme);
     await s.open(theme, GROUND[theme], VW, VH, scale, svgAt(PAD, PAD, W, H, paths(master)));
     const ref = await s.shot(VW, VH, scale);
     // While a transform animation is in effect, Edge rasterises the flaps on its compositing path, which anti-aliases
@@ -128,7 +141,7 @@ await withBrowser(async (send) => {
       if (n) fail(`rest ${theme} ${scale}x: ${mode || 'no mode'} at ${time} ms differs from the static master in ${n} px`);
     }
   }
-  /* shut: matches the reference drawn from the geometry; one orange face in light */
+  /* shut: matches the geometry reference; independent region/position checks follow for every variant. */
   const H = 200, W = Math.round(H * 136 / 126), PAD = 30, VW = W + 2 * PAD, VH = H + 2 * PAD, SC = H / 126;
   for (const theme of ['light', 'dark']) {
     await s.open(theme, GROUND[theme], VW, VH, 1, svgAt(PAD, PAD, W, H, shutReference(theme)));
@@ -156,11 +169,12 @@ await withBrowser(async (send) => {
   const strip = [];
   // [theme, mode, extra class, ground, artwork shown]: both themes, the forced grounds, and the one-colour layer.
   const runs = [...['light', 'dark'].flatMap((theme) => ['hov', 'loop', 'once'].map((mode) => [theme, mode, '', GROUND[theme], theme])),
-    ['light', 'hov', 'g-dark', GROUND.dark, 'dark'], ['dark', 'hov', 'g-light', GROUND.light, 'light'],
-    ['light', 'loop', 'mono', GROUND.light, 'mono'], ['dark', 'hov', 'mono', GROUND.dark, 'mono']];
+    ...['light', 'dark'].flatMap(theme => ['hov', 'loop', 'once'].flatMap(mode => [
+      [theme, mode, 'g-dark', GROUND.dark, 'dark'], [theme, mode, 'g-light', GROUND.light, 'light'],
+      [theme, mode, 'mono', GROUND[theme], 'mono'], [theme, mode, 'mono g-dark', GROUND.dark, 'mono-dark'], [theme, mode, 'forced', GROUND[theme], 'forced']]))];
   for (const [theme, mode, extra, ground, art] of runs) {
     const label = `${theme} ${mode}${extra ? ` ${extra}` : ''}`;
-    await s.open(theme, MAGENTA, VW, VH, 1, box(`${mode} ${extra}`, PAD, PAD, W, H, ground) + (extra === 'mono' ? '<style>.sw-box{color:#142C2A}</style>' : ''));
+    await s.open(theme, MAGENTA, VW, VH, 1, box(`${mode} ${extra}`, PAD, PAD, W, H, ground) + (art.startsWith('mono') ? '<style>.sw-box{color:#142C2A}</style>' : ''), art === 'forced');
     const n = Math.round(DUR[mode] / 1000 * 60);
     let worstHole = 0, maxOrange = 0;
     for (let i = 0; i <= n; i++) {
@@ -184,24 +198,44 @@ await withBrowser(async (send) => {
       }
       worstHole = Math.max(worstHole, holes);
       if (holes) fail(`frames ${label} at ${Math.round(time)} ms: ${holes} px of hole inside the box`);
-      if (art === 'light') {
-        const faces = orangeFaces(f.data, VW, VH, 0.002 * W * H);
+      if (shut && (art.startsWith('mono') || art === 'forced')) {
+        const rgb = art.startsWith('mono') ? [20, 44, 42] : (await send('Runtime.evaluate', { expression: 'getComputedStyle(document.querySelector(".sw-box .f")).fill' })).result.value.match(/\d+/g).slice(0, 3).map(Number);
+        const regions = colourFaces(f.data, VW, VH, 0.002 * W * H, rgb, rim);
+        if (regions !== 4) fail(`frames ${label} at ${Math.round(time)} ms: mono lid has ${regions} regions (want 4)`);
+      }
+      if (!art.startsWith('mono') && art !== 'forced') {
+        const faces = colourFaces(f.data, VW, VH, 0.002 * W * H, [255, 116, 71]);
         maxOrange = Math.max(maxOrange, faces);
-        if (shut && faces !== 1) fail(`frames ${label} at ${Math.round(time)} ms: shut with ${faces} orange faces (want 1)`);
+        if (shut) {
+          const orange = colourFaces(f.data, VW, VH, 0.002 * W * H, [255, 116, 71], rim);
+          const green = colourFaces(f.data, VW, VH, 0.002 * W * H, [0, 110, 99], rim);
+          if (orange !== 2 || green !== 2) fail(`frames ${label} at ${Math.round(time)} ms: shut with ${orange} orange + ${green} green regions (want 2+2)`);
+          for (const [x, y, rgb] of [[67, 30, [0, 110, 99]], [91, 47, [255, 116, 71]], [44, 47, [255, 116, 71]], [67, 64, [0, 110, 99]]]) {
+            const pos = (Math.round(PAD + y * SC) * VW + Math.round(PAD + x * SC)) * 4;
+            if (rgb.some((v, c) => Math.abs(f.data[pos + c] - v) > 3)) fail(`frames ${label}: wrong flap colour at ${x},${y}`);
+          }
+        }
         if (faces > 2) fail(`frames ${label} at ${Math.round(time)} ms: ${faces} orange faces`);
       }
     }
-    report[`frames ${label}`] = `${n + 1} frames, worst hole ${worstHole} px${art === 'light' ? `, at most ${maxOrange} orange faces` : ''}`;
+    await s.at(mode === 'loop' ? DUR.loop / 2 : DUR[mode] + 5);
+    const resting = await s.shot(VW, VH, 1), live = mode === 'loop';
+    const master = masterFor(art === 'dark' || art.startsWith('mono') || (art === 'forced' && theme === 'dark') ? 'dark' : 'light');
+    const refPaths = paths(master, (p, i) => `fill="${art === 'forced' ? 'CanvasText' : art.startsWith('mono') ? '#142C2A' : p.fill}"${live && i >= master.length - 4 ? ' style="will-change:transform"' : ''}`);
+    await s.open(theme, MAGENTA, VW, VH, 1, svgAt(PAD, PAD, W, H, refPaths), art === 'forced');
+    const restDiff = diff(resting, await s.shot(VW, VH, 1));
+    if (restDiff) fail(`rest ${label}: ${restDiff} px differ from the static product mark`);
+    report[`frames ${label}`] = `${n + 1} frames, worst hole ${worstHole} px${!art.startsWith('mono') && art !== 'forced' ? `, at most ${maxOrange} orange faces` : ''}`;
   }
   if (stripsDir) await writeStrips(strip, VW, VH);
 });
 
-/** Orange (#FF7447) connected regions of at least `min` px. */
-function orangeFaces(data, w, h, min) {
+/** Connected solid-colour regions of at least `min` px; the lid mask excludes the box body. */
+function colourFaces(data, w, h, min, rgb, mask) {
   const on = new Uint8Array(w * h);
   for (let p = 0; p < on.length; p++) {
     const [r, g, b] = [data[p * 4], data[p * 4 + 1], data[p * 4 + 2]];
-    on[p] = Math.abs(r - 255) < 30 && Math.abs(g - 116) < 35 && Math.abs(b - 71) < 35 ? 1 : 0;
+    on[p] = (!mask || mask[p]) && [r, g, b].every((v, c) => Math.abs(v - rgb[c]) < 12) ? 1 : 0;
   }
   let faces = 0;
   for (let p = 0; p < on.length; p++) {
@@ -230,4 +264,4 @@ if (problems.length) {
   console.error(`\nBox frames are broken (${problems.length}):\n - ` + problems.slice(0, 40).join('\n - '));
   process.exit(1);
 }
-console.log('\nBox frames are correct: rest = static logo, shut = one solid box with one orange face, no holes.');
+console.log('\nBox frames are correct: rest = static logo, shut = four solid regions (2 orange + 2 green), own flap colours preserved, no holes.');
