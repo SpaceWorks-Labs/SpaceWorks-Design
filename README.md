@@ -54,6 +54,28 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
 Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` are relative to the
 `tokens/` folder.
 
+## Changelog
+
+### SpaceWorks 0.12.0 token sync
+
+- **Dark theme is one solid black family** (decision 316, superseding the green-tinted dark of 275/300). Neutral
+  surfaces only, no green or teal tint; teal, Citron and orange stay accents.
+- **Old green-black dark → new solid-black dark** (`:root.dark`, as RGB triplets):
+  `bg` 20 44 42 → 0 0 0 · `surface` 25 57 53 → 11 11 11 · `panel` 31 67 63 → 20 20 20 · `hover` 37 77 72 → 28 28 28 ·
+  `line` 77 109 103 → 44 44 44 · `outline` 147 161 152 → 120 120 120 · `muted` 199 196 186 → 172 172 172 ·
+  `sidebar` 17 53 50 → 11 11 11 · `sidebar-hover` 37 77 72 → 28 28 28 · `accent-soft` / `brand-soft` 26 74 69 → 18 29 28 ·
+  `accent-ink` / `brand-ink` / `brand-boundary` 171 200 188 → 128 177 166 · `emphasis-soft` 47 70 64 → 34 26 23 ·
+  `success-soft` 44 80 69 → 32 34 27 · `success-ink` 223 255 143 → 233 252 170 · `warn-soft` 47 77 64 → 34 32 23 ·
+  `warn-ink` 255 212 71 → 255 222 119 · `info-soft` 42 77 76 → 30 31 34 · `info-ink` 181 205 255 → 203 217 248 ·
+  `shadow-color` 20 44 42 → 0 0 0. `ink`, `focus`, the accent fills and the status fills are unchanged.
+- **New token `scrim`** (dialog backdrop): light 20 44 42 (Deep Ink), dark 0 0 0.
+- **Motion tokens** added (`--sw-dur-*`, `--sw-ease-*`, `--sw-enter-y`, `--sw-pop-*`, `--sw-slide-x`), also under `motion`
+  in `tokens.json`. See `docs/ui-brand-spec.md` section E.
+- **Aurora card look** (decision 317a) recoloured to the brand: Maker Teal header, Citron ribbon, Warm Cream body, Deep Ink
+  text, Workshop Orange tail; layout unchanged. Recorded under `cards.aurora` in `tokens.json`.
+- **Fonts** (decision 299): only the free Gilroy weights (Light 300, ExtraBold 800) ship, with Outfit and Unbounded (OFL)
+  for everything else; the paid Gilroy weights are removed.
+
 ## Credits
 
 **Space Works UX** (the patterns, layouts and interaction details in `docs/ux-spec.md`) is our own
