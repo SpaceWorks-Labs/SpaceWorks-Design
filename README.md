@@ -21,6 +21,7 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 | `icons/` | `favicon.svg`, PNG app icons (16, 32, 180, 192, 512) and the 1200×630 social card |
 | `fonts/` | Gilroy Light and ExtraBold (the free weights only, WOFF2), Outfit and Unbounded (OFL, WOFF2). See `fonts/README.md`. |
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
+| `motion/box-open/` | The **box-open loader**, the loading animation used everywhere in Space Works: `box-open.css`, the SVG markup, a standalone `demo.html` and the React components (`LogoLoader`, `BoxSpinner`, `BoxArt`). Usage, sizes, timing and accessibility in `motion/box-open/README.md` |
 | `docs/` | `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
 | `screenshots/ux/` | Screenshots of Space Works UX in Space Works Events (light, dark and phone), used by the site's UX pages |
 | `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time |
@@ -69,6 +70,8 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
   `warn-ink` 255 212 71 → 255 222 119 · `info-soft` 42 77 76 → 30 31 34 · `info-ink` 181 205 255 → 203 217 248 ·
   `shadow-color` 20 44 42 → 0 0 0. `ink`, `focus`, the accent fills and the status fills are unchanged.
 - **New token `scrim`** (dialog backdrop): light 20 44 42 (Deep Ink), dark 0 0 0.
+- **Box-open loader** added in `motion/box-open/`: the logo box opens, holds, folds shut and repeats (4400 ms
+  cycle, 1600 ms one-shot opening, still open logo under reduced motion), with a `mono` variant for buttons.
 - **Motion tokens** added (`--sw-dur-*`, `--sw-ease-*`, `--sw-enter-y`, `--sw-pop-*`, `--sw-slide-x`), also under `motion`
   in `tokens.json`. See `docs/ui-brand-spec.md` section E.
 - **Aurora card look** (decision 317a) recoloured to the brand: Maker Teal header, Citron ribbon, Warm Cream body, Deep Ink
