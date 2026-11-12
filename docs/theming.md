@@ -199,6 +199,29 @@ Call `initializeTheme()` in `main.tsx` before `createRoot(...).render`.
 - **Never hard-code a hex** where a token exists. A component that needs a dark-only or light-only look uses an island
   (`.sw-island-dark`), not a one-off colour.
 
+## The bright brand colours are the same in both themes
+
+Space Works keeps its bright colours identical in light and dark. Only the neutrals (page, surfaces, lines, text)
+switch. Do not invent a "dark version" of a brand colour.
+
+| Role | Light | Dark | Same? |
+|---|---|---|---|
+| Accent / brand fill (Maker Teal) | `#006E63` | `#006E63` | yes |
+| Emphasis (Workshop Orange) | `#FF7447` | `#FF7447` | yes |
+| Success (Citron) | `#DFFF8F` | `#DFFF8F` | yes |
+| Warn (Warm Yellow) | `#FFD447` | `#FFD447` | yes |
+| Info (Sky Blue) | `#B5CDFF` | `#B5CDFF` | yes |
+| Chart series 1-5 (teal, orange, citron, sky, yellow) | `#006E63` `#FF7447` `#DFFF8F` `#B5CDFF` `#FFD447` | the same | same (with an edge for contrast) |
+| Chart edge (`--chart-edge`) | Deep Ink `#142C2A` | Warm Cream `#FFF4E8` | no: the edge is the neutral that carries contrast, so it flips with the page |
+| Text on those fills (`on-*`) | Deep Ink / Warm Cream | the same | yes |
+| Danger | `#B91C1C` | `#FCA5A5` | no: red is not a brand colour; dark uses a lighter red so it stays readable |
+| Focus ring | Maker Teal | Citron | no: teal is too faint on black, Citron is the dark focus colour |
+| Sidebar | Citron field | near black `#0B0B0B` | no: a large Citron field on black glares; the dark sidebar is a neutral surface |
+
+What changes in dark is how a colour is used as **text or a thin mark**: use the `*-ink` tokens (for example
+`accent-ink` `#80B1A6`, `success-ink` `#E9FCAA`) because the fill colours are too dark or too bright to read as
+text on black. Fills, buttons, pills, chart bars and illustrations keep the bright brand colours.
+
 ## 6. Artwork per theme
 
 - **Logo**: two drawings, full colour on light (`symbol`, `lockup-*`) and reversed cream on dark
@@ -208,8 +231,10 @@ Call `initializeTheme()` in `main.tsx` before `createRoot(...).render`.
   `.g-dark` / `.g-light` force a ground. `mono` variants use `currentColor`. See `motion/box-open/`.
 - **Illustrations and Patch**: ship a `-dark` file for each (`/brand/patch/name.webp`, `name-dark.webp`); pick by
   theme. Teal and Citron fields are identical in both themes.
-- **Charts**: `--chart-accent`, `--chart-info`, `--chart-success`, `--chart-warn`, `--chart-danger` are defined for
-  both themes (light uses ink variants for contrast, dark uses the fills). Use `rgb(var(--chart-accent))`.
+- **Charts** (Design System v2.0, SW-380): `--chart-1` to `--chart-5` are the five bright brand colours, the same
+  hex in light and dark. Contrast comes from `--chart-edge`: a 1px edge on every filled mark (bars, slices,
+  points, legend swatches) and a 4px casing under every 2px line. Do not dull a series colour. Danger
+  (`--chart-danger`) is not a series; use it explicitly for a bad or negative value. Use `rgb(var(--chart-1))`.
 - **Splash and meta colour**: splash background `#FFF4E8` (light) and `#000` (dark); `theme-color` follows.
 
 ## 7. Contrast rules
@@ -222,5 +247,5 @@ alone for state.
 ## 8. Checklist for a new page or component
 
 1. Only tokens, no hex. 2. Open it in light and dark (and with `system` plus the OS flipped). 3. Logo and illustration
-use the themed variant. 4. No flash on reload in dark (the pre-paint script is present). 5. Charts use `--chart-*`.
+use the themed variant. 4. No flash on reload in dark (the pre-paint script is present). 5. Charts use `--chart-1` to `--chart-5` plus `--chart-edge`.
 6. New animations behave the same in both themes and under reduced motion.

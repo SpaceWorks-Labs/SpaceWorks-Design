@@ -180,18 +180,18 @@
   :root { --sw-dur-fast: 0ms; --sw-dur-base: 0ms; --sw-dur-slow: 0ms; --sw-enter-y: 0px; --sw-pop-scale: 1; --sw-pop-offset: 0px; --sw-slide-x: 0%; }
 }
 
-/* Chart series tokens (SpaceWorks 0.12.0, mirrors frontend/src/styles/chrome.css). Values are RGB triplets
-   like the colour tokens: use rgb(var(--chart-accent)). Dark switches to the ink/fill variants for contrast. */
+/* Chart tokens (Design System v2.0, SW-380; mirrors frontend/src/styles/chrome.css). RGB triplets like the colour
+   tokens: use rgb(var(--chart-1)). Series 1-5 are the five bright brand colours, identical in light and dark;
+   --chart-edge (a 1px mark edge / 4px line casing) carries the 3:1 contrast. Danger is not a series colour. */
 :root {
-  --chart-accent: var(--color-accent);
-  --chart-info: var(--color-info-ink);
-  --chart-success: var(--color-success-ink);
-  --chart-warn: var(--color-warn-ink);
+  --chart-1: 0 110 99;
+  --chart-2: 255 116 71;
+  --chart-3: 223 255 143;
+  --chart-4: 181 205 255;
+  --chart-5: 255 212 71;
+  --chart-edge: 20 44 42;
   --chart-danger: var(--color-danger);
 }
 :root.dark {
-  --chart-accent: var(--color-accent-ink);
-  --chart-info: var(--color-info);
-  --chart-success: var(--color-success);
-  --chart-warn: var(--color-warn);
+  --chart-edge: 255 244 232;
 }

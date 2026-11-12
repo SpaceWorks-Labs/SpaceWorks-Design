@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overlays: dialog, drawer, sheet, menu, scrim</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="overlays.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.layer[hidden]{display:none}.scrim{position:absolute;inset:0;background:rgb(var(--color-scrim)/.5);display:grid;place-items:center}.dlg{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:20px;width:260px;display:grid;gap:12px}.dr{position:absolute;top:0;bottom:0;width:240px;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));padding:16px;display:grid;align-content:start;gap:10px}.dr.r{right:0}.dr.l{left:0}.menu{position:absolute;left:16px;top:60px;margin:0;padding:6px;list-style:none;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;width:180px}.menu li{padding:8px 10px;border-radius:8px}.menu li:hover{background:rgb(var(--color-hover))}.sheet-force[data-state=open]{animation-name:sw-sheet-in!important}.sheet-force[data-state=closed]{animation-name:sw-sheet-out!important}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Overlays: dialog, drawer, sheet, menu, scrim</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Open each layer and close it again to see the exit. "Sheet" forces the phone bottom-sheet animation (it is automatic under 640 px). Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><div class="row"><button class="btn" data-o="dlg">Dialog (pop)</button><button class="btn" data-o="sheet">Sheet</button><button class="btn" data-o="right">Drawer right</button><button class="btn" data-o="left">Drawer left</button><button class="btn" data-o="menu">Menu</button></div>
+<div class="stage" id="stage">
+<div class="layer sw-fx-fade scrim" id="dlg" hidden data-state="closed"><div class="dlg sw-fx-pop" data-state="closed"><strong>Hand over this tool?</strong><span>Scrim fades, dialog pops.</span><button class="btn" data-c="dlg">Close</button></div></div>
+<div class="layer sw-fx-fade scrim" id="sheet" hidden data-state="closed" style="align-items:end"><div class="dlg sw-fx-pop sheet-force" data-state="closed" style="width:100%;border-radius:16px 16px 0 0"><strong>Bottom sheet</strong><button class="btn" data-c="sheet">Close</button></div></div>
+<aside class="layer dr r sw-fx-drawer" id="right" hidden data-state="closed"><strong>Detail drawer</strong><button class="btn" data-c="right">Close</button></aside>
+<aside class="layer dr l sw-fx-drawer" id="left" hidden data-edge="left" data-state="closed"><strong>Sidebar drawer</strong><button class="btn" data-c="left">Close</button></aside>
+<ul class="layer menu sw-fx-menu" id="menu" hidden data-state="closed" role="menu"><li role="menuitem">Edit</li><li role="menuitem">Duplicate</li><li role="menuitem" data-c="menu">Close menu</li></ul>
+</div></section>
+</main>
+<script>
+function el(id){return document.getElementById(id)}
+function animEl(n){return n.classList.contains("scrim")?n:n}
+function open(id){var n=el(id);n.hidden=false;n.removeAttribute("inert");n.dataset.state="open";var c=n.querySelector("[data-state]");if(c)c.dataset.state="open"}
+function close(id){var n=el(id);n.setAttribute("inert","");n.dataset.state="closed";var c=n.querySelector("[data-state]");if(c)c.dataset.state="closed";
+ setTimeout(function(){if(n.dataset.state==="closed")n.hidden=true},320)}
+document.querySelectorAll("[data-o]").forEach(function(b){b.onclick=function(){open(b.dataset.o)}});
+document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){close(b.dataset.c)}});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidebar and tab indicator</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="sidebar.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.nav{position:relative;display:grid;gap:4px;width:220px;padding:8px;background:rgb(var(--color-surface));border:1px solid rgb(var(--color-line));border-radius:16px}.nav a{position:relative;z-index:1;display:block;padding:10px 12px;border-radius:8px;border:1px solid transparent;cursor:pointer;color:rgb(var(--color-ink))}.nav a[aria-current=page]{background:rgb(var(--color-accent-soft))}.nav .sw-indicator{z-index:0;background:rgb(var(--color-accent-soft));border-radius:8px}.tabs{position:relative;display:flex;gap:20px;border-bottom:1px solid rgb(var(--color-line))}.tabs button{position:relative;z-index:1;font:inherit;background:none;border:0;border-bottom:2px solid transparent;padding:10px 4px;color:rgb(var(--color-muted));cursor:pointer}.tabs button[aria-selected=true]{color:rgb(var(--color-ink))}.tabs .sw-indicator{border-bottom:2px solid rgb(var(--color-accent-ink));background:none}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Sidebar and tab indicator</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Click a sidebar item or a tab: one box slides, nothing repaints. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><div class="nav" id="nav" role="navigation" aria-label="Demo"><div class="sw-indicator" id="bar"></div><a class="sw-slide-item" aria-current="page">Requests</a><a class="sw-slide-item">Inventory</a><a class="sw-slide-item">Members</a><a class="sw-slide-item">Settings</a></div></section>
+<section><div class="tabs" id="tabs" role="tablist"><div class="sw-indicator" id="tbar"></div><button role="tab" aria-selected="true">Overview</button><button role="tab" aria-selected="false">Activity</button><button role="tab" aria-selected="false">Files</button></div></section>
+</main>
+<script>
+function slide(host,bar,sel,anim){var t=host.querySelector(sel);if(!t){bar.style.opacity=0;return}
+ var b=t.getBoundingClientRect(),f=host.getBoundingClientRect();bar.style.transition=anim&&bar.dataset.placed?"":"none";
+ bar.style.width=b.width+"px";bar.style.height=b.height+"px";bar.style.transform="translate("+(b.left-f.left-host.clientLeft)+"px,"+(b.top-f.top-host.clientTop)+"px)";
+ bar.style.opacity=1;bar.dataset.placed=1;host.setAttribute("data-slide","")}
+var nav=document.getElementById("nav"),bar=document.getElementById("bar"),tabs=document.getElementById("tabs"),tbar=document.getElementById("tbar");
+function pn(a){slide(nav,bar,'a[aria-current="page"]',a)}function pt(a){slide(tabs,tbar,'[aria-selected="true"]',a)}
+nav.querySelectorAll("a").forEach(function(a){a.onclick=function(){nav.querySelectorAll("a").forEach(function(x){x.removeAttribute("aria-current")});a.setAttribute("aria-current","page");pn(true)}});
+tabs.querySelectorAll("button").forEach(function(a){a.onclick=function(){tabs.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-selected","false")});a.setAttribute("aria-selected","true");pt(true)}});
+addEventListener("resize",function(){pn(false);pt(false)});document.fonts.ready.then(function(){pn(false);pt(false)});pn(false);pt(false);
+</script>
+</body>
+</html>

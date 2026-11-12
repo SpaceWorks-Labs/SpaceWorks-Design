@@ -1,0 +1,60 @@
+<!-- ===== 12 Resources ===== -->
+<section class="pg cream th-light" data-sec="12 / Resources" data-toc="Resources and colophon">
+  <div class="in">
+    <h1>Everything, in one place.</h1>
+    <p class="sub">The design system site and repository hold every file in this book, and the live versions of every animation.</p>
+    <div class="ct">
+      <div style="position:absolute;left:0;top:0;width:420px">
+        <a class="qr" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/" style="width:240px;height:240px;padding:14px;background:rgb(var(--color-panel))">{{qr:site}}</a>
+        <div class="lbl mt16">Hosted site</div>
+        <a class="h3 mt8" style="display:block;font-size:20px" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/">spaceworks-labs.github.io/<br>SpaceWorks-Design-System/</a>
+        <div class="row mt24" style="align-items:center;gap:16px">
+          <a class="qr" href="https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System" style="width:96px;height:96px;padding:6px;background:rgb(var(--color-panel))">{{qr:repo}}</a>
+          <div><div class="lbl">Repository</div><a class="sm" href="https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System">github.com/SpaceWorks-Labs/<br>SpaceWorks-Design-System</a></div>
+        </div>
+      </div>
+      <div style="position:absolute;left:500px;right:0;top:0">
+        <table class="tb" style="font-size:14px">
+          <thead><tr><th style="width:290px">Path</th><th>What it holds</th></tr></thead>
+          <tbody>
+            <tr><td class="code">brand/</td><td>This PDF, brand guidelines v1, page renders, logo reference sheets, README banners</td></tr>
+            <tr><td class="code">logo/</td><td>Ten masters (SVG and 4× PNG): symbol, stacked, horizontal × full colour, reversed, one colour; app icon</td></tr>
+            <tr><td class="code">tokens/tokens.json · tokens.css</td><td>Every colour for light and dark, chart, loader, card and motion tokens; @font-face</td></tr>
+            <tr><td class="code">fonts/</td><td>Gilroy Light and ExtraBold (free), Outfit and Unbounded (OFL), with licences</td></tr>
+            <tr><td class="code">motion/box-open/</td><td>Loader CSS, SVG markup, demo page, React LogoLoader, BoxSpinner, AnimatedLogoMark</td></tr>
+            <tr><td class="code">mascot/ · mascot/dark/</td><td>Patch: hero, sneeze loop, walk cycles; full, original and compressed; dark sticker set</td></tr>
+            <tr><td class="code">icons/</td><td>favicon.svg, app icons 16 to 512, social card 1200 × 630</td></tr>
+            <tr><td class="code">docs/ui-brand-spec.md</td><td>Token derivations, contrast matrices, states, status pills, type scale, logo use</td></tr>
+            <tr><td class="code">docs/theming.md · motion.md</td><td>How to build the light/dark switch; every animation and the which-where table</td></tr>
+            <tr><td class="code">docs/lessons-learned.md</td><td>38 lessons from light and dark, with the pairing table for mobile apps</td></tr>
+            <tr><td class="code">docs/whats-new-v2.0.md</td><td>What's new in v2.0 and what each app must change</td></tr>
+            <tr><td class="code">docs/product-rules.md · ux-spec.md</td><td>Product and engineering rules; UX patterns, layouts and screens</td></tr>
+          </tbody>
+        </table>
+        <p class="xs mut mt12">Add the repository to a project as a git submodule so every surface draws from one source. Tokens are the single source: generate from them, never retype a hex.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Colophon ===== -->
+<section class="pg ink th-light" data-sec="Colophon">
+  <div class="in">
+    <img src="../../../logo/lockup-stacked-reversed.svg" alt="space works" style="width:300px">
+    <div class="acc" style="position:absolute;left:0;top:250px;font-size:64px;line-height:1.08">Ready to make.</div>
+    <div style="position:absolute;left:0;top:420px;width:620px" class="body">
+      <div class="lbl">Version</div>
+      <p class="mt8"><b>Space Works Design System v2.0 · Brand guidelines v2</b>, November 2026. Ships alongside SpaceWorks 0.12.0. Supersedes brand guidelines v1 wherever the two differ; everything v1 says that this book does not change still stands.</p>
+      <div class="lbl mt24">Sources</div>
+      <p class="mt8">Colours, ratios and motion values are read from <span class="code">tokens/tokens.json</span> when the book is built. Frames of the box are frozen from <span class="code">motion/box-open/box-open.css</span>. Decisions cited: 225, 299, 313, 316, 322, 323, 362.</p>
+    </div>
+    <div style="position:absolute;left:740px;right:0;top:420px" class="body">
+      <div class="lbl">Set in</div>
+      <p class="mt8">Gilroy ExtraBold and Gilroy Light (free weights), Outfit and Unbounded (SIL OFL).</p>
+      <div class="lbl mt24">Built from</div>
+      <p class="mt8">HTML and CSS in <span class="code">brand/guidelines-v2/src/</span>, rendered with headless Microsoft Edge. Rebuild with <span class="code">node brand/guidelines-v2/build.mjs</span>.</p>
+      <div class="lbl mt24">Licence</div>
+      <p class="mt8">Space Works design assets: AGPL-3.0-or-later. Fonts keep their own licences.</p>
+    </div>
+  </div>
+</section>

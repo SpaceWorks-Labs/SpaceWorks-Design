@@ -1,4 +1,4 @@
-import { boxMonoCss, boxOpenCss } from "./css";
+import { boxGroundCss, boxMonoCss, boxOpenCss } from "./css";
 import { boxOpenSvg } from "./markup";
 
 /** Both themes' artwork, built once from the brand masters; CSS shows the one for `html.dark`. */
@@ -10,6 +10,7 @@ export function ensureBoxCss() {
   const style = document.createElement("style");
   style.id = "sw-box-css";
   style.textContent = `${boxOpenCss()}
-${boxMonoCss()}`;
+${boxMonoCss()}
+${boxGroundCss()}`;
   document.head.append(style);
 }

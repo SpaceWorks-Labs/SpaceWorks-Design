@@ -11,9 +11,20 @@
   --sl-font-mono: var(--sl-font-system-mono);
   --sl-text-body: 1rem;
   --sl-line-height: 1.5;
-  --sl-content-width: 56rem;
-  --sw-toc-width: 16rem;
+  /* Layout (v2.0). The content column is wide so tables, swatch grids, demos and matrices get the room on
+     laptops and wide screens; running text keeps a ~70-character line (--sw-measure) inside it. */
+  --sl-content-width: 76rem;
+  --sw-measure: 72ch;
+  --sw-toc-width: 15rem;
   --sl-content-pad-x: 1rem;
+  /* Spacing steps, from the Space Works UX observed scale (docs/ux-spec.md 1.0): 4 8 12 16 24 32 40 px. */
+  --sw-space-1: 0.25rem;
+  --sw-space-2: 0.5rem;
+  --sw-space-3: 0.75rem;
+  --sw-space-4: 1rem;
+  --sw-space-5: 1.5rem;
+  --sw-space-6: 2rem;
+  --sw-space-7: 2.5rem;
 
   /* Badges retain the tested text/fill pairs in both themes. */
   --sl-badge-default-bg: var(--sw-teal);
@@ -165,6 +176,24 @@ site-search > button[data-open-modal] kbd {
 .sl-markdown-content :is(th, td) {
   border-bottom: 1px solid var(--sl-color-hairline);
   padding-block: 0.8rem;
+  /* Words stay whole in cells ("anywhere" would let a column shrink to one letter); a table that truly cannot
+     fit scrolls sideways inside itself instead. */
+  overflow-wrap: break-word;
+}
+
+/* Matrices (seven or more columns, e.g. "Where each product stands"): readable columns that scroll sideways on
+   laptops, with the first column (the product or screen) pinned while you scroll. */
+.sl-markdown-content table:has(tr > :nth-child(7)) :is(th, td) {
+  min-width: 9rem;
+}
+
+.sl-markdown-content table:has(tr > :nth-child(7)) :is(th, td):first-child {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+  min-width: 7rem;
+  background: var(--sw-panel);
+  box-shadow: inset -1px 0 0 var(--sl-color-hairline);
 }
 
 .sl-markdown-content th {
@@ -344,10 +373,47 @@ site-search > button[data-open-modal] kbd {
   }
 }
 
-/* Wide screens: a narrow, fixed "On this page" column, and the reading column
-   centred in the remaining space. Starlight's default hands all spare width to
-   the right column, which leaves a large gap beside the text. */
-@media (min-width: 72rem) {
+/* Page layout (v2.0).
+   - Running text keeps a comfortable measure; headings follow it. Tables, grids, code, images and demos are not
+     capped, so they use the whole column.
+   - Laptops (72-90rem): the right "On this page" column would squeeze the content to ~690 px, so it folds into
+     the same "On this page" bar phones use, under the header, and the content gets the full width.
+   - Wide screens (90rem+): a narrow fixed contents column, the content filling the rest. */
+.sl-markdown-content > :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6, .starlight-aside) {
+  max-inline-size: var(--sw-measure);
+}
+
+@media (min-width: 72rem) and (max-width: 89.999rem) {
+  :root[data-has-toc] {
+    --sl-mobile-toc-height: 3rem;
+  }
+
+  :root[data-has-sidebar][data-has-toc] .right-sidebar-container {
+    width: 0;
+  }
+
+  :root[data-has-toc] .right-sidebar {
+    position: static;
+    height: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  :root[data-has-toc] .right-sidebar-panel {
+    display: none;
+  }
+
+  :root[data-has-toc] .right-sidebar .lg\:sl-hidden {
+    display: block;
+  }
+
+  :root[data-has-sidebar][data-has-toc] .main-pane {
+    --sl-content-margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 90rem) {
   :root[data-has-sidebar][data-has-toc] .right-sidebar-container {
     width: var(--sw-toc-width);
   }
@@ -356,4 +422,130 @@ site-search > button[data-open-modal] kbd {
     --sl-content-margin-inline: auto;
     width: calc(100% - var(--sw-toc-width));
   }
+}
+
+/* Overview pages: "On this topic" cards, and the "Part of" line at the foot of each part. */
+.sw-topic ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--sw-space-3);
+}
+
+.sl-markdown-content .sw-topic li {
+  margin: 0;
+  padding: var(--sw-space-4) var(--sw-space-5);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 16px;
+  background: var(--sw-panel);
+  color: var(--sl-color-gray-3);
+  font-size: 0.9375rem;
+}
+
+.sw-topic li a {
+  display: block;
+  margin-bottom: var(--sw-space-1);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.sw-topic li a:hover {
+  text-decoration: underline;
+}
+
+.sl-markdown-content .sw-part-of {
+  margin-top: var(--sw-space-7);
+  padding-top: var(--sw-space-4);
+  border-top: 1px solid var(--sl-color-hairline);
+  color: var(--sl-color-gray-3);
+  font-size: 0.875rem;
+}
+
+/* Home page: the version badge, the two-column "what's new" and downloads rows, button rows. */
+.sw-hero-badge {
+  display: block;
+  width: fit-content;
+  margin-bottom: var(--sw-space-3);
+  padding: var(--sw-space-1) var(--sw-space-3);
+  border-radius: 999px;
+  background: var(--sw-citron);
+  color: var(--sw-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.sw-home-split {
+  display: grid;
+  gap: var(--sw-space-5);
+}
+
+.sw-stack {
+  display: grid;
+  gap: var(--sw-space-3);
+  align-content: start;
+}
+
+.sw-stack > * {
+  margin: 0 !important;
+}
+
+.sw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sw-space-3);
+}
+
+.sw-actions > * {
+  margin: 0 !important;
+}
+
+@media (min-width: 60rem) {
+  .sw-home-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--sw-space-6);
+  }
+}
+
+/* Motion family pages: each preview is a light/dark pair; pairs sit two to a row on wide screens. */
+.sw-kit-prevs {
+  display: grid;
+  gap: var(--sw-space-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 1fr));
+}
+
+.sw-kit-prev {
+  margin: 0;
+}
+
+.sw-kit-prev__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sw-space-2);
+}
+
+.sw-kit-prev img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--sl-color-hairline);
+}
+
+.sw-kit-prev figcaption {
+  margin-top: var(--sw-space-2);
+  color: var(--sl-color-gray-3);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 30rem) {
+  .sw-kit-prev__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Demo frames never push the page sideways. */
+.sl-markdown-content iframe {
+  max-width: 100%;
 }

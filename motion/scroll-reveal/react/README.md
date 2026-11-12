@@ -1,0 +1,11 @@
+# React copies
+
+Unmodified copies of the app files for this family (SpaceWorks 0.12.0; paths are relative to `frontend/src/`). They are reference code: they import app modules, Lingui (`t`) and Tailwind utility classes, so swap those for your own, or use the framework-free CSS one folder up, which is all the motion needs.
+
+| File | App path | Imports to provide or replace |
+|---|---|---|
+| `useScrollSequence.ts` | `features/hub/landing/useScrollSequence.ts` | none |
+| `useInView.ts` | `features/hub/landing/useInView.ts` | none |
+| `HeroSection.tsx` | `features/hub/landing/HeroSection.tsx` | `@lingui/core/macro`, `lucide-react`, `../ExternalLink`, `../hubLinks`, `./DeskPreview`, `./SkipAhead`, `./StorySections`, `./useScrollSequence` |
+| `HandoverScrolly.tsx` | `features/hub/landing/HandoverScrolly.tsx` | `@lingui/core/macro`, `./HandoverStory`, `./useInView` |
+| `landing-scroll.css` | `features/hub/landing/landing-scroll.css` | none |

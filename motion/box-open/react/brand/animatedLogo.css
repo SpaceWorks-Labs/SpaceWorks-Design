@@ -6,14 +6,6 @@
    positioned inside the fixed-size logo box: no layout shift. */
 .sw-logo-box { display: block; position: absolute; pointer-events: none; }
 .sw-logo-box > .sw-box { width: 100%; height: 100%; }
-/* The artwork follows the ground the mark is on (theme by default), not only html.dark. */
-.sw-box.g-dark { --sw-under: #66625D; --sw-spark: #FFF4E8; --sw-seam: #000; }
-.sw-box.g-dark .lt { display: none; }
-.sw-box.g-dark .dk { display: block; }
-.sw-box.g-dark .w { fill: #FFF4E8; fill-opacity: .14; }
-html.dark .sw-box.g-light { --sw-under: #354845; --sw-spark: #142C2A; --sw-seam: #142C2A; }
-html.dark .sw-box.g-light .dk { display: none; }
-html.dark .sw-box.g-light .lt { display: block; }
-html.dark .sw-box.g-light .w { fill: #354845; fill-opacity: 1; }
+/* The artwork follows the ground the mark is on (theme by default): boxOpen's boxGroundCss() supplies g-dark / g-light. */
 [data-logo][data-logo-playing] .sw-logo-sym { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .sw-logo-box { display: none; } }

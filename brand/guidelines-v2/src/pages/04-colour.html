@@ -1,0 +1,257 @@
+<!-- ===== 04 Colour: seven ===== -->
+<section class="pg cream th-light" data-sec="04 / Colour" data-toc="Colour, status and charts">
+  <div class="in">
+    <h1>Seven colours. One clear system.</h1>
+    <p class="sub">Exact sRGB values, unchanged from v1. Three core colours, three accents and a warm canvas.</p>
+    <div class="ct">
+      <div class="g3" style="grid-template-rows:240px">
+        <div class="sw" style="background:rgb(var(--b-deep-ink));color:rgb(var(--b-warm-cream))"><div class="n" style="font-size:26px">Deep Ink</div><div><div class="h3 code">{{hex:brand.deep-ink}}</div><div class="v">RGB 20, 44, 42</div></div><div class="v">Text · structure · depth · print dark</div></div>
+        <div class="sw" style="background:rgb(var(--b-maker-teal));color:rgb(var(--b-warm-cream))"><div class="n" style="font-size:26px">Maker Teal</div><div><div class="h3 code">{{hex:brand.maker-teal}}</div><div class="v">RGB 0, 110, 99</div></div><div class="v">Primary brand · actions</div></div>
+        <div class="sw" style="background:rgb(var(--b-workshop-orange));color:rgb(var(--b-deep-ink))"><div class="n" style="font-size:26px">Workshop Orange</div><div><div class="h3 code">{{hex:brand.workshop-orange}}</div><div class="v">RGB 255, 116, 71</div></div><div class="v">Energy · one bold moment</div></div>
+      </div>
+      <div class="g4 mt24" style="grid-template-rows:240px">
+        <div class="sw" style="background:rgb(var(--b-citron))"><div class="n" style="font-size:26px">Citron</div><div><div class="h3 code">{{hex:brand.citron}}</div><div class="v">RGB 223, 255, 143</div></div><div class="v">Success · light sidebar · dark focus</div></div>
+        <div class="sw" style="background:rgb(var(--b-sky-blue))"><div class="n" style="font-size:26px">Sky Blue</div><div><div class="h3 code">{{hex:brand.sky-blue}}</div><div class="v">RGB 181, 205, 255</div></div><div class="v">Info · supporting</div></div>
+        <div class="sw" style="background:rgb(var(--b-warm-yellow))"><div class="n" style="font-size:26px">Warm Yellow</div><div><div class="h3 code">{{hex:brand.warm-yellow}}</div><div class="v">RGB 255, 212, 71</div></div><div class="v">Warn · small highlights</div></div>
+        <div class="sw" style="background:rgb(var(--b-warm-cream));border:1px solid rgb(var(--b-deep-ink))"><div class="n" style="font-size:26px">Warm Cream</div><div><div class="h3 code">{{hex:brand.warm-cream}}</div><div class="v">RGB 255, 244, 232</div></div><div class="v">Light canvas · dark-mode text</div></div>
+      </div>
+      <p class="sm mut mt16">New in v2: each brand colour now has a named job in the product tokens (bottom line of each card). The palette has no red; danger is a sampled red used only for errors and destructive actions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: light palette ===== -->
+<section class="pg cream th-light" data-sec="04 / Colour">
+  <div class="in">
+    <h1>The product, in light.</h1>
+    <p class="sub">Warm Cream page, white cards, a Citron sidebar. Every value is a token in <span class="code">tokens/tokens.json</span>.</p>
+    <div class="ct">
+      <div style="display:grid;grid-template-columns:560px 1fr;gap:56px">
+        <div><div class="lbl">Neutrals · ratio against the page</div><div class="mt12">{{ladder:light}}</div>
+          <p class="sm mt24">“Aa” on a fill is its fixed <span class="code">on-*</span> label. “Aa” on white is the <span class="code">*-ink</span> text colour. In light, <span class="code">accent-ink</span> equals the fill; the status inks are darkened so they reach 4.5 : 1.</p></div>
+        <div><div class="lbl">Accent and status families · fill, hover, active, soft, ink</div><div class="mt16">{{fam:light}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: dark palette ===== -->
+<section class="pg black th-dark" data-sec="04 / Colour">
+  <div class="in">
+    <h1>The product, in dark.</h1>
+    <p class="sub">One solid black neutral family. Page <span class="code">#000</span>, layers step up 11, 20, 28. No green anywhere in a surface.</p>
+    <div class="ct">
+      <div style="display:grid;grid-template-columns:560px 1fr;gap:56px">
+        <div><div class="lbl">Neutrals · ratio against the page</div><div class="mt12">{{ladder:dark}}</div>
+          <p class="sm mt24">Fills keep their light-theme hex, so a Citron pill is the same Citron in both themes. What changes is every colour that is read as text: inks lift (teal text becomes <span class="code">{{hex:dark.accent-ink}}</span>), danger flips to a soft red with a Deep Ink label, and focus becomes Citron.</p></div>
+        <div><div class="lbl">Accent and status families · fill, hover, active, soft, ink</div><div class="mt16">{{fam:dark}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: the dark shift ===== -->
+<section class="pg black th-dark" data-sec="04 / Colour">
+  <div class="in">
+    <h1>From green-black to solid black.</h1>
+    <p class="sub">Dark was redone three times in one month. Each step fixed a real problem and exposed the next.</p>
+    <div class="ct">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div class="card" style="padding:18px"><div class="row" style="gap:6px"><div class="chip" style="height:44px;background:rgb(20 44 42)"></div><div class="chip" style="height:44px;background:rgb(31 67 63)"></div><div class="chip" style="height:44px;background:rgb(37 77 72)"></div></div><div class="lbl mt12">To 15 Oct</div><p class="sm mt8">Grey-green, then teal-lit panels. Teal text measured about 1.76 : 1 on the lit panel.</p></div>
+        <div class="card" style="padding:18px"><div class="row" style="gap:6px"><div class="chip" style="height:44px;background:rgb(0 0 0);border:1px solid rgb(var(--color-line))"></div><div class="chip" style="height:44px;background:rgb(31 67 63)"></div><div class="chip" style="height:44px;background:rgb(37 77 72)"></div></div><div class="lbl mt12">10 Nov · decision 225</div><p class="sm mt8">True black page for OLED, but the layers above it stayed teal-lit.</p></div>
+        <div class="card" style="padding:18px"><div class="row" style="gap:6px"><div class="chip" style="height:44px;background:rgb(0 0 0);border:1px solid rgb(var(--color-line))"></div><div class="chip" style="height:44px;background:rgb(25 57 53)"></div><div class="chip" style="height:44px;background:rgb(77 109 103)"></div></div><div class="lbl mt12">11 Nov am · 275, 300</div><p class="sm mt8">Black page with teal-tinted surfaces and borders. Surfaces seamed against the page.</p></div>
+        <div class="card" style="padding:18px;border-color:rgb(var(--color-focus))"><div class="row" style="gap:6px"><div class="chip" style="height:44px;background:rgb(var(--color-bg));border:1px solid rgb(var(--color-line))"></div><div class="chip" style="height:44px;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-outline))"></div><div class="chip" style="height:44px;background:rgb(var(--color-hover));border:1px solid rgb(var(--color-outline))"></div></div><div class="lbl mt12" style="color:rgb(var(--color-focus))">11 Nov · decision 316 · ships</div><p class="sm mt8">One neutral black family. Brand colours become accents only.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 470px;gap:48px;margin-top:28px">
+        <table class="tb" style="font-size:14px">
+          <thead><tr><th>Token</th><th>Before (teal-lit)</th><th>After (solid black)</th><th class="num">Hex</th></tr></thead>
+          <tbody>
+            <tr><td>bg</td><td><span class="dot" style="background:rgb(20 44 42)"></span>20 44 42</td><td><span class="dot" style="background:rgb(var(--color-bg));outline:1px solid rgb(var(--color-line))"></span>0 0 0</td><td class="num code">{{hex:dark.bg}}</td></tr>
+            <tr><td>surface</td><td><span class="dot" style="background:rgb(25 57 53)"></span>25 57 53</td><td><span class="dot" style="background:rgb(var(--color-surface));outline:1px solid rgb(var(--color-line))"></span>11 11 11</td><td class="num code">{{hex:dark.surface}}</td></tr>
+            <tr><td>panel</td><td><span class="dot" style="background:rgb(31 67 63)"></span>31 67 63</td><td><span class="dot" style="background:rgb(var(--color-panel));outline:1px solid rgb(var(--color-line))"></span>20 20 20</td><td class="num code">{{hex:dark.panel}}</td></tr>
+            <tr><td>line</td><td><span class="dot" style="background:rgb(77 109 103)"></span>77 109 103</td><td><span class="dot" style="background:rgb(var(--color-line))"></span>44 44 44</td><td class="num code">{{hex:dark.line}}</td></tr>
+            <tr><td>outline</td><td><span class="dot" style="background:rgb(147 161 152)"></span>147 161 152</td><td><span class="dot" style="background:rgb(var(--color-outline))"></span>120 120 120</td><td class="num code">{{hex:dark.outline}}</td></tr>
+            <tr><td>muted</td><td><span class="dot" style="background:rgb(199 196 186)"></span>199 196 186</td><td><span class="dot" style="background:rgb(var(--color-muted))"></span>172 172 172</td><td class="num code">{{hex:dark.muted}}</td></tr>
+            <tr><td>accent-ink</td><td><span class="dot" style="background:rgb(171 200 188)"></span>171 200 188</td><td><span class="dot" style="background:rgb(var(--color-accent-ink))"></span>128 177 166</td><td class="num code">{{hex:dark.accent-ink}}</td></tr>
+            <tr><td>accent-soft</td><td><span class="dot" style="background:rgb(26 74 69)"></span>26 74 69</td><td><span class="dot" style="background:rgb(var(--color-accent-soft));outline:1px solid rgb(var(--color-line))"></span>18 29 28</td><td class="num code">{{hex:dark.accent-soft}}</td></tr>
+          </tbody>
+        </table>
+        <div>
+          <div class="lbl">Why</div>
+          <ol class="num-list mt12 sm">
+            <li><span class="no">01</span><span><b>Two families on one screen fight.</b> Black beside dark green reads as a mistake.</span></li>
+            <li><span class="no">02</span><span><b>Tinted surfaces cost contrast.</b> Teal on a teal-lit panel is dim; on neutral black it reads.</span></li>
+            <li><span class="no">03</span><span><b>Brand colour works as an accent, not a floor.</b> Teal, Citron and Orange now stand out.</span></li>
+            <li><span class="no">04</span><span><b>True black is calmer and cheaper on OLED phones.</b></span></li>
+          </ol>
+          <p class="xs mut mt12">Token names never changed, so no screen needed edits. Ink, focus, accent and status fills are unchanged.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: fills vs inks ===== -->
+<section class="pg split th-light" data-sec="04 / Colour">
+  <div class="bleed th-dark" style="position:absolute;left:720px;top:0;right:0;bottom:0;background:rgb(var(--color-bg))"></div>
+  <div class="in">
+    <h1>Fills are not inks.</h1>
+    <p class="sub" style="width:640px">A fill is a background with its own label. An ink is a colour you read. Never use one for the other.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:128px">
+      <div>
+        <div class="lbl">Light</div>
+        <div class="card line mt12">
+          <div class="row" style="align-items:center"><span class="btn primary">Issue item</span><span class="sm">on-accent on accent · <b>{{cr:light.on-accent/light.accent}}</b></span></div>
+          <div class="row mt16" style="align-items:center"><span class="h4" style="color:rgb(var(--color-accent-ink))">View public page</span><span class="sm">accent-ink on panel · <b>{{cr:light.accent-ink/light.panel}}</b></span></div>
+          <div class="row mt16" style="align-items:center"><span class="pill emph">2 left</span><span class="sm">ink on Orange · <b>{{cr:light.on-emphasis/light.emphasis}}</b></span></div>
+          <div class="row mt16" style="align-items:center"><span class="h4" style="color:rgb(var(--color-emphasis))">Orange text</span><span class="sm"><span class="tag dont">No</span> on cream · {{cr:light.emphasis/light.bg}}</span></div>
+        </div>
+        <div class="lbl mt32">Two label families</div>
+        <p class="sm mt8"><b><span class="code">on-*</span> is fixed.</b> Deep Ink on Citron, Yellow, Sky and Orange; Cream on teal and light danger. Only for text on that tone's solid fill.</p>
+        <p class="sm mt12"><b><span class="code">*-ink</span> follows the theme.</b> For standalone text and for text on a <span class="code">*-soft</span> tint. Mixing the two made Citron pills unreadable in dark once.</p>
+      </div>
+      <div class="th-dark">
+        <div class="lbl">Dark</div>
+        <div class="card mt12">
+          <div class="row" style="align-items:center"><span class="btn primary">Issue item</span><span class="sm">same fill, same label · <b>{{cr:dark.on-accent/dark.accent}}</b></span></div>
+          <div class="row mt16" style="align-items:center"><span class="h4" style="color:rgb(var(--color-accent-ink))">View public page</span><span class="sm">accent-ink on panel · <b>{{cr:dark.accent-ink/dark.panel}}</b></span></div>
+          <div class="row mt16" style="align-items:center"><span class="h4" style="color:rgb(var(--color-accent))">View public page</span><span class="sm"><span class="tag dont">No</span> teal fill as text · {{cr:dark.accent/dark.panel}}</span></div>
+          <div class="row mt16" style="align-items:center"><span class="btn danger" style="height:36px">Delete</span><span class="sm">danger flips: Ink on soft red · <b>{{cr:dark.on-danger/dark.danger}}</b></span></div>
+        </div>
+        <div class="lbl mt32">On black</div>
+        <p class="sm mt8">Teal as a fill is {{cr:dark.accent/dark.bg}} : 1 on the page and {{cr:dark.accent/dark.panel}} : 1 on a panel. A selected teal fill always carries a label or a second cue.</p>
+        <p class="sm mt12">Text, icons and chart marks use <span class="code">accent-ink</span> <span class="code">{{hex:dark.accent-ink}}</span>: teal mixed 50 % with Cream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: status ===== -->
+<section class="pg split th-light" data-sec="04 / Colour">
+  <div class="bleed th-dark" style="position:absolute;left:720px;top:0;right:0;bottom:0;background:rgb(var(--color-bg))"></div>
+  <div class="in">
+    <h1>Status: a word first.</h1>
+    <p class="sub" style="width:640px">Colour helps you scan. The word carries the meaning. Never colour alone.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:128px">
+      <div>
+        <div class="lbl">Small marks · solid in both themes</div>
+        <div class="row mt12" style="flex-wrap:wrap;gap:10px">
+          <span class="pill success">Returned</span><span class="pill warn">Pending approval</span><span class="pill info">Accepted</span><span class="pill accent">Issued</span><span class="pill emph">2 left</span><span class="pill danger">Closed with issue</span><span class="pill neutral">Draft</span>
+        </div>
+        <div class="lbl mt32">Large callouts · solid fill in light</div>
+        <div class="mt12" style="border-radius:14px;padding:16px 18px;background:rgb(var(--color-warn));color:rgb(var(--color-on-warn))"><b>4 people are waiting for approval.</b> 1 event is still a draft.</div>
+        <div class="mt12" style="border-radius:14px;padding:16px 18px;background:rgb(var(--color-success));color:rgb(var(--color-on-success))"><b>Returned.</b> Photo and remark saved to the record.</div>
+        <table class="tb mt32" style="font-size:14px">
+          <thead><tr><th>Tone</th><th>Means</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill success">success</span></td><td>Done, available, paid, returned</td></tr>
+            <tr><td><span class="pill warn">warn</span></td><td>Waiting on someone, unpaid, maintenance</td></tr>
+            <tr><td><span class="pill info">info</span></td><td>Accepted, reserved, waitlisted, completed</td></tr>
+            <tr><td><span class="pill accent">accent</span></td><td>In progress: issued, checked out, running</td></tr>
+            <tr><td><span class="pill emph">emphasis</span></td><td>Attention: low stock, counters. Never danger.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="th-dark">
+        <div class="lbl">Small marks · identical in dark</div>
+        <div class="row mt12" style="flex-wrap:wrap;gap:10px">
+          <span class="pill success">Returned</span><span class="pill warn">Pending approval</span><span class="pill info">Accepted</span><span class="pill accent">Issued</span><span class="pill emph">2 left</span><span class="pill danger">Closed with issue</span><span class="pill neutral">Draft</span>
+        </div>
+        <div class="lbl mt32">Large callouts · soft fill and ink in dark</div>
+        <div class="mt12" style="border-radius:14px;padding:16px 18px;background:rgb(var(--color-warn-soft));color:rgb(var(--color-warn-ink));border:1px solid rgb(var(--color-line))"><b>4 people are waiting for approval.</b> 1 event is still a draft.</div>
+        <div class="mt12" style="border-radius:14px;padding:16px 18px;background:rgb(var(--color-success-soft));color:rgb(var(--color-success-ink));border:1px solid rgb(var(--color-line))"><b>Returned.</b> Photo and remark saved to the record.</div>
+        <div class="mt32 sm">
+          <p><b>Why the split?</b> A soft pill in dark looked dim beside the same pill in light, so a table scanned differently per theme. But a full-width pastel slab glares on black.</p>
+          <p class="mt12">Ratios: Citron {{cr:light.on-success/light.success}}, Yellow {{cr:light.on-warn/light.warn}}, Sky {{cr:light.on-info/light.info}} with the Deep Ink label. Dark callouts: success {{cr:dark.success-ink/dark.success-soft}}, warn {{cr:dark.warn-ink/dark.warn-soft}}, info {{cr:dark.info-ink/dark.info-soft}}.</p>
+          <p class="mt12"><b>Danger</b> is only for errors and destructive actions: a panel pill with a <span class="code">danger-line</span> border and <span class="code">danger</span> text.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: contrast ===== -->
+<section class="pg cream th-light" data-sec="04 / Colour">
+  <div class="in">
+    <h1>Readable by design.</h1>
+    <p class="sub">Every ratio below is computed from <span class="code">tokens.json</span> with the WCAG 2.x formula. Text needs 4.5, large text and UI edges 3.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 360px;gap:48px">
+      <table class="tb" style="font-size:14px">
+        <thead><tr><th>Pair</th><th class="num">Light</th><th class="num">Dark</th><th class="num">Needs</th></tr></thead>
+        <tbody>
+          <tr><td>ink on bg / panel</td><td class="num">{{cr:light.ink/light.bg}} / {{cr:light.ink/light.panel}}</td><td class="num">{{cr:dark.ink/dark.bg}} / {{cr:dark.ink/dark.panel}}</td><td class="num">4.5</td></tr>
+          <tr><td>muted on bg / hover</td><td class="num">{{cr:light.muted/light.bg}} / {{cr:light.muted/light.hover}}</td><td class="num">{{cr:dark.muted/dark.bg}} / {{cr:dark.muted/dark.hover}}</td><td class="num">4.5</td></tr>
+          <tr><td>accent-ink on panel</td><td class="num">{{cr:light.accent-ink/light.panel}}</td><td class="num">{{cr:dark.accent-ink/dark.panel}}</td><td class="num">4.5</td></tr>
+          <tr><td>on-accent on accent</td><td class="num">{{cr:light.on-accent/light.accent}}</td><td class="num">{{cr:dark.on-accent/dark.accent}}</td><td class="num">4.5</td></tr>
+          <tr><td>on-accent on accent-active</td><td class="num">{{cr:light.on-accent/light.accent-active}}</td><td class="num">{{cr:dark.on-accent/dark.accent-active}}</td><td class="num">4.5</td></tr>
+          <tr><td>on-emphasis on emphasis</td><td class="num">{{cr:light.on-emphasis/light.emphasis}}</td><td class="num">{{cr:dark.on-emphasis/dark.emphasis}}</td><td class="num">4.5</td></tr>
+          <tr><td>on-success · on-warn · on-info</td><td class="num">{{cr:light.on-success/light.success}} · {{cr:light.on-warn/light.warn}} · {{cr:light.on-info/light.info}}</td><td class="num">same fills</td><td class="num">4.5</td></tr>
+          <tr><td>success-ink on success-soft</td><td class="num">{{cr:light.success-ink/light.success-soft}}</td><td class="num">{{cr:dark.success-ink/dark.success-soft}}</td><td class="num">4.5</td></tr>
+          <tr><td>warn-ink on warn-soft</td><td class="num">{{cr:light.warn-ink/light.warn-soft}}</td><td class="num">{{cr:dark.warn-ink/dark.warn-soft}}</td><td class="num">4.5</td></tr>
+          <tr><td>info-ink on hover (worst light cell)</td><td class="num">{{cr:light.info-ink/light.hover}}</td><td class="num">{{cr:dark.info-ink/dark.hover}}</td><td class="num">4.5</td></tr>
+          <tr><td>danger on panel</td><td class="num">{{cr:light.danger/light.panel}}</td><td class="num">{{cr:dark.danger/dark.panel}}</td><td class="num">4.5</td></tr>
+          <tr><td>on-danger on danger</td><td class="num">{{cr:light.on-danger/light.danger}}</td><td class="num">{{cr:dark.on-danger/dark.danger}}</td><td class="num">4.5</td></tr>
+          <tr><td>focus ring on bg</td><td class="num">{{cr:light.focus/light.bg}}</td><td class="num">{{cr:dark.focus/dark.bg}}</td><td class="num">3</td></tr>
+          <tr><td>outline (control edge) on bg / panel</td><td class="num">{{cr:light.outline/light.bg}} / {{cr:light.outline/light.panel}}</td><td class="num">{{cr:dark.outline/dark.bg}} / {{cr:dark.outline/dark.panel}}</td><td class="num">3</td></tr>
+          <tr><td class="mut">line, decorative only</td><td class="num mut">{{cr:light.line/light.bg}}</td><td class="num mut">{{cr:dark.line/dark.bg}}</td><td class="num mut">none</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <div class="lbl">Brand pairs (from v1)</div>
+        <div class="mt12" style="display:grid;gap:10px">
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-maker-teal));color:rgb(var(--b-warm-cream))"><b style="font-size:24px">Aa</b><span class="sm">Cream on teal · {{cr:brand.warm-cream/brand.maker-teal}}</span></div>
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-warm-cream));border:1px solid rgb(var(--b-deep-ink))"><b style="font-size:24px">Aa</b><span class="sm">Ink on cream · {{cr:brand.deep-ink/brand.warm-cream}}</span></div>
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-workshop-orange))"><b style="font-size:24px">Aa</b><span class="sm">Ink on orange · {{cr:brand.deep-ink/brand.workshop-orange}}</span></div>
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-citron))"><b style="font-size:24px">Aa</b><span class="sm">Ink on citron · {{cr:brand.deep-ink/brand.citron}}</span></div>
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-sky-blue))"><b style="font-size:24px">Aa</b><span class="sm">Ink on sky · {{cr:brand.deep-ink/brand.sky-blue}}</span></div>
+          <div class="row" style="align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgb(var(--b-warm-yellow))"><b style="font-size:24px">Aa</b><span class="sm">Ink on yellow · {{cr:brand.deep-ink/brand.warm-yellow}}</span></div>
+        </div>
+        <p class="sm mt16"><span class="tag dont">Never</span> orange text on cream: {{cr:brand.workshop-orange/brand.warm-cream}} : 1. No translucent text, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 Colour: charts ===== -->
+<section class="pg split th-light" data-sec="04 / Colour">
+  <div class="bleed th-dark" style="position:absolute;left:720px;top:0;right:0;bottom:0;background:rgb(var(--color-bg))"></div>
+  <div class="in">
+    <h1>Chart colours.</h1>
+    <p class="sub" style="width:640px">Five bright brand colours, the same in both themes. An edge carries the contrast, so no fill is ever dulled.</p>
+    <div class="ct" style="display:grid;grid-template-columns:1fr 1fr;gap:128px">
+      <div>
+        <div class="card line" style="padding:18px 20px">{{chart}}</div>
+        <table class="tb mt16" style="font-size:14px">
+          <thead><tr><th>Series</th><th>Hex, both themes</th><th>Dash</th><th class="num">fill on panel</th></tr></thead>
+          <tbody>
+            <tr><td>1 · teal</td><td><span class="dot" style="background:rgb(var(--chart-1))"></span><span class="code">{{hex:chart.light.1}}</span></td><td>solid</td><td class="num">{{cr:chart.light.1/light.panel}}</td></tr>
+            <tr><td>2 · orange</td><td><span class="dot" style="background:rgb(var(--chart-2))"></span><span class="code">{{hex:chart.light.2}}</span></td><td>8 4</td><td class="num">{{cr:chart.light.2/light.panel}}</td></tr>
+            <tr><td>3 · citron</td><td><span class="dot" style="background:rgb(var(--chart-3));outline:1px solid rgb(var(--chart-edge))"></span><span class="code">{{hex:chart.light.3}}</span></td><td>2 4</td><td class="num">{{cr:chart.light.3/light.panel}}</td></tr>
+            <tr><td>4 · sky</td><td><span class="dot" style="background:rgb(var(--chart-4))"></span><span class="code">{{hex:chart.light.4}}</span></td><td>10 3 2 3</td><td class="num">{{cr:chart.light.4/light.panel}}</td></tr>
+            <tr><td>5 · yellow</td><td><span class="dot" style="background:rgb(var(--chart-5))"></span><span class="code">{{hex:chart.light.5}}</span></td><td>solid</td><td class="num">{{cr:chart.light.5/light.panel}}</td></tr>
+            <tr><td><b>edge</b></td><td><span class="dot" style="background:rgb(var(--chart-edge))"></span><span class="code">{{hex:chart.light.edge}}</span> Deep Ink</td><td>1 px · 4 px</td><td class="num"><b>{{cr:chart.light.edge/light.panel}}</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="th-dark">
+        <div class="card" style="padding:18px 20px">{{chart}}</div>
+        <table class="tb mt16" style="font-size:14px">
+          <thead><tr><th>In dark</th><th>Hex</th><th class="num">fill on panel</th></tr></thead>
+          <tbody>
+            <tr><td>1 · teal</td><td><span class="code">{{hex:chart.dark.1}}</span> same</td><td class="num">{{cr:chart.dark.1/dark.panel}}</td></tr>
+            <tr><td>3 · citron</td><td><span class="code">{{hex:chart.dark.3}}</span> same</td><td class="num">{{cr:chart.dark.3/dark.panel}}</td></tr>
+            <tr><td><b>edge</b></td><td><span class="dot" style="background:rgb(var(--chart-edge))"></span><span class="code">{{hex:chart.dark.edge}}</span> Cream</td><td class="num"><b>{{cr:chart.dark.edge/dark.panel}}</b></td></tr>
+            <tr><td>danger</td><td><span class="dot" style="background:rgb(var(--chart-danger))"></span><span class="code">{{hex:chart.dark.danger}}</span> (light <span class="code">{{hex:chart.light.danger}}</span>)</td><td class="num">{{cr:chart.dark.danger/dark.panel}}</td></tr>
+          </tbody>
+        </table>
+        <ul class="bul sm mt16">
+          <li><b>Edge:</b> 1 px on every filled mark (bars, dots, slices), a 4 px casing under every 2 px line.</li>
+          <li><b>Danger is not a series.</b> Use it on purpose for a bad or negative value.</li>
+          <li>Colour follows the series identity (hashed), plus a dash per series, so it survives sorting and is never the only cue.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

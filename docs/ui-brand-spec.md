@@ -679,8 +679,11 @@ PINs (keep `tracking-widest`), versions and public codes. They include 8 inputs:
 
 - `statusToneMap`: `issued` and `checked_out` change `danger` → `accent`. Add every status in C.
 - The dashboard and stats tiles become `StatCard`: a neutral panel with the tone carried by the number (UX spec P4).
-- `OperationsReportCharts` marks need ≥3:1 on panel. Light: teal 6.16, info-ink 5.74, success-ink 5.75,
-  warn-ink 5.78, danger 6.47. Dark: the brand fills. Orange and the pastels in light mode only appear with a 1 px ink stroke.
+- `OperationsReportCharts` marks need ≥3:1 on panel (SW-380, Design System v2.0, replaces the old ink shades).
+  Series fills are the five bright brand colours in both themes; the mark boundary reaches 3:1 through
+  `--chart-edge` (1 px edge on every filled mark, 4 px casing under 2 px lines): Deep Ink 14.75:1 on the light
+  panel, Warm Cream 16.98:1 on the dark panel. Fills alone are 1.11 to 6.16 (light) and 2.99 to 16.53 (dark).
+  Danger is not a series colour.
 - The PLAN's "theme (Light/Dark/System)" in the user menu becomes **Light/Dark** (D11).
 
 ---

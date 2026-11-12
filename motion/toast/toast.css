@@ -1,0 +1,8 @@
+/* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `styles/motionOverlay.css` (the toast rules and keyframes only).
+   Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
+@media (prefers-reduced-motion: no-preference) {
+  .sw-fx-toast[data-state="open"] { animation: sw-toast-in var(--sw-dur-base) var(--sw-ease-enter) both; }
+  .sw-fx-toast[data-state="closed"] { animation: sw-toast-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
+}
+@keyframes sw-toast-in { from { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 1.5)); } }
+@keyframes sw-toast-out { to { opacity: 0; transform: translateY(var(--sw-enter-y)); } }

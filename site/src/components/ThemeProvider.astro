@@ -2,7 +2,28 @@
 // Light is the default theme. Dark applies only after a reader chooses it,
 // and the choice is remembered. The OS colour scheme is deliberately ignored.
 import { kitUrl } from './kit-url';
+import { SPLITS } from '../../scripts/split-docs.mjs';
+
+// Long docs are split into an overview plus parts. An old deep link to a section of the overview is forwarded to the
+// part that section now lives on (map written by scripts/sync-split.mjs). Only overview pages with a #hash fetch it.
+const splitRoutes = SPLITS.map((d) => `/${d.route}/`);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const movedUrl = kitUrl('moved-anchors.json');
 ---
+
+<script is:inline define:vars={{ splitRoutes, base, movedUrl }}>
+	(() => {
+		const path = location.pathname.slice(base.length);
+		if (!location.hash || !splitRoutes.includes(path)) return;
+		fetch(movedUrl)
+			.then((r) => r.json())
+			.then((moved) => {
+				const to = moved[path + decodeURIComponent(location.hash)];
+				if (to) location.replace(base + to);
+			})
+			.catch(() => {});
+	})();
+</script>
 
 {/* Inlined to avoid a flash of the wrong theme. */}
 <script is:inline>

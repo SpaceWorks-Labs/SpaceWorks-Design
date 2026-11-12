@@ -1,10 +1,10 @@
 ---
-title: Space Works Design
-description: The Space Works design system. Logo, colour, type, voice, design tokens and UI specs in one place.
+title: Space Works Design System
+description: Space Works Design System v2.0. Logo, colour, type, voice, design tokens, motion, UX patterns and the product rules in one place.
 template: splash
 hero:
   title: Built from the box.
-  tagline: The Space Works design system. Everything you need to make something look and sound like Space Works, from the logo masters to the tokens in the app.
+  tagline: <span class="sw-hero-badge">Design System v2.0</span> The Space Works design system. Everything you need to make something look and sound like Space Works, from the logo masters to the tokens in the app.
   image:
     file: ../../assets/kit/app-icon.svg
     alt: The Space Works open-box symbol on a warm cream tile.
@@ -12,6 +12,9 @@ hero:
     - text: Start with the brand
       link: /SpaceWorks-Design-System/brand/introduction/
       icon: right-arrow
+    - text: What's new in v2.0
+      link: /SpaceWorks-Design-System/whats-new-v2/
+      variant: minimal
     - text: Use the tokens
       link: /SpaceWorks-Design-System/tokens/using-the-kit/
       variant: minimal
@@ -21,17 +24,47 @@ hero:
       variant: minimal
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard, LinkButton } from '@astrojs/starlight/components';
 
 ## An open invitation
 
 A familiar box, built for a space full of possibilities. Four flaps invite the next project, a clear
 structure gives every part a place, and the colours do the rest: teal grounds it, orange gets it moving.
 
+## What's new in v2.0
+
+<div class="sw-home-split">
+<div>
+
+Version 2.0 of the design system ships alongside SpaceWorks 0.12.0. The headline changes:
+
+- **A solid-black dark mode.** One neutral black family, with the brand brights unchanged in both themes.
+- **The logo moves.** The box opens on hover and focus, and the same box is the loader everywhere.
+- **A motion kit.** Every animation in the product as a reusable template: CSS, React copies, a live demo and a README.
+- **Brand guidelines v2.** A 50-page book covering light and dark, motion and the product.
+- **Product rules.** The rules every Space Works product follows, and where each product stands.
+
+</div>
+<div class="sw-stack">
+  <LinkCard title="What's new in v2.0" description="The solid-black dark mode, the box-opening logo, every animation and the UX changes." href="/whats-new-v2/" />
+  <LinkCard title="Design decisions" description="Every decision behind v2.0, with the reason for each." href="/decisions/" />
+</div>
+</div>
+
+## Explore the system
+
 <CardGrid>
-  <LinkCard title="What's new in 0.12.0" description="The solid-black dark mode, the box-opening logo, every animation and the UX changes." href="/whats-new/" />
-  <LinkCard title="Rules" description="The product and engineering rules every Space Works product follows." href="/rules/" />
+  <LinkCard title="Brand" description="Logo, colour, type, graphics, Patch the mascot and the brand guidelines." href="/brand/introduction/" />
+  <LinkCard title="Foundations" description="Design tokens, theming, contrast, type scale, shape, spacing and icons." href="/foundations/" />
   <LinkCard title="Motion" description="The animation catalogue, the box-open loader and the motion tokens, live." href="/motion/principles/" />
+  <LinkCard title="Components and patterns" description="Space Works UX: patterns, layouts, states, status pills and every screen." href="/ux/introduction/" />
+  <LinkCard title="Content" description="Voice, tone and microcopy." href="/brand/voice/" />
+  <LinkCard title="Rules" description="The product and engineering rules every Space Works product follows." href="/rules/" />
+</CardGrid>
+
+## Jump straight to
+
+<CardGrid>
   <LinkCard title="Logo" description="Ten masters, clear space, minimum sizes and the six things never to do." href="/brand/logo/" />
   <LinkCard title="Colour" description="Seven colours, one clear system, and the text pairs that pass contrast." href="/brand/colour/" />
   <LinkCard title="Typography" description="Gilroy ExtraBold leads, Outfit does the everyday work, Unbounded brings one bold moment." href="/brand/typography/" />
@@ -39,7 +72,42 @@ structure gives every part a place, and the colours do the rest: teal grounds it
   <LinkCard title="Design tokens" description="Every light and dark colour token, ready to import as CSS or JSON." href="/tokens/reference/" />
   <LinkCard title="UI specs" description="How the brand becomes the app: states, pills, type scale and screen patterns." href="/specs/ui-brand-spec/" />
   <LinkCard title="Space Works UX" description="Our interaction system: 30 patterns, 10 layouts and the quality bar every screen meets." href="/ux/introduction/" />
+  <LinkCard title="Pipelines and releases" description="How every repository checks, versions and ships its work." href="/delivery/" />
 </CardGrid>
+
+## Downloads and live demos
+
+<div class="sw-home-split">
+<div>
+
+### Brand guidelines
+
+Version 2 is current; where the two books differ, v2 wins. Version 1 stays for reference, and every page of
+both books is on [Brand guidelines](/brand/guidelines/).
+
+<div class="sw-actions">
+  <LinkButton href="/SpaceWorks-Design-System/kit/brand/space-works-brand-guidelines-v2.pdf" icon="download">Brand guidelines v2 (PDF)</LinkButton>
+  <LinkButton href="/SpaceWorks-Design-System/kit/brand/space-works-brand-guidelines-v1.pdf" variant="secondary">v1 (PDF)</LinkButton>
+</div>
+
+</div>
+<div>
+
+### Hosted demos
+
+Every animation runs on its own page, in light and dark:
+[box-open loader](/kit/motion/box-open/demo.html),
+[theme switch](/kit/motion/theme-reveal/demo.html),
+[search field](/kit/motion/search/demo.html),
+[route transition](/kit/motion/route-transition/demo.html),
+[overlays](/kit/motion/overlays/demo.html),
+[toast](/kit/motion/toast/demo.html),
+[feedback](/kit/motion/feedback/demo.html) and
+[delight](/kit/motion/delight/demo.html).
+The full list, with where each one is used, is [Every animation](/motion/kit/).
+
+</div>
+</div>
 
 ## One source of truth
 

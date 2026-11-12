@@ -5,6 +5,7 @@ import starlightLinksValidator from 'starlight-links-validator';
 import { satteri } from '@astrojs/markdown-satteri';
 import { readFileSync } from 'node:fs';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
+import { splitItems } from './scripts/split-docs.mjs';
 
 // GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design-System/. Set
 // DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
@@ -17,9 +18,12 @@ export default defineConfig({
   site,
   base,
   markdown: { processor: satteri({ hastPlugins: [baseLinksPlugin(base)] }) },
+  // "What's new in 0.12.0" became "What's new in v2.0" (decision 382); old links land on the new page.
+  // Astro does not prefix the base onto a redirect destination, so it is written out.
+  redirects: { '/whats-new': `${base}/whats-new-v2/` },
   integrations: [
     starlight({
-      title: 'Space Works Design',
+      title: 'Space Works Design System',
       description:
         'The Space Works design system: logo, colour, type, voice, design tokens, UI specs and Space Works UX.',
       logo: {
@@ -58,28 +62,97 @@ export default defineConfig({
         },
       },
       plugins: [starlightLinksValidator()],
+      // Design System v2.0 information architecture (decision 385): start, brand, foundations, motion, components,
+      // content, rules, reference. Long docs are split into an overview plus parts (scripts/split-docs.mjs). Groups
+      // start collapsed (the one holding the current page opens), so the whole map fits on one screen.
       sidebar: [
         {
+          label: 'Start here',
+          items: [{ label: 'Overview', link: '/' }, 'whats-new-v2', 'tokens/using-the-kit'],
+        },
+        {
           label: 'Brand',
+          collapsed: true,
           items: [
             'brand/introduction',
             'brand/logo',
-            'brand/mascot',
+            ...splitItems('specs/ui-brand-spec', ['logo-in-product']),
             'brand/colour',
             'brand/typography',
             'brand/graphics',
-            'brand/voice',
+            'brand/mascot',
             'brand/guidelines',
           ],
         },
-        { label: 'New', items: ['whats-new'] },
-        { label: 'Rules', items: ['rules'] },
-        { label: 'Motion', items: ['motion/principles', 'motion/box-open', 'motion/theme-reveal', 'motion/tokens'] },
-        { label: 'Guides', items: ['theming', 'lessons-learned'] },
-        { label: 'Tokens', items: ['tokens/using-the-kit', 'tokens/reference'] },
-        { label: 'UX', items: ['ux/introduction', 'ux/patterns', 'ux/gallery', 'ux/inspiration'] },
-        { label: 'Specs', items: [{ autogenerate: { directory: 'specs' } }] },
-        { label: 'About', items: ['about/credits'] },
+        {
+          label: 'Foundations',
+          collapsed: true,
+          items: [
+            'foundations',
+            'tokens/reference',
+            ...splitItems('specs/ui-brand-spec', ['tokens', 'index-css']),
+            'theming',
+            ...splitItems('specs/ui-brand-spec', ['typography', 'shape-and-spacing', 'icons']),
+          ],
+        },
+        {
+          label: 'Motion',
+          collapsed: true,
+          items: [
+            ...splitItems('motion/principles'),
+            'motion/tokens',
+            'motion/kit',
+            { label: 'Brand moments', items: ['motion/box-open', 'motion/theme-reveal', 'motion/delight'] },
+            { label: 'Navigation', items: ['motion/route-transition', 'motion/page-enter', 'motion/scroll-reveal', 'motion/sidebar'] },
+            { label: 'Layers', items: ['motion/overlays', 'motion/toast'] },
+            { label: 'Feedback and state', items: ['motion/feedback', 'motion/skeleton', 'motion/collapse', 'motion/hover-press', 'motion/search'] },
+            { label: 'Displays', items: ['motion/kiosk-display'] },
+          ],
+        },
+        {
+          label: 'Components and patterns',
+          collapsed: true,
+          items: [
+            'ux/introduction',
+            'ux/patterns',
+            ...splitItems('specs/ui-brand-spec', ['interaction-states', 'status-pills']),
+            'ux/gallery',
+            {
+              label: 'UX spec',
+              collapsed: true,
+              items: splitItems('specs/ux-patterns').filter((i) => !i.slug.endsWith('/interaction-and-microcopy')),
+            },
+            { label: 'Long-tail screens', collapsed: true, items: splitItems('specs/ux-long-tail-screens') },
+          ],
+        },
+        {
+          label: 'Content',
+          collapsed: true,
+          items: ['brand/voice', ...splitItems('specs/ux-patterns', ['interaction-and-microcopy'])],
+        },
+        {
+          label: 'Rules',
+          collapsed: true,
+          items: [
+            ...splitItems('rules'),
+            { label: 'Pipelines and releases', items: splitItems('delivery') },
+          ],
+        },
+        {
+          label: 'Reference',
+          collapsed: true,
+          items: [
+            { label: 'Design decisions', collapsed: true, items: splitItems('decisions') },
+            { label: 'Lessons learned', collapsed: true, items: splitItems('lessons-learned') },
+            {
+              label: 'UI brand spec',
+              collapsed: true,
+              items: [splitItems('specs/ui-brand-spec')[0], ...splitItems('specs/ui-brand-spec', ['migration', 'enforcement'])],
+            },
+            'ux/inspiration',
+            'about/credits',
+          ],
+        },
       ],
     }),
   ],

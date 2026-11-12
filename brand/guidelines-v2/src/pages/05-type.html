@@ -1,0 +1,150 @@
+<!-- ===== 05 Type: the limitation ===== -->
+<section class="pg citron th-light" data-sec="05 / Typography" data-toc="Typography and the font limitation">
+  <div class="in">
+    <h1>Two free weights. No exceptions.</h1>
+    <p class="sub">Only the free Gilroy weights ship. Everything else is set in Outfit. This replaces the four-weight Gilroy of v1.</p>
+    <div class="ct">
+      <div style="position:absolute;left:0;top:0;width:700px">
+        <div class="lbl">Gilroy ExtraBold · 800 · free</div>
+        <div class="d800" style="font-size:118px;line-height:1;margin-top:8px">Ready to make.</div>
+        <div class="lbl mt32">Gilroy Light · 300 · free</div>
+        <div class="d300" style="font-size:72px;line-height:1.05;margin-top:8px">Everything in its place.</div>
+        <div class="lbl mt32">Withdrawn · paid weights, no licence held</div>
+        <div class="row mt12" style="gap:12px">
+          <span class="pill" style="background:rgb(var(--color-panel));color:rgb(var(--color-ink));text-decoration:line-through;height:34px;font-size:15px">Regular 400</span>
+          <span class="pill" style="background:rgb(var(--color-panel));color:rgb(var(--color-ink));text-decoration:line-through;height:34px;font-size:15px">Medium 500</span>
+          <span class="pill" style="background:rgb(var(--color-panel));color:rgb(var(--color-ink));text-decoration:line-through;height:34px;font-size:15px">SemiBold 600</span>
+          <span class="pill" style="background:rgb(var(--color-panel));color:rgb(var(--color-ink));text-decoration:line-through;height:34px;font-size:15px">Bold 700</span>
+        </div>
+      </div>
+      <div style="position:absolute;left:800px;right:0;top:0">
+        <div class="rule-t" style="padding-top:20px"><span class="lbl">Why</span></div>
+        <p class="body mt12">Gilroy is a commercial family. Its author releases Light and ExtraBold free, under an EULA that allows websites (<span class="code">@font-face</span>), graphics, print and embedding in software. Regular to Bold are paid. The project does not hold that licence, so those files were removed from every repository (decision 299, 11 November 2026) and are never re-added.</p>
+        <div class="rule-t mt24" style="padding-top:20px"><span class="lbl">What fills the gap</span></div>
+        <p class="body mt12"><b>Outfit</b> (SIL OFL, variable 400–700) takes every role between the two Gilroy weights: body, labels, buttons, table text, numbers and IDs. <b>Unbounded</b> (OFL) keeps its one accent phrase.</p>
+        <div class="rule-t mt24" style="padding-top:20px"><span class="lbl">Never</span></div>
+        <ul class="bul body mt8">
+          <li>Ask the browser for a Gilroy weight that does not ship. Set <span class="code">font-synthesis: none</span>.</li>
+          <li>Fake a middle weight with a stroke, a shadow or faux bold.</li>
+          <li>Download a paid weight “just for a mock-up”.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 Type: roles ===== -->
+<section class="pg cream th-light" data-sec="05 / Typography">
+  <div class="in">
+    <h1>Three families. Clear roles.</h1>
+    <p class="sub">Gilroy for the big moment, Outfit for the work, Unbounded for one phrase.</p>
+    <div class="ct">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+        <div style="padding-right:36px">
+          <div class="lbl">Display · Gilroy</div>
+          <div class="d800 mt16" style="font-size:96px;line-height:0.95">Gilroy</div>
+          <div class="d800 mt24" style="font-size:40px;line-height:1.05">Everything in its place.</div>
+          <div class="d300 mt16" style="font-size:30px;line-height:1.15">Less searching, more making.</div>
+          <p class="sm mt24"><b>800</b> for display headings, landing heroes and section heads. <b>300</b> for light display text such as sub-lines on big pages. Never under 24 px.</p>
+          <p class="xs mut mt12"><span class="code">var(--font-display)</span> · fonts/Gilroy-ExtraBold.woff2, Gilroy-Light.woff2</p>
+        </div>
+        <div class="vr" style="padding:0 36px">
+          <div class="lbl">Interface · Outfit</div>
+          <div style="font-size:96px;line-height:0.95;font-weight:600;letter-spacing:-0.02em" class="mt16">Outfit</div>
+          <div class="mt24" style="font-size:24px;line-height:1.5">
+            <div style="font-weight:400">Regular 400 · body and inputs</div>
+            <div style="font-weight:500">Medium 500 · labels and nav</div>
+            <div style="font-weight:600">SemiBold 600 · titles, buttons</div>
+            <div style="font-weight:700">Bold 700 · inline strong</div>
+          </div>
+          <p class="sm mt16">Every interface word. IDs and codes too: <b class="code">ARD-001 · 0042</b> with tabular figures, never a monospace family.</p>
+          <p class="xs mut mt12"><span class="code">var(--font-sans)</span> · fonts/Outfit-Variable.woff2 · OFL</p>
+        </div>
+        <div class="vr" style="padding-left:36px">
+          <div class="lbl">Accent · Unbounded</div>
+          <div class="acc mt16" style="font-size:54px;line-height:1.2;font-weight:600">Unbounded</div>
+          <div class="acc mt24" style="font-size:52px;line-height:1.05;color:rgb(var(--color-accent-ink))">Make<br>room.</div>
+          <p class="sm mt24"><b>500–600</b>, one short phrase per layout: the landing hero, the sign-in brand panel, an empty-state hero. Never in staff chrome, never a paragraph.</p>
+          <p class="xs mut mt12"><span class="code">var(--font-accent)</span> · fonts/Unbounded-Variable.woff2 · OFL</p>
+        </div>
+      </div>
+      <div class="lbl mt32">Weight map · who covers which weight</div>
+      <div class="wmap mt12">
+        <div class="wm g"><span class="d300" style="font-size:30px">Aa</span><b>300</b><span>Gilroy Light</span></div>
+        <div class="wm o"><span style="font-size:30px;font-weight:400">Aa</span><b>400</b><span>Outfit</span></div>
+        <div class="wm o"><span style="font-size:30px;font-weight:500">Aa</span><b>500</b><span>Outfit</span></div>
+        <div class="wm o"><span style="font-size:30px;font-weight:600">Aa</span><b>600</b><span>Outfit</span></div>
+        <div class="wm o"><span style="font-size:30px;font-weight:700">Aa</span><b>700</b><span>Outfit</span></div>
+        <div class="wm g"><span class="d800" style="font-size:30px">Aa</span><b>800</b><span>Gilroy ExtraBold</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 Type: fallbacks ===== -->
+<section class="pg cream th-light" data-sec="05 / Typography">
+  <div class="in">
+    <h1>Fallbacks, per platform.</h1>
+    <p class="sub">Same roles everywhere. Ship the files in <span class="code">fonts/</span>, and know what shows when a face cannot load.</p>
+    <div class="ct">
+      <table class="tb" style="font-size:15px">
+        <thead><tr><th style="width:150px">Platform</th><th>How the faces ship</th><th style="width:300px">Stack / fallback</th><th style="width:280px">Watch for</th></tr></thead>
+        <tbody>
+          <tr><td class="h4">Web</td><td>Self-hosted WOFF2 through <span class="code">tokens/tokens.css</span> (<span class="code">@font-face</span>, <span class="code">font-display: swap</span>). Gilroy registered at 300 and 800 only.</td><td class="code">"Gilroy", sans-serif<br>"Outfit", sans-serif<br>"Unbounded", "Outfit", sans-serif</td><td><span class="code">font-synthesis: none</span> so a 600 heading never fakes Gilroy; use Outfit 600 instead.</td></tr>
+          <tr><td class="h4">Android</td><td>Bundle Outfit and Unbounded (OFL) and the two free Gilroy files as font resources; map display 800 / 300, sans 400–700.</td><td>Missing face: the system sans (Roboto). Never let display fall to a serif.</td><td>Compose / XML weights must name 300 and 800 for Gilroy; anything else is Outfit.</td></tr>
+          <tr><td class="h4">iOS</td><td>Bundle the same files and register them in the app; Dynamic Type scales the roles, not the families.</td><td>Missing face: San Francisco (system).</td><td>Do not let the system substitute a Gilroy weight; request Outfit for 400–700.</td></tr>
+          <tr><td class="h4">PDF and print</td><td>Embed the free Gilroy files where the engine allows.</td><td>Where Gilroy cannot be embedded: Outfit for every role (lesson 22).</td><td>Card Studio and badges: proof the printed PDF, not the screen.</td></tr>
+          <tr><td class="h4">Email</td><td>Web fonts are unreliable in mail clients.</td><td>Outfit if it loads, else the system sans stack; logo always as a PNG @2×.</td><td>Never set the wordmark in live text.</td></tr>
+          <tr><td class="h4">Logo</td><td>Outlined vectors in <span class="code">logo/</span>: no font needed anywhere.</td><td>n/a</td><td>Never retype “space works” in any font.</td></tr>
+        </tbody>
+      </table>
+      <div class="row mt24" style="gap:20px;align-items:center">
+        <p class="sm" style="flex:1">Licences live beside the files: <span class="code">fonts/LICENSES/Gilroy-Free-Font-EULA.txt</span>, <span class="code">OFL-Outfit.txt</span>, <span class="code">OFL-Unbounded.txt</span>. Read the Gilroy EULA before using the face outside a Space Works product; Outfit and Unbounded are free to use anywhere under the OFL.</p>
+        <a class="qr" href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/brand/typography/" style="width:84px;height:84px;padding:6px;flex:none">{{qr:type}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 Type: scale ===== -->
+<section class="pg cream th-light" data-sec="05 / Typography">
+  <div class="in">
+    <h1>A lean type scale.</h1>
+    <p class="sub">Desktop and phone sizes (size / line height in px). Under 640 px the display sizes drop.</p>
+    <div class="ct">
+      <table class="tb scale">
+        <thead><tr><th style="width:150px">Role</th><th style="width:118px">Desktop</th><th style="width:100px">Phone</th><th style="width:170px">Face</th><th>Sample</th></tr></thead>
+        <tbody>
+          <tr><td class="h4">Display</td><td>72 / 76</td><td>44 / 48</td><td>Gilroy 800</td><td class="d800" style="font-size:52px;line-height:1">Ready to make.</td></tr>
+          <tr><td class="h4">Heading</td><td>48 / 52</td><td>34 / 40</td><td>Gilroy 800</td><td class="d800" style="font-size:40px;line-height:1.05">Everything in its place.</td></tr>
+          <tr><td class="h4">Accent</td><td>48 / 56</td><td>32 / 40</td><td>Unbounded 500</td><td class="acc" style="font-size:36px;line-height:1.1">Make room.</td></tr>
+          <tr><td class="h4">Display sub</td><td>32 / 38</td><td>24 / 30</td><td>Outfit 400</td><td style="font-size:28px">Find the right part.</td></tr>
+          <tr><td class="h4">Page title</td><td>32 / 38</td><td>26 / 32</td><td>Outfit 600</td><td style="font-size:28px;font-weight:600;letter-spacing:-0.01em">Inventory</td></tr>
+          <tr><td class="h4">Panel title</td><td>20 / 28</td><td>20 / 28</td><td>Outfit 600</td><td style="font-size:20px;font-weight:600">Recent handovers</td></tr>
+          <tr><td class="h4">Body</td><td>16 / 24</td><td>16 / 24</td><td>Outfit 400</td><td style="font-size:16px">Manage the parts, tools and materials in your space.</td></tr>
+          <tr><td class="h4">Label · button</td><td>14 / 20</td><td>14 / 20</td><td>Outfit 500 · 600</td><td style="font-size:14px;font-weight:500">Location <span style="font-weight:600;margin-left:24px">View inventory</span></td></tr>
+          <tr><td class="h4">Caption · eyebrow</td><td>12 / 16</td><td>12 / 16</td><td>Outfit 500 · 600</td><td style="font-size:12px;font-weight:500">Updated 2 min ago <span style="font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-left:24px">Electronics</span></td></tr>
+        </tbody>
+      </table>
+      <p class="sm mt16">Stat numbers use Outfit 600 with tabular figures (32 / 38, hero stats 48 / 52). Give phone headers enough height for a two-line title.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 Type: do and don't ===== -->
+<section class="pg cream th-light" data-sec="05 / Typography">
+  <div class="in">
+    <h1>Type, done right.</h1>
+    <p class="sub">The mistakes that came up most while moving off the paid weights.</p>
+    <div class="ct">
+      <div class="g3" style="grid-template-rows:262px 262px">
+        <div class="card"><span class="tag do">Do</span><div class="d800 mt16" style="font-size:40px;line-height:1.05">Book a laser slot.</div><p class="sm mt12">Gilroy 800 for the one big heading.</p><p class="xs mut" style="position:absolute;left:24px;bottom:20px">Display role</p></div>
+        <div class="card"><span class="tag dont">Don't</span><div class="d300 mt16" style="font-size:15px;line-height:1.5">Gilroy Light as body text. At reading sizes the thin strokes fade on cream and vanish on black, and long paragraphs tire the eye quickly.</div><p class="xs mut" style="position:absolute;left:24px;bottom:20px">Light is for display sizes only (24 px and up)</p></div>
+        <div class="card"><span class="tag dont">Don't</span><div class="mt16" style="font-family:var(--font-display);font-weight:800;font-size:34px;line-height:1.1;-webkit-text-stroke:0;opacity:1">Inventory <span style="font-family:var(--font-display);font-weight:300;font-size:34px">overview</span></div><p class="sm mt12">Mixing 800 and 300 in one line to fake a hierarchy.</p><p class="xs mut" style="position:absolute;left:24px;bottom:20px">Use size and Outfit, not a weight clash</p></div>
+        <div class="card"><span class="tag do">Do</span><div class="mt16" style="font-size:28px;font-weight:600">ARD-001 · Shelf A-03</div><div class="mt8" style="font-size:20px;font-variant-numeric:tabular-nums">Qty 0012 · 0108 · 1440</div><p class="sm mt12">IDs in Outfit with tabular figures.</p><p class="xs mut" style="position:absolute;left:24px;bottom:20px">No monospace family anywhere</p></div>
+        <div class="card"><span class="tag dont">Don't</span><div class="acc mt16" style="font-size:26px;line-height:1.15">Make room.</div><div class="acc" style="font-size:26px;line-height:1.15">Book a bench.</div><div class="acc" style="font-size:18px;line-height:1.3;margin-top:6px">Settings · Members</div><p class="xs mut" style="position:absolute;left:24px;bottom:20px">Unbounded twice, or in staff chrome</p></div>
+        <div class="card"><span class="tag dont">Don't</span><div class="mt16" style="font-size:22px;font-weight:600;color:rgb(var(--color-muted));opacity:0.6">Couldn't save. Try again.</div><p class="sm mt12">Translucent text. Its real colour depends on what is under it.</p><p class="xs mut" style="position:absolute;left:24px;bottom:20px">Use the opaque muted token</p></div>
+      </div>
+    </div>
+  </div>
+</section>

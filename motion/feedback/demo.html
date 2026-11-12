@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback: stamp, result, confetti</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="feedback.css">
+<style>
+  body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
+  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
+  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
+  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
+  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
+  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
+  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
+.stamp{display:inline-block;padding:8px 18px;border:2px solid rgb(var(--color-success));color:rgb(var(--color-success-ink,var(--color-ink)));border-radius:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}</style>
+</head>
+<body>
+<main>
+  <header class="row"><h1>Feedback: stamp, result, confetti</h1>
+    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Replay each moment. The confetti fans 16 brand-colour pieces from the button. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
+<section><div class="row"><button class="btn" data-f="stamp">Stamp</button><button class="btn" data-f="res">Result</button><button class="btn" data-f="pass">Pass</button><button class="btn" data-f="log">Logbook</button><button class="btn" id="cf">Confetti</button></div>
+<div class="stage" style="display:grid;place-items:center"><div id="o"><span class="stamp sw-verify-stamp">Verified</span></div></div></section>
+</main>
+<script>
+var o=document.getElementById("o");
+var T={stamp:'<span class="stamp sw-verify-stamp">Verified</span>',res:'<div class="card sw-delight-result">Return recorded</div>',pass:'<div class="card sw-delight-pass">Member pass</div>',log:'<div class="card sw-delight-logbook">Workshop logbook</div>'};
+document.querySelectorAll("[data-f]").forEach(function(b){b.onclick=function(){o.innerHTML="";void o.offsetWidth;o.innerHTML=T[b.dataset.f]}});
+var FULL=["--color-accent","--color-emphasis","--color-success","--color-warn","--color-info"],SH=["square","circle","box"];
+document.getElementById("cf").onclick=function(e){var r=e.currentTarget.getBoundingClientRect();var c=document.createElement("span");c.className="sw-confetti";c.setAttribute("aria-hidden","true");c.style.left=(r.left+r.width/2)+"px";c.style.top=r.top+"px";
+ for(var i=0;i<16;i++){var a=(-165+150*i/15)*Math.PI/180,reach=64+(i%3)*22,p=document.createElement("span");p.className="sw-confetti-piece sw-confetti-"+SH[i%3];
+  p.style.setProperty("--dx",Math.round(Math.cos(a)*reach)+"px");p.style.setProperty("--dy",Math.round(Math.sin(a)*reach)+"px");p.style.setProperty("--spin",((i%2?1:-1)*(120+i*15))+"deg");
+  p.style.setProperty("--piece","rgb(var("+FULL[i%5]+"))");p.style.animationDelay=((i%4)*30)+"ms";c.appendChild(p)}
+ document.body.appendChild(c);setTimeout(function(){c.remove()},1300)};
+</script>
+</body>
+</html>

@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { MOTION_KIT_OUTPUTS, MOTION_KIT_SOURCES } from './motion-scenes.mjs';
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const LOCK = join(ROOT, 'scripts', 'previews.lock.json');
@@ -13,6 +14,8 @@ export const SOURCES = {
   'motion/theme-reveal/theme-reveal.css': 'theme-reveal',
   'motion/theme-reveal/theme-reveal.js': 'theme-reveal',
   'motion/theme-reveal/demo.html': 'theme-reveal',
+  // Motion kit: every family's CSS (and demo page) behind the animated previews in motion/*/previews/.
+  ...Object.fromEntries(MOTION_KIT_SOURCES.map((s) => [s, 'motion-kit'])),
 };
 export const OUTPUTS = [
   'tokens/previews/palette-light.png', 'tokens/previews/palette-light.svg',
@@ -23,6 +26,7 @@ export const OUTPUTS = [
     [`motion/box-open/previews/${n}.webp`, `motion/box-open/previews/${n}.gif`]),
   'motion/box-open/previews/logo-open-light.png', 'motion/box-open/previews/logo-open-dark.png',
   'motion/theme-reveal/previews/theme-reveal.webp', 'motion/theme-reveal/previews/theme-reveal.gif',
+  ...MOTION_KIT_OUTPUTS,
 ];
 
 export function hashSources() {

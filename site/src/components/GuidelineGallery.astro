@@ -1,15 +1,19 @@
 ---
-// All 17 pages of the brand guidelines, in presentation order, each opening at full size.
+// Every page of a brand guidelines book, in presentation order, each opening at full size.
+//   <GuidelineGallery />                                                         v1: 17 pages in kit/brand/guidelines/
+//   <GuidelineGallery dir="brand/guidelines-v2" count={50} label="Brand guidelines v2" />
 import { kitUrl } from './kit-url';
 
-const pages = Array.from({ length: 17 }, (_, i) => String(i + 1).padStart(2, '0'));
+interface Props { dir?: string; count?: number; label?: string }
+const { dir = 'brand/guidelines', count = 17, label = 'Brand guidelines' } = Astro.props;
+const pages = Array.from({ length: count }, (_, i) => String(i + 1).padStart(2, '0'));
 ---
 
 <div class="sw-pages not-content">
   {
     pages.map((n) => (
-      <a class="sw-page" href={kitUrl(`brand/guidelines/${n}.png`)}>
-        <img src={kitUrl(`brand/guidelines/${n}.png`)} alt={`Brand guidelines page ${n}`} loading="lazy" width="1440" height="1000" />
+      <a class="sw-page" href={kitUrl(`${dir}/${n}.png`)}>
+        <img src={kitUrl(`${dir}/${n}.png`)} alt={`${label} page ${n}`} loading="lazy" width="1440" height="1000" />
         <span>Page {n}</span>
       </a>
     ))

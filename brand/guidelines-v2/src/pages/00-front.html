@@ -1,0 +1,63 @@
+<!-- ===== Cover ===== -->
+<section class="pg ink th-light" data-sec="Identity system">
+  <div class="in">
+    <img src="../../../logo/lockup-stacked-reversed.svg" alt="space works" style="width:420px;margin-top:8px">
+    <div style="position:absolute;left:0;top:240px;width:760px">
+      <div class="acc" style="font-size:78px;line-height:1.08;color:rgb(var(--b-warm-cream))">Less searching.<br>More making.</div>
+    </div>
+    <div style="position:absolute;right:0;top:226px;width:444px;height:444px;border-radius:96px;background:rgb(var(--b-warm-cream));display:flex;align-items:center;justify-content:center">
+      <div class="sw-box once g-light frz" style="--t:1600;width:300px;aspect-ratio:136/126">{{box}}</div>
+    </div>
+    <div style="position:absolute;left:6px;bottom:24px">
+      <div style="font-size:24px;line-height:1.5">Design System v2.0</div>
+      <div style="font-size:24px;line-height:1.5">Brand guidelines v2 · November 2026</div>
+      <div class="sm mt12" style="color:rgb(var(--b-citron))">Supersedes brand guidelines v1 wherever the two differ.</div>
+    </div>
+    <div style="position:absolute;right:0;bottom:24px;text-align:right" class="sm">
+      Ships alongside SpaceWorks 0.12.0<br>Light and dark · Motion · Product
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contents ===== -->
+<section class="pg cream th-light" data-sec="Contents">
+  <div class="in">
+    <h1>Contents.</h1>
+    <p class="sub">Everything from v1 that is still true, and everything that changed alongside SpaceWorks 0.12.0.</p>
+    <div class="ct">
+      <ol class="toc">{{toc}}</ol>
+      <div class="lbl" style="margin-top:56px">How to read the pages</div>
+      <div class="g4 mt16 sm">
+        <div class="row" style="gap:14px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:10px;background:rgb(var(--b-warm-cream));border:1px solid rgb(var(--b-deep-ink))"></div><p><b>Cream</b> pages show rules and the light theme.</p></div>
+        <div class="row" style="gap:14px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:10px;background:rgb(0 0 0)"></div><p><b>Black</b> pages show the dark theme, as it ships.</p></div>
+        <div class="row" style="gap:14px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,rgb(var(--b-warm-cream)) 50%,rgb(0 0 0) 50%);border:1px solid rgb(var(--b-deep-ink))"></div><p><b>Split</b> pages put the same thing in light and dark, side by side.</p></div>
+        <div class="row" style="gap:14px;align-items:flex-start"><div style="flex:none;width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,rgb(var(--b-citron)) 50%,rgb(var(--b-deep-ink)) 50%)"></div><p><b>Citron</b> pages are principles; <b>Deep Ink</b> pages are brand and print.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== What's new ===== -->
+<section class="pg cream th-light" data-sec="What's new in v2">
+  <div class="in">
+    <h1>What changed since v1.</h1>
+    <p class="sub">Brand guidelines v2 follow the product as it ships in SpaceWorks 0.12.0. Where v1 and v2 differ, v2 wins.</p>
+    <div class="ct">
+      <table class="tb" style="font-size:15px">
+        <thead><tr><th style="width:150px">Area</th><th style="width:330px">v1 said</th><th>v2 says</th><th style="width:110px">Decision</th></tr></thead>
+        <tbody>
+          <tr><td class="h4">Typography</td><td>Gilroy Regular to Bold for everything; Unbounded for accents.</td><td><b>Only the free Gilroy weights ship</b>: ExtraBold 800 for display, Light 300 for light display text. Outfit (OFL) for body, labels and controls. Unbounded stays for one phrase.</td><td>299</td></tr>
+          <tr><td class="h4">Dark theme</td><td>Deep Ink and teal as dark surfaces.</td><td><b>One solid black neutral family</b>: page <span class="code">#000000</span>, layers 11, 20, 28. Teal, Citron and Orange are accents only.</td><td>225, 316</td></tr>
+          <tr><td class="h4">Logo</td><td>Static masters only.</td><td>Same masters. The mark now <b>folds shut and opens</b> on hover and keyboard focus (600 + 1600 ms). Tenant logos never animate.</td><td>362</td></tr>
+          <tr><td class="h4">Loading</td><td>Not covered.</td><td><b>One loader everywhere</b>: the box that opens. Cold-start splash, page loader, inline spinner, mono in buttons.</td><td>313, 322</td></tr>
+          <tr><td class="h4">Motion</td><td>Not covered.</td><td>Three durations, three curves, distance tokens, a which-animation-where table and a reduced-motion floor.</td><td>323</td></tr>
+          <tr><td class="h4">Colour roles</td><td>Seven colours and four tested pairs.</td><td>Product tokens for both themes: fills vs inks, <span class="code">line</span> vs <span class="code">outline</span>, status softs, scrim, chart series and loader colours.</td><td>316, 363</td></tr>
+          <tr><td class="h4">Charts</td><td>Not covered.</td><td>Five bright brand colours as series, the <b>same hex in both themes</b>; a 1 px edge on fills and a 4 px casing under lines carry the contrast.</td><td>SW-380</td></tr>
+          <tr><td class="h4">Status</td><td>Add a word or icon.</td><td>The <b>word is mandatory</b>. Small marks are solid in both themes; large callouts go soft in dark.</td><td>D6</td></tr>
+          <tr><td class="h4">New sections</td><td>17 pages.</td><td>Logo in motion, theming, charts, mascot Patch, components, UX patterns, product rules, accessibility, ID cards, signage and social.</td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="sm mut mt16">Unchanged: the purpose and personality, the seven brand colours, the logo masters, clear space (H ÷ 4), minimum sizes and the voice.</p>
+    </div>
+  </div>
+</section>

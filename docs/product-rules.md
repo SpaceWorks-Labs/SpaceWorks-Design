@@ -10,7 +10,7 @@ today, and where one does not follow the rule yet). A rule that says "not checke
 the code for that product; it is not a claim either way.
 
 Related pages: [`theming.md`](theming.md), [`motion.md`](motion.md), [`lessons-learned.md`](lessons-learned.md),
-[`design-changes-0.12.0.md`](design-changes-0.12.0.md), [`ui-brand-spec.md`](ui-brand-spec.md),
+[`whats-new-v2.0.md`](whats-new-v2.0.md), [`ui-brand-spec.md`](ui-brand-spec.md),
 [`ux-spec.md`](ux-spec.md).
 
 The products, for short:
@@ -474,6 +474,23 @@ second permission system for phones would drift.
 - Document every route: request and response types, auth requirement, typed errors. Keep the snapshot in the
   repository and regenerate it and the generated client types whenever routes or models change; CI fails on
   any difference. Next.js apps publish `/api/v1/openapi.json`.
+- **API reference for people, from the same spec.** Every product with an API publishes:
+  - the **OpenAPI 3.1** document (JSON, and YAML where useful) at a stable URL (`/api/schema/` or
+    `/api/v1/openapi.json`) and as a committed snapshot;
+  - **Swagger UI** (try-it-out, at `/api/docs/` or `/docs/`) and **ReDoc** (readable reference, at `/redoc/`), both
+    served from that document, both behind the same auth rules as the API (public in self-host by default, can be
+    turned off in production by a setting);
+  - the reference on the product's docs site too (rendered with Redocly/ReDoc), next to guides for auth, errors,
+    pagination, rate limits, webhooks and versioning.
+- **Spec quality.** Every operation has an `operationId` (stable, no `_2` suffixes), a summary and description, tags
+  that match the areas, request/response schemas with examples, every error response (400/401/403/404/409/422/429)
+  with the shared error schema, the security scheme (session, bearer, device token, API client HMAC), and
+  pagination parameters. Enums are named. Breaking changes need a new version prefix (`/api/v2/`) and a note in the
+  changelog.
+- **Lint the spec with Redocly CLI** (`redocly lint` with the org ruleset: operationId required and unique, tags
+  declared, no unused components, 4xx responses documented, examples valid) and bundle it (`redocly bundle`) for the
+  docs site. In CI this runs in the contract stage (section 14) and fails on errors.
+- Generated clients (TypeScript, Kotlin, Swift) come from the same snapshot; nobody hand-writes request types.
 - Errors have a stable, untranslated code and a translated message, in one consistent body.
 - **Throttle** abuse-prone routes. Answer **429 with `Retry-After`**; clients back off.
 - **Native tokens:** device grants (App Attest on iOS, Play Integrity on Android) refuse platform-admin
@@ -492,7 +509,9 @@ second permission system for phones would drift.
 device grants. Machines, Inventory, Bookings: `/api/v1/openapi.json`, API keys, signed webhooks. Events:
 machine API v1 and a mobile API spec, webhooks. Workspace: bearer API tokens, integration webhooks, MCP.
 Organization: OpenAPI endpoint **not found** in the tree; **not checked**. Android and iOS: generated
-client from `api/openapi.json`.
+client from `api/openapi.json`. Swagger UI and ReDoc: SpaceWorks serves both (`/docs/`, `/redoc/`, schema at
+`/schema/`) from drf-spectacular; Redocly lint is not yet in any pipeline; the Next.js apps' Swagger/ReDoc pages are
+**not checked**.
 
 ---
 
@@ -604,7 +623,10 @@ the code are worse than none.
 - **Commits.** One logical change per commit, one-line conventional subject (`feat(area): ...`, `fix: ...`).
   Credit a co-author only on work they actually wrote.
 - **Branches.** Branch from `dev`; one feature per branch where used; open a pull request into `dev`. Never
-  push to `main`.
+  push to `main`. **Only the maintainer (GitHub `Shaan-Shoukath`) can push to or merge into `main` and `dev`** in
+  every repository: branch protection restricts both branches to that one account, applies to admins too, and
+  forbids force-pushes and deletion (applied across the org on 2026-11-13). Everyone else works on feature branches
+  and opens pull requests.
 - **Version.** `VERSION` is raised (strictly higher than `main`) on every pull request into `main`, with a
   release note (`docs/release-<version>.md`) and the version strings updated. A release is cut by CI the first
   time a new `VERSION` reaches `main`; images are built and published by CI, not by hand.
@@ -616,6 +638,8 @@ the code are worse than none.
 - CI required checks cover backend, contracts (OpenAPI regeneration), frontend, the rules guards and the
   version bump; a security audit workflow runs on the Next.js apps.
 - Never read, print or commit secrets in tests either: use fake ids.
+- **Pipelines and releases.** The full pipeline per stack (checks, version bump, release builds, signing, Pages) and
+  where each repository stands is in [Pipelines, versions and releases](delivery.md).
 
 **Across the org.** SpaceWorks: required CI checks `backend`, `contracts`, `frontend`, `rules`,
 `version-bump`; `CODEOWNERS`. Events, Inventory, Workspace: CI, quality and release workflows,
@@ -628,6 +652,84 @@ SpaceWorks-Labs.)
 
 ---
 
+## 13. Decisions and handover (project memory)
+
+**Rule.** Every repository keeps two kinds of project memory:
+
+1. **`docs/decisions.md` — committed.** Every decision that shapes the product, its design or its process, with
+   its **reason**. Numbered, dated, newest first, with an index table, a status (current, or superseded by N) and
+   where it is implemented. A decision is never deleted: a later one supersedes it and both stay.
+2. **A `handover/` folder — git-ignored, never committed.** It lets whoever works next (a person or an agent, on any
+   machine or account) carry on without losing context:
+   - `handover/CONTINUE-HERE.md` — read first: the current state (branch, what is pushed, what is uncommitted, open
+     pull requests), the work in progress, and the next steps in order.
+   - `handover/TODO.md` — the live checklist (`[x]` done, `[~]` in progress, `[ ]` queued).
+   - optional working notes, logs and reports next to them.
+
+**Why.** Code shows *what* was built, not *why*. Reasons that live only in chat or in someone's head are lost, and
+the next person repeats old debates or undoes a deliberate choice. A handover that is updated as work happens means
+a session can stop at any moment and the next one continues from the exact state.
+
+**How to apply.**
+- Ignore the folder: add `/handover/` to `.gitignore` (or `.git/info/exclude` when the ignore file must not change).
+  Never put secrets, tokens or personal data in it either.
+- Update `CONTINUE-HERE.md` and `TODO.md` **after every change**: each merge, push, lane or task report and
+  decision. Put the newest state at the top; older blocks stay below as history.
+- Record each decision in `docs/decisions.md` in the same change that implements it, with the reason. If a reason
+  was never written down, write "Reason not recorded" rather than inventing one.
+- Number decisions per repository; when a decision comes from another repository's ledger, keep its original
+  number as a prefix (for example `SW-380`) so they can be cross-referenced.
+- Agent instruction files (`CLAUDE.md` / `AGENTS.md`) point at both files so every new session reads them first.
+
+**Across the org.** SpaceWorks: decisions ledger and handover kept in a git-ignored `handover/` folder (the
+committed `docs/decisions.md` is still to add). SpaceWorks-Design-System: `docs/decisions.md` committed; handover
+folder to add. Every other repository: verify, and add both.
+
+---
+
+## 14. CI/CD pipeline
+
+**Rule.** Every repository has the same shape of pipeline, written as GitHub Actions workflows in the repository,
+and nothing reaches `main` or a user without passing it. The full detail per stack, and where each repository
+stands today, is in [Pipelines, versions and releases](delivery.md).
+
+**Why.** A release is only as trustworthy as the checks in front of it. One pipeline shape across the org means a
+contributor who knows one repository knows them all, and a gap is visible at a glance.
+
+**The pipeline, in order.** Each stage is a separate, named job so branch protection can require it.
+
+| Stage | What runs | When |
+|---|---|---|
+| 1. Lint and format | language linters, formatter check, the file-size rule (300 lines), untranslated-string guard, colour-token guard | every push and pull request |
+| 2. Type check | `tsc --noEmit`, mypy/pyright where used, Kotlin and Swift compile | every push and pull request |
+| 3. Unit tests | backend unit tests, frontend component tests, view-model tests on mobile | every push and pull request |
+| 4. Integration tests | tests against a disposable database, cache and object store started by the job (never a shared or real one) | every push and pull request |
+| 5. Contract checks | OpenAPI snapshot regenerated and diffed, `redocly lint` (org ruleset) and `redocly bundle`, generated client types up to date, webhook and event schemas | every push and pull request |
+| 6. Guard tests | the invariant guards: module registry, audit, tenancy scoping, migrations graph, docs links, design tokens and previews | every push and pull request |
+| 7. End-to-end | browser tests for the main flows per role, both themes, phone and desktop widths; mobile UI tests on phone and tablet | pull requests into `dev` and `main` |
+| 8. Security | dependency audit (blocking on high and critical), secret scan, static analysis, container image scan | every pull request, and weekly on a schedule |
+| 9. Build | production build of every artifact (images, web bundle, APK/AAB, iOS archive, static site) with no warnings | every pull request |
+| 10. Version check | `VERSION` raised above `main`, release notes file present, version strings in sync | pull requests into `main` |
+| 11. Release | only when a new `VERSION` reaches `main`: build multi-architecture images, sign them and the installer (cosign), attach an SBOM and provenance, create the `vX.Y.Z` tag and GitHub Release with the notes, publish `latest` last | push to `main` |
+| 12. Deploy | staging first, a smoke test, then production; Pages sites deploy from `main` after the build job | after release |
+
+**How to apply.**
+- Pull request builds never publish anything; only `main` (or a manual dispatch) releases.
+- Required checks on `main` and `dev`: every stage above that applies to the stack, by job name; branches must be
+  up to date; admins included; only the maintainer merges to `main` (section 12).
+- Cache dependencies per lockfile; pin actions to a version (or a SHA for third-party actions); give each workflow
+  the least `permissions` it needs; secrets only in GitHub secrets or environments, never in logs or artifacts.
+- Mobile: signing keys live in GitHub environments; release builds are signed; the APK/AAB and iOS build are
+  attached to the GitHub Release (the apps ship through GitHub Releases).
+- A red pipeline is fixed or the change is reverted; no "merge anyway", no skipping hooks.
+- Workflow changes are reviewed like code and listed in the release notes.
+
+**Across the org.** See the matrix and the gaps list in [Pipelines, versions and releases](delivery.md). These are
+the rules to reach; they are **not yet applied** to the repositories (maintainer decision, 2026-11-13: add the
+rules now, change the repositories later).
+
+---
+
 ## New-feature checklist
 
 1. Is it an **area** with a registry key, a default (off unless core) and an "off" behaviour (hidden, refused,
@@ -636,7 +738,7 @@ SpaceWorks-Labs.)
    what the role cannot use?
 3. Does every state change write an **audit entry**, go through the one workflow or availability module, and
    respect immutable evidence?
-4. Is every endpoint in **OpenAPI** with typed errors, throttles with `Retry-After`, and the same authority for
+4. Is every endpoint in **OpenAPI** (shown in Swagger UI and ReDoc, passing `redocly lint`) with typed errors, throttles with `Retry-After`, and the same authority for
    web and native? Are the generated types regenerated?
 5. Does money record first, in **minor units with currency**, idempotently, with webhook verification and
    Stripe, Razorpay and offline paths? Are secrets write-only and encrypted?
@@ -649,6 +751,9 @@ SpaceWorks-Labs.)
     and the merge left to the maintainer?
 11. Does the installer or update path still work: one-line install, backup first, rollback, and (if it adds a
     service) the hybrid and no-Redis choices?
+12. Is the decision recorded in `docs/decisions.md` with its reason, and are `handover/CONTINUE-HERE.md` and
+    `handover/TODO.md` updated?
+13. Does the pipeline cover it (lint, types, unit, integration, contract, guards, e2e, security, build), all green?
 
 ---
 
@@ -675,6 +780,8 @@ code was not read; it is not a claim either way. "n/a" means the rule does not a
 ---
 
 ## Bring each product up to the rules
+
+**Every repository:** add a committed `docs/decisions.md` and a git-ignored `handover/` folder with `CONTINUE-HERE.md` and `TODO.md` (section 13), and point the agent instruction files at them.
 
 Every gap found while writing this page is now a **required** rule above. This is the per-product list of what
 each repository must add or change. "Verify" means we have not read that code yet: check it, then either tick

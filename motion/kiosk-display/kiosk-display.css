@@ -1,0 +1,9 @@
+/* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `features/spaceDisplay/display.css`, `styles/motionTokens.css`.
+   Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
+/* One opacity fade per slide change; nothing loops, so a Raspberry Pi browser stays idle between slides. */
+@keyframes sw-display-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.sw-display-fade { animation: sw-display-fade-in 400ms ease-out both; }
+@media (prefers-reduced-motion: reduce) { .sw-display-fade { animation: none; } }
+
+/* Shared screens must not slide or scale: the distance tokens are zeroed and only the fade is left. */
+.sw-kiosk, .sw-tv { --sw-enter-y: 0px; --sw-pop-scale: 1; --sw-pop-offset: 0px; --sw-slide-x: 0%; }
