@@ -179,3 +179,19 @@
 @media (prefers-reduced-motion: reduce) {
   :root { --sw-dur-fast: 0ms; --sw-dur-base: 0ms; --sw-dur-slow: 0ms; --sw-enter-y: 0px; --sw-pop-scale: 1; --sw-pop-offset: 0px; --sw-slide-x: 0%; }
 }
+
+/* Chart series tokens (SpaceWorks 0.12.0, mirrors frontend/src/styles/chrome.css). Values are RGB triplets
+   like the colour tokens: use rgb(var(--chart-accent)). Dark switches to the ink/fill variants for contrast. */
+:root {
+  --chart-accent: var(--color-accent);
+  --chart-info: var(--color-info-ink);
+  --chart-success: var(--color-success-ink);
+  --chart-warn: var(--color-warn-ink);
+  --chart-danger: var(--color-danger);
+}
+:root.dark {
+  --chart-accent: var(--color-accent-ink);
+  --chart-info: var(--color-info);
+  --chart-success: var(--color-success);
+  --chart-warn: var(--color-warn);
+}

@@ -70,6 +70,9 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
   `warn-ink` 255 212 71 → 255 222 119 · `info-soft` 42 77 76 → 30 31 34 · `info-ink` 181 205 255 → 203 217 248 ·
   `shadow-color` 20 44 42 → 0 0 0. `ink`, `focus`, the accent fills and the status fills are unchanged.
 - **New token `scrim`** (dialog backdrop): light 20 44 42 (Deep Ink), dark 0 0 0.
+- **Dark palette re-checked against the app on 2026-11-13:** all 55 `:root.dark` colour tokens match SpaceWorks
+  0.12.0 exactly. Added the **chart series tokens** (`--chart-accent/-info/-success/-warn/-danger`, light and dark; dark
+  uses the ink/fill variants for contrast) under `chart` in `tokens.json`, and the box loader's colours under `loader`.
 - **Box-open loader** added in `motion/box-open/`: the logo box opens, holds, folds shut and repeats (4400 ms
   cycle, 1600 ms one-shot opening, still open logo under reduced motion), with a `mono` variant for buttons.
 - **Motion tokens** added (`--sw-dur-*`, `--sw-ease-*`, `--sw-enter-y`, `--sw-pop-*`, `--sw-slide-x`), also under `motion`
