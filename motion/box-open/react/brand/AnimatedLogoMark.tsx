@@ -9,7 +9,7 @@ import SpaceWorksLogo, { type SpaceWorksLogoProps } from "../SpaceWorksLogo";
  * never changes the mark's size.
  */
 export function AnimatedLogoMark(props: SpaceWorksLogoProps) {
-  return <SpaceWorksLogo {...props} animated />;
+  return <SpaceWorksLogo {...props} className={`${props.className ?? ""} ${props.oneColour ? "sw-logo-mono" : "sw-logo-colour"}`} animated />;
 }
 
 export default AnimatedLogoMark;

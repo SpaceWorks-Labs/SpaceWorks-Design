@@ -1,5 +1,5 @@
 import {
-  FLAP_KEYS, arcOpacity, flapArea, flapFace, flapLayer, flapTransform, hoverAngle, loopAngle, moving, openAngle, wallOpacity,
+  FLAP_KEYS, arcOpacity, flapArea, flapLayer, flapTransform, hoverAngle, loopAngle, moving, openAngle, wallOpacity,
   type FlapKey,
 } from "./geometry";
 
@@ -22,19 +22,10 @@ type AngleFn = (key: FlapKey, t: number) => number;
 const anglesAt = (angle: AngleFn, t: number) => FLAP_KEYS.map(key => angle(key, t));
 const n3 = (value: number) => String(Math.round(value * 1000) / 1000);
 
-/** Inner face: the logo colour, shaded towards the under-colour; outer face: `--alt`. */
-function fill(key: FlapKey, deg: number): string {
-  const { side, shade } = flapFace(key, deg);
-  if (side === "outer") return "var(--alt)";
-  if (shade <= 0) return "var(--c)";
-  if (shade >= 1) return "var(--sw-under)";
-  return `color-mix(in srgb,var(--sw-under) ${Math.round(shade * 1000) / 10}%,var(--c))`;
-}
-
 /**
  * A moving flap is outlined in the ground colour (`--sw-ground`), drawn under its fill (paint-order: stroke), the
  * way both masters separate their parts with ground-coloured gaps; without it a teal flap melts into the teal
- * face behind it, and a cream flap into the cream cap. The reversed artwork switches it on with its cap, on the
+ * face behind it, and a flap into the cap. The reversed artwork switches it on with its cap, on the
  * first frame anything moves (`--sw-gap-w`); the light artwork has no cap and fades it in over the first
  * RAMP_DEG degrees (`--sw-ramp-w`), so the resting logo and the first frames match. Both thin out near edge-on,
  * where the flap is a sliver and a full outline would read as a cut.
@@ -53,7 +44,7 @@ function flapKeyframes(name: string, key: FlapKey, angle: AngleFn, n: number): s
   let previous = "";
   for (let i = 0; i <= n; i++) {
     const t = i / n, deg = angle(key, t);
-    const body = `transform:${flapTransform(key, deg)};fill:${fill(key, deg)};stroke-width:${strokeWidth(key, deg, moving(anglesAt(angle, t)))}`;
+    const body = `transform:${flapTransform(key, deg)};fill:var(--c);stroke-width:${strokeWidth(key, deg, moving(anglesAt(angle, t)))}`;
     if (body !== previous || i === n) rows.push(`${pct(i, n)}{${body}}`);
     previous = body;
   }
@@ -116,6 +107,7 @@ html.dark .sw-box .w{fill:#FFF4E8;fill-opacity:.14}
 .sw-box .k{fill:var(--sw-spark);transform-box:fill-box;transform-origin:center}
 @keyframes sw-box-spark{0%,66%{opacity:0;transform:scale(.3)}77%{opacity:1;transform:scale(1.15)}85%{transform:scale(1)}91%{opacity:1}100%{opacity:0;transform:scale(1)}}
 @keyframes sw-box-tick{0%,64%{opacity:0}74%,88%{opacity:1}100%{opacity:0}}
+@media (forced-colors:active){.sw-box{--sw-ground:Canvas!important}.sw-box .f,.sw-box .p path,.sw-box .c,.sw-box svg>path{fill:CanvasText!important}.sw-box .lt .f,.sw-box .dk .f{--sw-gap-w:0px;--sw-ramp-w:3.8px}}
 @media (prefers-reduced-motion:reduce){.sw-box .f,.sw-box .w,.sw-box .p,.sw-box .a,.sw-box .k,.sw-box .r{animation:none!important}}`;
 
 function once(): string {
@@ -154,19 +146,19 @@ ${hover()}` : ""].join("\n");
 
 /**
  * Single-colour layer over the same markup and keyframes, for use inside buttons: every face is the
- * host's `currentColor` at a different strength (the flap keyframes read `--c`/`--alt`/`--sw-under`, so
- * overriding those keeps the animation and the cube read). Only the light artwork is shown. Not part of
+ * host's `currentColor` (the flap keyframes read `--c`). The one-colour master uses the reversed
+ * geometry, so showing that geometry also keeps reduced motion and the resting overlay exact. Not part of
  * the splash, so index.html stays untouched.
  */
 export function boxMonoCss(): string {
   const mix = (n: number) => `color-mix(in srgb,currentColor ${n}%,transparent)`;
   return `.sw-box.mono{--sw-under:${mix(35)}!important;--sw-spark:currentColor}
-.sw-box.mono .dk{display:none!important}.sw-box.mono .lt{display:block!important}
+.sw-box.mono .lt{display:none!important}.sw-box.mono .dk{display:block!important}
 .sw-box.mono svg>path:not(.f){fill:currentColor!important}
-.sw-box.mono svg>path:not(.f):nth-child(1){fill-opacity:.45}.sw-box.mono svg>path:not(.f):nth-child(2){fill-opacity:.7}
 .sw-box.mono .c{fill-opacity:1}
-.sw-box.mono .f{--c:currentColor!important;--alt:currentColor!important;--sw-gap-w:0px;--sw-ramp-w:0px}
-.sw-box.mono .w{fill:currentColor!important;fill-opacity:.25}`;
+.sw-box.mono .f{fill:currentColor;stroke:var(--sw-ground,Canvas);--c:currentColor!important;--sw-gap-w:0px;--sw-ramp-w:3.8px}
+.sw-box.mono .w{fill:currentColor!important;fill-opacity:.25}
+.sw-box.mono .p path{fill:currentColor!important}`;
 }
 
 /**
@@ -175,7 +167,8 @@ export function boxMonoCss(): string {
  * follow the artwork (`.lt`/`.dk`), so only the theme colours need forcing here.
  */
 export function boxGroundCss(): string {
-  return `.sw-box.g-dark{--sw-under:#66625D;--sw-spark:#FFF4E8}
+  return `.sw-box.g-light{--sw-ground:#FFF4E8}
+.sw-box.g-dark{--sw-ground:#000;--sw-under:#66625D;--sw-spark:#FFF4E8}
 .sw-box.g-dark .lt{display:none}.sw-box.g-dark .dk{display:block}.sw-box.g-dark .w{fill:#FFF4E8;fill-opacity:.14}
 html.dark .sw-box.g-light{--sw-under:#354845;--sw-spark:#142C2A}
 html.dark .sw-box.g-light .dk{display:none}html.dark .sw-box.g-light .lt{display:block}html.dark .sw-box.g-light .w{fill:#354845;fill-opacity:1}`;

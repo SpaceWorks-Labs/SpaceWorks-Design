@@ -34,19 +34,17 @@ const SPARKS = [star(121, 3, 6.5), star(-7, 47, 6), star(141, 45, 5),
 function variant(kind: "lt" | "dk"): string {
   const master = logoMasters[kind === "lt" ? "symbol" : "symbol-reversed"].paths;
   const flaps = master.slice(-4);
-  const flapFill = (key: FlapKey) => flaps[FLAP_KEYS.indexOf(key)].fill;
+  const flapFill = (key: FlapKey) => logoMasters.symbol.paths.slice(-4)[FLAP_KEYS.indexOf(key)].fill;
   const body = master.slice(0, -4).map((path, index) =>
     `<path${index === 2 ? ' class="c"' : ""} fill="${path.fill}" d="${path.d}"/>`).join("");
-  // The outer face (seen once a flap turns past edge-on): orange only for tr, so the shut lid has one orange half.
-  const outer = (key: FlapKey) => (kind === "dk" || key === "tr" ? flapFill(key) : flapFill("tl"));
   const flap = ({ key, layer }: (typeof FLAP_SLOTS)[number]) => {
     const path = flaps[FLAP_KEYS.indexOf(key)];
     const z = layer === undefined ? "" : ` z${layer}`;
-    return `<path class="f f-${key}${z}" fill="${path.fill}" style="--c:${path.fill};--alt:${outer(key)}" d="${path.d}"/>`;
+    return `<path class="f f-${key}${z}" fill="${flapFill(key)}" style="--c:${flapFill(key)}" d="${path.d}"/>`;
   };
   const arcs = FLAP_KEYS.map(key => `<path class="a a-${key}" d="${ARCS[key]}"/>`).join("");
   return `<svg class="${kind}" viewBox="${VIEW_BOX}" aria-hidden="true" focusable="false">${body}`
-    + `${kind === "dk" ? `<g class="p">${CAP_FACES.map(face => `<path fill="${flaps[0].fill}" d="${face.d}"/>`).join("")}</g>` : ""}<polygon class="w" points="${WALL}"/>${FLAP_SLOTS.map(flap).join("")}<g class="x">${arcs}${SPARKS}</g></svg>`;
+    + `${kind === "dk" ? `<g class="p">${CAP_FACES.map(face => `<path fill="#FFF4E8" d="${face.d}"/>`).join("")}</g>` : ""}<polygon class="w" points="${WALL}"/>${FLAP_SLOTS.map(flap).join("")}<g class="x">${arcs}${SPARKS}</g></svg>`;
 }
 
 /** `<div class="sw-box once|loop">` markup for the given mode (no wrapper sizing: the host sets width/height). */
