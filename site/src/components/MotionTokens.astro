@@ -1,0 +1,90 @@
+---
+// Motion tokens (durations, easings, distances) from tokens/tokens.json, each with a small live preview that
+// uses the real value. Previews are driven by a button and are static under prefers-reduced-motion.
+import tokens from '../assets/kit/tokens.json';
+const m = tokens.motion as Record<string, any>;
+const durations = Object.entries(m.duration) as [string, string][];
+const easings = Object.entries(m.easing) as [string, string][];
+const distances = Object.entries(m.distance) as [string, string][];
+const kiosk = m['kiosk-tv'] as Record<string, string>;
+const cssName = (group: string, n: string) =>
+  group === 'duration' ? `--sw-dur-${n}` : group === 'easing' ? `--sw-ease-${n}` : `--sw-${n}`;
+---
+
+<sw-motion-tokens class="not-content">
+  <p class="sw-demo-cap">
+    <button type="button" class="sw-sample__btn" data-play>Play previews</button>
+    Previews also play when you hover or focus a row. Reduced motion shows no movement.
+  </p>
+
+  <h3>Durations</h3>
+  <table class="sw-tokens">
+    <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Preview</th></tr></thead>
+    <tbody>
+      {
+        durations.map(([n, v]) => (
+          <tr data-row>
+            <td><code>{cssName('duration', n)}</code></td>
+            <td><code>{v}</code></td>
+            <td><span class="sw-track"><span class="sw-dot" style={`--d:${v};--e:cubic-bezier(0.2,0,0,1)`}></span></span></td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h3>Easings</h3>
+  <table class="sw-tokens">
+    <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Preview (240ms)</th></tr></thead>
+    <tbody>
+      {
+        easings.map(([n, v]) => (
+          <tr data-row>
+            <td><code>{cssName('easing', n)}</code></td>
+            <td><code>{v}</code></td>
+            <td><span class="sw-track"><span class="sw-dot" style={`--d:480ms;--e:${v}`}></span></span></td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h3>Distances</h3>
+  <table class="sw-tokens">
+    <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Kiosk and TV</th></tr></thead>
+    <tbody>
+      {
+        distances.map(([n, v]) => (
+          <tr>
+            <td><code>{cssName('distance', n)}</code></td>
+            <td><code>{v}</code></td>
+            <td><code>{kiosk[n]}</code></td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p>Reduced motion: {m['reduced-motion']}.</p>
+</sw-motion-tokens>
+
+<script>
+  class SwMotionTokens extends HTMLElement {
+    connectedCallback() {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      const run = (row: Element) => {
+        const dot = row.querySelector<HTMLElement>('.sw-dot');
+        if (!dot || reduce.matches) return;
+        dot.classList.remove('go');
+        void dot.getBoundingClientRect();
+        dot.classList.add('go');
+      };
+      const rows = [...this.querySelectorAll('[data-row]')];
+      this.querySelector('[data-play]')?.addEventListener('click', () => rows.forEach(run));
+      rows.forEach((r) => {
+        r.addEventListener('pointerenter', () => run(r));
+        r.addEventListener('focusin', () => run(r));
+      });
+    }
+  }
+  customElements.define('sw-motion-tokens', SwMotionTokens);
+</script>

@@ -13,6 +13,9 @@ const family = (name: string) => {
     : base[0].toUpperCase() + base.slice(1);
 };
 
+const chart = tokens.chart as Record<string, any>;
+const loader = tokens.loader as Record<string, any>;
+
 const groups = new Map<string, string[]>();
 for (const name of Object.keys(light)) {
   const key = family(name);
@@ -53,3 +56,65 @@ for (const name of Object.keys(light)) {
     </>
   ))
 }
+
+<h3>Chart series</h3>
+<p>{chart.note}</p>
+<table class="sw-tokens">
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      chart.order.map((name: string) => (
+        <tr>
+          <td>
+            <code>--chart-{name}</code>
+          </td>
+          <td>
+            <span class="sw-chip" style={`background:${chart.light[name]}`} aria-hidden="true" />
+            <code>{chart.light[name]}</code>
+          </td>
+          <td>
+            <span class="sw-chip" style={`background:${chart.dark[name]}`} aria-hidden="true" />
+            <code>{chart.dark[name]}</code>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<h3>Box-open loader</h3>
+<p>{loader.note}</p>
+<table class="sw-tokens">
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      Object.keys(loader.light).map((name) => (
+        <tr>
+          <td>
+            <code>--sw-{name === 'under' ? 'under' : name}</code>
+          </td>
+          <td>
+            <span class="sw-chip" style={`background:${loader.light[name]}`} aria-hidden="true" />
+            <code>{loader.light[name]}</code>
+          </td>
+          <td>
+            <span class="sw-chip" style={`background:${loader.dark[name]}`} aria-hidden="true" />
+            <code>{loader.dark[name]}</code>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

@@ -35,11 +35,23 @@
 			});
 			button.addEventListener('click', () => {
 				const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-				document.documentElement.dataset.theme = next;
-				try {
-					localStorage.setItem(storageKey, next);
-				} catch {}
-				sync();
+				const reveal = (window as any).SwThemeReveal;
+				if (reveal) {
+					// The template's circle reveal from this button; it stores the choice and sets html.dark.
+					reveal.switchTheme(next, button, {
+						storageKey,
+						onApply: (dark: boolean) => {
+							document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+							sync();
+						},
+					});
+				} else {
+					document.documentElement.dataset.theme = next;
+					try {
+						localStorage.setItem(storageKey, next);
+					} catch {}
+					sync();
+				}
 			}, { signal: this.controller.signal });
 		}
 

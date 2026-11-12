@@ -97,6 +97,16 @@ export function loopAngle(key: FlapKey, t: number): number {
   if (t < 0.84) return 180 * easeInOut((t - 0.62) / 0.22);
   return 180;
 }
+/**
+ * Hover/focus cycle: starts at the resting (open) logo, folds shut (the loader's fold curve, shorter),
+ * then plays the one-shot opening, ending on the resting logo again. No hold, so no snap at either end.
+ * `fold` is the fraction of the cycle spent folding.
+ */
+export function hoverAngle(key: FlapKey, t: number, fold: number): number {
+  if (t < fold) return 180 * easeInOut(t / fold);
+  return openAngle(key, (t - fold) / (1 - fold));
+}
+
 
 /** The face a flap shows at an angle: its brand colour, the dark inner face (back flaps standing up), or teal (bl folded over). */
 export function flapFace(key: FlapKey, deg: number): "c" | "under" | "alt" {

@@ -1,13 +1,21 @@
-# SpaceWorks-Design
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="brand/readme/banner-dark.svg">
+  <img alt="Space Works Design system" src="brand/readme/banner-light.svg" width="100%">
+</picture>
+
+<p align="center">
+  <a href="https://spaceworks-labs.github.io/SpaceWorks-Design-System/"><img src="https://img.shields.io/badge/site-spaceworks--labs.github.io-006E63?style=flat-square&labelColor=142C2A" alt="Browse the design system site"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/licence-AGPL--3.0--or--later-006E63?style=flat-square&labelColor=142C2A" alt="Licence: AGPL-3.0-or-later"></a>
+</p>
 
 The Space Works design system: brand guidelines, logo masters, icons, fonts, design tokens and the UX
 pattern specs. Use it as a git submodule in any Space Works project so every surface draws from one source.
 
 ```bash
-git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design.git design
+git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System.git design
 ```
 
-**Browse it at [spaceworks-labs.github.io/SpaceWorks-Design](https://spaceworks-labs.github.io/SpaceWorks-Design/)**: the logo
+**Browse it at [spaceworks-labs.github.io/SpaceWorks-Design-System](https://spaceworks-labs.github.io/SpaceWorks-Design-System/)**: the logo
 masters, colours, type, voice, every design token and the UI specs, published from this repository by
 `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 
@@ -22,7 +30,10 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 | `fonts/` | Gilroy Light and ExtraBold (the free weights only, WOFF2), Outfit and Unbounded (OFL, WOFF2). See `fonts/README.md`. |
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
 | `motion/box-open/` | The **box-open loader**, the loading animation used everywhere in Space Works: `box-open.css`, the SVG markup, a standalone `demo.html` and the React components (`LogoLoader`, `BoxSpinner`, `BoxArt`). Usage, sizes, timing and accessibility in `motion/box-open/README.md` |
-| `docs/` | `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
+| `motion/theme-reveal/` | The **theme reveal**, the light/dark switch animation (circle growing from the toggle, 720 ms, cross-fade fallback, instant under reduced motion): `theme-reveal.css`, framework-free `theme-reveal.js`, a standalone `demo.html`, the app's React files and an animated preview. Usage in `motion/theme-reveal/README.md` |
+| `docs/` | `motion.md` (**every animation in the product**: where, why, tokens, plus the "which animation to use" guide and the logo hover rule), `theming.md` (**how to implement the light/dark switch** with these tokens: tokens, `html.dark`, pre-paint script, React and plain-JS examples), `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
+| `docs/` (more) | `product-rules.md` (rules the product enforces in its UI), `lessons-learned.md` (what went wrong and what we do now) and `design-changes-0.12.0.md` (every design change in the 0.12.0 release) |
+| `tokens/previews/` | Rendered previews of the colour tokens, light and dark |
 | `screenshots/ux/` | Screenshots of Space Works UX in Space Works Events (light, dark and phone), used by the site's UX pages |
 | `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time |
 | `references/yuyu/` | The reference boards from [Yuyu](https://github.com/twilighty-abhi/yuyu) that inspired Space Works UX |
@@ -57,8 +68,12 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 
 ## Changelog
 
+- **Theme reveal template** added in `motion/theme-reveal/`: the light-to-dark circle reveal as a reusable template (CSS, framework-free JS with `switchTheme(next, originEl)`, `demo.html`, the app's React files, animated preview checked by `scripts/check-previews.mjs`). `docs/theming.md` gains a "Switch animation" section; the design site's own theme toggle and the Theming demo now use it, and there is a new Motion page, Theme switch.
+
 ### SpaceWorks 0.12.0 token sync
 
+- **README banner** added: `brand/readme/banner-light.svg` and `banner-dark.svg` (1280×320, rounded corners, the lockup masters, the seven brand colours; text uses a system-font fallback stack, no external references), shown through a `<picture>` that follows the reader's colour scheme.
+- **`docs/motion.md` and `docs/theming.md` added.** `motion.md` catalogues every shipped animation (where, why, tokens, trigger, reduced motion, dark), gives the "which animation to use where" defaults and the rules, including the new logo rule: **the Space Works mark opens (one-shot box opening, 1600 ms) on hover and keyboard focus everywhere it appears; it never loops except as the loader; tenant logos never animate; no hover animation on touch; reduced motion shows the static mark.** `theming.md` documents the light/dark switch (token layer, `html.dark`, system preference, pre-paint script, meta theme-color, React and plain examples). `motion/box-open/` documents the hover/focus one-shot usage.
 - **Dark theme is one solid black family** (decision 316, superseding the green-tinted dark of 275/300). Neutral
   surfaces only, no green or teal tint; teal, Citron and orange stay accents.
 - **Old green-black dark → new solid-black dark** (`:root.dark`, as RGB triplets):

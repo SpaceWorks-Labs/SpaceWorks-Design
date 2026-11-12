@@ -10,6 +10,7 @@
 import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { syncExtra } from './sync-extra.mjs';
 
 const site = join(dirname(fileURLToPath(import.meta.url)), '..');
 const root = join(site, '..');
@@ -40,13 +41,24 @@ for (const file of readdirSync(join(root, 'logo')).filter((f) => f.endsWith('.sv
 cpSync(join(root, 'tokens', 'tokens.json'), join(assets, 'tokens.json'));
 
 // Spec pages: the first "# Heading" becomes the page title; the rest is published unchanged.
+const pageRoutes = {
+  motion: '/motion/principles/',
+  theming: '/theming/',
+  'lessons-learned': '/lessons-learned/',
+  'design-changes-0.12.0': '/whats-new/',
+  'product-rules': '/rules/',
+  'ux-spec': '/specs/ux-patterns/',
+  'ux-screens-longtail': '/specs/ux-long-tail-screens/',
+  'ui-brand-spec': '/specs/ui-brand-spec/',
+};
 const specPages = [
   { file: 'ui-brand-spec.md', slug: 'ui-brand-spec', order: 1, label: 'UI brand spec' },
   { file: 'ux-spec.md', slug: 'ux-patterns', order: 2, label: 'Space Works UX spec' },
   { file: 'ux-screens-longtail.md', slug: 'ux-long-tail-screens', order: 3, label: 'Long-tail screens' },
 ];
 for (const { file, slug, order, label } of specPages) {
-  const source = readFileSync(join(root, 'docs', file), 'utf8').replace(/^﻿/, '');
+  const source = readFileSync(join(root, 'docs', file), 'utf8').replace(/^﻿/, '')
+    .replace(/\]\((motion|theming|lessons-learned|design-changes-0\.12\.0|product-rules|ux-spec|ux-screens-longtail|ui-brand-spec)\.md(#[^)]*)?\)/g, (_all, name, hash = '') => `](${pageRoutes[name]}${hash})`);
   const match = source.match(/^#\s+(.+)\r?\n/);
   if (!match) throw new Error(`docs/${file} must start with a "# Title" line`);
   const title = match[1].trim().replace(/"/g, '\\"');
@@ -54,13 +66,15 @@ for (const { file, slug, order, label } of specPages) {
     '---',
     `title: "${title}"`,
     `sidebar: { order: ${order}, label: "${label}" }`,
-    `editUrl: https://github.com/SpaceWorks-Labs/SpaceWorks-Design/edit/main/docs/${file}`,
+    `editUrl: https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/edit/main/docs/${file}`,
     '---',
     '',
-    `:::note[Source]\nThis page is published from [\`docs/${file}\`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design/blob/main/docs/${file}). Edit it there.\n:::`,
+    `:::note[Source]\nThis page is published from [\`docs/${file}\`](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/blob/main/docs/${file}). Edit it there.\n:::`,
     '',
   ].join('\n');
   writeFileSync(join(specs, `${slug}.md`), frontmatter + source.slice(match[0].length));
 }
+
+syncExtra({ root, site, kit, assets });
 
 console.log('sync-kit: copied logo, icons, fonts, tokens, mascot, screenshots, brand pages, reference boards and 3 specs');

@@ -1,6 +1,7 @@
 ---
 // Light is the default theme. Dark applies only after a reader chooses it,
 // and the choice is remembered. The OS colour scheme is deliberately ignored.
+import { kitUrl } from './kit-url';
 ---
 
 {/* Inlined to avoid a flash of the wrong theme. */}
@@ -11,7 +12,15 @@
 			stored = localStorage.getItem('starlight-theme');
 		} catch {}
 		const theme = stored === 'dark' ? 'dark' : 'light';
-		document.documentElement.dataset.theme = theme;
+		const root = document.documentElement;
+		root.dataset.theme = theme;
+		// The kit's tokens and the box-open loader key dark off a `dark` class: mirror the theme onto it.
+		const mirror = () => root.classList.toggle('dark', root.dataset.theme === 'dark');
+		mirror();
+		new MutationObserver(mirror).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 		return { updatePickers() {} };
 	})();
 </script>
+
+{/* The theme-reveal template (motion/theme-reveal/), synced into the kit on every build: the toggle and the Theming demo call it. */}
+<script is:inline src={kitUrl('motion/theme-reveal/theme-reveal.js')}></script>
