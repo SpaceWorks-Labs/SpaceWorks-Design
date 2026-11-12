@@ -22,11 +22,10 @@ The screenshots on the UX pages are of Space Works Events, run with demo data. T
 
 ## Fonts
 
-- **Gilroy** Regular, Medium, Semibold and Bold are format conversions of the owner's installed files,
-  included at the owner's request. Gilroy is not an open-source font; use it under the applicable Gilroy
-  licence.
+- **Gilroy** only its free Light (300) and ExtraBold (800) weights ship, under
+  `fonts/LICENSES/Gilroy-Free-Font-EULA.txt`. The paid weights are not distributed.
+- **Outfit** is covered by the SIL Open Font License, in `fonts/LICENSES/OFL-Outfit.txt`.
 - **Unbounded** is covered by the SIL Open Font License, in `fonts/LICENSES/OFL-Unbounded.txt`.
-- The legacy Outfit face is covered by `fonts/LICENSES/OFL-Outfit.txt`.
 
 ## Licence
 

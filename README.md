@@ -19,8 +19,9 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 | `logo/` | Ten vector masters exported directly from Figma, with matching 4× PNGs: `symbol`, `symbol-reversed`, `symbol-one-colour-ink`, `lockup-stacked`, `lockup-stacked-reversed`, `lockup-stacked-one-colour-ink`, `lockup-horizontal`, `lockup-horizontal-reversed`, `lockup-horizontal-one-colour-ink`, `app-icon` |
 | `mascot/` | **Patch**, the painted wolf mascot, cut from the approved concept sheets in `mascot/concept/` and traced to vector SVG: `patch.svg` (hero), `patch-animated.webp`/`.svg`/`.gif` (the 7-second sneeze loop) and its eight `frames/`, plus `walk/` (the walking pose, walk cycle and its frames) and `walk-left/` (the approved left-facing walk), with high-resolution PNGs. `mascot/original/` keeps every piece's exact pixels from the sheets (lossless) and `mascot/compressed/` has lighter SVGs, `.svgz` and small WebPs. `mascot/dark/` is every piece with a thin Warm Cream sticker border for dark surfaces only (full SVGs, lossless PNGs, WebPs and GIFs, plus lite SVGs, `.svgz` and small WebPs in `dark/compressed/`). Story and usage rules in `mascot/README.md` |
 | `icons/` | `favicon.svg`, PNG app icons (16, 32, 180, 192, 512) and the 1200×630 social card |
-| `fonts/` | Gilroy Regular, Medium, Semibold and Bold (WOFF), plus Unbounded (WOFF2). Legacy faces retained for existing consumers. See `fonts/README.md`. |
+| `fonts/` | Gilroy Light and ExtraBold (the free weights only, WOFF2), Outfit and Unbounded (OFL, WOFF2). See `fonts/README.md`. |
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
+| `motion/box-open/` | The **box-open loader**, the loading animation used everywhere in Space Works: `box-open.css`, the SVG markup, a standalone `demo.html` and the React components (`LogoLoader`, `BoxSpinner`, `BoxArt`). Usage, sizes, timing and accessibility in `motion/box-open/README.md` |
 | `docs/` | `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` (**Space Works UX**: our interaction patterns, reusable layouts, navigation and screen specs), `ux-screens-longtail.md` (remaining screens) |
 | `screenshots/ux/` | Screenshots of Space Works UX in Space Works Events (light, dark and phone), used by the site's UX pages |
 | `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time |
@@ -31,8 +32,8 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 - **Colours:** Deep Ink `#142C2A`, Maker Teal `#006E63`, Workshop Orange `#FF7447`, Citron `#DFFF8F`,
   Sky Blue `#B5CDFF`, Warm Yellow `#FFD447`, Warm Cream `#FFF4E8`. Neutral first, accent second. Never
   orange text on cream. Every status pairs colour with a word or icon.
-- **Type:** Gilroy Semibold/Bold for headings, Gilroy Regular/Medium for body and interface text,
-  Unbounded for one short accent phrase per layout.
+- **Type:** Gilroy ExtraBold for display headings, Gilroy Light for light display text (the only Gilroy
+  weights that ship), Outfit for body and interface text, Unbounded for one short accent phrase per layout.
 - **Logo:** use the masters as supplied — no stretching, rotating, recolouring or effects. Clear space is
   a quarter of the symbol height on every side. Symbol at least 48 px; primary lockup at least 180 px wide.
 - **Mascot:** Patch, an African painted wolf carrying a wrench. Painted wolves vote by sneezing and look
@@ -53,6 +54,33 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
 
 Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` are relative to the
 `tokens/` folder.
+
+## Changelog
+
+### SpaceWorks 0.12.0 token sync
+
+- **Dark theme is one solid black family** (decision 316, superseding the green-tinted dark of 275/300). Neutral
+  surfaces only, no green or teal tint; teal, Citron and orange stay accents.
+- **Old green-black dark → new solid-black dark** (`:root.dark`, as RGB triplets):
+  `bg` 20 44 42 → 0 0 0 · `surface` 25 57 53 → 11 11 11 · `panel` 31 67 63 → 20 20 20 · `hover` 37 77 72 → 28 28 28 ·
+  `line` 77 109 103 → 44 44 44 · `outline` 147 161 152 → 120 120 120 · `muted` 199 196 186 → 172 172 172 ·
+  `sidebar` 17 53 50 → 11 11 11 · `sidebar-hover` 37 77 72 → 28 28 28 · `accent-soft` / `brand-soft` 26 74 69 → 18 29 28 ·
+  `accent-ink` / `brand-ink` / `brand-boundary` 171 200 188 → 128 177 166 · `emphasis-soft` 47 70 64 → 34 26 23 ·
+  `success-soft` 44 80 69 → 32 34 27 · `success-ink` 223 255 143 → 233 252 170 · `warn-soft` 47 77 64 → 34 32 23 ·
+  `warn-ink` 255 212 71 → 255 222 119 · `info-soft` 42 77 76 → 30 31 34 · `info-ink` 181 205 255 → 203 217 248 ·
+  `shadow-color` 20 44 42 → 0 0 0. `ink`, `focus`, the accent fills and the status fills are unchanged.
+- **New token `scrim`** (dialog backdrop): light 20 44 42 (Deep Ink), dark 0 0 0.
+- **Dark palette re-checked against the app on 2026-11-13:** all 55 `:root.dark` colour tokens match SpaceWorks
+  0.12.0 exactly. Added the **chart series tokens** (`--chart-accent/-info/-success/-warn/-danger`, light and dark; dark
+  uses the ink/fill variants for contrast) under `chart` in `tokens.json`, and the box loader's colours under `loader`.
+- **Box-open loader** added in `motion/box-open/`: the logo box opens, holds, folds shut and repeats (4400 ms
+  cycle, 1600 ms one-shot opening, still open logo under reduced motion), with a `mono` variant for buttons.
+- **Motion tokens** added (`--sw-dur-*`, `--sw-ease-*`, `--sw-enter-y`, `--sw-pop-*`, `--sw-slide-x`), also under `motion`
+  in `tokens.json`. See `docs/ui-brand-spec.md` section E.
+- **Aurora card look** (decision 317a) recoloured to the brand: Maker Teal header, Citron ribbon, Warm Cream body, Deep Ink
+  text, Workshop Orange tail; layout unchanged. Recorded under `cards.aurora` in `tokens.json`.
+- **Fonts** (decision 299): only the free Gilroy weights (Light 300, ExtraBold 800) ship, with Outfit and Unbounded (OFL)
+  for everything else; the paid Gilroy weights are removed.
 
 ## Credits
 

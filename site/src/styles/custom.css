@@ -7,7 +7,7 @@
   --sw-sky: #b5cdff;
   --sw-yellow: #ffd447;
   --sw-cream: #fff4e8;
-  --sl-font: 'Gilroy', var(--sl-font-system);
+  --sl-font: 'Outfit', var(--sl-font-system);
   --sl-font-mono: var(--sl-font-system-mono);
   --sl-text-body: 1rem;
   --sl-line-height: 1.5;
@@ -126,7 +126,8 @@ body {
 :where(h1, h2, h3, h4, h5, h6),
 .card .title,
 .sl-link-card .title {
-  font-weight: 600;
+  font-family: 'Gilroy', var(--sl-font);
+  font-weight: 800;
   letter-spacing: -0.025em;
 }
 

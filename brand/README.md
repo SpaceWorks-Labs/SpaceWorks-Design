@@ -13,6 +13,8 @@ Exported from the connected Figma file on 15 October 2026 using Figma MCP Go+.
 
 Use full color on light surfaces, reversed cream on dark surfaces, and the dedicated ink mark for single-color use. Monochrome versions preserve a hollow opening and transparent folds; do not create them by recoloring the full-color logo. Keep a quarter of the symbol height clear on every side.
 
-Gilroy is the primary family. Unbounded is a secondary accent for one short expressive phrase per layout. Citron can fill selected sections; warm yellow is a small accent with Deep Ink text. Preserve the seven exact colors in the tokens.
+Gilroy (free Light and ExtraBold only) leads display type and Outfit sets everything else. Unbounded is a secondary accent for one short expressive phrase per layout. Citron can fill selected sections; warm yellow is a small accent with Deep Ink text. Preserve the seven exact colors in the tokens.
+
+Note: `space-works-brand-guidelines-v1.pdf` and the guideline artwork predate decision 299 and still depict the paid Gilroy weights; the shipped fonts are Gilroy Light/ExtraBold plus Outfit (and Unbounded).
 
 These are portable assets and style records. Editable native components remain in Figma; this export is not a `.fig` backup. Printed color and Illustrator import have not been proofed.

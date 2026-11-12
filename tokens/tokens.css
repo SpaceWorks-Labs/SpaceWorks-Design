@@ -3,34 +3,6 @@
  Light is the default; add class "dark" on <html> for dark mode. */
 
 @font-face {
-  font-family: "Gilroy";
-  src: url("../fonts/Gilroy-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("../fonts/Gilroy-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("../fonts/Gilroy-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("../fonts/Gilroy-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "Unbounded";
   src: url("../fonts/Unbounded-Variable.woff2") format("woff2");
   font-weight: 500 600;
@@ -38,7 +10,7 @@
   font-display: swap;
 }
 
-/* Legacy faces retained for existing consumers. New surfaces use Gilroy 400–700. */
+/* Gilroy: only the FREE weights ship (Light 300, ExtraBold 800; decision 299). Everything else is Outfit (OFL). */
 @font-face {
   font-family: "Gilroy";
   src: url("../fonts/Gilroy-ExtraBold.woff2") format("woff2");
@@ -62,8 +34,8 @@
 }
 :root {
   --font-display: "Gilroy", sans-serif;
-  --font-sans: "Gilroy", sans-serif;
-  --font-accent: "Unbounded", "Gilroy", sans-serif;
+  --font-sans: "Outfit", sans-serif;
+  --font-accent: "Unbounded", "Outfit", sans-serif;
   --brand-deep-ink: #142C2A;
   --brand-maker-teal: #006E63;
   --brand-workshop-orange: #FF7447;
@@ -125,62 +97,101 @@
   --color-sidebar: 223 255 143;
   --color-sidebar-hover: 242 255 210;
   --color-sidebar-active: 0 110 99;
+  --color-scrim: 20 44 42; /* dims the page behind dialogs */
   --shadow-color: 20 44 42;
 }
 
 :root.dark {
-  --color-bg: 20 44 42;
-  --color-surface: 25 57 53;
-  --color-panel: 31 67 63;
-  --color-hover: 37 77 72;
-  --color-line: 77 109 103;
-  --color-outline: 147 161 152;
+  --color-bg: 0 0 0;
+  --color-surface: 11 11 11;
+  --color-panel: 20 20 20;
+  --color-hover: 28 28 28;
+  --color-line: 44 44 44;
+  --color-outline: 120 120 120;
   --color-ink: 255 244 232;
-  --color-muted: 199 196 186;
+  --color-muted: 172 172 172;
   --color-focus: 223 255 143;
   --color-accent: 0 110 99;
   --color-accent-hover: 2 103 93;
   --color-accent-active: 4 97 88;
   --color-on-accent: 255 244 232;
-  --color-accent-soft: 26 74 69;
-  --color-accent-ink: 171 200 188;
+  --color-accent-soft: 18 29 28;
+  --color-accent-ink: 128 177 166;
   --color-brand: 0 110 99;
   --color-brand-hover: 2 103 93;
   --color-brand-active: 4 97 88;
   --color-on-brand: 255 244 232;
-  --color-brand-soft: 26 74 69;
-  --color-brand-ink: 171 200 188;
-  --color-brand-boundary: 171 200 188;
+  --color-brand-soft: 18 29 28;
+  --color-brand-ink: 128 177 166;
+  --color-brand-boundary: 128 177 166;
   --color-emphasis: 255 116 71;
   --color-emphasis-hover: 255 129 87;
   --color-emphasis-active: 255 142 103;
   --color-on-emphasis: 20 44 42;
-  --color-emphasis-soft: 47 70 64;
+  --color-emphasis-soft: 34 26 23;
   --color-success: 223 255 143;
   --color-success-hover: 203 234 133;
   --color-success-active: 182 213 123;
   --color-on-success: 20 44 42;
-  --color-success-soft: 44 80 69;
-  --color-success-ink: 223 255 143;
+  --color-success-soft: 32 34 27;
+  --color-success-ink: 233 252 170;
   --color-warn: 255 212 71;
   --color-warn-hover: 232 195 68;
   --color-warn-active: 208 178 65;
   --color-on-warn: 20 44 42;
-  --color-warn-soft: 47 77 64;
-  --color-warn-ink: 255 212 71;
+  --color-warn-soft: 34 32 23;
+  --color-warn-ink: 255 222 119;
   --color-info: 181 205 255;
   --color-info-hover: 165 189 234;
   --color-info-active: 149 173 212;
   --color-on-info: 20 44 42;
-  --color-info-soft: 42 77 76;
-  --color-info-ink: 181 205 255;
+  --color-info-soft: 30 31 34;
+  --color-info-ink: 203 217 248;
   --color-danger: 252 165 165;
   --color-danger-hover: 253 185 182;
   --color-danger-active: 253 201 195;
   --color-on-danger: 20 44 42;
   --color-danger-line: 124 98 97;
-  --color-sidebar: 17 53 50;
-  --color-sidebar-hover: 37 77 72;
+  --color-sidebar: 11 11 11;
+  --color-sidebar-hover: 28 28 28;
   --color-sidebar-active: 0 110 99;
-  --shadow-color: 20 44 42;
+  --color-scrim: 0 0 0; /* ink is Cream in dark and would lighten the page, so the scrim is black */
+  --shadow-color: 0 0 0;
+}
+
+/* Motion tokens (SpaceWorks 0.12.0, mirrors frontend/src/styles/motionTokens.css).
+   Durations: fast = press/hover/exit, base = overlays and indicators, slow = route settle.
+   Curves: standard = most movement, enter = arrivals (decelerate), exit = departures (accelerate).
+   Distances are tokens so kiosk and TV screens zero them and keep only the fade. */
+:root {
+  --sw-dur-fast: 120ms;
+  --sw-dur-base: 180ms;
+  --sw-dur-slow: 240ms;
+  --sw-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --sw-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --sw-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --sw-enter-y: 8px;
+  --sw-pop-scale: 0.98;
+  --sw-pop-offset: 4px;
+  --sw-slide-x: 100%;
+}
+.sw-kiosk, .sw-tv { --sw-enter-y: 0px; --sw-pop-scale: 1; --sw-pop-offset: 0px; --sw-slide-x: 0%; }
+@media (prefers-reduced-motion: reduce) {
+  :root { --sw-dur-fast: 0ms; --sw-dur-base: 0ms; --sw-dur-slow: 0ms; --sw-enter-y: 0px; --sw-pop-scale: 1; --sw-pop-offset: 0px; --sw-slide-x: 0%; }
+}
+
+/* Chart series tokens (SpaceWorks 0.12.0, mirrors frontend/src/styles/chrome.css). Values are RGB triplets
+   like the colour tokens: use rgb(var(--chart-accent)). Dark switches to the ink/fill variants for contrast. */
+:root {
+  --chart-accent: var(--color-accent);
+  --chart-info: var(--color-info-ink);
+  --chart-success: var(--color-success-ink);
+  --chart-warn: var(--color-warn-ink);
+  --chart-danger: var(--color-danger);
+}
+:root.dark {
+  --chart-accent: var(--color-accent-ink);
+  --chart-info: var(--color-info);
+  --chart-success: var(--color-success);
+  --chart-warn: var(--color-warn);
 }
