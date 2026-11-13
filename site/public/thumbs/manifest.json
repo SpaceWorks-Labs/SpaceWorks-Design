@@ -2049,76 +2049,76 @@
     "brand/guidelines-v2/13.png": {
       "width": 1440,
       "height": 1000,
-      "bytes": 181500,
+      "bytes": 163870,
       "animated": false,
       "posterFrame": 0,
       "variants": [
         {
           "path": "thumbs/brand/guidelines-v2/13-320.webp",
           "width": 320,
-          "bytes": 9102
+          "bytes": 8980
         },
         {
           "path": "thumbs/brand/guidelines-v2/13-640.webp",
           "width": 640,
-          "bytes": 23626
+          "bytes": 23274
         }
       ]
     },
     "brand/guidelines-v2/14.png": {
       "width": 1440,
       "height": 1000,
-      "bytes": 179530,
+      "bytes": 172023,
       "animated": false,
       "posterFrame": 0,
       "variants": [
         {
           "path": "thumbs/brand/guidelines-v2/14-320.webp",
           "width": 320,
-          "bytes": 10774
+          "bytes": 10952
         },
         {
           "path": "thumbs/brand/guidelines-v2/14-640.webp",
           "width": 640,
-          "bytes": 28104
+          "bytes": 28450
         }
       ]
     },
     "brand/guidelines-v2/15.png": {
       "width": 1440,
       "height": 1000,
-      "bytes": 203029,
+      "bytes": 186553,
       "animated": false,
       "posterFrame": 0,
       "variants": [
         {
           "path": "thumbs/brand/guidelines-v2/15-320.webp",
           "width": 320,
-          "bytes": 10402
+          "bytes": 10538
         },
         {
           "path": "thumbs/brand/guidelines-v2/15-640.webp",
           "width": 640,
-          "bytes": 28082
+          "bytes": 27914
         }
       ]
     },
     "brand/guidelines-v2/16.png": {
       "width": 1440,
       "height": 1000,
-      "bytes": 101598,
+      "bytes": 101468,
       "animated": false,
       "posterFrame": 0,
       "variants": [
         {
           "path": "thumbs/brand/guidelines-v2/16-320.webp",
           "width": 320,
-          "bytes": 4918
+          "bytes": 4940
         },
         {
           "path": "thumbs/brand/guidelines-v2/16-640.webp",
           "width": 640,
-          "bytes": 13878
+          "bytes": 13892
         }
       ]
     },
@@ -2771,14 +2771,14 @@
     "motion/box-open/previews/button-saving-dark.gif": {
       "width": 340,
       "height": 128,
-      "bytes": 17774,
+      "bytes": 17758,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/button-saving-dark-gif-340.webp",
           "width": 340,
-          "bytes": 1848
+          "bytes": 1844
         }
       ]
     },
@@ -2792,462 +2792,462 @@
         {
           "path": "thumbs/motion/box-open/previews/button-saving-dark-340.webp",
           "width": 340,
-          "bytes": 1792
+          "bytes": 1794
         }
       ]
     },
     "motion/box-open/previews/button-saving-light.gif": {
       "width": 340,
       "height": 128,
-      "bytes": 19938,
+      "bytes": 19795,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/button-saving-light-gif-340.webp",
           "width": 340,
-          "bytes": 2150
+          "bytes": 2154
         }
       ]
     },
     "motion/box-open/previews/button-saving-light.webp": {
       "width": 340,
       "height": 128,
-      "bytes": 31252,
+      "bytes": 31196,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/button-saving-light-340.webp",
           "width": 340,
-          "bytes": 2012
+          "bytes": 2020
         }
       ]
     },
     "motion/box-open/previews/inline-row-dark.gif": {
       "width": 460,
       "height": 104,
-      "bytes": 23698,
+      "bytes": 23701,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/inline-row-dark-gif-460.webp",
           "width": 460,
-          "bytes": 2770
+          "bytes": 2768
         }
       ]
     },
     "motion/box-open/previews/inline-row-dark.webp": {
       "width": 460,
       "height": 104,
-      "bytes": 39280,
+      "bytes": 39284,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/inline-row-dark-460.webp",
           "width": 460,
-          "bytes": 2522
+          "bytes": 2534
         }
       ]
     },
     "motion/box-open/previews/inline-row-light.gif": {
       "width": 460,
       "height": 104,
-      "bytes": 23833,
+      "bytes": 18634,
       "animated": true,
-      "posterFrame": 51,
+      "posterFrame": 54,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/inline-row-light-gif-460.webp",
           "width": 460,
-          "bytes": 2714
+          "bytes": 2800
         }
       ]
     },
     "motion/box-open/previews/inline-row-light.webp": {
       "width": 460,
       "height": 104,
-      "bytes": 40902,
+      "bytes": 30700,
       "animated": true,
-      "posterFrame": 51,
+      "posterFrame": 54,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/inline-row-light-460.webp",
           "width": 460,
-          "bytes": 2446
+          "bytes": 2516
         }
       ]
     },
     "motion/box-open/previews/loader-dark.gif": {
       "width": 260,
       "height": 216,
-      "bytes": 103610,
+      "bytes": 103045,
       "animated": true,
-      "posterFrame": 52,
+      "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/loader-dark-gif-260.webp",
           "width": 260,
-          "bytes": 2230
+          "bytes": 2210
         }
       ]
     },
     "motion/box-open/previews/loader-dark.webp": {
       "width": 260,
       "height": 216,
-      "bytes": 140946,
+      "bytes": 140836,
       "animated": true,
       "posterFrame": 51,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/loader-dark-260.webp",
           "width": 260,
-          "bytes": 2192
+          "bytes": 2194
         }
       ]
     },
     "motion/box-open/previews/loader-light.gif": {
       "width": 260,
       "height": 216,
-      "bytes": 97628,
+      "bytes": 62918,
       "animated": true,
-      "posterFrame": 53,
+      "posterFrame": 54,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/loader-light-gif-260.webp",
           "width": 260,
-          "bytes": 2424
+          "bytes": 2916
         }
       ]
     },
     "motion/box-open/previews/loader-light.webp": {
       "width": 260,
       "height": 216,
-      "bytes": 152844,
+      "bytes": 106026,
       "animated": true,
-      "posterFrame": 51,
+      "posterFrame": 54,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/loader-light-260.webp",
           "width": 260,
-          "bytes": 2312
+          "bytes": 2696
         }
       ]
     },
     "motion/box-open/previews/logo-hover-dark.gif": {
       "width": 300,
       "height": 260,
-      "bytes": 163253,
+      "bytes": 154457,
       "animated": true,
-      "posterFrame": 46,
+      "posterFrame": 44,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/logo-hover-dark-gif-300.webp",
           "width": 300,
-          "bytes": 3528
+          "bytes": 3468
         }
       ]
     },
     "motion/box-open/previews/logo-hover-dark.webp": {
       "width": 300,
       "height": 260,
-      "bytes": 203592,
+      "bytes": 202570,
       "animated": true,
-      "posterFrame": 46,
+      "posterFrame": 44,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/logo-hover-dark-300.webp",
           "width": 300,
-          "bytes": 3536
+          "bytes": 3504
         }
       ]
     },
     "motion/box-open/previews/logo-hover-light.gif": {
       "width": 300,
       "height": 260,
-      "bytes": 152234,
+      "bytes": 80537,
       "animated": true,
-      "posterFrame": 48,
+      "posterFrame": 47,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/logo-hover-light-gif-300.webp",
           "width": 300,
-          "bytes": 4390
+          "bytes": 4328
         }
       ]
     },
     "motion/box-open/previews/logo-hover-light.webp": {
       "width": 300,
       "height": 260,
-      "bytes": 221836,
+      "bytes": 142838,
       "animated": true,
-      "posterFrame": 46,
+      "posterFrame": 47,
       "variants": [
         {
           "path": "thumbs/motion/box-open/previews/logo-hover-light-300.webp",
           "width": 300,
-          "bytes": 4044
+          "bytes": 4086
         }
       ]
     },
     "motion/collapse/previews/collapse-dark.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 11834,
+      "bytes": 13783,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/collapse/previews/collapse-dark-gif-600.webp",
           "width": 600,
-          "bytes": 4772
+          "bytes": 4802
         }
       ]
     },
     "motion/collapse/previews/collapse-dark.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 15822,
+      "bytes": 15628,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/collapse/previews/collapse-dark-600.webp",
           "width": 600,
-          "bytes": 4428
+          "bytes": 4460
         }
       ]
     },
     "motion/collapse/previews/collapse-light.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 11686,
+      "bytes": 13032,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/collapse/previews/collapse-light-gif-600.webp",
           "width": 600,
-          "bytes": 4934
+          "bytes": 4888
         }
       ]
     },
     "motion/collapse/previews/collapse-light.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 15384,
+      "bytes": 15048,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/collapse/previews/collapse-light-600.webp",
           "width": 600,
-          "bytes": 4400
+          "bytes": 4700
         }
       ]
     },
     "motion/delight/previews/card-tilt-dark.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 40230,
+      "bytes": 17929,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/card-tilt-dark-gif-600.webp",
           "width": 600,
-          "bytes": 2644
+          "bytes": 2632
         }
       ]
     },
     "motion/delight/previews/card-tilt-dark.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 21310,
+      "bytes": 13528,
       "animated": true,
-      "posterFrame": 9,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/card-tilt-dark-600.webp",
           "width": 600,
-          "bytes": 2572
+          "bytes": 2564
         }
       ]
     },
     "motion/delight/previews/card-tilt-light.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 45151,
+      "bytes": 20062,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/card-tilt-light-gif-600.webp",
           "width": 600,
-          "bytes": 2982
+          "bytes": 2976
         }
       ]
     },
     "motion/delight/previews/card-tilt-light.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 27632,
+      "bytes": 16248,
       "animated": true,
-      "posterFrame": 10,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/card-tilt-light-600.webp",
           "width": 600,
-          "bytes": 3038
+          "bytes": 3004
         }
       ]
     },
     "motion/delight/previews/logo-flaps-dark.gif": {
       "width": 400,
       "height": 240,
-      "bytes": 17297,
+      "bytes": 14604,
       "animated": true,
-      "posterFrame": 10,
+      "posterFrame": 9,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/logo-flaps-dark-gif-400.webp",
           "width": 400,
-          "bytes": 828
+          "bytes": 736
         }
       ]
     },
     "motion/delight/previews/logo-flaps-dark.webp": {
       "width": 400,
       "height": 240,
-      "bytes": 11348,
+      "bytes": 8828,
       "animated": true,
-      "posterFrame": 9,
+      "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/logo-flaps-dark-400.webp",
           "width": 400,
-          "bytes": 842
+          "bytes": 846
         }
       ]
     },
     "motion/delight/previews/logo-flaps-light.gif": {
       "width": 400,
       "height": 240,
-      "bytes": 17062,
+      "bytes": 14930,
       "animated": true,
-      "posterFrame": 10,
+      "posterFrame": 9,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/logo-flaps-light-gif-400.webp",
           "width": 400,
-          "bytes": 1118
+          "bytes": 962
         }
       ]
     },
     "motion/delight/previews/logo-flaps-light.webp": {
       "width": 400,
       "height": 240,
-      "bytes": 15896,
+      "bytes": 12704,
       "animated": true,
       "posterFrame": 9,
       "variants": [
         {
           "path": "thumbs/motion/delight/previews/logo-flaps-light-400.webp",
           "width": 400,
-          "bytes": 1068
+          "bytes": 980
         }
       ]
     },
     "motion/feedback/previews/confetti-dark.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 67797,
+      "bytes": 61762,
       "animated": true,
-      "posterFrame": 21,
+      "posterFrame": 19,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/confetti-dark-gif-600.webp",
           "width": 600,
-          "bytes": 3710
+          "bytes": 3958
         }
       ]
     },
     "motion/feedback/previews/confetti-dark.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 56020,
+      "bytes": 52876,
       "animated": true,
-      "posterFrame": 19,
+      "posterFrame": 18,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/confetti-dark-600.webp",
           "width": 600,
-          "bytes": 3966
+          "bytes": 4172
         }
       ]
     },
     "motion/feedback/previews/confetti-light.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 66308,
+      "bytes": 60443,
       "animated": true,
-      "posterFrame": 21,
+      "posterFrame": 19,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/confetti-light-gif-600.webp",
           "width": 600,
-          "bytes": 3694
+          "bytes": 3798
         }
       ]
     },
     "motion/feedback/previews/confetti-light.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 46482,
+      "bytes": 45002,
       "animated": true,
-      "posterFrame": 19,
+      "posterFrame": 18,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/confetti-light-600.webp",
           "width": 600,
-          "bytes": 3856
+          "bytes": 3964
         }
       ]
     },
     "motion/feedback/previews/stamp-dark.gif": {
       "width": 440,
       "height": 220,
-      "bytes": 21698,
+      "bytes": 21292,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-dark-gif-440.webp",
           "width": 440,
-          "bytes": 2340
+          "bytes": 2298
         }
       ]
     },
     "motion/feedback/previews/stamp-dark.webp": {
       "width": 440,
       "height": 220,
-      "bytes": 19614,
+      "bytes": 18638,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-dark-440.webp",
           "width": 440,
-          "bytes": 2274
+          "bytes": 2286
         }
       ]
     },
     "motion/feedback/previews/stamp-light.gif": {
       "width": 440,
       "height": 220,
-      "bytes": 20922,
+      "bytes": 20336,
       "animated": true,
       "posterFrame": 7,
       "variants": [
@@ -3261,77 +3261,77 @@
     "motion/feedback/previews/stamp-light.webp": {
       "width": 440,
       "height": 220,
-      "bytes": 12270,
+      "bytes": 11382,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-light-440.webp",
           "width": 440,
-          "bytes": 1564
+          "bytes": 1542
         }
       ]
     },
     "motion/hover-press/previews/hover-press-dark.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 12057,
+      "bytes": 7449,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/hover-press/previews/hover-press-dark-gif-720.webp",
           "width": 720,
-          "bytes": 6552
+          "bytes": 6692
         }
       ]
     },
     "motion/hover-press/previews/hover-press-dark.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 10414,
+      "bytes": 8422,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/hover-press/previews/hover-press-dark-720.webp",
           "width": 720,
-          "bytes": 5666
+          "bytes": 5656
         }
       ]
     },
     "motion/hover-press/previews/hover-press-light.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 12149,
+      "bytes": 7281,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/hover-press/previews/hover-press-light-gif-720.webp",
           "width": 720,
-          "bytes": 7082
+          "bytes": 6904
         }
       ]
     },
     "motion/hover-press/previews/hover-press-light.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 13046,
+      "bytes": 9654,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/hover-press/previews/hover-press-light-720.webp",
           "width": 720,
-          "bytes": 6050
+          "bytes": 6014
         }
       ]
     },
     "motion/kiosk-display/previews/kiosk-vs-normal-dark.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 13217,
+      "bytes": 14011,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3345,7 +3345,7 @@
     "motion/kiosk-display/previews/kiosk-vs-normal-dark.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 11412,
+      "bytes": 12880,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3359,7 +3359,7 @@
     "motion/kiosk-display/previews/kiosk-vs-normal-light.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 13148,
+      "bytes": 13887,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3373,7 +3373,7 @@
     "motion/kiosk-display/previews/kiosk-vs-normal-light.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 11936,
+      "bytes": 13246,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3387,413 +3387,525 @@
     "motion/kiosk-display/previews/slide-fade-dark.gif": {
       "width": 600,
       "height": 220,
-      "bytes": 17073,
+      "bytes": 12786,
       "animated": true,
-      "posterFrame": 7,
+      "posterFrame": 6,
       "variants": [
         {
           "path": "thumbs/motion/kiosk-display/previews/slide-fade-dark-gif-600.webp",
           "width": 600,
-          "bytes": 1498
+          "bytes": 1568
         }
       ]
     },
     "motion/kiosk-display/previews/slide-fade-dark.webp": {
       "width": 600,
       "height": 220,
-      "bytes": 10186,
+      "bytes": 7896,
       "animated": true,
-      "posterFrame": 6,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/kiosk-display/previews/slide-fade-dark-600.webp",
           "width": 600,
-          "bytes": 1456
+          "bytes": 1568
         }
       ]
     },
     "motion/kiosk-display/previews/slide-fade-light.gif": {
       "width": 600,
       "height": 220,
-      "bytes": 17261,
+      "bytes": 12755,
       "animated": true,
-      "posterFrame": 7,
+      "posterFrame": 6,
       "variants": [
         {
           "path": "thumbs/motion/kiosk-display/previews/slide-fade-light-gif-600.webp",
           "width": 600,
-          "bytes": 1350
+          "bytes": 1406
         }
       ]
     },
     "motion/kiosk-display/previews/slide-fade-light.webp": {
       "width": 600,
       "height": 220,
-      "bytes": 9524,
+      "bytes": 7584,
       "animated": true,
-      "posterFrame": 6,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/kiosk-display/previews/slide-fade-light-600.webp",
           "width": 600,
-          "bytes": 1474
+          "bytes": 1508
         }
       ]
     },
     "motion/overlays/previews/dialog-dark.gif": {
       "width": 720,
-      "height": 340,
-      "bytes": 16607,
+      "height": 520,
+      "bytes": 31545,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/dialog-dark-gif-720.webp",
           "width": 720,
-          "bytes": 4332
+          "bytes": 6352
         }
       ]
     },
     "motion/overlays/previews/dialog-dark.webp": {
       "width": 720,
-      "height": 340,
-      "bytes": 14308,
+      "height": 520,
+      "bytes": 22042,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/dialog-dark-720.webp",
           "width": 720,
-          "bytes": 4080
+          "bytes": 6178
         }
       ]
     },
     "motion/overlays/previews/dialog-light.gif": {
       "width": 720,
-      "height": 340,
-      "bytes": 19293,
+      "height": 520,
+      "bytes": 35689,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/dialog-light-gif-720.webp",
           "width": 720,
-          "bytes": 4868
+          "bytes": 6930
         }
       ]
     },
     "motion/overlays/previews/dialog-light.webp": {
       "width": 720,
-      "height": 340,
-      "bytes": 15606,
+      "height": 520,
+      "bytes": 24310,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/dialog-light-720.webp",
           "width": 720,
-          "bytes": 4076
+          "bytes": 6558
         }
       ]
     },
     "motion/overlays/previews/drawer-dark.gif": {
       "width": 720,
-      "height": 340,
-      "bytes": 23342,
+      "height": 480,
+      "bytes": 29009,
       "animated": true,
       "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/drawer-dark-gif-720.webp",
           "width": 720,
-          "bytes": 4678
+          "bytes": 5012
         }
       ]
     },
     "motion/overlays/previews/drawer-dark.webp": {
       "width": 720,
-      "height": 340,
-      "bytes": 22178,
+      "height": 480,
+      "bytes": 22292,
       "animated": true,
       "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/drawer-dark-720.webp",
           "width": 720,
-          "bytes": 4306
+          "bytes": 4730
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-left-dark.gif": {
+      "width": 720,
+      "height": 480,
+      "bytes": 29420,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-left-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 5224
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-left-dark.webp": {
+      "width": 720,
+      "height": 480,
+      "bytes": 22894,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-left-dark-720.webp",
+          "width": 720,
+          "bytes": 4926
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-left-light.gif": {
+      "width": 720,
+      "height": 480,
+      "bytes": 46833,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-left-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4934
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-left-light.webp": {
+      "width": 720,
+      "height": 480,
+      "bytes": 22842,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-left-light-720.webp",
+          "width": 720,
+          "bytes": 4770
         }
       ]
     },
     "motion/overlays/previews/drawer-light.gif": {
       "width": 720,
-      "height": 340,
-      "bytes": 25385,
+      "height": 480,
+      "bytes": 47671,
       "animated": true,
       "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/drawer-light-gif-720.webp",
           "width": 720,
-          "bytes": 4760
+          "bytes": 4796
         }
       ]
     },
     "motion/overlays/previews/drawer-light.webp": {
       "width": 720,
-      "height": 340,
-      "bytes": 22942,
+      "height": 480,
+      "bytes": 22366,
       "animated": true,
       "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/drawer-light-720.webp",
           "width": 720,
-          "bytes": 4230
+          "bytes": 4634
         }
       ]
     },
     "motion/overlays/previews/menu-dark.gif": {
       "width": 720,
-      "height": 300,
-      "bytes": 6847,
+      "height": 500,
+      "bytes": 10476,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/menu-dark-gif-720.webp",
           "width": 720,
-          "bytes": 3696
+          "bytes": 4634
         }
       ]
     },
     "motion/overlays/previews/menu-dark.webp": {
       "width": 720,
-      "height": 300,
-      "bytes": 5182,
+      "height": 500,
+      "bytes": 6734,
       "animated": true,
       "posterFrame": 1,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/menu-dark-720.webp",
           "width": 720,
-          "bytes": 3364
+          "bytes": 4170
         }
       ]
     },
     "motion/overlays/previews/menu-light.gif": {
       "width": 720,
-      "height": 300,
-      "bytes": 6864,
+      "height": 500,
+      "bytes": 23120,
       "animated": true,
       "posterFrame": 2,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/menu-light-gif-720.webp",
           "width": 720,
-          "bytes": 3858
+          "bytes": 5236
         }
       ]
     },
     "motion/overlays/previews/menu-light.webp": {
       "width": 720,
-      "height": 300,
-      "bytes": 5524,
+      "height": 500,
+      "bytes": 6898,
       "animated": true,
       "posterFrame": 1,
       "variants": [
         {
           "path": "thumbs/motion/overlays/previews/menu-light-720.webp",
           "width": 720,
-          "bytes": 3592
+          "bytes": 4508
+        }
+      ]
+    },
+    "motion/overlays/previews/sheet-dark.gif": {
+      "width": 720,
+      "height": 560,
+      "bytes": 31114,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/sheet-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 6460
+        }
+      ]
+    },
+    "motion/overlays/previews/sheet-dark.webp": {
+      "width": 720,
+      "height": 560,
+      "bytes": 20664,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/sheet-dark-720.webp",
+          "width": 720,
+          "bytes": 6070
+        }
+      ]
+    },
+    "motion/overlays/previews/sheet-light.gif": {
+      "width": 720,
+      "height": 560,
+      "bytes": 35029,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/sheet-light-gif-720.webp",
+          "width": 720,
+          "bytes": 6922
+        }
+      ]
+    },
+    "motion/overlays/previews/sheet-light.webp": {
+      "width": 720,
+      "height": 560,
+      "bytes": 22694,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/sheet-light-720.webp",
+          "width": 720,
+          "bytes": 6440
         }
       ]
     },
     "motion/page-enter/previews/showcase-dark.gif": {
       "width": 720,
       "height": 280,
-      "bytes": 49602,
+      "bytes": 41535,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 9,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/showcase-dark-gif-720.webp",
           "width": 720,
-          "bytes": 2604
+          "bytes": 2600
         }
       ]
     },
     "motion/page-enter/previews/showcase-dark.webp": {
       "width": 720,
       "height": 280,
-      "bytes": 17062,
+      "bytes": 16118,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/showcase-dark-720.webp",
           "width": 720,
-          "bytes": 2530
+          "bytes": 2454
         }
       ]
     },
     "motion/page-enter/previews/showcase-light.gif": {
       "width": 720,
       "height": 280,
-      "bytes": 51785,
+      "bytes": 41284,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 9,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/showcase-light-gif-720.webp",
           "width": 720,
-          "bytes": 3116
+          "bytes": 2990
         }
       ]
     },
     "motion/page-enter/previews/showcase-light.webp": {
       "width": 720,
       "height": 280,
-      "bytes": 19322,
+      "bytes": 17920,
       "animated": true,
-      "posterFrame": 12,
+      "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/showcase-light-720.webp",
           "width": 720,
-          "bytes": 2850
+          "bytes": 2854
         }
       ]
     },
     "motion/page-enter/previews/stagger-dark.gif": {
       "width": 720,
       "height": 280,
-      "bytes": 40723,
+      "bytes": 31955,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/stagger-dark-gif-720.webp",
           "width": 720,
-          "bytes": 2658
+          "bytes": 3074
         }
       ]
     },
     "motion/page-enter/previews/stagger-dark.webp": {
       "width": 720,
       "height": 280,
-      "bytes": 14122,
+      "bytes": 12050,
       "animated": true,
-      "posterFrame": 7,
+      "posterFrame": 6,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/stagger-dark-720.webp",
           "width": 720,
-          "bytes": 2686
+          "bytes": 2996
         }
       ]
     },
     "motion/page-enter/previews/stagger-light.gif": {
       "width": 720,
       "height": 280,
-      "bytes": 40708,
+      "bytes": 33081,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/stagger-light-gif-720.webp",
           "width": 720,
-          "bytes": 3222
+          "bytes": 3704
         }
       ]
     },
     "motion/page-enter/previews/stagger-light.webp": {
       "width": 720,
       "height": 280,
-      "bytes": 15468,
+      "bytes": 13880,
       "animated": true,
-      "posterFrame": 7,
+      "posterFrame": 6,
       "variants": [
         {
           "path": "thumbs/motion/page-enter/previews/stagger-light-720.webp",
           "width": 720,
-          "bytes": 3278
+          "bytes": 3568
         }
       ]
     },
     "motion/route-transition/previews/page-swap-dark.gif": {
       "width": 720,
       "height": 340,
-      "bytes": 13618,
+      "bytes": 13230,
       "animated": true,
-      "posterFrame": 5,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/route-transition/previews/page-swap-dark-gif-720.webp",
           "width": 720,
-          "bytes": 4142
+          "bytes": 4172
         }
       ]
     },
     "motion/route-transition/previews/page-swap-dark.webp": {
       "width": 720,
       "height": 340,
-      "bytes": 9472,
+      "bytes": 8884,
       "animated": true,
-      "posterFrame": 4,
+      "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/route-transition/previews/page-swap-dark-720.webp",
           "width": 720,
-          "bytes": 3836
+          "bytes": 3860
         }
       ]
     },
     "motion/route-transition/previews/page-swap-light.gif": {
       "width": 720,
       "height": 340,
-      "bytes": 13765,
+      "bytes": 13316,
       "animated": true,
-      "posterFrame": 5,
+      "posterFrame": 4,
       "variants": [
         {
           "path": "thumbs/motion/route-transition/previews/page-swap-light-gif-720.webp",
           "width": 720,
-          "bytes": 4054
+          "bytes": 4058
         }
       ]
     },
     "motion/route-transition/previews/page-swap-light.webp": {
       "width": 720,
       "height": 340,
-      "bytes": 9416,
+      "bytes": 8838,
       "animated": true,
-      "posterFrame": 4,
+      "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/route-transition/previews/page-swap-light-720.webp",
           "width": 720,
-          "bytes": 3698
+          "bytes": 3726
         }
       ]
     },
     "motion/scroll-reveal/previews/pinned-hero-dark.gif": {
       "width": 800,
       "height": 450,
-      "bytes": 45447,
+      "bytes": 44430,
       "animated": true,
       "posterFrame": 15,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-dark-gif-800.webp",
           "width": 800,
-          "bytes": 906
+          "bytes": 894
         }
       ]
     },
     "motion/scroll-reveal/previews/pinned-hero-dark.webp": {
       "width": 800,
       "height": 450,
-      "bytes": 25852,
+      "bytes": 26340,
       "animated": true,
       "posterFrame": 15,
       "variants": [
@@ -3807,140 +3919,140 @@
     "motion/scroll-reveal/previews/pinned-hero-light.gif": {
       "width": 800,
       "height": 450,
-      "bytes": 46554,
+      "bytes": 45209,
       "animated": true,
       "posterFrame": 15,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-light-gif-800.webp",
           "width": 800,
-          "bytes": 1076
+          "bytes": 1038
         }
       ]
     },
     "motion/scroll-reveal/previews/pinned-hero-light.webp": {
       "width": 800,
       "height": 450,
-      "bytes": 28138,
+      "bytes": 29004,
       "animated": true,
       "posterFrame": 15,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-light-800.webp",
           "width": 800,
-          "bytes": 1968
+          "bytes": 1870
         }
       ]
     },
     "motion/scroll-reveal/previews/reveal-dark.gif": {
       "width": 720,
       "height": 300,
-      "bytes": 50809,
+      "bytes": 52523,
       "animated": true,
       "posterFrame": 12,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/reveal-dark-gif-720.webp",
           "width": 720,
-          "bytes": 3658
+          "bytes": 3512
         }
       ]
     },
     "motion/scroll-reveal/previews/reveal-dark.webp": {
       "width": 720,
       "height": 300,
-      "bytes": 32480,
+      "bytes": 33324,
       "animated": true,
-      "posterFrame": 10,
+      "posterFrame": 11,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/reveal-dark-720.webp",
           "width": 720,
-          "bytes": 3350
+          "bytes": 3252
         }
       ]
     },
     "motion/scroll-reveal/previews/reveal-light.gif": {
       "width": 720,
       "height": 300,
-      "bytes": 51138,
+      "bytes": 52827,
       "animated": true,
       "posterFrame": 12,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/reveal-light-gif-720.webp",
           "width": 720,
-          "bytes": 4122
+          "bytes": 3918
         }
       ]
     },
     "motion/scroll-reveal/previews/reveal-light.webp": {
       "width": 720,
       "height": 300,
-      "bytes": 37444,
+      "bytes": 38354,
       "animated": true,
-      "posterFrame": 10,
+      "posterFrame": 11,
       "variants": [
         {
           "path": "thumbs/motion/scroll-reveal/previews/reveal-light-720.webp",
           "width": 720,
-          "bytes": 3834
+          "bytes": 3968
         }
       ]
     },
     "motion/search/previews/search-field-dark.gif": {
       "width": 680,
       "height": 500,
-      "bytes": 28223,
+      "bytes": 18241,
       "animated": true,
-      "posterFrame": 18,
+      "posterFrame": 17,
       "variants": [
         {
           "path": "thumbs/motion/search/previews/search-field-dark-gif-680.webp",
           "width": 680,
-          "bytes": 3142
+          "bytes": 3046
         }
       ]
     },
     "motion/search/previews/search-field-dark.webp": {
       "width": 680,
       "height": 500,
-      "bytes": 22052,
+      "bytes": 16530,
       "animated": true,
-      "posterFrame": 18,
+      "posterFrame": 17,
       "variants": [
         {
           "path": "thumbs/motion/search/previews/search-field-dark-680.webp",
           "width": 680,
-          "bytes": 3172
+          "bytes": 3084
         }
       ]
     },
     "motion/search/previews/search-field-light.gif": {
       "width": 680,
       "height": 500,
-      "bytes": 29028,
+      "bytes": 18716,
       "animated": true,
-      "posterFrame": 18,
+      "posterFrame": 17,
       "variants": [
         {
           "path": "thumbs/motion/search/previews/search-field-light-gif-680.webp",
           "width": 680,
-          "bytes": 3232
+          "bytes": 3158
         }
       ]
     },
     "motion/search/previews/search-field-light.webp": {
       "width": 680,
       "height": 500,
-      "bytes": 23722,
+      "bytes": 18202,
       "animated": true,
-      "posterFrame": 18,
+      "posterFrame": 17,
       "variants": [
         {
           "path": "thumbs/motion/search/previews/search-field-light-680.webp",
           "width": 680,
-          "bytes": 3252
+          "bytes": 3368
         }
       ]
     },
@@ -4003,77 +4115,77 @@
     "motion/skeleton/previews/skeleton-dark.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 34894,
+      "bytes": 34512,
       "animated": true,
-      "posterFrame": 24,
+      "posterFrame": 22,
       "variants": [
         {
           "path": "thumbs/motion/skeleton/previews/skeleton-dark-gif-600.webp",
           "width": 600,
-          "bytes": 2082
+          "bytes": 2138
         }
       ]
     },
     "motion/skeleton/previews/skeleton-dark.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 42026,
+      "bytes": 41286,
       "animated": true,
-      "posterFrame": 24,
+      "posterFrame": 22,
       "variants": [
         {
           "path": "thumbs/motion/skeleton/previews/skeleton-dark-600.webp",
           "width": 600,
-          "bytes": 2126
+          "bytes": 2104
         }
       ]
     },
     "motion/skeleton/previews/skeleton-light.gif": {
       "width": 600,
       "height": 300,
-      "bytes": 32601,
+      "bytes": 17495,
       "animated": true,
-      "posterFrame": 24,
+      "posterFrame": 23,
       "variants": [
         {
           "path": "thumbs/motion/skeleton/previews/skeleton-light-gif-600.webp",
           "width": 600,
-          "bytes": 2354
+          "bytes": 2328
         }
       ]
     },
     "motion/skeleton/previews/skeleton-light.webp": {
       "width": 600,
       "height": 300,
-      "bytes": 42778,
+      "bytes": 28610,
       "animated": true,
-      "posterFrame": 24,
+      "posterFrame": 23,
       "variants": [
         {
           "path": "thumbs/motion/skeleton/previews/skeleton-light-600.webp",
           "width": 600,
-          "bytes": 2338
+          "bytes": 2196
         }
       ]
     },
     "motion/theme-reveal/previews/theme-reveal.gif": {
       "width": 480,
       "height": 270,
-      "bytes": 128948,
+      "bytes": 128488,
       "animated": true,
       "posterFrame": 30,
       "variants": [
         {
           "path": "thumbs/motion/theme-reveal/previews/theme-reveal-gif-480.webp",
           "width": 480,
-          "bytes": 7908
+          "bytes": 7938
         }
       ]
     },
     "motion/theme-reveal/previews/theme-reveal.webp": {
       "width": 480,
       "height": 270,
-      "bytes": 73602,
+      "bytes": 73288,
       "animated": true,
       "posterFrame": 30,
       "variants": [
@@ -4087,7 +4199,7 @@
     "motion/toast/previews/toast-dark.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 13286,
+      "bytes": 13180,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -4101,42 +4213,42 @@
     "motion/toast/previews/toast-dark.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 12204,
+      "bytes": 12430,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/toast/previews/toast-dark-720.webp",
           "width": 720,
-          "bytes": 4086
+          "bytes": 4048
         }
       ]
     },
     "motion/toast/previews/toast-light.gif": {
       "width": 720,
       "height": 260,
-      "bytes": 12838,
+      "bytes": 12615,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/toast/previews/toast-light-gif-720.webp",
           "width": 720,
-          "bytes": 4592
+          "bytes": 4548
         }
       ]
     },
     "motion/toast/previews/toast-light.webp": {
       "width": 720,
       "height": 260,
-      "bytes": 12364,
+      "bytes": 12560,
       "animated": true,
       "posterFrame": 3,
       "variants": [
         {
           "path": "thumbs/motion/toast/previews/toast-light-720.webp",
           "width": 720,
-          "bytes": 4168
+          "bytes": 4048
         }
       ]
     }

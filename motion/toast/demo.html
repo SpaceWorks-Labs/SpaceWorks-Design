@@ -18,6 +18,15 @@
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .tstack{position:absolute;right:12px;bottom:12px;display:grid;gap:8px;width:min(22rem,calc(100% - 24px))}.t{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-outline));border-radius:14px;padding:14px;display:grid;gap:8px;font-size:.9rem}.t.err p{color:rgb(var(--color-danger))}.t p{color:rgb(var(--color-ink))}</style>
 <link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>

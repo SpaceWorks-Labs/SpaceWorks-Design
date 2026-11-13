@@ -8,3 +8,5 @@ Unmodified copies of the app files for this family (Design System v2.0, taken fr
 |---|---|---|
 | `SearchField.tsx` | `components/ui/SearchField.tsx` | `@lingui/core/macro`, `lucide-react`, `../BoxSpinner` (the box-open spinner), `./SearchField.css` |
 | `SearchField.css` | `components/ui/SearchField.css` | none (tokens from `tokens/tokens.css`) |
+
+> **Note, 2026-11-13 (v2.1.0): import `SearchField.css` from your root stylesheet.** `SearchField.tsx` no longer imports `./SearchField.css` (it opens `@layer components`, and loading it from a component can order `components` below `base`, so buttons lose padding and colour). Consumers must import it from the root stylesheet, after `@import "tailwindcss"`.

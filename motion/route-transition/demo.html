@@ -18,6 +18,15 @@
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .shell{display:grid;grid-template-columns:150px 1fr;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;min-height:260px;background:rgb(var(--color-bg))}.side{background:rgb(var(--color-sidebar,var(--color-surface)));border-right:1px solid rgb(var(--color-line));padding:12px;display:grid;gap:6px;align-content:start}.side a{padding:8px 10px;border-radius:8px;color:rgb(var(--color-ink));text-decoration:none;cursor:pointer}.side a[aria-current=page]{background:rgb(var(--color-accent-soft))}.pg{padding:20px;display:grid;gap:10px;align-content:start}.pg h3{margin:0;font-size:1.3rem}.bar{height:10px;border-radius:5px;background:rgb(var(--color-line))}</style>
 <link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>

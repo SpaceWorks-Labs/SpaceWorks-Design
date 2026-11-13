@@ -18,6 +18,15 @@
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .tg{font:inherit;display:flex;align-items:center;gap:8px;min-height:44px;width:100%;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;padding:0 12px;color:rgb(var(--color-ink));cursor:pointer}.tg svg{flex:none}.pane{padding:12px 4px;display:grid;gap:6px}.sw-collapse[hidden]{display:none}</style>
 <link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>

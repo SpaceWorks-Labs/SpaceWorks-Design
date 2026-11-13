@@ -22,7 +22,7 @@ const pdfs = Object.fromEntries(['v1', 'v2'].map(v => [`space-works-brand-guidel
       if (!asset) continue;
       img.dataset.previewReady = 'true';
       img.dataset.animation = source;
-      if (asset.description) img.alt = `${img.alt}. ${asset.description}`;
+      if (asset.description && !img.alt.includes(asset.description)) img.alt = `${img.alt}. ${asset.description}`;
       img.src = asset.poster;
       const posterSet = img.getAttribute('srcset');
       img.width = asset.width; img.height = asset.height;

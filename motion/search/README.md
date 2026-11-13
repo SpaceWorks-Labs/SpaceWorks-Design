@@ -99,3 +99,5 @@ These aliases are local additions; global tokens are unchanged. Promote through 
 | Local custom property | Definition |
 |---|---|
 | `--sw-local-duration-20` | `calc(var(--sw-dur-fast) * 0.16666667)` |
+
+> **Note, 2026-11-13 (v2.1.0): import `SearchField.css` from your root stylesheet.** `SearchField.tsx` no longer imports `./SearchField.css`. That file opens `@layer components`; imported from a component it can load before the app's Tailwind stylesheet, which puts `components` below `base` and strips padding and colour from every button. Import it from the root stylesheet after `@import "tailwindcss"` (for example `@import "./components/ui/SearchField.css";`).

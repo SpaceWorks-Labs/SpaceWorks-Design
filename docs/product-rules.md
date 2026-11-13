@@ -681,6 +681,42 @@ the same pull request as the code (decided 13 November 2026).
 - **Before shipping** a landing page or docs change: check it against the
   [new-feature checklist](#new-feature-checklist), in light and dark, at phone and desktop widths.
 
+### 12.2 Entry points follow the data (every product)
+
+**Rule.** Every entry point — the product's `/`, an area's home, a picker — decides what to show from what actually
+exists for this visitor, and never strands them:
+
+1. **Nothing yet → introduce.** With no items (a fresh install, an empty area) or when the backend cannot be reached,
+   show the introduction: the landing page (§12.1) for `/`, a helpful empty state with the next action for an area.
+2. **Exactly one → go straight to it.** Never show a list or picker with a single choice; open that item directly.
+3. **Several → list.** Show the list (searchable when long), with sign in and the main action at hand.
+4. **The way out is always one click away.** Wherever an entry point lands — including a single item it jumped into —
+   the product's own links stay reachable: docs, source (GitHub), features, the full list and the introduction (when
+   switched on), in the header, a slim product bar or menu, and the footer, without hiding the item's own navigation.
+5. **Sign-in never loses the place.** If an action needs an account, sign-in or sign-up returns to the same action with
+   the visitor's choices kept (item, quantity, dates, form input).
+6. **Switchable introduction.** A deployment can turn the introduction off (SpaceWorks: `HUB_LANDING_ENABLED`); then
+   rules 2 and 3 apply from the first visit.
+
+| Product | Entry point and the items it counts |
+|---|---|
+| SpaceWorks | `/` and public makerspaces: none → landing (`/about` keeps it reachable), one → `/m/<slug>`, several → space list |
+| Events | `/` and published upcoming events (or organising spaces): one → that event page, several → the list |
+| Bookings | `/` and bookable spaces/rooms: one → its calendar, several → the room list |
+| Inventory | `/` and public stock rooms: one → that catalogue, several → the list |
+| Machines | `/` and public workshops/machine groups: one → its catalogue, several → the list |
+| Organization | `/` and organisations or units open to join: one → its join page, several → the directory |
+| Workspace | after sign-in, the user's workspaces: one → that workspace, several → the switcher |
+| Android, iOS | after sign-in, the user's spaces: one → that space, several → the space picker (no landing in-app) |
+
+**Why.** A fresh install has nothing to show but the product, so it introduces itself; a running deployment should open
+on what people came for. A one-item list is a wasted click, a dead end loses people, and a sign-in that forgets where
+you were breaks the flow.
+
+**How to apply.** Decide from the public (or the user's) item list with a loading state first — never flash the
+introduction before the answer arrives; treat a failed request like "nothing yet"; test all three cases, the link set on
+every page the entry point can land on, and the sign-in return path (unit + end-to-end).
+
 ---
 
 ## 13. Decisions and handover (project memory)
@@ -828,6 +864,8 @@ it or turn it into a change. Products will be updated later; this list is the wo
 - Link this page from each README and agent guide as the rules the product follows.
 - Give every project except Android and iOS its own landing page (with its GitHub, release, install and docs
   links) and its own feature docs, built from this design system ([12.1](#121-landing-page-and-feature-docs-every-project-except-the-native-apps)).
+- Make every entry point follow the data: introduce when empty, open the only item directly, list several; docs,
+  GitHub, features, list and introduction always one click away; sign-in returns to the same action ([12.2](#122-entry-points-follow-the-data-every-product)).
 
 ### SpaceWorks
 

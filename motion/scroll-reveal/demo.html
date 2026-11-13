@@ -19,6 +19,15 @@
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .sw-hub-seq{--sw-hub-header-h:0px;margin:0 -16px}.sw-hub-seq-scene{background:rgb(var(--color-bg))}.sw-hub-seq-copy{text-align:center;padding:0!important}.sw-hub-seq-copy h2{font-size:2rem}.sw-hub-seq-stage{display:grid;place-items:start center}.sw-hub-seq-frame{width:min(620px,86%);height:260px;border-radius:16px;border:1px solid rgb(var(--color-line));background:rgb(var(--color-panel));display:grid;place-items:center}.sw-hub-seq-reveal{text-align:center}.sw-hub-seq-reveal h2{font-size:2rem}.rv{min-height:120px;display:grid;place-items:center}.spacer{height:30vh}</style>
 <link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>

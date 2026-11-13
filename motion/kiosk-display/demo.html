@@ -19,6 +19,15 @@
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.slide{display:grid;place-items:center;height:120px;font-size:1.4rem;font-weight:700;background:rgb(var(--color-accent-soft));border-radius:12px}.mini{position:relative;height:200px;border:1px solid rgb(var(--color-line));border-radius:14px;overflow:hidden;background:rgb(var(--color-surface))}.mini .dlg{position:absolute;inset:50px 30px auto;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;padding:14px}.mini .dlg[hidden]{display:none}</style>
 <link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>

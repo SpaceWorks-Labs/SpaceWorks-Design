@@ -950,3 +950,14 @@ Index addition: [SW-389 — Four visible flaps keep their own colours when shut]
   regeneration remain release-orchestrator steps.
 
 Index addition: [SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0](#sw-412--orange-outer-flaps-open-in-order-black-and-white-returns-to-v200).
+
+### SW-424 — Entry points follow the data
+- **Date:** 13 November
+- **Decision:** Every entry point in every product decides from what exists: nothing (or backend unreachable) →
+  introduction; exactly one item → open it directly; several → list. The product's links (docs, GitHub, features, the
+  full list, the introduction) stay one click away wherever it lands, and sign-in returns to the same action with the
+  visitor's choices kept. In SpaceWorks: `/` is the landing with no public makerspace, the makerspace's page with one,
+  the space list with several; the landing stays at `/about`.
+- **Why:** The owner asked for the SpaceWorks homepage to behave this way, then: "generalize and make a rule".
+- **Status:** current. Rule text: [product rules §12.2](product-rules.md#122-entry-points-follow-the-data-every-product).
+
