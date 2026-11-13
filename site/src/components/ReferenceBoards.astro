@@ -5,15 +5,24 @@ import { kitUrl } from './kit-url';
 const boards = ['Organiser workspace', 'Managing an event', 'Sign in, invites & account', 'Attending an event'];
 const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const src = (name: string) => kitUrl(`references/yuyu/${slug(name)}.png`);
+const screens = [
+  'R1–R6: organiser home with organisations and recent activity; events list with stats and date chips; new organisation with a live preview; members and invitations; general settings with a danger zone; API access with checkbox cards and code.',
+  'R7–R10: event overview with tabs and statistics; check-in with offline status, camera, search and Undo; programme with track filters and delay controls; series overview with date cards, details form and agenda.',
+  'R11–R17: split-screen sign-in; new-password card with strength feedback; email confirmation; organisation invite acceptance; co-organiser invite; profile settings and verification; security settings with a destructive action.',
+  'R18–R28: public event with and without cover; programme time grid; session details; speaker page; series registration; live running order; feedback ratings; phone QR ticket; kiosk PIN keypad; door check-in with camera, result, Undo and recent activity.',
+];
 ---
 
 <div class="sw-boards not-content">
   {
-    boards.map((name) => (
+    boards.map((name, i) => (
+      <div>
       <a href={src(name)}>
-        <img src={src(name)} alt={`Yuyu reference board: ${name}`} loading="lazy" decoding="async" />
+        <img src={src(name)} alt={`Yuyu reference board: ${name}. ${screens[i]}`} loading="lazy" decoding="async" />
         <span>{name} · Yuyu</span>
       </a>
+      <p class="sw-demo-cap">{screens[i]} <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/specs/ux-patterns/`}>Read the screen-by-screen pattern reference.</a></p>
+      </div>
     ))
   }
 </div>

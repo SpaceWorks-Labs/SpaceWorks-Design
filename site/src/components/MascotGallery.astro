@@ -4,6 +4,8 @@
 // and PNG (or WebP and GIF for a loop), the original pixels from the sheet (lossless), and the compressed
 // (lite) SVG.
 import { kitUrl } from './kit-url';
+import { thumb, media } from './media';
+import DownloadLink from './DownloadLink.astro';
 
 const files = [
   { show: 'patch.png', name: 'Patch', use: 'Hero pose', surface: 'cream', downloads: ['patch.svg', 'patch.png', 'original/patch.png', 'compressed/patch.svg'] },
@@ -60,7 +62,7 @@ const label = (path: string) => {
     [...files.slice(0, 5), ...darkFiles, ...files.slice(5)].map((f) => (
       <figure class="sw-logo sw-logo--mascot">
         <div class={`sw-logo__stage sw-logo__stage--mascot sw-surface--${f.surface}`}>
-          <img src={kitUrl(`mascot/${f.show}`)} alt={`${f.name}, the Space Works mascot`} loading="lazy" />
+          <img {...thumb(`mascot/${f.show}`)} sizes="(min-width: 50rem) 256px, 80vw" data-animation={media[`mascot/${f.show}`]?.animated ? kitUrl(`mascot/${f.show}`) : undefined} alt={`${f.name}, the Space Works mascot`} loading="lazy" decoding="async" />
         </div>
         <figcaption>
           <span>
@@ -68,7 +70,7 @@ const label = (path: string) => {
             <span class="sw-logo__use">{f.use}</span>
           </span>
           <span class="sw-logo__links">
-            {f.downloads.map((d) => <a href={kitUrl(`mascot/${d}`)} download>{label(d)}</a>)}
+            {f.downloads.map((d) => <DownloadLink path={`mascot/${d}`} name={`${f.name}${d.includes('original/') ? ', original pixels' : d.includes('compressed/') ? ', compressed vector' : ''}`} label={label(d)} />)}
           </span>
         </figcaption>
       </figure>
@@ -81,11 +83,11 @@ const label = (path: string) => {
     <div class="sw-frames not-content" aria-label={loop.label}>
       {loop.frames.map(([file, time, label]) => (
         <figure class="sw-frame">
-          <img src={kitUrl(`mascot/${file}.png`)} alt={`Patch, ${label.toLowerCase()}`} loading="lazy" />
+          <a href={kitUrl(`mascot/${file}.png`)} aria-label={`Open Patch, ${loop.label}, ${label}, full-size PNG`}><img {...thumb(`mascot/${file}.png`)} sizes="136px" alt={`Patch, ${label.toLowerCase()}`} loading="lazy" decoding="async" /></a>
           <figcaption>
             <strong>{time}</strong>
             <span>{label}</span>
-            <a href={kitUrl(`mascot/${file}.svg`)} download>SVG</a>
+            <DownloadLink path={`mascot/${file}.svg`} name={`Patch, ${loop.label}, ${label}`} label="SVG" />
           </figcaption>
         </figure>
       ))}

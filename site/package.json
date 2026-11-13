@@ -6,9 +6,10 @@
   "description": "The Space Works design system site: brand, logo, colour, type, tokens and UI specs.",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "sync": "node scripts/sync-kit.mjs",
+    "sync": "node ../scripts/make-thumbs.mjs && node scripts/sync-kit.mjs",
     "dev": "npm run sync && astro dev",
-    "build": "npm run sync && node scripts/check-tokens.mjs && astro build",
+    "build": "npm run sync && node scripts/check-tokens.mjs && astro build && npm run check:integration",
+    "check:integration": "node scripts/check-publication.mjs && node scripts/check-integration.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

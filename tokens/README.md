@@ -3,6 +3,14 @@
 `tokens.json` is the source of truth for every colour role (light and dark), motion value, chart and loader colour.
 `tokens.css` is the CSS form of the same values.
 
+**Added for v2.1.0 (2026-11-13):** The portable contract adds the missing scales and role aliases beside these
+unchanged legacy files. Read [ARCHITECTURE.md](ARCHITECTURE.md) for the three tiers, derivation, platform units,
+theme pairs and tenant overrides; [USAGE.md](USAGE.md) for every semantic/component role; and the generated
+[contrast matrix](contrast-matrix.md) ([JSON](contrast-matrix.json)) for permitted and failing pairings.
+Run `node scripts/tokens/generate.mjs` then `node scripts/tokens/validate.mjs` from the repository root.
+The new generator writes `portable.css`, DTCG JSON, a Tailwind preset, Android and iOS exports, and reference tables.
+It never rewrites `tokens.json`, `tokens.css` or previews. See [BATCH-3-HANDOFF.md](BATCH-3-HANDOFF.md) for site wiring.
+
 ## Palette previews
 
 Generated from `tokens.json`, so they cannot show an old palette. Each role is a labelled swatch with its hex,

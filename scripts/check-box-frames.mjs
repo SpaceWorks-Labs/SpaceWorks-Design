@@ -9,10 +9,10 @@
 //   rest    the resting frames (hover start and end, opening end, loader hold, no mode) are pixel-identical to the
 //           static masters (symbol, symbol-reversed) at 48 px, 1x and 3x;
 //   shut    the shut frames of all three cycles match a reference shut box drawn from the same geometry
-//           (react/boxOpen/geometry.ts) and show four regions, two orange and two green;
+//           (react/boxOpen/geometry.ts) and show two orange outer regions, with the green pair hidden;
 //   frames  every frame at 60 fps of hov, loop and once, drawn on a magenta page: no transparent hole inside the
 //           cube's silhouette (thin cut lines aside; the open box's interior is allowed while it is open), and at
-//           most two orange faces, exactly two orange and two green while shut (mono keeps four regions).
+//           most two orange faces, exactly two orange and no green while shut; black-and-white frames contain neither colour.
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -27,6 +27,9 @@ const CSS = readFileSync(process.env.BOX_CSS || join(ROOT, 'motion/box-open/box-
 const MARK = readFileSync(process.env.BOX_MARKUP || join(ROOT, 'motion/box-open/box-open-markup.html'), 'utf8').trim();
 const { logoMasters } = await import(pathToFileURL(join(ROOT, 'motion/box-open/react/spaceWorksLogoPaths.ts')));
 const G = await import(pathToFileURL(join(ROOT, 'motion/box-open/react/boxOpen/geometry.ts')));
+const V200 = await import(pathToFileURL(join(ROOT, 'motion/box-open/react/boxOpen/v200Geometry.ts')));
+const { checkBaseline } = await import('../motion/box-open/frame-raster.mjs');
+checkBaseline(CSS, MARK, G);
 const stripsDir = process.argv.includes('--strips') ? process.argv[process.argv.indexOf('--strips') + 1] : undefined;
 
 const ms = (mode) => Number(new RegExp(`\\.sw-box\\.${mode} \\.f-tl\\{animation:\\S+ (\\d+)ms`).exec(CSS)[1]);
@@ -34,10 +37,7 @@ const DUR = { hov: ms('hov'), loop: ms('loop'), once: ms('once') };
 const FOLD = 600 / DUR.hov; // FOLD_MS / HOVER_MS in react/boxOpen/css.ts
 const ANGLE = { once: G.openAngle, loop: G.loopAngle, hov: (key, t) => G.hoverAngle(key, t, FOLD) };
 const OUTLINE = Number(/--sw-ramp-w:([\d.]+)px/.exec(CSS)?.[1] ?? 0);
-const PALETTE = ['#006E63', '#FF7447', '#FF7447', '#006E63'];
-// SW-389: product marks keep the reversed master's geometry and cream body, with full-colour flaps.
-const masterFor = (theme) => logoMasters[theme === 'light' ? 'symbol' : 'symbol-reversed'].paths.map((p, i, all) =>
-  i < all.length - 4 ? p : { ...p, fill: PALETTE[i - all.length + 4] });
+const masterFor = (theme) => logoMasters[theme === 'light' ? 'symbol' : 'symbol-reversed'].paths;
 const GROUND = { light: '#FFF4E8', dark: '#000000' };
 const MAGENTA = '#FF00FF';
 
@@ -115,6 +115,12 @@ function shutReference(theme) {
 }
 
 const problems = [], report = {};
+// --raster checks emitted CSS/markup without a browser; default retains the full Edge verification.
+if (process.argv.includes('--raster')) {
+  const { checkRaster } = await import('../motion/box-open/frame-raster.mjs');
+  await checkRaster(ROOT, CSS, MARK);
+  process.exit(0);
+}
 const fail = (msg) => { problems.push(msg); };
 
 await withBrowser(async (send) => {
@@ -182,7 +188,9 @@ await withBrowser(async (send) => {
       await s.at(time);
       const f = await s.shot(VW, VH, 1);
       if (stripsDir && i % 3 === 0) strip.push({ name: label.replaceAll(' ', '-'), png: f.png, time });
-      const shut = G.FLAP_KEYS.every((key) => ANGLE[mode](key, Math.min(t, 1)) === 180);
+      const blackWhite = art !== 'light';
+      const angle = blackWhite ? { once: V200.openAngle, loop: V200.loopAngle, hov: (key, t) => V200.hoverAngle(key, t, FOLD) }[mode] : ANGLE[mode];
+      const shut = G.FLAP_KEYS.every((key) => angle(key, Math.min(t, 1)) === 180);
       // Transparent (magenta) pixels inside the cube silhouette, eroded so thin cut lines drop out.
       const hole = new Uint8Array(VW * VH);
       for (let p = 0; p < hole.length; p++) {
@@ -198,30 +206,26 @@ await withBrowser(async (send) => {
       }
       worstHole = Math.max(worstHole, holes);
       if (holes) fail(`frames ${label} at ${Math.round(time)} ms: ${holes} px of hole inside the box`);
-      if (shut && (art.startsWith('mono') || art === 'forced')) {
-        const rgb = art.startsWith('mono') ? [20, 44, 42] : (await send('Runtime.evaluate', { expression: 'getComputedStyle(document.querySelector(".sw-box .f")).fill' })).result.value.match(/\d+/g).slice(0, 3).map(Number);
-        const regions = colourFaces(f.data, VW, VH, 0.002 * W * H, rgb, rim);
-        if (regions !== 4) fail(`frames ${label} at ${Math.round(time)} ms: mono lid has ${regions} regions (want 4)`);
-      }
-      if (!art.startsWith('mono') && art !== 'forced') {
+      const orange = colourFaces(f.data, VW, VH, 0.002 * W * H, [255, 116, 71], rim);
+      const green = colourFaces(f.data, VW, VH, 0.002 * W * H, [0, 110, 99], rim);
+      if (blackWhite) {
+        // Inspect the whole picture, including bursts outside the rim, for either forbidden brand hue.
+        const brandPixels = f.data.some((v, p) => p % 4 === 0 &&
+          ((Math.abs(v - 255) < 12 && Math.abs(f.data[p + 1] - 116) < 12 && Math.abs(f.data[p + 2] - 71) < 12)
+          || (v < 12 && Math.abs(f.data[p + 1] - 110) < 12 && Math.abs(f.data[p + 2] - 99) < 12)));
+        if (brandPixels) fail(`frames ${label} at ${Math.round(time)} ms: black-and-white mark contains a brand colour`);
+      } else {
         const faces = colourFaces(f.data, VW, VH, 0.002 * W * H, [255, 116, 71]);
         maxOrange = Math.max(maxOrange, faces);
-        if (shut) {
-          const orange = colourFaces(f.data, VW, VH, 0.002 * W * H, [255, 116, 71], rim);
-          const green = colourFaces(f.data, VW, VH, 0.002 * W * H, [0, 110, 99], rim);
-          if (orange !== 2 || green !== 2) fail(`frames ${label} at ${Math.round(time)} ms: shut with ${orange} orange + ${green} green regions (want 2+2)`);
-          for (const [x, y, rgb] of [[67, 30, [0, 110, 99]], [91, 47, [255, 116, 71]], [44, 47, [255, 116, 71]], [67, 64, [0, 110, 99]]]) {
-            const pos = (Math.round(PAD + y * SC) * VW + Math.round(PAD + x * SC)) * 4;
-            if (rgb.some((v, c) => Math.abs(f.data[pos + c] - v) > 3)) fail(`frames ${label}: wrong flap colour at ${x},${y}`);
-          }
-        }
+        if (shut && (orange !== 2 || green !== 0)) fail(`frames ${label} at ${Math.round(time)} ms: shut with ${orange} orange + ${green} green regions (want 2+0)`);
         if (faces > 2) fail(`frames ${label} at ${Math.round(time)} ms: ${faces} orange faces`);
       }
     }
     await s.at(mode === 'loop' ? DUR.loop / 2 : DUR[mode] + 5);
     const resting = await s.shot(VW, VH, 1), live = mode === 'loop';
-    const master = masterFor(art === 'dark' || art.startsWith('mono') || (art === 'forced' && theme === 'dark') ? 'dark' : 'light');
-    const refPaths = paths(master, (p, i) => `fill="${art === 'forced' ? 'CanvasText' : art.startsWith('mono') ? '#142C2A' : p.fill}"${live && i >= master.length - 4 ? ' style="will-change:transform"' : ''}`);
+    const master = masterFor(art === 'dark' || (art === 'forced' && theme === 'dark') ? 'dark' : 'light');
+    let refPaths = paths(master, (p, i) => `fill="${art === 'forced' ? 'CanvasText' : art.startsWith('mono') ? '#142C2A' : p.fill}"${live && i >= master.length - 4 ? ' style="will-change:transform"' : ''}`);
+    if (art.startsWith('mono')) refPaths = refPaths.replace('<path ', '<path fill-opacity=".45" ').replace(/(<\/path>|\/>)(<path )/, '$1<path fill-opacity=".7" ');
     await s.open(theme, MAGENTA, VW, VH, 1, svgAt(PAD, PAD, W, H, refPaths), art === 'forced');
     const restDiff = diff(resting, await s.shot(VW, VH, 1));
     if (restDiff) fail(`rest ${label}: ${restDiff} px differ from the static product mark`);
@@ -264,4 +268,4 @@ if (problems.length) {
   console.error(`\nBox frames are broken (${problems.length}):\n - ` + problems.slice(0, 40).join('\n - '));
   process.exit(1);
 }
-console.log('\nBox frames are correct: rest = static logo, shut = four solid regions (2 orange + 2 green), own flap colours preserved, no holes.');
+console.log('\nBox frames are correct: rest = static logo, coloured shut = two orange outer regions, reversed/mono/forced = v2.0.0 black-and-white, no holes.');

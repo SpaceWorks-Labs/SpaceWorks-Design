@@ -140,3 +140,74 @@ and `previews/logo-open-dark.png`.
 
 Rebuild with `node scripts/make-previews.mjs` and verify freshness with `node scripts/check-previews.mjs`
 (both from the repo root; see `tokens/README.md`).
+
+
+## Current animation (SW-412)
+
+**13 November 2026 ? correction to the historical SW-389 descriptions above.** The light coloured mark
+and black-and-white marks are separate animation families. This section takes precedence over the earlier
+four-visible-quarters and coloured-reversed descriptions; those descriptions remain as release history.
+
+- **Coloured light mark:** opposite flaps retain their own colours on both faces. Top-right and bottom-left
+  are orange; top-left and bottom-right are green. Shut, the two full-width orange outer flaps meet at the
+  centre seam, entirely covering the green inner pair. The stretched overlap and widened outer hinges from
+  SW-381 close the seam without holes. The panels are no longer shortened into four visible quarters.
+- **Opening:** top-right orange turns first, then bottom-left orange, top-left green, bottom-right green.
+  Turns occupy separate intervals so adjacent panels cannot pass through each other. A single damped settle
+  peaks at about 3.2 degrees, returns to zero, and ends on the static `symbol` master. No arcs, stars, ticks,
+  sparkles or burst group exist in the coloured SVG. Closing samples the opening in exact reverse.
+- **Black-and-white:** reversed/dark, explicit mono and forced colours retain the v2.0.0 geometry and
+  choreography. Dark is cream on black; neither orange nor green is painted in any black-and-white frame.
+  The v2.0.0 reversed cap keeps the side faces solid while the flaps move. Mono keeps the released light
+  geometry, current-colour fills and face strengths. Forced colours uses the released theme geometry,
+  with Canvas/CanvasText for the user's palette.
+- **Budgets unchanged:** once 1600 ms; hover 600 ms fold + 1600 ms open = 2200 ms; loop 4400 ms.
+  The loop opens over 0?1584 ms, holds to 2728 ms, folds to 3696 ms, then holds closed to 4400 ms.
+  Hover finishes after pointer exit. Reduced motion shows the corresponding static open logo.
+- **Sampling unchanged:** 96 once, 132 hover, 160 loop intervals, with stepped matrices and synchronized
+  layer changes. The settle is one small excursion, rather than a repeated spring oscillation.
+
+Opening windows (once, before CSS sample quantization):
+
+| Motion | Once interval |
+|---|---|
+| Top-right orange | 64?352 ms |
+| Bottom-left orange | 368?656 ms |
+| Top-left green | 672?960 ms |
+| Bottom-right green | 976?1264 ms |
+| Damped settle | 1280?1568 ms |
+| Static rest | 1568?1600 ms and afterwards |
+
+Eight-frame proof times (ms; used by `render-412.mjs` in the release handover):
+
+| State | Once | Hover | Loop |
+|---|---:|---:|---:|
+| Closed | 0 | 600 | 0 |
+| Orange A lifting | 208 | 808 | 206 |
+| Orange pair open | 668 | 1268 | 661 |
+| Green rising | 816 | 1416 | 808 |
+| Green out | 1284 | 1884 | 1266 |
+| Settle | 1360 | 1960 | 1346 |
+| Settle | 1472 | 2072 | 1458 |
+| Rest | 1605 | 2205 | 2200 |
+
+The first two SVGs (`lt`, `dk`) and `v200Geometry.ts`, `v200Css.ts`, `v200Markup.ts` preserve the released
+baseline; only a third SVG (`colour`) receives SW-412 keyframes. Light non-mono hosts show `colour`;
+black-and-white hosts select the original SVGs. No SW-412 keyframe selector targets `lt` or `dk`.
+The static reversed product mark also returns to its cream master; no rest-to-hover colour jump remains.
+
+App snapshot tests reconstruct the entire v2.0.0 CSS export and full baseline markup, normalize line endings,
+and compare SHA-256 hashes against the actual tag. CSS: `1c746ec8c1892f2b7748b1de8e4dd4d8fc2f69c11c95b82751b68b71537d2a57`.
+Full baseline SVG: `0e85ea78c2ecb5b9433a83b391c738359322525ba209cfa1b4eeb8dc27ee7b32`.
+Reversed SVG: `41b9b15f8e1c9fbae5a330b2e27f5e6250225091ee07f2b3f9c843f39decd1fa`.
+
+> **Current hashes (SW-412, 13 November 2026):** the black-and-white marks no longer draw the v2.0.0 sparkle
+> stars and burst rays (owner: no confetti); everything else is unchanged. Full baseline SVG now
+> `2f9a0590d907b6849f46188ae5e9d7829983a8fd820294a37bd8eb499204ecf4`, reversed SVG
+> `3b4621988a5cb3db25e6ddb488caacd623f27ec48259a644a5232c2d01d78a34`.
+
+`node scripts/check-box-frames.mjs` retains the Edge checks of the actual CSS cascade/compositor.
+`node scripts/check-box-frames.mjs --raster` additionally works without Edge: 1955 emitted step frames,
+body-hole and forbidden-colour checks, the eight-phase sequence, static-rest rasters, and v2.0.0 hashes.
+The raster mode checks SVG paths and emitted matrices; it does not replace browser compositing QA.
+Previews and the brand PDF are rebuilt by the release orchestrator, after all lanes finish.

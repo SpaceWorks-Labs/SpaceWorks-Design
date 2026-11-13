@@ -1,3 +1,8 @@
+:root { --sw-theme-duration: calc(var(--sw-dur-slow) * 3); }
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-420: calc(var(--sw-dur-slow) * 1.75000000);
+}
 /* Space Works theme switch: the new theme grows from the toggle as a circle (720 ms, set in theme-reveal.js).
    Mirror of frontend/src/lib/themeTransition.css in the SpaceWorks app. Only active while the transition
    classes are on <html>, so other view transitions keep their own animation. */
@@ -31,11 +36,16 @@
 .sw-theme-fade *,
 .sw-theme-fade *::before,
 .sw-theme-fade *::after {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
-  transition-duration: 420ms !important;
-  transition-timing-function: cubic-bezier(0.45, 0, 0.2, 1) !important;
+  transition-property: ;
+  transition-duration: var(--sw-local-duration-420) !important;
+  transition-timing-function: var(--sw-ease-standard) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sw-theme-fade, .sw-theme-fade *, .sw-theme-fade *::before, .sw-theme-fade *::after { transition: none !important; }
+  .sw-theme-fade, .sw-theme-fade *, .sw-theme-fade *::before, .sw-theme-fade *::after { transition: none; }
+}
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

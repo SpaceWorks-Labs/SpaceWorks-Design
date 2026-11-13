@@ -3,19 +3,47 @@
 //   <GuidelineGallery />                                                         v1: 17 pages in kit/brand/guidelines/
 //   <GuidelineGallery dir="brand/guidelines-v2" count={50} label="Brand guidelines v2" />
 import { kitUrl } from './kit-url';
+import { thumb, bookPages, downloadInfo } from './media';
+import { v1Pages } from './book-v1';
 
 interface Props { dir?: string; count?: number; label?: string }
 const { dir = 'brand/guidelines', count = 17, label = 'Brand guidelines' } = Astro.props;
 const pages = Array.from({ length: count }, (_, i) => String(i + 1).padStart(2, '0'));
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const entries = pages.map((n, i) => {
+  const path = `${dir}/${n}.png`;
+  const old = v1Pages[i];
+  const page = bookPages[path] || { chapter: old?.[0] || 'Historical reference', title: old?.[1] || `Page ${n}`, summary: old?.[2] || '', transcript: old?.[2] || '', source: '' };
+  return { n, path, ...page, guidance: dir.endsWith('v2') ? 'specs/ui-brand-spec/' : `${old?.[3] || 'brand/guidelines'}/` };
+});
+const groups = new Map<string, typeof entries>();
+for (const page of entries) groups.set(page.chapter, [...(groups.get(page.chapter) || []), page]);
 ---
 
-<div class="sw-pages not-content">
+<div class="sw-book not-content">
+  <p class="sw-demo-cap">{label}{dir.endsWith('v2') ? '' : ' v1 · historical'} · {count} pages. Expand a chapter to load its thumbnails. Every full-size original is retained.</p>
   {
-    pages.map((n) => (
-      <a class="sw-page" href={kitUrl(`${dir}/${n}.png`)}>
-        <img src={kitUrl(`${dir}/${n}.png`)} alt={`${label} page ${n}`} loading="lazy" width="1440" height="1000" />
-        <span>Page {n}</span>
-      </a>
+    [...groups].map(([chapter, list]) => (
+      <details class="sw-book-chapter">
+        <summary>{chapter} · pages {list.map(p => p.n).join(', ')}</summary>
+        <div class="sw-pages">
+          {list.map(page => (
+            <article class="sw-book-page">
+              <a class="sw-page" href={kitUrl(page.path)}>
+                <img {...thumb(page.path)} sizes="(min-width: 50rem) 320px, 90vw" alt={`${label} page ${page.n}: ${page.summary}`} loading="lazy" decoding="async" />
+                <span>Page {page.n}</span>
+                <strong data-media-metadata>{page.title}</strong>
+              </a>
+              <small data-media-metadata>Full-size {downloadInfo(page.path)} · 1440 × 1000</small>
+              <details class="sw-page-text">
+                <summary>Read page {page.n} as text</summary>
+                <p>{page.transcript}</p>
+                <a href={`${base}${page.guidance}`}>Related semantic guidance</a>
+              </details>
+            </article>
+          ))}
+        </div>
+      </details>
     ))
   }
 </div>

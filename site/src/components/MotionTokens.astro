@@ -2,6 +2,10 @@
 // Motion tokens (durations, easings, distances) from tokens/tokens.json, each with a small live preview that
 // uses the real value. Previews are driven by a button and are static under prefers-reduced-motion.
 import tokens from '../assets/kit/tokens.json';
+import ComponentOutline from './ComponentOutline.astro';
+interface Props { headingLevel?: 2 | 3 | 4 }
+const { headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
 const m = tokens.motion as Record<string, any>;
 const durations = Object.entries(m.duration) as [string, string][];
 const easings = Object.entries(m.easing) as [string, string][];
@@ -12,18 +16,19 @@ const cssName = (group: string, n: string) =>
 ---
 
 <sw-motion-tokens class="not-content">
+  <ComponentOutline label="Motion token sections" entries={['Durations', 'Easings', 'Distances'].map(title => ({ title, id: `motion-${title.toLowerCase()}` }))} />
   <p class="sw-demo-cap">
     <button type="button" class="sw-sample__btn" data-play>Play previews</button>
     Previews also play when you hover or focus a row. Reduced motion shows no movement.
   </p>
 
-  <h3>Durations</h3>
+  <Heading id="motion-durations">Durations</Heading>
   <table class="sw-tokens">
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Preview</th></tr></thead>
     <tbody>
       {
         durations.map(([n, v]) => (
-          <tr data-row>
+          <tr data-row tabindex="0" aria-label={`${n}, ${v}, focus to preview`}>
             <td><code>{cssName('duration', n)}</code></td>
             <td><code>{v}</code></td>
             <td><span class="sw-track"><span class="sw-dot" style={`--d:${v};--e:cubic-bezier(0.2,0,0,1)`}></span></span></td>
@@ -33,23 +38,23 @@ const cssName = (group: string, n: string) =>
     </tbody>
   </table>
 
-  <h3>Easings</h3>
+  <Heading id="motion-easings">Easings</Heading>
   <table class="sw-tokens">
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Preview (240ms)</th></tr></thead>
     <tbody>
       {
         easings.map(([n, v]) => (
-          <tr data-row>
+          <tr data-row tabindex="0" aria-label={`${n}, 240 milliseconds, focus to preview`}>
             <td><code>{cssName('easing', n)}</code></td>
             <td><code>{v}</code></td>
-            <td><span class="sw-track"><span class="sw-dot" style={`--d:480ms;--e:${v}`}></span></span></td>
+            <td><span class="sw-track"><span class="sw-dot" style={`--d:${m.duration.slow};--e:${v}`}></span></span></td>
           </tr>
         ))
       }
     </tbody>
   </table>
 
-  <h3>Distances</h3>
+  <Heading id="motion-distances">Distances</Heading>
   <table class="sw-tokens">
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Kiosk and TV</th></tr></thead>
     <tbody>

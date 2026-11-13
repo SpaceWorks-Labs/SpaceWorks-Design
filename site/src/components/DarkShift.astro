@@ -53,9 +53,9 @@ const cols = [
 </div>
 
 <style>
-  .sw-shift { overflow-x: auto; }
-  .sw-shift__strips { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.75rem; margin-block: 1rem; }
-  .sw-shift__strip { display: flex; align-items: center; gap: 0.4rem; padding: 0.9rem; border: 1px solid; border-radius: 12px; }
-  .sw-shift__strip span { width: 2rem; height: 2rem; border-radius: 8px; }
-  .sw-shift__strip b { margin-inline-start: auto; font-size: 0.8125rem; font-weight: 600; text-align: end; }
+  .sw-shift { min-width: 0; }
+  .sw-shift__strips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 0.75rem; margin-block: 1rem; }
+  .sw-shift__strip { display: flex; flex-wrap: wrap; min-width: 0; align-items: center; gap: 0.4rem; padding: 0.9rem; border: 1px solid; border-radius: 12px; }
+  .sw-shift__strip span { flex: none; width: 2rem; height: 2rem; border-radius: 8px; }
+  .sw-shift__strip b { flex: 1 1 9rem; min-width: 0; margin-inline-start: auto; font-size: 0.8125rem; font-weight: 600; text-align: end; }
 </style>

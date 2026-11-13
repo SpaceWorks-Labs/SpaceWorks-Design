@@ -39,6 +39,17 @@
   .seg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid rgb(var(--color-line)); }
   .seg button { font: inherit; padding: 6px 14px; border-radius: 999px; border: 0; cursor: pointer; background: transparent; color: inherit; }
   .seg button[aria-pressed="true"] { background: rgb(var(--color-accent-soft)); color: rgb(var(--color-accent-ink)); }
+  .seg button[aria-checked="true"] { background:rgb(var(--color-accent-soft));color:rgb(var(--color-accent-ink)); }
+</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
 </style>
 </head>
 <body>
@@ -58,19 +69,19 @@
   <section class="card">
     <h2>Light, Dark or System</h2>
     <p>The same call works for a segmented picker; the circle grows from the button you pressed.</p>
-    <div class="seg" role="group" aria-label="Appearance">
-      <button type="button" data-mode="light">Light</button>
-      <button type="button" data-mode="dark">Dark</button>
-      <button type="button" data-mode="system">System</button>
+    <div class="seg" role="radiogroup" aria-label="Appearance">
+      <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="light">Light</button>
+      <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="dark">Dark</button>
+      <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="system">System</button>
     </div>
   </section>
-</main>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/theme-reveal-poster.png" data-poster="previews/theme-reveal-poster.png" data-animated="previews/theme-reveal.webp" alt="theme reveal motion end-state preview" loading="lazy"><figcaption>theme reveal</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
 <script src="theme-reveal.js"></script>
 <script>
   var KEY = "makerspace.theme";
-  function pref() { try { var p = localStorage.getItem(KEY); return /^(light|dark|system)$/.test(p) ? p : "light"; } catch (e) { return "light"; } }
+  function pref() { return SwThemeReveal.preference(); }
   var pickers = document.querySelectorAll("[data-mode]");
-  function sync() { pickers.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === pref())); }); }
+  function sync() { pickers.forEach(function (b) { b.setAttribute("aria-checked",String(b.dataset.mode === pref()));b.tabIndex=b.dataset.mode===pref()?0:-1; }); }
   document.getElementById("toggle").onclick = function (e) {
     var dark = document.documentElement.classList.contains("dark");
     SwThemeReveal.switchTheme(dark ? "light" : "dark", e.currentTarget);
@@ -78,7 +89,9 @@
   };
   pickers.forEach(function (b) { b.onclick = function () { SwThemeReveal.switchTheme(b.dataset.mode, b); sync(); }; });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { if (pref() === "system") SwThemeReveal.applyTheme("system"); });
+  document.querySelector('.seg').addEventListener('keydown',function(e){var items=Array.from(pickers),i=items.indexOf(document.activeElement),next={ArrowRight:(i+1)%items.length,ArrowDown:(i+1)%items.length,ArrowLeft:(i+items.length-1)%items.length,ArrowUp:(i+items.length-1)%items.length,Home:0,End:items.length-1}[e.key];if(next!==undefined){e.preventDefault();items[next].focus();items[next].click()}});
+  document.addEventListener("sw-theme-change", sync);
   sync();
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

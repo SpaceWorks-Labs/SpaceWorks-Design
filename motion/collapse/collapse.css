@@ -1,22 +1,32 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-160: calc(var(--sw-dur-base) * 0.88888889);
+  --sw-local-duration-200: calc(var(--sw-dur-base) * 1.11111111);
+}
 /* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `styles/motion.css`, `features/docs/docs.css`, `components/shell/SidebarSection.tsx`, `features/hub/landing/FaqSection.tsx`.
    Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
 /* Height collapse: grid rows 1fr <-> 0fr, with a fade. The inner padding/margin pair keeps
    focus rings of edge items from being clipped by overflow:hidden. */
+/* Decision 399: content reserves its footprint; only the inner surface moves. */
+:root { --sw-collapse-exit: calc(var(--sw-dur-base) * .75); }
 .sw-collapse { display: grid; grid-template-rows: 1fr; }
-.sw-collapse-inner { min-height: 0; min-width: 0; overflow: hidden; padding: 4px; margin: -4px; }
-@media (prefers-reduced-motion: no-preference) {
-  .sw-collapse[data-state="open"] { animation: sw-collapse-open var(--sw-dur-base) var(--sw-ease-standard); }
-  .sw-collapse[data-state="closed"] { animation: sw-collapse-close var(--sw-dur-fast) var(--sw-ease-exit) forwards; }
-}
-@keyframes sw-collapse-open { from { grid-template-rows: 0fr; opacity: 0; } }
-@keyframes sw-collapse-close { to { grid-template-rows: 0fr; opacity: 0; } }
+.sw-collapse-inner { min-height: 0; min-width: 0; padding: 4px; margin: -4px; transform-origin: top;
+  opacity: 1; transform: none; transition: opacity var(--sw-dur-base) var(--sw-ease-enter), transform var(--sw-dur-base) var(--sw-ease-enter); }
+.sw-collapse[data-state="closed"] { pointer-events: none; }
+.sw-collapse[data-state="closed"] > .sw-collapse-inner { opacity: 0; transform: scaleY(.98); transition-duration: var(--sw-collapse-exit); transition-timing-function: var(--sw-ease-exit); }
+
 
 /* Disclosure chevrons: Tailwind transition-transform. Sidebar "More" and collapsible sections use the base duration; the FAQ plus uses 200 ms; the docs nav arrow 160 ms. */
-.sw-chevron { transition: transform var(--sw-dur-base) cubic-bezier(0.4, 0, 0.2, 1); }
+.sw-chevron { transition: transform var(--sw-dur-base) var(--sw-ease-standard); }
 [aria-expanded="true"] > .sw-chevron-flip { transform: rotate(180deg); }   /* SidebarSection: ChevronDown to 180 deg */
 [aria-expanded="true"] > .sw-chevron-turn { transform: rotate(90deg); }    /* CollapsibleSection, InspectorSection: arrow to 90 deg */
-.sw-chevron-plus { transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1); }   /* FaqSection: plus to 45 deg */
+.sw-chevron-plus { transition: transform var(--sw-local-duration-200) var(--sw-ease-standard); }   /* FaqSection: plus to 45 deg */
 [aria-expanded="true"] > .sw-chevron-plus { transform: rotate(45deg); }
-.sw-doc-nav-chevron { transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1); }   /* docs.css */
+.sw-doc-nav-chevron { transition: transform var(--sw-local-duration-160) var(--sw-ease-standard); }   /* docs.css */
 .sw-doc-nav-toggle[aria-expanded="true"] .sw-doc-nav-chevron { transform: rotate(90deg); }
-@media (prefers-reduced-motion: reduce) { .sw-chevron, .sw-chevron-plus, .sw-doc-nav-chevron { transition-duration: 0.01ms; } }
+@media (prefers-reduced-motion: reduce) { .sw-chevron, .sw-chevron-plus, .sw-doc-nav-chevron { transition-duration: calc(var(--sw-dur-fast) * 0); } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

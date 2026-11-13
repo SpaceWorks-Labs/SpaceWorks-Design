@@ -26,7 +26,7 @@ const MAX_PRINTS = 6;
  * alone and then naps. Decorative only: hidden from assistive tech, no pointer events, and still
  * under reduced motion. The behaviour is adapted from AGPL-3.0 code; the attribution is in NOTICE.
  */
-export function NotFoundPatch() {
+export function NotFoundPatch({ paused = false }: { paused?: boolean } = {}) {
   const reduced = useReducedMotion();
   // Only the current theme's sheet is set, so only it downloads.
   const theme = useSyncExternalStore(subscribeTheme, currentTheme, () => "light" as const);
@@ -36,7 +36,7 @@ export function NotFoundPatch() {
   const [prints, setPrints] = useState<Print[]>([]);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || paused) return;
     const limit = () => Math.max(0, window.innerWidth - WIDTH);
     let x = Math.min(limit(), window.innerWidth * 0.15), target = x;
     let last: number | null = null, lastInput = 0, stride = 0, travelled = 0, nextPrint = 0, raf = 0;
@@ -66,7 +66,7 @@ export function NotFoundPatch() {
       let frame = asleep ? PATCH_WALK.napFrame : 0;
       if (step !== 0) {
         stride += dt; travelled += Math.abs(step);
-        frame = Math.floor(stride / PATCH_WALK.frameMs) % PATCH_WALK.frames;
+        frame = 0; // Static sprite while translating: compositor-only locomotion.
         if (travelled >= PRINT_EVERY) {
           travelled = 0;
           const print = { id: nextPrint++, x: x + WIDTH / 2, facing: face };
@@ -87,7 +87,7 @@ export function NotFoundPatch() {
       window.removeEventListener("pointermove", follow);
       window.removeEventListener("pointerdown", follow);
     };
-  }, [reduced]);
+  }, [reduced, paused]);
 
   const walkSheet = (facing === "left" ? PATCH.walkLeft : PATCH.walkRight)[theme];
   return <div aria-hidden="true" className="sw-patch-pet" data-patch-pet="">

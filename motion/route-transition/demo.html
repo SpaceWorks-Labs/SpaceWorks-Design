@@ -17,6 +17,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .shell{display:grid;grid-template-columns:150px 1fr;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;min-height:260px;background:rgb(var(--color-bg))}.side{background:rgb(var(--color-sidebar,var(--color-surface)));border-right:1px solid rgb(var(--color-line));padding:12px;display:grid;gap:6px;align-content:start}.side a{padding:8px 10px;border-radius:8px;color:rgb(var(--color-ink));text-decoration:none;cursor:pointer}.side a[aria-current=page]{background:rgb(var(--color-accent-soft))}.pg{padding:20px;display:grid;gap:10px;align-content:start}.pg h3{margin:0;font-size:1.3rem}.bar{height:10px;border-radius:5px;background:rgb(var(--color-line))}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -24,8 +34,8 @@
     <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
   <p>Click a link: only the content region changes (the sidebar stays put). Pick a direction to see the settle distance change. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
 <section><div class="row" role="group" aria-label="Direction"><label>Direction <select id="dir"><option>forward</option><option>lateral</option><option>back</option><option>fade</option></select></label><span id="mode"></span></div>
-<div class="shell"><nav class="side" aria-label="Demo"><a data-p="0" aria-current="page">Requests</a><a data-p="1">Inventory</a><a data-p="2">Members</a></nav><div data-sw-main class="pg" id="main"></div></div></section>
-</main>
+<div class="shell"><nav class="side" aria-label="Demo"><a href="#requests" data-p="0" aria-current="page">Requests</a><a href="#inventory" data-p="1">Inventory</a><a href="#members" data-p="2">Members</a></nav><div data-sw-main class="pg" id="main" tabindex="-1" aria-live="polite"></div></div></section>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/page-swap-dark-poster.png" data-poster="previews/page-swap-dark-poster.png" data-animated="previews/page-swap-dark.webp" alt="page swap dark motion end-state preview" loading="lazy"><figcaption>page swap dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/page-swap-light-poster.png" data-poster="previews/page-swap-light-poster.png" data-animated="previews/page-swap-light.webp" alt="page swap light motion end-state preview" loading="lazy"><figcaption>page swap light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
 <script>
 var pages=[["Requests","Loans waiting for a handover."],["Inventory","Tools and where they live."],["Members","People who borrow."]];
 var main=document.getElementById("main"),dir=document.getElementById("dir"),cur=-1;
@@ -33,10 +43,11 @@ var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.getElementById("mode").textContent=(document.startViewTransition&&!reduced)?"View Transition":"CSS fallback (.sw-route-enter)";
 function render(i){cur=i;main.innerHTML="<h3>"+pages[i][0]+"</h3><p>"+pages[i][1]+"</p><div class=bar></div><div class=bar style=width:70%></div><div class=bar style=width:45%></div>";
  document.querySelectorAll(".side a").forEach(function(a,k){k===i?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")})}
-function go(i){var h=document.documentElement;h.dataset.swNav=dir.value;main.dataset.swEnter=dir.value;
- if(document.startViewTransition&&!reduced){h.dataset.swVt="route";var t=document.startViewTransition(function(){render(i)});t.finished.finally(function(){delete h.dataset.swVt})}
- else{render(i);if(!reduced){main.classList.remove("sw-route-enter");void main.offsetWidth;main.classList.add("sw-route-enter")}}}
-document.querySelectorAll(".side a").forEach(function(a){a.onclick=function(){go(+a.dataset.p)}});render(0);
+var activeTransition=null, navigation=0;
+function go(i){if(i===cur)return;var version=++navigation;if(activeTransition)activeTransition.skipTransition();var h=document.documentElement;h.dataset.swNav=dir.value;main.dataset.swEnter=dir.value;
+ if(document.startViewTransition&&!reduced){h.dataset.swVt="route";var t=activeTransition=document.startViewTransition(function(){if(version===navigation){render(i);main.focus({preventScroll:true})}});t.finished.finally(function(){if(version===navigation){delete h.dataset.swVt;activeTransition=null}})}
+ else{render(i);main.focus({preventScroll:true});if(!matchMedia("(prefers-reduced-motion: reduce)").matches){main.getAnimations().forEach(a=>a.finish());main.classList.remove("sw-route-enter");requestAnimationFrame(()=>main.classList.add("sw-route-enter"))}}}
+document.querySelectorAll(".side a").forEach(function(a){a.onclick=function(e){if(e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();history.replaceState(null,"",a.getAttribute("href"));go(+a.dataset.p)}});render(0);
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

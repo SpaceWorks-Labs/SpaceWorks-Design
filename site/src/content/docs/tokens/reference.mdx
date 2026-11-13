@@ -3,6 +3,7 @@ title: Token reference
 description: Every Space Works colour token in light and dark mode, generated from tokens.json.
 ---
 
+import TokenUsage from '../../../components/TokenUsage.astro';
 import TokenTable from '../../../components/TokenTable.astro';
 
 Every semantic colour token, light and dark side by side. This page is generated from
@@ -22,3 +23,9 @@ How the tokens behave:
 How every value was derived, with its contrast ratio, is in the [UI brand spec](/specs/ui-brand-spec/).
 
 <TokenTable />
+
+## Find a token by purpose
+
+The paired portable contract includes chart-danger, Aurora and loader-local roles. Scope and partner restrictions are explicit; a partner label alone does not certify contrast. Read [architecture](/tokens/architecture/), the [complete generated usage table](/tokens/usage/) and [required/diagnostic contrast pairs](/tokens/contrast-matrix/). [Download all exports and checksums](/downloads/).
+
+<TokenUsage />

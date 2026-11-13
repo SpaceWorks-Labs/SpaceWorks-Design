@@ -39,6 +39,8 @@ bounce), focus rings, data tables on sort or filter, anything while a person is 
 
 ## Rules
 
+> **Current rule (v2.0.1, 2026-11-13):** Use the token defaults and named non-blocking brand exceptions below. Ledger 399 (2026-11-13) additionally requires symmetric enter/exit choreography, token timing, interruption handling, focus/announcements and reduced-motion end states. Catalogue observations are not blanket exceptions to the colour-only product-hover rule. (1A-N37) — supersedes the line above; see [docs/current-rules.md#cr-motion-01](current-rules.md#cr-motion-01).
+
 1. **The Space Works mark opens on hover and keyboard focus, everywhere it appears.** One-shot box opening: from
    the resting logo it folds shut (600 ms) and opens back (1600 ms), 2200 ms in all, no hold, so nothing snaps at
    either end. Once started it always finishes (leaving mid-way does not cut it; re-entering does not restart it). It
@@ -87,6 +89,8 @@ bounce), focus rings, data tables on sort or filter, anything while a person is 
 | **Box spinner / BoxArt (mono)** | `components/BoxSpinner.tsx` (about 370 use sites: buttons, rows, fields, placeholders) | Inline and in-button busy state | Same cycle, 16 to 24 px, `mono` = `currentColor` | While busy | Still logo | `currentColor`: follows the button text in both themes |
 | **Search field** | `components/ui/SearchField.tsx` + `SearchField.css` (one shared field; used by `FilterBar` on `/spaces`, the landing hero and the organization directory, the docs palette `features/docs/DocsSearchPalette.tsx`, the staff palette `features/staff/CommandPalette.tsx`, help, features, settings hub, member directory, makerspace discovery, public inventory, galleries, event and booking discovery, and every staff picker and filter, 50+ sites) | One search input everywhere, so focus, loading and clearing feel the same: the border and magnifier answer focus, the box spinner answers a running query, and the clear button and Escape make resetting one gesture | Focus: border to the focus token, magnifier to `accent-ink` with a 2 px nudge (180 ms, `--sw-ease-enter`), shortcut chip fades out (120 ms); loading: magnifier fades out and the 16 px mono `BoxSpinner` fades in (120 ms); clear button fades and scales 0.9 to 1 (120 ms); dropdown rises 4 px and fades (`--sw-dur-base`, enter), first six rows stagger 20 ms, "No results" fades in; optional width grow 72 % to 100 % of a reserved slot (240 ms) | Focus-within, a query in flight (`loading`), text present, Escape clears | Colour changes only: no nudge, scale, rise, stagger or width change; the spinner swap stays (it is the loader) | Tokens only: focus border is Citron in dark, teal in light |
 | **Logo flap wobble (delight)** | `components/delight/logoUnfold.css` (`LogoDelight.tsx`) | Optional playful extra when interface effects are on; the hidden-while-opening static flaps keep it from clashing | 460 ms spring, rotation only | Hover, focus-visible, click, only with delight on | None | Same |
+
+> **Current rule (v2.0.1, 2026-11-13):** The Brand table’s one-orange-face and edge-on recolouring clauses are superseded by SW-389 (2026-11-13): top-left/bottom-right remain green and top-right/bottom-left remain orange, all four visible and solid in light and dark throughout the animation. Mono keeps four distinct regions. (1A-N36) — supersedes the line above; see [docs/current-rules.md#cr-logo-01](current-rules.md#cr-logo-01).
 
 ### Navigation and page change
 

@@ -1,0 +1,32 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+const usage = JSON.parse(readFileSync(resolve(process.cwd(), '../tokens/usage.json'), 'utf8'));
+---
+<sw-token-usage>
+  <label>Find a token by name, purpose, scope or contrast partner <input type="search" data-filter /></label>
+  <p role="status" data-count>{usage.tokens.length} roles</p>
+  <div class="sw-table-scroll"><table>
+    <thead><tr><th scope="col">DTCG / CSS / legacy</th><th scope="col">Purpose and use</th><th scope="col">Scope / override</th><th scope="col">Contrast partner / exclusions</th></tr></thead>
+    <tbody>{usage.tokens.map((t: any) => <tr data-token>
+      <td><code>{t.path}</code><br/><code>{t.css}</code>{t.legacy?.css && <><br/><code>{t.legacy.css}</code></>}</td>
+      <td>{t.purpose}<br/>{t.use}</td><td>{t.scope}<br/>{t.override}</td>
+      <td>{t.partner}<br/>{t.avoid}</td>
+    </tr>)}</tbody>
+  </table></div>
+</sw-token-usage>
+<script>
+  class TokenUsage extends HTMLElement {
+    connectedCallback() {
+      const rows = [...this.querySelectorAll<HTMLElement>('[data-token]')];
+      this.querySelector('input')?.addEventListener('input', e => {
+        const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        let count = 0;
+        rows.forEach(row => { row.hidden = !row.textContent?.toLowerCase().includes(query); if (!row.hidden) count++; });
+        this.querySelector('[data-count]')!.textContent = `${count} roles`;
+      });
+    }
+  }
+  customElements.define('sw-token-usage', TokenUsage);
+</script>
+<style>input{display:block;width:100%;min-height:44px;font:inherit}code{overflow-wrap:anywhere}.sw-table-scroll{overflow-x:auto}td{vertical-align:top}tr[hidden]{display:none}</style>

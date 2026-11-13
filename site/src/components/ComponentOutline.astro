@@ -1,0 +1,7 @@
+---
+interface Props { label: string; entries: { id: string; title: string }[] }
+const { label, entries } = Astro.props;
+---
+<nav class="sw-component-outline" aria-label={label}>
+  <details><summary>{label}</summary><ul>{entries.map(e => <li><a href={`#${e.id}`}>{e.title}</a></li>)}</ul></details>
+</nav>

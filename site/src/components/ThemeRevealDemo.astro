@@ -2,19 +2,21 @@
 // Live theme-reveal demo: a round toggle that re-themes a sample card with the template's real circle reveal
 // (motion/theme-reveal/theme-reveal.js, loaded by ThemeProvider). Scoped to the demo, so the page around it keeps the reader's theme.
 import BoxMark from './BoxMark.astro';
+import { thumb } from './media';
+import { kitUrl } from './kit-url';
 ---
 
 <sw-theme-reveal-demo class="not-content">
   <div class="sw-scope sw-sample" data-scope>
     <div class="sw-sample__row" style="justify-content:space-between">
-      <h4 style="margin:0">Press the toggle</h4>
+      <p class="sw-sample__title" style="margin:0">Press the toggle</p>
       <button type="button" class="sw-reveal-toggle" data-toggle aria-label="Switch demo theme">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z" /></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
       </button>
     </div>
     <div class="sw-sample__card">
-      <h4>Issue the laser cutter</h4>
+      <p class="sw-sample__title">Issue the laser cutter</p>
       <p>The new theme grows from the toggle in 720 ms. Under reduced motion it switches instantly.</p>
       <div class="sw-sample__row">
         <button type="button" class="sw-sample__btn">Issue</button>
@@ -24,7 +26,7 @@ import BoxMark from './BoxMark.astro';
     </div>
   </div>
   <p class="sw-demo-cap">The animated preview from the repository, light to dark and back:</p>
-  <img class="sw-reveal-preview" src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/kit/motion/theme-reveal/previews/theme-reveal.webp`} width="480" height="270" alt="The dark theme growing from the toggle as a circle over the light page, then the light theme growing back" loading="lazy" />
+  <img class="sw-reveal-preview" {...thumb('motion/theme-reveal/previews/theme-reveal.webp')} data-animation={kitUrl('motion/theme-reveal/previews/theme-reveal.webp')} alt="The dark theme growing from the toggle as a circle over the light page, then the light theme growing back" loading="lazy" />
 </sw-theme-reveal-demo>
 
 <script>

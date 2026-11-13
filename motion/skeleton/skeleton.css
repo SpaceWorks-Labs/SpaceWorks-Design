@@ -1,3 +1,7 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-150: calc(var(--sw-dur-fast) * 1.25000000);
+}
 /* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `components/ui/Skeleton.tsx`, `features/cards/cardJobs.tsx`.
    Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
 /* A skeleton is a still placeholder with the box spinner inside it: there is no shimmer sweep.
@@ -6,7 +10,12 @@
 
 /* Progress bar: the fill grows to the new value (Tailwind motion-safe:transition-[width], default 150 ms). */
 .sw-progress { height: 4px; overflow: hidden; border-radius: 999px; background: rgb(var(--color-line)); }
-.sw-progress-fill { height: 100%; border-radius: 999px; background: rgb(var(--color-accent-ink)); }
+.sw-progress-fill { width: 100%; transform-origin: left; transform: scaleX(var(--sw-progress-value, 1)); height: 100%; border-radius: 999px; background: rgb(var(--color-accent-ink)); }
 @media (prefers-reduced-motion: no-preference) {
-  .sw-progress-fill { transition-property: width; transition-duration: 150ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  .sw-progress-fill { transition-property: transform; transition-duration: var(--sw-local-duration-150); transition-timing-function: var(--sw-ease-standard); }
+}
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

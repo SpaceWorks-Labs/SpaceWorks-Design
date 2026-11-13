@@ -17,6 +17,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .mk{display:inline-block;width:64px;height:64px;color:rgb(var(--color-accent))}.mk svg{width:100%;height:100%}.holo{width:260px;height:160px;border-radius:14px;display:grid;place-items:center;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));font-weight:700;cursor:pointer;border:0;font:inherit}.pet{position:relative;height:70px;border:1px dashed rgb(var(--color-line));border-radius:12px}.pet .sw-patch-z{right:auto;left:40px}.walker{display:inline-block;padding:8px 14px;border-radius:10px;background:rgb(var(--color-accent-soft))}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -25,16 +35,21 @@
   <p>This page turns delight on (<code>data-sw-delight</code> on html). Hover the mark, click it for the pop, move over the card. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
 <section class="row"><a href="#" data-logo class="mk" id="logo" aria-label="Flap demo"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><rect class="sw-logo-flap sw-logo-flap-tl" x="6" y="6" width="26" height="26" rx="3"/><rect class="sw-logo-flap sw-logo-flap-tr" x="34" y="6" width="26" height="26" rx="3"/><rect class="sw-logo-flap sw-logo-flap-bl" x="6" y="34" width="26" height="26" rx="3"/><rect class="sw-logo-flap sw-logo-flap-br" x="34" y="34" width="26" height="26" rx="3"/></svg></a><span>Four-square stand-in for the logo flaps: hover or click</span></section>
 <section><button class="holo" id="holo"><span class="sw-holo" id="hc" style="display:grid;place-items:center;width:100%;height:100%">Member card (move, click to flip)</span></button></section>
-<section class="pet"><span class="sw-patch-z">z</span></section>
+<button type="button" class="btn ghost" id="pause-delight" aria-pressed="false">Play decorative motion</button><section class="pet"><span class="sw-patch-z">z</span></section>
 <section><span class="walker sw-delight-walk">Companion walk</span> <span class="sw-delight-glyph" style="display:inline-block">Glyph</span></section>
-</main>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/card-tilt-dark-poster.png" data-poster="previews/card-tilt-dark-poster.png" data-animated="previews/card-tilt-dark.webp" alt="card tilt dark motion end-state preview" loading="lazy"><figcaption>card tilt dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/card-tilt-light-poster.png" data-poster="previews/card-tilt-light-poster.png" data-animated="previews/card-tilt-light.webp" alt="card tilt light motion end-state preview" loading="lazy"><figcaption>card tilt light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/logo-flaps-dark-poster.png" data-poster="previews/logo-flaps-dark-poster.png" data-animated="previews/logo-flaps-dark.webp" alt="logo flaps dark motion end-state preview" loading="lazy"><figcaption>logo flaps dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/logo-flaps-light-poster.png" data-poster="previews/logo-flaps-light-poster.png" data-animated="previews/logo-flaps-light.webp" alt="logo flaps light motion end-state preview" loading="lazy"><figcaption>logo flaps light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
+<style>.sw-patch-z,.sw-delight-walk{animation-play-state:paused}html[data-demo-play] .sw-patch-z,html[data-demo-play] .sw-delight-walk{animation-play-state:running}</style>
 <script>
+const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const pauseDelight=document.getElementById('pause-delight');
+pauseDelight.onclick=()=>{const play=!motionPreference.matches&&pauseDelight.getAttribute('aria-pressed')!=='true';document.documentElement.toggleAttribute('data-demo-play',play);pauseDelight.setAttribute('aria-pressed',String(play));pauseDelight.textContent=play?'Pause decorative motion':'Play decorative motion';};
+motionPreference.addEventListener('change',()=>{document.documentElement.removeAttribute('data-demo-play');pauseDelight.setAttribute('aria-pressed','false');pauseDelight.textContent='Play decorative motion';});
 document.documentElement.setAttribute("data-sw-delight","");
-var l=document.getElementById("logo");l.onclick=function(e){e.preventDefault();l.setAttribute("data-logo-pop","");setTimeout(function(){l.removeAttribute("data-logo-pop")},600)};
+var l=document.getElementById("logo");l.onclick=function(e){e.preventDefault();if(l.hasAttribute("data-logo-pop"))return;l.setAttribute("data-logo-pop","");Promise.allSettled(l.getAnimations({subtree:true}).map(a=>a.finished)).then(()=>l.removeAttribute("data-logo-pop"))};
 var hb=document.getElementById("holo"),hc=document.getElementById("hc"),flip=false,reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
-function tilt(x,y){hc.style.transform=reduced?"":"perspective(1200px) rotateX("+(-y*9)+"deg) rotateY("+((flip?180:0)+x*9)+"deg)"}
-hb.onpointermove=function(e){var b=hb.getBoundingClientRect();tilt(((e.clientX-b.left)/b.width)*2-1,((e.clientY-b.top)/b.height)*2-1)};
-hb.onpointerleave=function(){tilt(0,0)};hb.onclick=function(){flip=!flip;tilt(0,0)};
+function tilt(x,y){hc.style.transform=motionPreference.matches?(flip?"rotateY(180deg)":"none"):"perspective(1200px) rotateX("+(-y*9)+"deg) rotateY("+((flip?180:0)+x*9)+"deg)"}
+hb.onpointermove=function(e){if(e.pointerType==="touch"||motionPreference.matches)return;var b=hb.getBoundingClientRect();tilt(((e.clientX-b.left)/b.width)*2-1,((e.clientY-b.top)/b.height)*2-1)};
+hb.onpointerleave=function(){tilt(0,0)};hb.onclick=function(){flip=!flip;hb.setAttribute("aria-pressed",String(flip));hb.setAttribute("aria-label",flip?"Member card back; show front":"Member card front; show back");tilt(0,0)};
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

@@ -6,6 +6,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { readFileSync } from 'node:fs';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
 import { splitItems } from './scripts/split-docs.mjs';
+import { publicationItems } from './scripts/publication-map.mjs';
 
 // GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design-System/. Set
 // DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
@@ -68,21 +69,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Start here',
-          items: [{ label: 'Overview', link: '/' }, 'whats-new-v2', 'tokens/using-the-kit'],
-        },
-        {
-          label: 'Brand',
-          collapsed: true,
-          items: [
-            'brand/introduction',
-            'brand/logo',
-            ...splitItems('specs/ui-brand-spec', ['logo-in-product']),
-            'brand/colour',
-            'brand/typography',
-            'brand/graphics',
-            'brand/mascot',
-            'brand/guidelines',
-          ],
+          items: [{ label: 'Overview', link: '/' }, ...publicationItems('Start here'), 'tokens/using-the-kit', 'whats-new-v2'],
         },
         {
           label: 'Foundations',
@@ -90,9 +77,11 @@ export default defineConfig({
           items: [
             'foundations',
             'tokens/reference',
+            ...publicationItems('Foundations').filter(item => item.slug !== 'foundations/accessibility'),
             ...splitItems('specs/ui-brand-spec', ['tokens', 'index-css']),
             'theming',
             ...splitItems('specs/ui-brand-spec', ['typography', 'shape-and-spacing', 'icons']),
+            'foundations/accessibility',
           ],
         },
         {
@@ -101,6 +90,7 @@ export default defineConfig({
           items: [
             ...splitItems('motion/principles'),
             'motion/tokens',
+            ...publicationItems('Motion'),
             'motion/kit',
             { label: 'Brand moments', items: ['motion/box-open', 'motion/theme-reveal', 'motion/delight'] },
             { label: 'Navigation', items: ['motion/route-transition', 'motion/page-enter', 'motion/scroll-reveal', 'motion/sidebar'] },
@@ -109,8 +99,13 @@ export default defineConfig({
             { label: 'Displays', items: ['motion/kiosk-display'] },
           ],
         },
+        { label: 'Components', collapsed: true, items: publicationItems('Components') },
         {
-          label: 'Components and patterns',
+          label: 'Patterns and layouts', collapsed: true,
+          items: [...publicationItems('Patterns and layouts'), ...splitItems('specs/ux-patterns', ['patterns-shell-and-navigation', 'patterns-content-and-forms', 'patterns-auth-public-kiosk', 'layouts', 'layouts-settings-to-kiosk', 'quality-bar', 'adaptations'])],
+        },
+        {
+          label: 'Product implementations',
           collapsed: true,
           items: [
             'ux/introduction',
@@ -128,10 +123,10 @@ export default defineConfig({
         {
           label: 'Content',
           collapsed: true,
-          items: ['brand/voice', ...splitItems('specs/ux-patterns', ['interaction-and-microcopy'])],
+          items: [...publicationItems('Content'), 'brand/voice', ...splitItems('specs/ux-patterns', ['interaction-and-microcopy'])],
         },
         {
-          label: 'Rules',
+          label: 'Product engineering rules',
           collapsed: true,
           items: [
             ...splitItems('rules'),
@@ -139,9 +134,25 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Reference',
+          label: 'Brand',
           collapsed: true,
           items: [
+            'brand/introduction',
+            'brand/logo',
+            ...splitItems('specs/ui-brand-spec', ['logo-in-product']),
+            'brand/colour',
+            'brand/typography',
+            'brand/graphics',
+            'brand/mascot',
+            'brand/guidelines',
+          ],
+        },
+        {
+          label: 'Resources and governance',
+          collapsed: true,
+          items: [
+            'downloads',
+            ...publicationItems('Resources and governance'),
             { label: 'Design decisions', collapsed: true, items: splitItems('decisions') },
             { label: 'Lessons learned', collapsed: true, items: splitItems('lessons-learned') },
             {

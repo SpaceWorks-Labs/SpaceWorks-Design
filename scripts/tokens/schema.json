@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceworks.design/tokens/contract.schema.json",
+  "title": "Space Works portable token inputs (DTCG exports are generated separately)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "modes", "baseFontPx", "sources", "spacing", "radius", "borderWidth", "breakpoint", "layer", "opacity", "size", "type", "aliases"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "version": {"const": "2.1.0"},
+    "modes": {"const": ["light", "dark"]},
+    "baseFontPx": {"const": 16},
+    "sources": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "spacing": {"type": "array", "minItems": 10, "uniqueItems": true, "items": {"type": "number", "minimum": 0}},
+    "radius": {"$ref": "#/$defs/scale"},
+    "borderWidth": {"$ref": "#/$defs/scale"},
+    "breakpoint": {"$ref": "#/$defs/scale"},
+    "layer": {"$ref": "#/$defs/scale"},
+    "opacity": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+    "size": {"$ref": "#/$defs/scale"},
+    "type": {"type": "object", "additionalProperties": {"type": "array", "minItems": 5, "maxItems": 5, "prefixItems": [{"type": "number", "exclusiveMinimum": 0}, {"type": "number", "exclusiveMinimum": 0}, {"enum": ["display", "sans", "accent"]}, {"enum": [300, 400, 500, 600, 700, 800]}, {"type": "number"}], "items": false}},
+    "aliases": {"type": "object", "additionalProperties": {"$ref": "#/$defs/alias"}}
+  },
+  "$defs": {
+    "scale": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "minimum": 0}},
+    "alias": {
+      "type": "object", "additionalProperties": false, "required": ["purpose"],
+      "oneOf": [{"required": ["ref"], "not": {"anyOf": [{"required": ["light"]}, {"required": ["dark"]}]}}, {"required": ["light", "dark"], "not": {"required": ["ref"]}}],
+      "properties": {
+        "ref": {"type": "string"}, "light": {"type": "string"}, "dark": {"type": "string"},
+        "purpose": {"type": "string", "minLength": 1}, "use": {"type": "string"}, "avoid": {"type": "string"},
+        "partner": {"type": "string"}, "override": {"enum": ["owner-control"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+---
+import { kitUrl } from './kit-url';
+import { downloadInfo } from './media';
+interface Props { path: string; name: string; label: string }
+const { path, name, label } = Astro.props;
+const info = downloadInfo(path);
+---
+<span class="sw-download">
+  <a href={kitUrl(path)} download aria-label={`Download ${name}, ${label}`}><span>{label}</span></a>
+  <small data-media-metadata>{info}</small>
+</span>

@@ -14,6 +14,7 @@ export function RouteTransitionGate() {
     const from = previous.current;
     previous.current = pathname;
     const covered = settleRouteTransition();
+    if (from !== pathname) { const main = document.querySelector<HTMLElement>("[data-sw-main]"); if (main) { main.tabIndex = -1; main.focus({ preventScroll: true }); } }
     if (from === pathname || covered) return;
     replayRouteEnter(routeDirection(from, pathname));
   }, [pathname]);

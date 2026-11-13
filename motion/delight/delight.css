@@ -1,3 +1,13 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-1600: calc(var(--sw-dur-slow) * 6.66666667);
+  --sw-local-duration-2400: calc(var(--sw-dur-slow) * 10.00000000);
+  --sw-local-duration-4000: calc(var(--sw-dur-slow) * 16.66666667);
+  --sw-local-duration-460: calc(var(--sw-dur-slow) * 1.91666667);
+  --sw-local-duration-560: calc(var(--sw-dur-slow) * 2.33333333);
+  --sw-local-duration-650: calc(var(--sw-dur-slow) * 2.70833333);
+  --sw-local-duration-960: calc(var(--sw-dur-slow) * 4.00000000);
+}
 /* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `components/delight/logoUnfold.css`, `components/delight/patch.css`, `components/delight/delight.css`, `features/members/wallet/HolographicCard.tsx`.
    Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
 /* Box logo unfold. The four flap paths SpaceWorksLogo tags turn on their own hinge corner (the
@@ -10,12 +20,12 @@
 .sw-logo-flap-bl { transform-origin: 100% 0%; }
 .sw-logo-flap-br { transform-origin: 0% 0%; }
 @media (prefers-reduced-motion: no-preference) {
-  :root[data-sw-delight] .sw-logo-flap { transition: transform 460ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+  :root[data-sw-delight] .sw-logo-flap { transition: transform var(--sw-local-duration-460) var(--sw-ease-standard); }
   :root[data-sw-delight] :is(a, button, [data-logo]):is(:hover, :focus-visible) .sw-logo-flap-tl { transform: rotate(-7deg); }
   :root[data-sw-delight] :is(a, button, [data-logo]):is(:hover, :focus-visible) .sw-logo-flap-tr { transform: rotate(7deg); }
   :root[data-sw-delight] :is(a, button, [data-logo]):is(:hover, :focus-visible) .sw-logo-flap-bl { transform: rotate(5deg); }
   :root[data-sw-delight] :is(a, button, [data-logo]):is(:hover, :focus-visible) .sw-logo-flap-br { transform: rotate(-5deg); }
-  :root[data-sw-delight] [data-logo-pop] .sw-logo-flap { animation: 560ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+  :root[data-sw-delight] [data-logo-pop] .sw-logo-flap { animation: var(--sw-local-duration-560) var(--sw-ease-enter); }
   :root[data-sw-delight] [data-logo-pop] .sw-logo-flap-tl { animation-name: sw-flap-tl; }
   :root[data-sw-delight] [data-logo-pop] .sw-logo-flap-tr { animation-name: sw-flap-tr; }
   :root[data-sw-delight] [data-logo-pop] .sw-logo-flap-bl { animation-name: sw-flap-bl; }
@@ -31,11 +41,11 @@
 /* Patch: the 404 pet (NotFoundPatch) and the public pages' still moments (PatchMoment). Patch is never
    recoloured, mirrored, stretched or given effects (SpaceWorks-Design mascot/README.md); dark mode uses the dark/ sheets. */
 .sw-patch-pet { position: fixed; inset-inline: 0; bottom: 0; height: 112px; pointer-events: none; overflow: hidden; z-index: 30; }
-.sw-patch-pet-body { position: absolute; left: 0; bottom: 8px; will-change: transform; }
+.sw-patch-pet-body { position: absolute; left: 0; bottom: 8px;  }
 .sw-patch-pet-sprite { display: block; width: 128px; height: 88px; background-repeat: no-repeat; background-size: 1024px 88px; background-position: var(--sw-patch-frame, 0px) 0; }
-.sw-patch-print { position: absolute; bottom: 6px; color: rgb(var(--color-muted)); animation: sw-patch-print 1600ms ease-out forwards; }
+.sw-patch-print { position: absolute; bottom: 6px; color: rgb(var(--color-muted)); animation: sw-patch-print var(--sw-local-duration-1600) var(--sw-ease-enter) forwards; }
 @keyframes sw-patch-print { from { opacity: 0.7; } to { opacity: 0; } }
-.sw-patch-z { position: absolute; top: -10px; right: 22px; color: rgb(var(--color-muted)); font-weight: 600; animation: sw-patch-z 2400ms ease-in-out infinite; }
+.sw-patch-z { position: absolute; top: -10px; right: 22px; color: rgb(var(--color-muted)); font-weight: 600; animation: sw-patch-z var(--sw-local-duration-2400) var(--sw-ease-standard) infinite; }
 @keyframes sw-patch-z { from { opacity: 0; transform: translateY(6px); } 50% { opacity: 1; } to { opacity: 0; transform: translateY(-10px); } }
 @media (prefers-reduced-motion: reduce) {
   .sw-patch-print, .sw-patch-z { animation: none; }
@@ -45,20 +55,28 @@
    eight walk frames twice on the spot, once, and comes back to rest on frame 0. */
 .sw-patch-moment { display: block; width: 160px; height: 110px; flex-shrink: 0; pointer-events: none; background-repeat: no-repeat;
   background-size: 1280px 110px; background-position: 0 0; }
-@keyframes sw-patch-trot { from { background-position: 0 0; } to { background-position: -1280px 0; } }
+@keyframes sw-patch-trot { from { transform: translateY(0); } to { transform: translateY(-2px); } }
 @media (prefers-reduced-motion: no-preference) {
-  .sw-patch-moment[data-trot] { animation: sw-patch-trot 960ms steps(8) 2; }
+  .sw-patch-moment[data-trot] { animation: sw-patch-trot var(--sw-local-duration-960) var(--sw-ease-standard) 2; }
 }
 
 /* Companion walk and glyph tilt. */
 @keyframes sw-companion-walk { 50% { transform: translateX(16px); } }
-.sw-delight-walk { animation: sw-companion-walk 4s ease-in-out infinite; }
+.sw-delight-walk { animation: sw-companion-walk var(--sw-local-duration-4000) var(--sw-ease-standard) infinite; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .sw-delight-glyph:hover { transform: rotate(-3deg); transition: transform 120ms; }
+  .sw-delight-glyph:hover { transform: rotate(-3deg); transition: transform var(--sw-dur-fast) var(--sw-ease-standard); }
 }
 @media (prefers-reduced-motion: reduce) { .sw-delight-walk { animation: none; } }
 
 /* Holographic card: HolographicCard.tsx sets transform inline:
    perspective(1200px) rotateX(-tilt.y*9deg) rotateY((flipped?180:0)+tilt.x*9deg), transition transform 650ms cubic-bezier(0.32,0.72,0,1). */
-.sw-holo { transition: transform 650ms cubic-bezier(0.32, 0.72, 0, 1); transform-style: preserve-3d; }
+.sw-holo { transition: transform var(--sw-dur-slow) var(--sw-ease-standard); transform-style: preserve-3d; }
 @media (prefers-reduced-motion: reduce) { .sw-holo { transition: none; } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.sw-delight-glyph { transition: transform var(--sw-dur-fast) var(--sw-ease-standard); }
+@media (prefers-reduced-motion: reduce) { .sw-delight-glyph { transition: none; } }

@@ -17,6 +17,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .tg{font:inherit;display:flex;align-items:center;gap:8px;min-height:44px;width:100%;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;padding:0 12px;color:rgb(var(--color-ink));cursor:pointer}.tg svg{flex:none}.pane{padding:12px 4px;display:grid;gap:6px}.sw-collapse[hidden]{display:none}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -26,11 +36,7 @@
 <section><button class="tg" id="b1" aria-expanded="false" aria-controls="c1"><svg class="sw-chevron sw-chevron-flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>More (3)</button><div id="c1" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Reports</span><span>Audit log</span><span>Integrations</span></div></div></div></section>
 <section><button class="tg" id="b2" aria-expanded="false" aria-controls="c2"><svg class="sw-chevron sw-chevron-turn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>Collapsible section</button><div id="c2" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Section content that pushes the page down.</span></div></div></div></section>
 <section><button class="tg" id="b3" aria-expanded="false" aria-controls="c3"><span style="flex:1;text-align:left">How do I reset a password?</span><svg class="sw-chevron-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div id="c3" class="sw-collapse" data-state="closed" hidden><div class="sw-collapse-inner"><div class="pane"><span>Use the link on the sign-in page.</span></div></div></div></section>
-</main>
-<script>
-[1,2,3].forEach(function(i){var b=document.getElementById("b"+i),c=document.getElementById("c"+i);
- b.onclick=function(){var open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!open));
-  if(!open){c.hidden=false;c.removeAttribute("inert");c.dataset.state="open"}else{c.setAttribute("inert","");c.dataset.state="closed";setTimeout(function(){if(c.dataset.state==="closed")c.hidden=true},200)}}});
-</script>
-</body>
-</html>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/collapse-dark-poster.png" data-poster="previews/collapse-dark-poster.png" data-animated="previews/collapse-dark.webp" alt="collapse dark motion end-state preview" loading="lazy"><figcaption>collapse dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/collapse-light-poster.png" data-poster="previews/collapse-light-poster.png" data-animated="previews/collapse-light.webp" alt="collapse light motion end-state preview" loading="lazy"><figcaption>collapse light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
+<script src="../flow.js"></script>
+<script>[1,2,3].forEach(i => SwMotionFlow.disclosure(document.getElementById('b'+i),document.getElementById('c'+i)));</script>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body></html>

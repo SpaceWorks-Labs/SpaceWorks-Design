@@ -1,5 +1,7 @@
 # Scroll reveal and pinned hero
 
+> **Current rule (v2.0.1, 2026-11-13):** Scroll is direct manipulation: progress maps to transform/opacity without a time-based easing queue. Reduced motion and narrow screens show the complete static story. No persistent will-change promotion is needed. Reveals are once-only, including initial blocks already in view (documented landing-page exception). Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#scroll-reveal).
+
 The landing page's scroll story: the pinned hero sequence (copy lifts away, the real console rises, zooms through its surface and the overview settles in, all in one sticky scene), the handover steps beside a sticky record, and reveal-on-scroll blocks that arrive once. The default rules are the static page, which is what reduced motion, phones and browsers without JavaScript get.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -26,6 +28,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Scrolling walks the visitor from the promise to the real console to the overview in one scene, so the product is understood by looking at it, not by reading about it. The handover record changes as each step reaches the middle, showing the evidence trail forming. Reveals pace a long page without hiding content.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#scroll-reveal) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -57,6 +61,8 @@ Colours are tokens (`--color-bg`, `--color-surface`, `--color-panel`, `--color-l
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#scroll-reveal) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="scroll-reveal.css"><script src="scroll-reveal.js"></script>
 <main id="page"><section data-reveal>…</section><section data-reveal>…</section></main>
@@ -66,3 +72,17 @@ Colours are tokens (`--color-bg`, `--color-surface`, `--color-panel`, `--color-l
 For the pinned hero, build the `data-seq` structure shown in `demo.html` and call `SwScroll.initSequence(root)`.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Scroll is direct manipulation: progress maps to transform/opacity without a time-based easing queue. Reduced motion and narrow screens show the complete static story. No persistent will-change promotion is needed. Reveals are once-only, including initial blocks already in view (documented landing-page exception).
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#scroll-reveal). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-640` | `calc(var(--sw-dur-slow) * 2.66666667)` |

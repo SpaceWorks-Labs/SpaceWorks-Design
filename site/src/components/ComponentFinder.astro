@@ -1,0 +1,28 @@
+<sw-component-finder>
+  <label>Find a component or source ID <input type="search" data-query /></label>
+  <label>Category <select data-category><option value="">All categories</option>{['Actions', 'Forms', 'Navigation', 'Data and display', 'Feedback', 'Layers'].map(c => <option>{c}</option>)}</select></label>
+  <p data-count role="status">19 components</p>
+</sw-component-finder>
+<script>
+  class ComponentFinder extends HTMLElement {
+    connectedCallback() {
+      const table = this.closest('.sl-markdown-content')?.querySelector('table');
+      if (!table) return;
+      const rows = [...table.querySelectorAll('tbody tr')];
+      const filter = () => {
+        const query = this.querySelector<HTMLInputElement>('[data-query]')!.value.toLowerCase().trim();
+        const category = this.querySelector<HTMLSelectElement>('[data-category]')!.value;
+        let count = 0;
+        rows.forEach(row => {
+          const visible = row.textContent?.toLowerCase().includes(query) && (!category || row.children[1]?.textContent?.trim() === category);
+          (row as HTMLElement).hidden = !visible; if (visible) count++;
+        });
+        this.querySelector('[data-count]')!.textContent = `${count} components`;
+      };
+      this.addEventListener('input', filter);
+      this.addEventListener('change', filter);
+    }
+  }
+  customElements.define('sw-component-finder', ComponentFinder);
+</script>
+<style>sw-component-finder{display:flex;gap:1rem;flex-wrap:wrap;align-items:end}label{display:grid;gap:.25rem}input,select{font:inherit;min-height:44px;max-width:100%}</style>

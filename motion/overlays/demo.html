@@ -8,38 +8,78 @@
 <link rel="stylesheet" href="overlays.css">
 <style>
   body{margin:0;font:16px/1.5 Outfit,system-ui,sans-serif;background:rgb(var(--color-bg));color:rgb(var(--color-ink))}
-  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:28px}
-  h1,h2{margin:0} h2{font-size:1.05rem} p{margin:0;color:rgb(var(--color-muted))}
-  section{display:grid;gap:12px} .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  .btn{font:inherit;padding:8px 16px;min-height:40px;border-radius:999px;border:0;background:rgb(var(--color-accent));color:rgb(var(--color-on-accent));cursor:pointer}
-  .btn.ghost{background:transparent;color:rgb(var(--color-ink));border:1px solid rgb(var(--color-outline))}
-  .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
-  .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
-  .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
-.layer[hidden]{display:none}.scrim{position:absolute;inset:0;background:rgb(var(--color-scrim)/.5);display:grid;place-items:center}.dlg{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:20px;width:260px;display:grid;gap:12px}.dr{position:absolute;top:0;bottom:0;width:240px;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));padding:16px;display:grid;align-content:start;gap:10px}.dr.r{right:0}.dr.l{left:0}.menu{position:absolute;left:16px;top:60px;margin:0;padding:6px;list-style:none;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;width:180px}.menu li{padding:8px 10px;border-radius:8px}.menu li:hover{background:rgb(var(--color-hover))}.sheet-force[data-state=open]{animation-name:sw-sheet-in!important}.sheet-force[data-state=closed]{animation-name:sw-sheet-out!important}</style>
+  main{max-width:880px;margin:0 auto;padding:32px 16px;display:grid;gap:20px}
+  h1{margin:0;font-size:1.5rem} p{margin:0;color:rgb(var(--color-muted))}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .row .sw-ov-btn{flex:0 0 auto}
+</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
-<main>
-  <header class="row"><h1>Overlays: dialog, drawer, sheet, menu, scrim</h1>
-    <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
-  <p>Open each layer and close it again to see the exit. "Sheet" forces the phone bottom-sheet animation (it is automatic under 640 px). Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
-<section><div class="row"><button class="btn" data-o="dlg">Dialog (pop)</button><button class="btn" data-o="sheet">Sheet</button><button class="btn" data-o="right">Drawer right</button><button class="btn" data-o="left">Drawer left</button><button class="btn" data-o="menu">Menu</button></div>
-<div class="stage" id="stage">
-<div class="layer sw-fx-fade scrim" id="dlg" hidden data-state="closed"><div class="dlg sw-fx-pop" data-state="closed"><strong>Hand over this tool?</strong><span>Scrim fades, dialog pops.</span><button class="btn" data-c="dlg">Close</button></div></div>
-<div class="layer sw-fx-fade scrim" id="sheet" hidden data-state="closed" style="align-items:end"><div class="dlg sw-fx-pop sheet-force" data-state="closed" style="width:100%;border-radius:16px 16px 0 0"><strong>Bottom sheet</strong><button class="btn" data-c="sheet">Close</button></div></div>
-<aside class="layer dr r sw-fx-drawer" id="right" hidden data-state="closed"><strong>Detail drawer</strong><button class="btn" data-c="right">Close</button></aside>
-<aside class="layer dr l sw-fx-drawer" id="left" hidden data-edge="left" data-state="closed"><strong>Sidebar drawer</strong><button class="btn" data-c="left">Close</button></aside>
-<ul class="layer menu sw-fx-menu" id="menu" hidden data-state="closed" role="menu"><li role="menuitem">Edit</li><li role="menuitem">Duplicate</li><li role="menuitem" data-c="menu">Close menu</li></ul>
-</div></section>
-</main>
-<script>
-function el(id){return document.getElementById(id)}
-function animEl(n){return n.classList.contains("scrim")?n:n}
-function open(id){var n=el(id);n.hidden=false;n.removeAttribute("inert");n.dataset.state="open";var c=n.querySelector("[data-state]");if(c)c.dataset.state="open"}
-function close(id){var n=el(id);n.setAttribute("inert","");n.dataset.state="closed";var c=n.querySelector("[data-state]");if(c)c.dataset.state="closed";
- setTimeout(function(){if(n.dataset.state==="closed")n.hidden=true},320)}
-document.querySelectorAll("[data-o]").forEach(function(b){b.onclick=function(){open(b.dataset.o)}});
-document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){close(b.dataset.c)}});
-</script>
-</body>
-</html>
+<main data-overlays-demo>
+  <header class="row"><h1>Overlays</h1>
+    <button type="button" class="sw-ov-btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
+  <p>Open a layer, then another: the open one leaves first (its exit plays), so only one layer is ever on screen. Escape, a click on the scrim or the Close button closes it and focus returns to the control that opened it. Tab stays inside a dialog, sheet or drawer. Under <code>prefers-reduced-motion: reduce</code> the layers appear and disappear instantly, with the same end states.</p>
+  <div class="sw-ov-controls" id="controls">
+    <button type="button" class="sw-ov-btn" data-open="dialog">Dialog (pop)</button>
+    <button type="button" class="sw-ov-btn" data-open="sheet">Sheet</button>
+    <button type="button" class="sw-ov-btn" data-open="right">Drawer right</button>
+    <button type="button" class="sw-ov-btn" data-open="left">Drawer left</button>
+    <button type="button" class="sw-ov-btn" data-open="menu">Menu</button>
+  </div>
+  <p class="sw-ov-status" id="status" role="status" aria-live="polite">No layer open.</p>
+
+  <div class="sw-ov-frame" id="frame">
+    <div class="sw-ov-bar"><strong>Workshop console</strong>
+      <span class="sw-ov-anchor" id="anchor"><button type="button" class="sw-ov-btn ghost" id="actions" data-actions aria-haspopup="menu" aria-expanded="false" aria-controls="menu">Actions</button>
+</span></div>
+        <ul class="sw-ov-menu sw-fx-menu" id="menu" role="menu" aria-label="Actions" hidden data-state="closed">
+          <li role="none"><button type="button" role="menuitem" tabindex="-1">Edit</button></li><li role="none"><button type="button" role="menuitem" tabindex="-1">Duplicate</button></li><li role="none"><button type="button" role="menuitem" tabindex="-1">Archive</button></li>
+        </ul>
+    <div class="sw-ov-page"><i></i><i style="width:70%"></i><i style="width:45%"></i></div>
+
+    <div class="sw-ov-layer sw-ov-scrim sw-fx-fade" id="dialog" data-layer="dialog" hidden data-state="closed">
+      <div class="sw-ov-panel sw-ov-dialog sw-fx-pop" role="dialog" aria-modal="true" aria-labelledby="dialog-t" tabindex="-1" data-state="closed">
+        <div class="sw-ov-handle" aria-hidden="true"></div>
+        <div class="sw-ov-head"><h2 id="dialog-t">Hand over this tool?</h2></div>
+        <div class="sw-ov-body"><button type="button" class="sw-ov-btn ghost" data-open="sheet">Switch to sheet</button><p>The scrim fades in and the dialog pops from just in front (scale 0.98, 4 px).</p></div>
+        <div class="sw-ov-foot"><button type="button" class="sw-ov-btn ghost" data-close>Cancel</button><button type="button" class="sw-ov-btn" data-close>Confirm</button></div>
+      </div>
+    </div>
+
+    <div class="sw-ov-layer sheet sw-ov-scrim sw-fx-fade" id="sheet" data-layer="sheet" hidden data-state="closed">
+      <div class="sw-ov-panel sw-ov-sheet sw-fx-pop" role="dialog" aria-modal="true" aria-labelledby="sheet-t" tabindex="-1" data-state="closed">
+        <div class="sw-ov-handle" aria-hidden="true"></div>
+        <div class="sw-ov-head"><h2 id="sheet-t">Filter requests</h2></div>
+        <div class="sw-ov-body"><button type="button" class="sw-ov-btn ghost" data-open="sheet">Switch to sheet</button><p>On phones the dialog becomes a bottom sheet: it docks to the bottom edge and rises instead of scaling.</p><p>Content scrolls inside while the header and footer stay put.</p></div>
+        <div class="sw-ov-foot"><button type="button" class="sw-ov-btn ghost" data-close>Cancel</button><button type="button" class="sw-ov-btn" data-close>Apply</button></div>
+      </div>
+    </div>
+
+    <div class="sw-ov-layer edge-right sw-ov-scrim sw-fx-fade" id="right" data-layer="right" hidden data-state="closed">
+      <aside class="sw-ov-panel sw-ov-drawer sw-fx-drawer" role="dialog" aria-modal="true" aria-labelledby="right-t" tabindex="-1" data-state="closed">
+        <div class="sw-ov-head"><h2 id="right-t">Detail drawer</h2><button type="button" class="sw-ov-btn ghost" data-close>Close</button></div>
+        <div class="sw-ov-body"><button type="button" class="sw-ov-btn ghost" data-open="sheet">Switch to sheet</button><p>Slides from the right edge, full height of the frame.</p><p>Closing slides it back the way it came.</p></div>
+      </aside>
+    </div>
+
+    <div class="sw-ov-layer edge-left sw-ov-scrim sw-fx-fade" id="left" data-layer="left" hidden data-state="closed">
+      <aside class="sw-ov-panel sw-ov-drawer sw-fx-drawer" data-edge="left" role="dialog" aria-modal="true" aria-labelledby="left-t" tabindex="-1" data-state="closed">
+        <div class="sw-ov-head"><h2 id="left-t">Sidebar drawer</h2><button type="button" class="sw-ov-btn ghost" data-close>Close</button></div>
+        <div class="sw-ov-body"><button type="button" class="sw-ov-btn ghost" data-open="sheet">Switch to sheet</button><p>The left-edge variant (<code>data-edge="left"</code>) slides from the left.</p></div>
+      </aside>
+    </div>
+  </div>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/dialog-dark-poster.png" data-poster="previews/dialog-dark-poster.png" data-animated="previews/dialog-dark.webp" alt="dialog dark motion end-state preview" loading="lazy"><figcaption>dialog dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/dialog-light-poster.png" data-poster="previews/dialog-light-poster.png" data-animated="previews/dialog-light.webp" alt="dialog light motion end-state preview" loading="lazy"><figcaption>dialog light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/drawer-dark-poster.png" data-poster="previews/drawer-dark-poster.png" data-animated="previews/drawer-dark.webp" alt="drawer dark motion end-state preview" loading="lazy"><figcaption>drawer dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/drawer-light-poster.png" data-poster="previews/drawer-light-poster.png" data-animated="previews/drawer-light.webp" alt="drawer light motion end-state preview" loading="lazy"><figcaption>drawer light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/menu-dark-poster.png" data-poster="previews/menu-dark-poster.png" data-animated="previews/menu-dark.webp" alt="menu dark motion end-state preview" loading="lazy"><figcaption>menu dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/menu-light-poster.png" data-poster="previews/menu-light-poster.png" data-animated="previews/menu-light.webp" alt="menu light motion end-state preview" loading="lazy"><figcaption>menu light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
+<script src="overlays.js"></script>
+<script>SwOverlays.initOverlays(document.querySelector('[data-overlays-demo]'));</script>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body></html>

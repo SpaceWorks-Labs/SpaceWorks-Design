@@ -1,4 +1,13 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-400: calc(var(--sw-dur-slow) * 1.66666667);
+}
 /* One opacity fade per slide change; nothing loops, so a Raspberry Pi browser stays idle between slides. */
 @keyframes sw-display-fade-in { from { opacity: 0; } to { opacity: 1; } }
-.sw-display-fade { animation: sw-display-fade-in 400ms ease-out both; }
+.sw-display-fade { animation: sw-display-fade-in var(--sw-local-duration-400) var(--sw-ease-enter) both; }
 @media (prefers-reduced-motion: reduce) { .sw-display-fade { animation: none; } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

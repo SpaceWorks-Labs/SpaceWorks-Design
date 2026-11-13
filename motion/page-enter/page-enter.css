@@ -1,15 +1,27 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-150: calc(var(--sw-dur-fast) * 1.25000000);
+  --sw-local-duration-200: calc(var(--sw-dur-base) * 1.11111111);
+  --sw-local-duration-210: calc(var(--sw-dur-base) * 1.16666667);
+  --sw-local-duration-30: calc(var(--sw-dur-fast) * 0.25000000);
+  --sw-local-duration-360: calc(var(--sw-dur-slow) * 1.50000000);
+  --sw-local-duration-480: calc(var(--sw-dur-slow) * 2.00000000);
+  --sw-local-duration-60: calc(var(--sw-dur-fast) * 0.50000000);
+  --sw-local-duration-640: calc(var(--sw-dur-slow) * 2.66666667);
+  --sw-local-duration-90: calc(var(--sw-dur-fast) * 0.75000000);
+}
 /* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `components/layouts/layouts.css`, `styles/fields.css`, `features/hub/hub.css`.
    Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
 /* First-load stagger (StaggerGroup): the first eight children fade and rise, 30 ms apart. */
 @media (prefers-reduced-motion: no-preference) {
-  .sw-stagger > :nth-child(-n+8) { animation: sw-stagger-rise 200ms ease-out both; }
-  .sw-stagger > :nth-child(2) { animation-delay: 30ms; }
-  .sw-stagger > :nth-child(3) { animation-delay: 60ms; }
-  .sw-stagger > :nth-child(4) { animation-delay: 90ms; }
-  .sw-stagger > :nth-child(5) { animation-delay: 120ms; }
-  .sw-stagger > :nth-child(6) { animation-delay: 150ms; }
-  .sw-stagger > :nth-child(7) { animation-delay: 180ms; }
-  .sw-stagger > :nth-child(8) { animation-delay: 210ms; }
+  .sw-stagger > :nth-child(-n+8) { animation: sw-stagger-rise var(--sw-local-duration-200) var(--sw-ease-enter) both; }
+  .sw-stagger > :nth-child(2) { animation-delay: var(--sw-local-duration-30); }
+  .sw-stagger > :nth-child(3) { animation-delay: var(--sw-local-duration-60); }
+  .sw-stagger > :nth-child(4) { animation-delay: var(--sw-local-duration-90); }
+  .sw-stagger > :nth-child(5) { animation-delay: calc(var(--sw-dur-fast) / 4); }
+  .sw-stagger > :nth-child(6) { animation-delay: var(--sw-local-duration-150); }
+  .sw-stagger > :nth-child(7) { animation-delay: var(--sw-dur-base); }
+  .sw-stagger > :nth-child(8) { animation-delay: var(--sw-local-duration-210); }
 }
 @keyframes sw-stagger-rise { from { opacity: 0; transform: translateY(6px); } }
 
@@ -18,17 +30,22 @@
 @keyframes sw-facet-in { from { opacity: 0; translate: 8px 6px; } to { opacity: 1; translate: 0 0; } }
 @keyframes sw-rise { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
 @media (prefers-reduced-motion: no-preference) {
-  .sw-facets path { transform-box: fill-box; animation: sw-facet-in 640ms cubic-bezier(0.32, 0.72, 0, 1) 120ms both; }
-  .sw-facets path:nth-of-type(2) { animation-delay: 200ms; }
-  .sw-auth-showcase > * { animation: sw-rise 480ms cubic-bezier(0.32, 0.72, 0, 1) both; }
-  .sw-auth-showcase > :nth-child(2) { animation-delay: 120ms; }
-  .sw-auth-showcase > :nth-child(3) { animation-delay: 240ms; }
+  .sw-facets path { transform-box: fill-box; animation: sw-facet-in var(--sw-local-duration-640) var(--sw-ease-enter) var(--sw-dur-fast) both; }
+  .sw-facets path:nth-of-type(2) { animation-delay: var(--sw-local-duration-200); }
+  .sw-auth-showcase > * { animation: sw-rise var(--sw-local-duration-480) var(--sw-ease-enter) both; }
+  .sw-auth-showcase > :nth-child(2) { animation-delay: calc(var(--sw-dur-fast) / 4); }
+  .sw-auth-showcase > :nth-child(3) { animation-delay: calc(var(--sw-dur-fast) / 2); }
 }
 
 /* Panel swap: the areas explorer panel wipes in; a handover-story row's proof rises in. */
 @keyframes sw-hub-step-in { from { opacity: 0; clip-path: inset(0 0 100% 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
 @keyframes sw-hub-proof-in { from { opacity: 0; transform: translate3d(0, 6px, 0); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
-  .sw-hub-story-step[data-new] .sw-hub-story-proof { animation: sw-hub-proof-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .sw-hub-story-step[data-new] .sw-hub-story-proof { animation: sw-hub-proof-in var(--sw-local-duration-360) var(--sw-ease-enter) both; }
 }
-@media (prefers-reduced-motion: no-preference) { .sw-hub-area-panel { animation: sw-hub-step-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both; } }
+@media (prefers-reduced-motion: no-preference) { .sw-hub-area-panel { animation: sw-hub-step-in var(--sw-local-duration-360) var(--sw-ease-enter) both; } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

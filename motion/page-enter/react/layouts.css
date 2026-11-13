@@ -1,3 +1,12 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-150: calc(var(--sw-dur-fast) * 1.25000000);
+  --sw-local-duration-200: calc(var(--sw-dur-base) * 1.11111111);
+  --sw-local-duration-210: calc(var(--sw-dur-base) * 1.16666667);
+  --sw-local-duration-30: calc(var(--sw-dur-fast) * 0.25000000);
+  --sw-local-duration-60: calc(var(--sw-dur-fast) * 0.50000000);
+  --sw-local-duration-90: calc(var(--sw-dur-fast) * 0.75000000);
+}
 /* Geometry only. Colours, controls and type come from the wave-1/2a vocabulary. */
 .sw-layout { width: 100%; min-width: 0; max-width: 1192px; margin-inline: auto; padding: 24px max(16px, env(safe-area-inset-right)) 24px max(16px, env(safe-area-inset-left)); }
 .sw-layout-wide { max-width: 1800px; }
@@ -110,13 +119,18 @@
 
 /* First-load stagger (StaggerGroup): the first eight children fade and rise, 30 ms apart. */
 @media (prefers-reduced-motion: no-preference) {
-  .sw-stagger > :nth-child(-n+8) { animation: sw-stagger-rise 200ms ease-out both; }
-  .sw-stagger > :nth-child(2) { animation-delay: 30ms; }
-  .sw-stagger > :nth-child(3) { animation-delay: 60ms; }
-  .sw-stagger > :nth-child(4) { animation-delay: 90ms; }
-  .sw-stagger > :nth-child(5) { animation-delay: 120ms; }
-  .sw-stagger > :nth-child(6) { animation-delay: 150ms; }
-  .sw-stagger > :nth-child(7) { animation-delay: 180ms; }
-  .sw-stagger > :nth-child(8) { animation-delay: 210ms; }
+  .sw-stagger > :nth-child(-n+8) { animation: sw-stagger-rise var(--sw-local-duration-200) var(--sw-ease-enter) both; }
+  .sw-stagger > :nth-child(2) { animation-delay: var(--sw-local-duration-30); }
+  .sw-stagger > :nth-child(3) { animation-delay: var(--sw-local-duration-60); }
+  .sw-stagger > :nth-child(4) { animation-delay: var(--sw-local-duration-90); }
+  .sw-stagger > :nth-child(5) { animation-delay: calc(var(--sw-dur-fast) / 4); }
+  .sw-stagger > :nth-child(6) { animation-delay: var(--sw-local-duration-150); }
+  .sw-stagger > :nth-child(7) { animation-delay: var(--sw-dur-base); }
+  .sw-stagger > :nth-child(8) { animation-delay: var(--sw-local-duration-210); }
 }
 @keyframes sw-stagger-rise { from { opacity: 0; transform: translateY(6px); } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

@@ -1,5 +1,7 @@
 # Hover and press
 
+> **Current rule (v2.0.1, 2026-11-13):** Hover colours update immediately; press uses only transform, with token timing. Easing teaching controls are native buttons and run at the actual slow-token duration (240 ms by default), with a zero-duration reduced-motion state. The site MotionTokens.astro 480 ms issue remains owned by the site lane (DSA-033). Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#hover-press).
+
 The rule for pointer feedback on product chrome: hover and active change colour (120 ms) and nothing else; pressing a button sinks it to 0.98. Cards, rows, tabs and links follow the colour-only rule. The Space Works mark's box-open is the one deliberate exception (see box-open).
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -24,6 +26,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 The control answers the pointer without moving the page: colour tells you what is under the cursor, the 0.98 sink tells you the press registered. Because nothing translates, scales or lifts on hover, dense staff screens never jitter and layouts never shift.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#hover-press) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -52,6 +56,8 @@ Hover fills are the dark-family tokens (`--color-hover`, `--color-accent-hover`)
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#hover-press) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="../../tokens/tokens.css"><link rel="stylesheet" href="hover-press.css">
 <button class="desk-button-primary">Save</button>
@@ -59,3 +65,18 @@ Hover fills are the dark-family tokens (`--color-hover`, `--color-accent-hover`)
 ```
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Hover colours update immediately; press uses only transform, with token timing. Easing teaching controls are native buttons and run at the actual slow-token duration (240 ms by default), with a zero-duration reduced-motion state. The site MotionTokens.astro 480 ms issue remains owned by the site lane (DSA-033).
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#hover-press). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-collapse-exit` | `calc(var(--sw-dur-base) * .75)` |
+| `--sw-demo-ease` | `var(--sw-ease-standard)` |

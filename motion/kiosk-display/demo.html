@@ -18,6 +18,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.slide{display:grid;place-items:center;height:120px;font-size:1.4rem;font-weight:700;background:rgb(var(--color-accent-soft));border-radius:12px}.mini{position:relative;height:200px;border:1px solid rgb(var(--color-line));border-radius:14px;overflow:hidden;background:rgb(var(--color-surface))}.mini .dlg{position:absolute;inset:50px 30px auto;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:12px;padding:14px}.mini .dlg[hidden]{display:none}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -25,11 +35,15 @@
     <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
   <p>Slides fade 400 ms. Open the dialog in each column: the normal screen pops (scale and offset), the kiosk column only fades. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
 <section><h2>Slide fade (sw-display-fade)</h2><div class="row"><button class="btn" id="nx">Next slide</button></div><div id="sl" class="slide sw-display-fade">Slide 1</div></section>
-<section class="cols"><div><h2>Normal screen</h2><div class="mini"><button class="btn" data-d="a" style="margin:10px">Open dialog</button><div class="dlg sw-fx-pop" id="da" hidden data-state="closed">Pop: scale 0.98 and 4 px</div></div></div><div class="sw-kiosk"><h2>.sw-kiosk</h2><div class="mini"><button class="btn" data-d="b" style="margin:10px">Open dialog</button><div class="dlg sw-fx-pop" id="db" hidden data-state="closed">Fade only: distances are 0</div></div></div></section>
-</main>
-<script>
+<section class="cols"><div><h2>Normal screen</h2><div class="mini"><button class="btn" data-d="a" style="margin:10px">Open dialog</button><dialog class="dlg sw-fx-pop" id="da" aria-label="Normal screen comparison" data-state="closed">Pop: scale 0.98 and 4 px <button type="button" class="btn ghost" data-native-close>Close</button></dialog></div></div><div class="sw-kiosk"><h2>.sw-kiosk</h2><div class="mini"><button class="btn" data-d="b" style="margin:10px">Open dialog</button><dialog class="dlg sw-fx-pop" id="db" aria-label="Kiosk comparison" data-state="closed">Fade only: distances are 0 <button type="button" class="btn ghost" data-native-close>Close</button></dialog></div></div></section>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/kiosk-vs-normal-dark-poster.png" data-poster="previews/kiosk-vs-normal-dark-poster.png" data-animated="previews/kiosk-vs-normal-dark.webp" alt="kiosk vs normal dark motion end-state preview" loading="lazy"><figcaption>kiosk vs normal dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/kiosk-vs-normal-light-poster.png" data-poster="previews/kiosk-vs-normal-light-poster.png" data-animated="previews/kiosk-vs-normal-light.webp" alt="kiosk vs normal light motion end-state preview" loading="lazy"><figcaption>kiosk vs normal light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/slide-fade-dark-poster.png" data-poster="previews/slide-fade-dark-poster.png" data-animated="previews/slide-fade-dark.webp" alt="slide fade dark motion end-state preview" loading="lazy"><figcaption>slide fade dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/slide-fade-light-poster.png" data-poster="previews/slide-fade-light-poster.png" data-animated="previews/slide-fade-light.webp" alt="slide fade light motion end-state preview" loading="lazy"><figcaption>slide fade light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
+<style>.mini dialog.dlg{position:fixed;inset:0;margin:auto;height:fit-content;width:min(80vw,22rem)}dialog::backdrop{background:rgb(var(--color-scrim)/.5)}</style><script src="../flow.js"></script><script>
 var n=1,sl=document.getElementById("sl");document.getElementById("nx").onclick=function(){n++;var s=document.createElement("div");s.className="slide sw-display-fade";s.id="sl";s.textContent="Slide "+n;sl.replaceWith(s);sl=s};
-document.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var d=document.getElementById("d"+b.dataset.d);if(!d.hidden){d.dataset.state="closed";setTimeout(function(){d.hidden=true},200);return}d.hidden=false;d.dataset.state="open"}});
+let activeDialog=null,pendingDialog=null,closingDialog=false,overflow='',nativeVersion=0;
+async function closeNative(){if(!activeDialog||closingDialog)return;closingDialog=true;const version=++nativeVersion;const d=activeDialog;d.inert=true;d.dataset.state='closed';void d.offsetWidth;await SwMotionFlow.settled([d]);if(version!==nativeVersion)return;d.close();d.inert=false;activeDialog=null;closingDialog=false;document.documentElement.style.overflow=overflow;if(pendingDialog){const next=pendingDialog;pendingDialog=null;openNative(next)}}
+function openNative(d){if(activeDialog===d){pendingDialog=null;if(closingDialog){nativeVersion++;closingDialog=false;d.inert=false;d.dataset.state='open';d.querySelector('button').focus()}else closeNative();return}if(activeDialog){pendingDialog=d;closeNative();return}activeDialog=d;overflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';d.showModal();d.dataset.state='closed';void d.offsetWidth;d.dataset.state='open'}
+document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>openNative(document.getElementById('d'+b.dataset.d)));
+document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('cancel',e=>{e.preventDefault();pendingDialog=null;closeNative()});d.querySelector('[data-native-close]').onclick=()=>{pendingDialog=null;closeNative()}});
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>
