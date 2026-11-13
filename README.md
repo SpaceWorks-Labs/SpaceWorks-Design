@@ -11,7 +11,7 @@
 The Space Works design system: brand guidelines, logo masters, icons, fonts, design tokens and the UX
 pattern specs. Use it as a git submodule in any Space Works project so every surface draws from one source.
 
-**Version: Space Works Design System v2.0** (`VERSION` = `2.0.0`), which ships alongside SpaceWorks 0.12.0. What
+**Version: Space Works Design System v2.0.1** (`VERSION` = `2.0.1`; v2.0 patch), which ships alongside SpaceWorks 0.12.0. What
 changed is in [`docs/whats-new-v2.0.md`](docs/whats-new-v2.0.md).
 
 > **Current rule (v2.0.1, 2026-11-13):** Design System v2.0 is independent of app 0.12.0. v2.0.0 was released 2026-11-13; 2.0.1 is the fix checkpoint and ledger 397 sets phase 2 to v2.1.0. Observed at the 2026-11-13 batch baseline: local VERSION still reads 2.0.0 and tag v2.0.0 exists; publication and a target version are different facts. (1A-N01) — supersedes the line above; see [docs/current-rules.md#cr-release-01](docs/current-rules.md#cr-release-01).
@@ -75,6 +75,8 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 `tokens/` folder.
 
 ## Changelog
+
+- **v2.0.1 — logo closed state (SW-389).** The shut box now shows all four flaps in the logo's own colours in both themes — top-left and bottom-right green, top-right and bottom-left orange — and each flap keeps its colour through the whole fold, so open and shut read as the same mark. The no-holes, overlap-order, static-rest and reduced-motion guarantees from v2.0 stay. `scripts/check-box-frames.mjs` now checks the four regions by position, previews and the brand guidelines v2 PDF are regenerated, and lesson 40 records why counting colours alone is not enough.
 
 - **Motion kit added in Design System v2.0** in `motion/`: twelve new animation families (route transition, page enter, scroll reveal and pinned hero, overlays, toast, sidebar indicator, collapse and chevrons, skeleton and progress, hover and press, feedback, delight, kiosk and display), each reusable like the box-open loader (CSS copied from the app, `react/` copies, `demo.html`, animated previews checked by `scripts/check-previews.mjs`, README), indexed in `motion/README.md`. `docs/motion.md` gains the animations the audit found missing (splash flight, chevrons, card tilt, logo flap pop and others). The site has a page per family under Motion, plus a "Design decisions" page from `docs/decisions.md`.
 - **Theme reveal template** added in `motion/theme-reveal/`: the light-to-dark circle reveal as a reusable template (CSS, framework-free JS with `switchTheme(next, originEl)`, `demo.html`, the app's React files, animated preview checked by `scripts/check-previews.mjs`). `docs/theming.md` gains a "Switch animation" section; the design site's own theme toggle and the Theming demo now use it, and there is a new Motion page, Theme switch.
