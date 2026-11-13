@@ -1,6 +1,6 @@
 # Skeleton and progress
 
-> **Current rule (v2.0.1, 2026-11-13):** Determinate progress uses a named 0?100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#skeleton).
+> **Current rule (v2.0.1, 2026-11-13):** Determinate progress uses a named 0–100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#skeleton).
 
 Loading placeholders and progress. A skeleton reserves the shape of what is coming and puts the Space Works box spinner in it; it does not shimmer. A progress bar grows to its new value instead of jumping.
 
@@ -68,7 +68,7 @@ Every other animation in the product, and the rules behind them: [`../../docs/mo
 
 ## Flow contract (decision 399)
 
-Determinate progress uses a named 0?100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception.
+Determinate progress uses a named 0–100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception.
 
 [Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#skeleton). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
 

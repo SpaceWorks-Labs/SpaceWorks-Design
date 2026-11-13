@@ -264,6 +264,10 @@
 .sw-pill--danger { background: color-mix(in srgb, rgb(var(--color-danger)) 14%, rgb(var(--color-panel))); color: rgb(var(--color-danger)); }
 .sw-bars { display: flex; align-items: flex-end; gap: 0.5rem; height: 5rem; margin-block: 0.5rem; }
 .sw-bars span { flex: 1; height: calc(var(--v) * 1%); border-radius: 6px 6px 0 0; }
+/* A themed card is a fixed surface: the site variables computed once on :root (focus ring, hover, panel) follow
+   the page theme, so they are recomputed from the card's own tokens. Without this a light card on a dark page
+   drew the dark theme's citron focus ring on cream (1.03:1). DS-QA, v2.1.1. */
+.sw-scope { --sw-focus: rgb(var(--color-focus)); --sw-hover: rgb(var(--color-hover)); --sw-panel: rgb(var(--color-panel)); }
 .sw-sample .sw-box { color: rgb(var(--color-ink)); }
 .sw-sample__btn .sw-box { color: inherit; }
 
@@ -320,3 +324,18 @@
   .sw-sample__btn { padding-inline: 0.75rem; }
   .sw-seg button { padding-inline: 0.75rem; }
 }
+
+/* DS-QA, v2.1.1 — fixed surfaces keep their own focus ring and controls.
+   A logo stage, a mascot frame or a swatch surface is the same colour in both page themes, so anything drawn on it
+   must not take the page theme's colours: the dark theme's citron ring on a cream frame measured 1.03:1, and a
+   page-coloured Play button flipped to black on a white stage. Light surfaces use the teal ring and cream controls;
+   dark surfaces (ink, teal) use the citron ring and ink controls. Guarded by scripts/check-site-qa.mjs (focus, fixed). */
+:is(.sw-frame, .sw-surface--white, .sw-surface--cream, .sw-surface--citron, .sw-surface--sky) { --sw-focus: var(--sw-teal); }
+:is(.sw-surface--ink, .sw-surface--teal) { --sw-focus: var(--sw-citron); }
+:is(.sw-surface--white, .sw-surface--cream, .sw-surface--citron, .sw-surface--sky) .sw-preview-control { background: var(--sw-cream); color: var(--sw-ink); border-color: rgb(20 44 42 / 0.45); }
+:is(.sw-surface--ink, .sw-surface--teal) .sw-preview-control { background: var(--sw-ink); color: var(--sw-cream); border-color: rgb(255 244 232 / 0.45); }
+
+/* The pinned-release install command is one long line per step: it scrolls inside its box on a phone instead of
+   pushing the whole page sideways (390px measured 710px wide). */
+.sw-release-install { min-inline-size: 0; max-inline-size: 100%; }
+.sw-release-install pre { overflow-x: auto; max-inline-size: 100%; }

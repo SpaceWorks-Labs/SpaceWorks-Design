@@ -27,6 +27,15 @@ Verify light/dark, 390/768/1280 and 320 px reflow; open/close dialog, sheet, lef
 
 Phase 2 adds component/adoption/governance contracts and portable token coverage; under semver these are minor additions, per ledger 397. Existing names/paths/source anchors remain. Read the new component pages for previously implicit states and known app gaps. New native exports are starter mappings; they do not turn v2.0.1 into a compiled native library.
 
+## v2.1.0 → v2.1.1 (added 13 November 2026)
+
+A patch: no token, class, path or component contract is removed or renamed. Re-copy the kit from the tag.
+
+- **Logo marks on a fixed surface.** A mark on a card or panel that is always light or always dark (not the page theme) needs the kit's forced ground: add `g-light` or `g-dark` to its `.sw-box`, and update it when that card switches theme. Without it the mark follows `html.dark` and draws cream on cream, or the coloured mark on black. Mono marks take the text colour and need nothing.
+- **Focus ring on a fixed surface.** A focus colour computed once for the page does not follow a themed card: recompute it on the card from the card's own tokens (the site sets `--sw-focus` on `.sw-scope` and on its fixed logo stages and frames).
+- **Demos.** `motion/demo.css` now gives every focusable demo element the brand focus ring; a copied demo keeps it by loading `demo.css` after `tokens.css`.
+- **Text.** Characters lost to an encoding round-trip in v2.1.0 (dashes, ×, ·, curly quotes shown as `?`) are restored; the wording is unchanged.
+
 ## Upgrade acceptance and rollback
 
 - Pin one immutable release commit and record kit version separately from app version/book edition.

@@ -9,7 +9,7 @@
     "sync": "node ../scripts/make-thumbs.mjs && node scripts/sync-kit.mjs",
     "dev": "npm run sync && astro dev",
     "build": "npm run sync && node scripts/check-tokens.mjs && astro build && npm run check:integration",
-    "check:integration": "node scripts/check-publication.mjs && node scripts/check-integration.mjs",
+    "check:integration": "node scripts/check-publication.mjs && node scripts/check-integration.mjs && node ../scripts/check-encoding.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

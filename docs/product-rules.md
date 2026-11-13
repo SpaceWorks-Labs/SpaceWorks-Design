@@ -177,6 +177,32 @@ question is **not checked**; their READMEs describe split and external storage/p
 SpaceWorks questionnaire. Android and iOS: n/a, but they take any server URL and validate it against the
 health endpoint.
 
+### 2.5 Release images: frontend and backend only
+
+**Rule.** A product release publishes exactly two container images: `<product>-frontend` and `<product>-backend`
+(multi-architecture: amd64 and arm64), verified after publishing. Everything else a deployment runs is NOT a product
+image: the database (Postgres), Redis, object storage (Silo/S3-compatible), the reverse proxy, and any other
+infrastructure come from their upstream images at a pinned version, pulled by the install script according to the
+choices made in setup. Background workers and schedulers (Celery worker and beat, migrations, one-off jobs) run from
+the backend image with a different command — never a third image. No all-in-one image.
+
+**Why.** Two images keep releases small, cacheable and auditable, and let every deployment shape (one VPS, split
+hosting, outside database or storage, no-Redis mode) be assembled from the same artefacts. An all-in-one image hides
+version drift of bundled services, cannot use a managed database or storage, and doubles what has to be built,
+scanned and supported. (SpaceWorks retired its all-in-one image in 0.10 and removed it from the registry for 0.12.0.)
+
+**How to apply.**
+- CI builds and publishes only the two images; a release check fails if any other image is pushed.
+- The install script asks which parts run locally or outside (§2.3), tests every outside service first, then pulls
+  and starts only what is needed (`compose pull` + `up -d`); pinned upstream tags live in the compose file and are
+  bumped deliberately.
+- Update scripts pull the new frontend/backend tags plus any changed infrastructure pins, then migrate.
+- Documentation lists the two images and every pinned upstream image with its version.
+- **Object storage is Silo.** The bundled object store is Silo (`pgsty/silo`), pinned by `SILO_IMAGE_TAG` in
+  SpaceWorks. An outside store must be S3-compatible (AWS S3, Cloudflare R2, Backblaze B2, …). In SpaceWorks the
+  compose service and its volume keep the historical names `minio` / `minio_data` on purpose: renaming them would
+  detach the existing evidence data on update.
+
 ---
 
 ## 3. Areas and modules
@@ -717,6 +743,49 @@ you were breaks the flow.
 introduction before the answer arrives; treat a failed request like "nothing yet"; test all three cases, the link set on
 every page the entry point can land on, and the sign-in return path (unit + end-to-end).
 
+### 12.3 Product README structure (every repository)
+
+**Rule.** Every product README follows one structure, modelled on the SpaceWorks hub README, in this order:
+
+1. **Banner.** The rounded brand banner from `brand/readme/`, light and dark through `<picture>`
+   (`prefers-color-scheme`), with descriptive alt text that says what the product is.
+2. **Centred block.** The one-line promise, worded exactly as on the landing page (§12.1); badges in the brand
+   colours (version, licence, CI status); quick links: **Documentation · Design system · Get started**, plus the
+   landing page or live site when one exists.
+3. **Intro paragraph.** What it is, who it is for, the core guarantee, the self-hosted and multi-tenant facts, and
+   where it came from.
+4. **A look around.** A screenshot gallery of the key screens in light and dark, each with alt text and a one-line
+   caption, refreshed every release.
+5. **Quickstart.** The one-line install and the requirements.
+6. **Who it is for.**
+7. **What you can do.** One subsection per area.
+8. **Integrations.**
+9. **Modules / areas.** Linking the product's modules document.
+10. **Install options and Hosting.** Local, outside or hybrid per part (§2.3); release images are the frontend and the
+    backend only (§2.5); the pinned infrastructure, Silo included.
+11. **Architecture.** The stack and a diagram.
+12. **API.** OpenAPI, Swagger UI and ReDoc links (§9).
+13. **Roles and access.**
+14. **Design system.** A link to the site, and the `design-system/` submodule pinned to a release tag.
+15. **Documentation.** The in-repo `docs/` and the in-app docs (§12.1).
+16. **Roadmap.**
+17. **Contributing.** Plus the security policy, the code of conduct, and the decisions and handover files (§13).
+18. **Licence.** Plus credits.
+
+Also: no stale version and no dead link (a CI link check covers the README); screenshots in both themes; the wording
+kept in step with the landing page. The native apps adapt it: store links, phone screenshots and no install one-liner.
+The design-system repository itself uses the relevant subset (banner, centred block, intro, gallery, quickstart,
+documentation, contributing, licence).
+
+**Why.** The README is the front door on GitHub. One order everywhere means a reader who knows one Space Works product
+can find install, hosting, API and licence in any of them, and it keeps the README, the landing page and the docs saying
+the same thing.
+
+**How to apply.** Start a new README from the SpaceWorks hub README and keep the section order; add a section only where
+the product has something the list lacks, never drop one (write "Not yet" with a link to the roadmap instead). Review
+the README in every release: version badge, screenshots in both themes, links, and the promise against the landing
+page.
+
 ---
 
 ## 13. Decisions and handover (project memory)
@@ -866,6 +935,9 @@ it or turn it into a change. Products will be updated later; this list is the wo
   links) and its own feature docs, built from this design system ([12.1](#121-landing-page-and-feature-docs-every-project-except-the-native-apps)).
 - Make every entry point follow the data: introduce when empty, open the only item directly, list several; docs,
   GitHub, features, list and introduction always one click away; sign-in returns to the same action ([12.2](#122-entry-points-follow-the-data-every-product)).
+- Bring every README to the one structure: banner, centred promise with badges and quick links, intro, a look around
+  in both themes, quickstart, then the remaining sections in order; native apps and the design system adapt it
+  ([12.3](#123-product-readme-structure-every-repository)).
 
 ### SpaceWorks
 

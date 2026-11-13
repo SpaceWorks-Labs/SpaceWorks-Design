@@ -536,5 +536,30 @@ Things this table shows at a glance:
 - *Enforced.* App `boxOpen.frames.test.ts` and `boxOpen.sync.test.ts`; design `scripts/check-box-frames.mjs`
   with its additional browser-independent `--raster` mode. Export CSS, three artwork layers and React sources
   together. Raster proofs supplement the actual browser cascade/compositor check.
-- *Source.* SW-412 and its immediate owner correction ? superseding lesson 40's four-visible-regions and
+- *Source.* SW-412 and its immediate owner correction — superseding lesson 40's four-visible-regions and
   coloured-dark rules. Earlier lesson text is retained as history.
+
+**42. A fixed surface takes its colours from itself, never from the page theme.**
+- *Problem.* Demo cards switch theme with `.sw-scope.dark`, but the box-open kit reads `html.dark`, so a light
+  card on a dark page drew its loader, inline marks and logo cream-on-cream (blank), and a dark card on a light page
+  drew the coloured mark. The same leak hid focus rings: variables such as `--sw-focus` are computed once on `:root`,
+  so a cream card or mascot frame on a dark page got the dark theme's citron ring (1.03:1), and a page-coloured Play
+  button flipped to black on a white logo stage.
+- *Rule.* Anything whose appearance is fixed (a themed demo card, a forced light or dark surface, a logo stage, a
+  mascot frame, a colour card or chip, a page image) declares its own ground: the kit's `g-light` / `g-dark` on marks,
+  and the card's own tokens for the focus ring, hover and panel. Anything that should follow the theme must not be
+  pinned. Check every page in both page themes, not only the theme the card was designed in.
+- *Enforced.* `scripts/check-box-grounds.mjs` (every non-mono mark shows exactly one artwork, the right one for its
+  surface, in both page themes and through every demo theme switch) and `scripts/check-site-qa.mjs` (`fixed`: the same
+  element on a fixed surface renders identically in both page themes; `focus`: every focus indicator >= 3:1 against
+  what is behind it).
+- *Source.* Owner screenshot and "make sure fixed places are not affected", 13 November 2026 (lane DS-QA, v2.1.1).
+
+**43. Write docs through UTF-8 only, and check for lost characters.**
+- *Problem.* A v2.1.0 batch was written through a non-UTF-8 path: every em dash, en dash, multiplication sign, middle
+  dot and curly quote became `?` (`SW-412 ? Orange`, `64?352 ms`, `base ? .75`, `?unmodified copies?`), across 13
+  sources and every page generated from them. Link and content checks passed, because the text was still there.
+- *Rule.* Write files with an explicit UTF-8 encoding (PowerShell 5.1 defaults to the ANSI code page). A repair of
+  such characters restores the intended character; it is not a rewording.
+- *Enforced.* `scripts/check-encoding.mjs`, run by the site build (`npm run build` -> `check:integration`).
+- *Source.* DS-QA audit, v2.1.1.

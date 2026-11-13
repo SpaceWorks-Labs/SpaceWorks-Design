@@ -932,7 +932,7 @@ Index addition: [SW-389 — Four visible flaps keep their own colours when shut]
 - **Status:** current. Rule text: [product rules §12.1](product-rules.md#121-landing-page-and-feature-docs-every-project-except-the-native-apps).
 
 
-### SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0
+### SW-412 — Orange outer flaps open in order; black-and-white returns to v2.0.0
 - **Date:** 13 November
 - **Decision:** For coloured marks on light grounds, the orange top-right and bottom-left outer flaps close
   over the hidden green top-left and bottom-right pair. Open them one after the other, then each green flap,
@@ -949,7 +949,7 @@ Index addition: [SW-389 — Four visible flaps keep their own colours when shut]
   the released CSS and markup; frame tests cover the changed sequence. Browser QA and preview/PDF
   regeneration remain release-orchestrator steps.
 
-Index addition: [SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0](#sw-412--orange-outer-flaps-open-in-order-black-and-white-returns-to-v200).
+Index addition: [SW-412 — Orange outer flaps open in order; black-and-white returns to v2.0.0](#sw-412--orange-outer-flaps-open-in-order-black-and-white-returns-to-v200).
 
 ### SW-424 — Entry points follow the data
 - **Date:** 13 November
@@ -961,3 +961,21 @@ Index addition: [SW-412 ? Orange outer flaps open in order; black-and-white retu
 - **Why:** The owner asked for the SpaceWorks homepage to behave this way, then: "generalize and make a rule".
 - **Status:** current. Rule text: [product rules §12.2](product-rules.md#122-entry-points-follow-the-data-every-product).
 
+### SW-433 — Release images are the frontend and the backend only
+- **Date:** 13 November
+- **Decision:** Every product release publishes exactly two images (frontend and backend, amd64 + arm64). Postgres,
+  Redis, object storage, the proxy and other infrastructure are pinned upstream images pulled by the install script
+  as setup decides; workers, schedulers and jobs run from the backend image. No all-in-one image.
+- **Why:** The owner removed the SpaceWorks all-in-one image from the registry and asked for this to be a rule.
+- **Status:** current. Rule text: [product rules §2.5](product-rules.md#25-release-images-frontend-and-backend-only).
+
+
+### SW-436 — Every product README follows one structure
+- **Date:** 13 November
+- **Decision:** Every product README follows one order, modelled on the SpaceWorks hub README: banner (light/dark
+  `<picture>`), a centred block with the landing page's promise, brand-coloured badges and quick links, intro, "A look
+  around" in both themes, quickstart, who it is for, what you can do, integrations, modules, install options and
+  hosting, architecture, API, roles and access, design system, documentation, roadmap, contributing and licence. No
+  stale versions or dead links; native apps and the design-system repository adapt it.
+- **Why:** The owner asked for the product README structure to be a rule, like the landing page and entry points.
+- **Status:** current. Rule text: [product rules §12.3](product-rules.md#123-product-readme-structure-every-repository).

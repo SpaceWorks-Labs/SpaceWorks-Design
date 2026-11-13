@@ -40,12 +40,17 @@ const pdfs = Object.fromEntries(['v1', 'v2'].map(v => [`space-works-brand-guidel
         if (value) img.removeAttribute('srcset');
         else if (posterSet) img.setAttribute('srcset', posterSet);
         button.textContent = value ? 'Pause' : 'Play';
+        // The label itself says what a press does (Play / Pause), so no aria-pressed: a pressed "Pause" reads as a
+        // double negative to a screen reader (DS-QA, v2.1.1).
         button.setAttribute('aria-label', `${value ? 'Pause' : 'Play'} ${img.alt || 'animated preview'}`);
-        button.setAttribute('aria-pressed', String(value));
       };
       button.addEventListener('click', () => paint(!playing));
       wrapper.append(button); paint(false);
       stops.add(() => paint(false));
+    }
+    // Markdown task lists render read-only checkboxes with no label: name each one by its item text (DS-QA, v2.1.1).
+    for (const box of root.querySelectorAll('.task-list-item > input[type="checkbox"]:not([aria-label])')) {
+      box.setAttribute('aria-label', box.parentElement.textContent.trim().replace(/\s+/g, ' '));
     }
     // Existing PDF button wording remains visible. Its accessible name and adjacent metadata are additive.
     for (const link of root.querySelectorAll('a[href$=".pdf"]')) {
@@ -68,5 +73,26 @@ const pdfs = Object.fromEntries(['v1', 'v2'].map(v => [`space-works-brand-guidel
   enhance(document);
   reduce.addEventListener('change', e => { if (e.matches) stops.forEach(stop => stop()); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) stops.forEach(stop => stop()); });
+  // A table that scrolls sideways (phones) must be reachable by keyboard, or its hidden columns are unreadable without
+  // a pointer (WCAG 2.1.1). Only overflowing ones become tab stops; re-checked on resize. DS-QA, v2.1.1.
+  const named = el => (el.querySelector('caption')?.textContent || (() => { let p = el.closest('.sl-markdown-content > *') || el; for (p = p.previousElementSibling; p; p = p.previousElementSibling) if (/^H[2-4]$/.test(p.tagName) || p.classList.contains('sl-heading-wrapper')) return p.textContent; return ''; })() || 'Table').trim().replace(/\s+/g, ' ');
+  const scrollers = () => {
+    for (const el of document.querySelectorAll('main table, main .sw-table-scroll')) {
+      const scrolls = el.scrollWidth > el.clientWidth + 1 && /auto|scroll/.test(getComputedStyle(el).overflowX);
+      if (scrolls && !el.hasAttribute('tabindex')) {
+        el.tabIndex = 0; el.dataset.swScroller = el.hasAttribute('aria-label') || el.hasAttribute('role') ? 'kept' : 'set';
+        if (el.dataset.swScroller === 'set') {
+          if (el.tagName !== 'TABLE') el.setAttribute('role', 'region');
+          el.setAttribute('aria-label', `${named(el)} (scrolls sideways)`);
+        }
+      } else if (!scrolls && el.hasAttribute('data-sw-scroller')) {
+        if (el.dataset.swScroller === 'set') { el.removeAttribute('aria-label'); if (el.tagName !== 'TABLE') el.removeAttribute('role'); }
+        el.removeAttribute('tabindex'); el.removeAttribute('data-sw-scroller');
+      }
+    }
+  };
+  let resizeTimer;
+  addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(scrollers, 150); });
+  if (document.readyState === 'complete') scrollers(); else addEventListener('load', scrollers);
 })();
 </script>

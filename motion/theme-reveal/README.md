@@ -1,6 +1,6 @@
 # Theme reveal
 
-> **Current rule (v2.0.1, 2026-11-13):** The page-snapshot circle uses --sw-theme-duration = slow ? 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#theme-reveal).
+> **Current rule (v2.0.1, 2026-11-13):** The page-snapshot circle uses --sw-theme-duration = slow × 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#theme-reveal).
 
 The Space Works light/dark switch animation. When someone presses the theme toggle, the new theme grows from the
 toggle as a circle and covers the page in 720 ms, so the change reads as chosen, not as a flash. Where the browser
@@ -124,7 +124,7 @@ and `theme-reveal.css` are its framework-free mirror; change them together. `scr
 
 ## Flow contract (decision 399)
 
-The page-snapshot circle uses --sw-theme-duration = slow ? 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values.
+The page-snapshot circle uses --sw-theme-duration = slow × 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values.
 
 [Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#theme-reveal). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
 
