@@ -1,6 +1,6 @@
 # React copies
 
-> **Current rule (v2.0.1, 2026-11-13):** These reference copies now include decision-399 motion fixes and token-derived timing; the retained ?unmodified copies? description below is historical. App-only dependencies still need host adapters. Use the [family flow contract](../README.md#flow-contract-decision-399); see [current rules](../../../docs/current-rules.md#cr-motion-01).
+> **Current rule (v2.0.1, 2026-11-13):** These reference copies now include decision-399 motion fixes and token-derived timing; the retained “unmodified copies” description below is historical. App-only dependencies still need host adapters. Use the [family flow contract](../README.md#flow-contract-decision-399); see [current rules](../../../docs/current-rules.md#cr-motion-01).
 
 `OverlaysDemo.tsx` is the kit's standalone React adapter. It shares `../overlays.js` and `../overlays.css` with the HTML demo: one active layer, exit before replacement, a pending request that follows the latest click, frame-scoped scrims, token skins, focus handling and instant reduced-motion end states. Load `../../demo.css` and the design tokens once in your host application. The component cleans up listeners and pending animation waits when unmounted.
 

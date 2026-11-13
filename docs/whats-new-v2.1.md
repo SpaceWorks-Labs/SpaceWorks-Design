@@ -2,6 +2,8 @@
 
 Design System **v2.1.0**, publication target dated **2026-11-13** (decision 397). This document and a local build do not establish that a GitHub tag or release has been published. The design-system version is independent of SpaceWorks 0.12.0 and the brand-book edition.
 
+> **Release note (added 13 November 2026, v2.1.1):** v2.1.0 was tagged and released on 13 November 2026 ([PR #17](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/pull/17), tag [v2.1.0](https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System/releases/tag/v2.1.0)). v2.1.1 is the QA patch on top of it: demo cards keep their own theme for logo marks and focus rings, characters lost to an encoding round-trip in v2.1.0 are restored, the theme demo gets a keyboard radio model, and product rules §2.5 and §12.3 are added (SW-433, SW-436). See [Releases](releases/README.md) and the README changelog.
+
 ## Find the right reference
 
 - [Current rules](current-rules.md) links the binding guidance beside retained historical statements.

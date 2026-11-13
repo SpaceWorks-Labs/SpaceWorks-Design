@@ -12,12 +12,12 @@ const themes = ['light', 'dark'] as const;
       <section class:list={['sw-scope', 'sw-sample', { dark: t === 'dark' }]} aria-label={`${t} theme demos`}>
         <p class="sw-demo-title sw-sample__title">{t === 'light' ? 'Light' : 'Dark'}</p>
         <p class="sw-demo-cap">Page loader, 72px</p>
-        <div role="status" aria-label="Loading"><BoxMark height={72} variant="loop" /></div>
+        <div role="status" aria-label="Loading"><BoxMark height={72} variant="loop" ground={t} /></div>
         <p class="sw-demo-cap">Inline, 16 / 20 / 24px</p>
         <div class="sw-sample__row">
-          <BoxMark height={16} variant="loop" />
-          <BoxMark height={20} variant="loop" />
-          <BoxMark height={24} variant="loop" />
+          <BoxMark height={16} variant="loop" ground={t} />
+          <BoxMark height={20} variant="loop" ground={t} />
+          <BoxMark height={24} variant="loop" ground={t} />
         </div>
         <p class="sw-demo-cap">Mono, in a button (takes the text colour)</p>
         <div class="sw-sample__row">
@@ -26,7 +26,7 @@ const themes = ['light', 'dark'] as const;
         </div>
         <p class="sw-demo-cap">Logo: folds shut, then opens, on hover or keyboard focus (2200 ms)</p>
         <a href="#logo" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
-          <BoxMark height={40} variant="once" />
+          <BoxMark height={40} variant="once" ground={t} />
           <Wordmark height="2rem" />
         </a>
       </section>

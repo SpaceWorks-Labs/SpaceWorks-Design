@@ -14,6 +14,11 @@
   .sw-box{display:inline-block;vertical-align:middle} .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 
+<style data-ds-focus>
+/* DS-QA v2.1.1: every demo control shows the brand focus ring (teal in light, citron in dark), not the browser default. */
+button:focus-visible,a:focus-visible{outline:2px solid #006E63;outline-offset:2px}
+html.dark button:focus-visible,html.dark a:focus-visible{outline-color:#DFFF8F}
+</style>
 <style data-ds-target-sizes>
 /* Publication integration: 44px house actions; 24px minimum native targets. */
 button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }

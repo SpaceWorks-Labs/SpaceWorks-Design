@@ -1,7 +1,7 @@
 // Dependency-free Edge/CDP harness. Node 22+; EDGE_PATH and DS_REPO may override host defaults.
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync, mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { join, resolve, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
@@ -61,5 +61,11 @@ export async function browser(run) {
     const screenshot = async file => {mkdirSync(resolve(file,'..'),{recursive:true});const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});writeFileSync(file,Buffer.from(r.data,'base64'));};
     await send('Page.enable'); await send('Runtime.enable');
     return await run({send,evaluate,navigate,screenshot,origin});
-  } finally {ws?.close();proc.kill();server.close();}
+  } finally {
+    // Kill the whole Edge tree (renderers and GPU helpers too) and drop the throwaway profile: a bare proc.kill() on
+    // Windows left headless Edge processes behind across many runs (DS-QA, v2.1.1).
+    ws?.close(); server.close();
+    if (process.platform === 'win32' && proc.pid) spawnSync('taskkill', ['/PID', String(proc.pid), '/T', '/F'], { stdio: 'ignore' }); else proc.kill();
+    await delay(300); try { rmSync(profile, { recursive: true, force: true }); } catch {}
+  }
 }

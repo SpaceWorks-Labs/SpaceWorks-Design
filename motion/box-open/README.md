@@ -144,7 +144,7 @@ Rebuild with `node scripts/make-previews.mjs` and verify freshness with `node sc
 
 ## Current animation (SW-412)
 
-**13 November 2026 ? correction to the historical SW-389 descriptions above.** The light coloured mark
+**13 November 2026 — correction to the historical SW-389 descriptions above.** The light coloured mark
 and black-and-white marks are separate animation families. This section takes precedence over the earlier
 four-visible-quarters and coloured-reversed descriptions; those descriptions remain as release history.
 
@@ -162,7 +162,7 @@ four-visible-quarters and coloured-reversed descriptions; those descriptions rem
   geometry, current-colour fills and face strengths. Forced colours uses the released theme geometry,
   with Canvas/CanvasText for the user's palette.
 - **Budgets unchanged:** once 1600 ms; hover 600 ms fold + 1600 ms open = 2200 ms; loop 4400 ms.
-  The loop opens over 0?1584 ms, holds to 2728 ms, folds to 3696 ms, then holds closed to 4400 ms.
+  The loop opens over 0–1584 ms, holds to 2728 ms, folds to 3696 ms, then holds closed to 4400 ms.
   Hover finishes after pointer exit. Reduced motion shows the corresponding static open logo.
 - **Sampling unchanged:** 96 once, 132 hover, 160 loop intervals, with stepped matrices and synchronized
   layer changes. The settle is one small excursion, rather than a repeated spring oscillation.
@@ -171,12 +171,12 @@ Opening windows (once, before CSS sample quantization):
 
 | Motion | Once interval |
 |---|---|
-| Top-right orange | 64?352 ms |
-| Bottom-left orange | 368?656 ms |
-| Top-left green | 672?960 ms |
-| Bottom-right green | 976?1264 ms |
-| Damped settle | 1280?1568 ms |
-| Static rest | 1568?1600 ms and afterwards |
+| Top-right orange | 64–352 ms |
+| Bottom-left orange | 368–656 ms |
+| Top-left green | 672–960 ms |
+| Bottom-right green | 976–1264 ms |
+| Damped settle | 1280–1568 ms |
+| Static rest | 1568–1600 ms and afterwards |
 
 Eight-frame proof times (ms; used by `render-412.mjs` in the release handover):
 

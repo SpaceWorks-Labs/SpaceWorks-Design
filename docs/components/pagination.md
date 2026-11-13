@@ -43,7 +43,7 @@ Page-only label or count+pageSize range context. Whole pager disabled during loa
 | Variant | Choose it for |
 | --- | --- |
 | Page only | Known page count without row total. |
-| Range + page | Known count and pageSize; show first?last of count. |
+| Range + page | Known count and pageSize; show first–last of count. |
 | Single/zero page | No pager; parent supplies range/result state. |
 
 Native products use platform controls with mapped roles/settings. A web keyboard model does not establish native parity. Gallery variants/states are reference compositions, not undocumented app props.

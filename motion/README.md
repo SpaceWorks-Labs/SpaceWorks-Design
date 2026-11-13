@@ -101,6 +101,6 @@ any family's CSS, demo page or preview is stale or missing.
 
 ## Current motion flow (decision 399)
 
-> **Current rule (v2.0.1, 2026-11-13):** The ?copied unchanged? descriptions above record the original kit. Decision 399 repairs portable CSS, React reference copies and demos with token-derived timings, interruptible transitions, accessible behaviour and static image posters. Use [motion-flow](../docs/motion-flow.md), the dated family addenda and current executable recipes; see [current rules](../docs/current-rules.md#cr-motion-01). Historical catalogue rows and assets remain available. Box-open is owned and verified by the logo lane.
+> **Current rule (v2.0.1, 2026-11-13):** The “copied unchanged” descriptions above record the original kit. Decision 399 repairs portable CSS, React reference copies and demos with token-derived timings, interruptible transitions, accessible behaviour and static image posters. Use [motion-flow](../docs/motion-flow.md), the dated family addenda and current executable recipes; see [current rules](../docs/current-rules.md#cr-motion-01). Historical catalogue rows and assets remain available. Box-open is owned and verified by the logo lane.
 
 Run `node scripts/check-motion-flow.mjs --browser` from the repository root. Use `--require-browser` to require the browser scenarios in a capable environment. The orchestrator regenerates animated previews after all lanes finish; posters are separate still assets.

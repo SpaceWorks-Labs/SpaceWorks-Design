@@ -5,7 +5,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 ---
 <aside class="sw-release-install" aria-label="Pinned release installation">
   <p>Release target: <strong>{tag}</strong>. Use the <a href={releaseUrl}>published release</a> and <a href={archiveUrl}>versioned kit ZIP</a> once this tag is published. A local build does not publish a tag. Until then, use your last published tag or an explicitly reviewed commit.</p>
-  <pre><code>{command}</code></pre>
+  <pre tabindex="0" aria-label="Commands to pin this release as a submodule"><code>{command}</code></pre>
   <p>Record the submodule commit in the consuming repository. For an upgrade, fetch tags, check out the reviewed release in <code>design</code>, then review its migration notes and commit the changed submodule SHA in an upgrade PR.</p>
   <p><a href={`${base}downloads/`}>All exports and checksums</a> · <a href={`${base}adoption/`}>Choose a platform</a> · <a href={`${base}releases/migration/`}>Migration guide</a></p>
 </aside>

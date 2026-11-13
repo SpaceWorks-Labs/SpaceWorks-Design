@@ -30,13 +30,19 @@ import { kitUrl } from './kit-url';
 </sw-theme-reveal-demo>
 
 <script>
+  // The card's theme is not the page theme: give its logo marks the kit's forced ground so they follow the card.
+  const syncGround = (scope: Element) => scope.querySelectorAll('.sw-box:not(.mono)').forEach((box) => {
+    const dark = scope.classList.contains('dark');
+    box.classList.toggle('g-dark', dark); box.classList.toggle('g-light', !dark);
+  });
+  document.querySelectorAll('[data-scope]').forEach(syncGround);
   class SwThemeRevealDemo extends HTMLElement {
     connectedCallback() {
       const scope = this.querySelector<HTMLElement>('[data-scope]')!;
       const toggle = this.querySelector<HTMLButtonElement>('[data-toggle]')!;
       toggle.addEventListener('click', () => {
         const next = scope.classList.contains('dark') ? 'light' : 'dark';
-        const paint = () => scope.classList.toggle('dark', next === 'dark');
+        const paint = () => { scope.classList.toggle('dark', next === 'dark'); syncGround(scope); };
         const reveal = (window as any).SwThemeReveal;
         if (reveal) reveal.switchTheme(next, toggle, { apply: paint });
         else paint();

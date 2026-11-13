@@ -3219,42 +3219,42 @@
     "motion/feedback/previews/stamp-dark.gif": {
       "width": 440,
       "height": 220,
-      "bytes": 21292,
+      "bytes": 21115,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-dark-gif-440.webp",
           "width": 440,
-          "bytes": 2298
+          "bytes": 2336
         }
       ]
     },
     "motion/feedback/previews/stamp-dark.webp": {
       "width": 440,
       "height": 220,
-      "bytes": 18638,
+      "bytes": 18694,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-dark-440.webp",
           "width": 440,
-          "bytes": 2286
+          "bytes": 2250
         }
       ]
     },
     "motion/feedback/previews/stamp-light.gif": {
       "width": 440,
       "height": 220,
-      "bytes": 20336,
+      "bytes": 20299,
       "animated": true,
       "posterFrame": 7,
       "variants": [
         {
           "path": "thumbs/motion/feedback/previews/stamp-light-gif-440.webp",
           "width": 440,
-          "bytes": 1578
+          "bytes": 1552
         }
       ]
     },
@@ -3268,7 +3268,7 @@
         {
           "path": "thumbs/motion/feedback/previews/stamp-light-440.webp",
           "width": 440,
-          "bytes": 1542
+          "bytes": 1556
         }
       ]
     },
@@ -3471,7 +3471,7 @@
     "motion/overlays/previews/dialog-light.gif": {
       "width": 720,
       "height": 520,
-      "bytes": 35689,
+      "bytes": 35877,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3485,7 +3485,7 @@
     "motion/overlays/previews/dialog-light.webp": {
       "width": 720,
       "height": 520,
-      "bytes": 24310,
+      "bytes": 24314,
       "animated": true,
       "posterFrame": 3,
       "variants": [
@@ -3555,7 +3555,7 @@
     "motion/overlays/previews/drawer-left-light.gif": {
       "width": 720,
       "height": 480,
-      "bytes": 46833,
+      "bytes": 46790,
       "animated": true,
       "posterFrame": 4,
       "variants": [
