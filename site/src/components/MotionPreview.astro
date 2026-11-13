@@ -1,0 +1,16 @@
+---
+import { thumb } from './media';
+import { kitUrl } from './kit-url';
+import { motionDescription } from './motion-description';
+interface Props { path: string; alt?: string }
+const { path, alt = '' } = Astro.props;
+const poster = thumb(path);
+---
+<span class="sw-motion-poster">
+  <img {...poster} data-animation={kitUrl(path)} alt={`${alt}${alt ? '. ' : ''}${motionDescription(path)}`} loading="lazy" />
+  <a href={kitUrl(path)} download aria-label={`Download original animation: ${motionDescription(path)}`}>Download original</a>
+</span>
+<style>
+  /* WCAG 2.5.8: the download link is a target of its own, at least 24 CSS px tall. */
+  .sw-motion-poster a { display: inline-flex; align-items: center; min-height: 24px; padding-block: 2px; }
+</style>

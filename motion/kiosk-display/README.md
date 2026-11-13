@@ -1,5 +1,7 @@
 # Kiosk and display screens
 
+> **Current rule (v2.0.1, 2026-11-13):** The comparison now uses native dialog semantics and one pending request, including Escape, focus restore and scroll lock. Kiosk/TV distances are zero, so only opacity changes; initial slide fade is the documented passive-display arrival exception. Slide replacement is user-triggered, never a repainting idle loop. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#kiosk-display).
+
 The rules for screens that stay on all day: the space display (a rotating slide show on a Raspberry Pi), the kiosk and the stats TV. Slides change with one opacity fade; the distance tokens are zeroed so every shared animation (route, dialog, drawer, menu, toast) becomes a fade. Nothing loops and nothing keeps repainting while idle.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -23,6 +25,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 A small Raspberry Pi browser, a wall TV or a shared kiosk must stay idle between changes and must never move content a bystander is reading. A fade shows a change without motion across the screen; zeroing the tokens gives every component that behaviour without per-component code.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#kiosk-display) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -50,6 +54,8 @@ Colour-neutral; the displays use the same tokens and the black-family dark theme
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#kiosk-display) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="../../tokens/tokens.css"><link rel="stylesheet" href="../overlays/overlays.css"><link rel="stylesheet" href="kiosk-display.css">
 <div class="sw-kiosk"> <!-- every shared animation inside is a fade -->
@@ -58,3 +64,17 @@ Colour-neutral; the displays use the same tokens and the black-family dark theme
 ```
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+The comparison now uses native dialog semantics and one pending request, including Escape, focus restore and scroll lock. Kiosk/TV distances are zero, so only opacity changes; initial slide fade is the documented passive-display arrival exception. Slide replacement is user-triggered, never a repainting idle loop.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#kiosk-display). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-400` | `calc(var(--sw-dur-slow) * 1.66666667)` |

@@ -1,0 +1,20 @@
+{
+  "light": {
+    "brand": "#006E63",
+    "brand-hover": "#02675D",
+    "brand-active": "#046158",
+    "on-brand": "#FFF4E8",
+    "brand-soft": "#E0EEEC",
+    "brand-ink": "#006E63",
+    "brand-boundary": "#006E63"
+  },
+  "dark": {
+    "brand": "#006E63",
+    "brand-hover": "#02675D",
+    "brand-active": "#046158",
+    "on-brand": "#FFF4E8",
+    "brand-soft": "#121D1C",
+    "brand-ink": "#80B1A6",
+    "brand-boundary": "#80B1A6"
+  }
+}

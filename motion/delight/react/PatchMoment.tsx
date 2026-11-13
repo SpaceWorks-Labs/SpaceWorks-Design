@@ -11,21 +11,21 @@ import "./patch.css";
  * from the start. Uses the shipped light or dark walk sheet as supplied: never recoloured or flipped.
  * Never place it inside or beside the box symbol (so never over the tiled-symbol backgrounds).
  */
-export function PatchMoment({ facing = "right", className = "" }: { facing?: "left" | "right"; className?: string }) {
+export function PatchMoment({ facing = "right", className = "", paused = false }: { facing?: "left" | "right"; className?: string; paused?: boolean }) {
   const theme = useSyncExternalStore(subscribeTheme, currentTheme, () => "light" as const);
   const reduced = useReducedMotion();
   const node = useRef<HTMLSpanElement>(null);
   const [trot, setTrot] = useState(false);
   useEffect(() => {
     const target = node.current;
-    if (reduced || !target || typeof window.IntersectionObserver !== "function") return;
+    if (reduced || paused || !target || typeof window.IntersectionObserver !== "function") return;
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { setTrot(true); observer.disconnect(); }
     }, { threshold: 0.6 });
     observer.observe(target);
     return () => observer.disconnect();
-  }, [reduced]);
+  }, [reduced, paused]);
   const sheet = (facing === "left" ? PATCH.walkLeft : PATCH.walkRight)[theme];
-  return <span ref={node} aria-hidden="true" data-patch-moment="" data-trot={trot && !reduced ? "" : undefined}
+  return <span ref={node} aria-hidden="true" data-patch-moment="" data-trot={trot && !reduced && !paused ? "" : undefined}
     className={`sw-patch-moment ${className}`} style={{ backgroundImage: `url(${sheet})` }} />;
 }

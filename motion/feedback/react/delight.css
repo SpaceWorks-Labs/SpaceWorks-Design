@@ -1,19 +1,32 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-360: calc(var(--sw-dur-slow) * 1.50000000);
+  --sw-local-duration-4000: calc(var(--sw-dur-slow) * 16.66666667);
+}
 @keyframes sw-pass-tear { from { transform: translateY(-8px); } to { transform: translateY(0); } }
 @keyframes sw-result-arrive { from { transform: scale(.96); } to { transform: scale(1); } }
 @keyframes sw-companion-walk { 50% { transform: translateX(16px); } }
 @keyframes sw-logbook-open { from { transform: perspective(600px) rotateY(-8deg); } to { transform: perspective(600px) rotateY(0); } }
-.sw-delight-pass { animation: sw-pass-tear 360ms ease-out; }
-.sw-delight-result { animation: sw-result-arrive 360ms ease-out; }
-.sw-delight-walk { animation: sw-companion-walk 4s ease-in-out infinite; }
-.sw-delight-logbook { animation: sw-logbook-open 360ms ease-out; }
+.sw-delight-pass { animation: sw-pass-tear var(--sw-local-duration-360) var(--sw-ease-enter); }
+.sw-delight-result { animation: sw-result-arrive var(--sw-local-duration-360) var(--sw-ease-enter); }
+.sw-delight-walk { animation: sw-companion-walk var(--sw-local-duration-4000) var(--sw-ease-standard) infinite; }
+.sw-delight-logbook { animation: sw-logbook-open var(--sw-local-duration-360) var(--sw-ease-enter); }
 .sw-blueprint-decoration { background-image: linear-gradient(rgb(var(--color-line)) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--color-line)) 1px, transparent 1px); background-size: 32px 32px; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .sw-delight-glyph:hover { transform: rotate(-3deg); transition: transform 120ms; }
+  .sw-delight-glyph:hover { transform: rotate(-3deg); transition: transform var(--sw-dur-fast) var(--sw-ease-standard); }
 }
 @media (prefers-reduced-motion: reduce) {
   .sw-delight-pass, .sw-delight-result, .sw-delight-walk, .sw-delight-logbook { animation: none; }
 }
-::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--sw-dur-base); animation-timing-function: var(--sw-ease-standard); }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.sw-delight-glyph { transition: transform var(--sw-dur-fast) var(--sw-ease-standard); }
+@media (prefers-reduced-motion: reduce) { .sw-delight-glyph { transition: none; } }

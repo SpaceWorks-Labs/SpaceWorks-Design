@@ -12,7 +12,7 @@ export function syncThemeReveal({ root, kit, generated, docsDir, repo, prepare, 
 
   const raw = readFileSync(join(reveal, 'README.md'), 'utf8').replace(/^﻿/, '');
   const { body } = splitTitle(raw, 'Theme switch');
-  const rest = body.replace(/^[\s\S]*?(?=^## Files)/m, '');
+  const rest = body;
   const blob = `${repo}/blob/main/motion/theme-reveal`;
   writeFileSync(
     join(docsDir, 'motion', 'theme-reveal.mdx'),
@@ -24,6 +24,7 @@ editUrl: ${repo}/edit/main/motion/theme-reveal/README.md
 ---
 
 import ThemeRevealDemo from '../../../components/ThemeRevealDemo.astro';
+import MotionPreview from '../../../components/MotionPreview.astro';
 
 When someone presses the theme toggle, the new theme grows from the toggle as a circle and covers the page in 720 ms, so the change reads as chosen, not as a flash. Where the browser cannot do that it cross-fades; under reduced motion it switches instantly. The header toggle of this site uses the same template.
 

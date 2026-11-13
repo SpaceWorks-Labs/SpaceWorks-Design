@@ -128,9 +128,20 @@ button, input, select, textarea,
   background: var(--sw-panel);
 }
 
+/* Long words and URLs break only when they would overflow. ("anywhere" also shrank every flex item's minimum
+   width to one letter, which is how the logo cards' SVG / PNG pills ended up as "SV/G" and "S/V/G".) */
 .sl-markdown-content {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
+
+/* Compact labels keep whole words and never shrink. Their groups wrap; longer prose/action labels may reflow. */
+:is(.sl-badge, .sw-pill, .sw-version, .sw-logo__links a, .sw-frame figcaption a, .sw-seg button, kbd) {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+button, [role="button"], .sl-link-button { flex-shrink: 0; max-inline-size: 100%; word-break: normal; }
+.sl-link-button { white-space: normal; }
 
 /* Header search and navigation. */
 site-search > button[data-open-modal] {
@@ -467,6 +478,8 @@ site-search > button[data-open-modal] kbd {
 .sw-hero-badge {
   display: block;
   width: fit-content;
+  max-inline-size: 100%;
+  white-space: normal;
   margin-bottom: var(--sw-space-3);
   padding: var(--sw-space-1) var(--sw-space-3);
   border-radius: 999px;
@@ -548,4 +561,23 @@ site-search > button[data-open-modal] kbd {
 /* Demo frames never push the page sideways. */
 .sl-markdown-content iframe {
   max-width: 100%;
+}
+
+/* Explicit hit boxes for standalone documentation actions; inline prose keeps the WCAG inline exception. */
+.sl-anchor-link { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; }
+.sl-markdown-content .sl-heading-wrapper { display: flex; align-items: flex-start; gap: 0.25em; }
+.sl-markdown-content .sl-heading-wrapper > :first-child:not([hidden]) { display: block; flex: 1; min-width: 0; margin: 0; padding-inline-end: 0; }
+.sl-markdown-content .sl-heading-wrapper > .sl-anchor-link { flex: 0 0 24px; margin-inline-start: 0; }
+.sl-markdown-content .sl-heading-wrapper:has(> :first-child:is(.sr-only, [hidden])) { display: contents; }
+footer a, .sw-page-text > a { min-height: 24px; }
+.sw-page-text > a { display: inline-block; }
+
+/* Keep both header links and the search/menu actions reachable with enlarged text at phone widths. */
+@media (max-width: 30rem) {
+  :root { --sl-nav-pad-x: 8px; --sl-nav-gap: 8px; --sl-menu-button-size: 44px; }
+  header .title-wrapper { flex: 1 1 auto; overflow: visible; }
+  site-search > button[data-open-modal] { width: 44px; min-width: 44px; height: 44px; padding: 8px; }
+  .sl-menu-button { padding: 8px; }
+  .sl-menu-button svg { width: 24px; height: 24px; flex: none; }
+  .sl-link-button { flex-wrap: wrap; padding-inline: 0.75rem; }
 }

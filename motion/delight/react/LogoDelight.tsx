@@ -18,20 +18,23 @@ export function LogoDelight({ pathname, onLogoClick }: { pathname: string; onLog
     return () => root.removeAttribute("data-sw-delight");
   }, [active]);
   useEffect(() => {
-    const timers = new Set<number>();
+    const running = new Set<HTMLElement>();
     const clicked = (event: MouseEvent) => {
       const logo = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-logo]") : null;
       if (!logo) return;
       onLogoClick?.();
       if (!active || reduced) return;
       // Restart the spring when clicks come quickly: drop the mark, force a style flush, set it again.
-      logo.removeAttribute("data-logo-pop");
-      void logo.offsetWidth;
-      logo.setAttribute("data-logo-pop", "");
-      timers.add(window.setTimeout(() => logo.removeAttribute("data-logo-pop"), 600));
+      if (running.has(logo)) return;
+      running.add(logo); logo.setAttribute("data-logo-pop", "");
+      const animations = logo.getAnimations({ subtree: true });
+      Promise.allSettled(animations.map(animation => animation.finished)).then(() => {
+        if (!running.has(logo)) return;
+        running.delete(logo); logo.removeAttribute("data-logo-pop");
+      });
     };
     document.addEventListener("click", clicked);
-    return () => { document.removeEventListener("click", clicked); timers.forEach(clearTimeout); };
+    return () => { document.removeEventListener("click", clicked); running.forEach(logo => logo.removeAttribute("data-logo-pop")); running.clear(); };
   }, [active, reduced, onLogoClick]);
   return null;
 }

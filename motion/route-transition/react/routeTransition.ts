@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from "./motion";
+import { MOTION_MS, prefersReducedMotion } from "./motion";
 
 // Route changes use View Transitions where they exist. Only the element marked [data-sw-main]
 // animates (src/styles/motionRoute.css), so the sidebar and top bar stay put. The attribute that
@@ -7,14 +7,16 @@ import { prefersReducedMotion } from "./motion";
 // the commit always runs, and a timer settles the transition if the new page is slow to render.
 
 export type RouteDirection = "forward" | "back" | "lateral" | "fade";
-type Transition = { finished: Promise<unknown> };
+type Transition = { finished: Promise<unknown>; skipTransition: () => void };
 type TransitionDocument = Document & { startViewTransition?: (update: () => Promise<void> | void) => Transition };
 
-const SETTLE_MS = 160;
-const START_MS = 400;
+const SETTLE_MS = () => MOTION_MS.base;
+const START_MS = () => MOTION_MS.slow;
 const parse = (value: string) => new URL(value, "http://sw.invalid");
 const segments = (path: string) => path.split("/").filter(Boolean);
 
+let active: Transition | null = null;
+let generation = 0;
 let pending: { resolve: () => void; timer: ReturnType<typeof setTimeout> } | null = null;
 
 /** Search and hash changes stay on the same page: no transition, no focus move. */
@@ -40,22 +42,24 @@ export function canTransitionRoute(from: string, to: string): boolean {
 
 /** Runs `commit` (the real navigation) inside a View Transition when allowed, otherwise just runs it. */
 export function navigateWithTransition(commit: () => void, from: string, to: string): void {
+  const version = ++generation; active?.skipTransition();
+  settleRouteTransition();
   if (!canTransitionRoute(from, to)) { commit(); return; }
   const doc = document as TransitionDocument;
   const root = document.documentElement;
-  const cleanUp = () => { root.removeAttribute("data-sw-vt"); root.removeAttribute("data-sw-nav"); };
+  const cleanUp = () => { if (version !== generation) return; active = null; root.removeAttribute("data-sw-vt"); root.removeAttribute("data-sw-nav"); };
   root.setAttribute("data-sw-vt", "route");
   root.setAttribute("data-sw-nav", routeDirection(from, to));
   let committed = false;
-  const run = () => { if (!committed) { committed = true; commit(); } };
+  const run = () => { if (version !== generation) return; if (!committed) { committed = true; commit(); } };
   try {
-    const transition = doc.startViewTransition!(() => new Promise<void>(resolve => {
+    const transition = active = doc.startViewTransition!(() => new Promise<void>(resolve => {
       run();
-      pending = { resolve, timer: setTimeout(() => { pending = null; resolve(); }, SETTLE_MS) };
+      pending = { resolve, timer: setTimeout(() => { pending = null; resolve(); }, SETTLE_MS()) };
     }));
     transition.finished.then(cleanUp, cleanUp);
     // If the browser never calls back (hidden tab), navigate anyway.
-    setTimeout(run, START_MS);
+    setTimeout(run, START_MS());
   } catch {
     cleanUp();
     run();
@@ -77,7 +81,8 @@ export function replayRouteEnter(direction: RouteDirection): void {
   const region = document.querySelector<HTMLElement>("[data-sw-main]");
   if (!region) return;
   region.setAttribute("data-sw-enter", direction);
+  const running = region.getAnimations().filter(animation => animation.playState === "running");
+  if (running.length) return;
   region.classList.remove("sw-route-enter");
-  void region.offsetWidth;
-  region.classList.add("sw-route-enter");
+  requestAnimationFrame(() => region.classList.add("sw-route-enter"));
 }

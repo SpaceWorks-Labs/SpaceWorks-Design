@@ -1,4 +1,4 @@
-import { useLayoutEffect, type RefObject } from "react";
+import { useLayoutEffect, useRef, type RefObject } from "react";
 
 /**
  * Positions `indicator` (absolutely placed inside `container`, which must be `position: relative`)
@@ -8,11 +8,12 @@ import { useLayoutEffect, type RefObject } from "react";
  * container gets `data-slide` once placed so CSS can drop the item's own highlight.
  */
 export function useSlideIndicator(container: RefObject<HTMLElement | null>, indicator: RefObject<HTMLElement | null>, selector: string, key: unknown) {
+  const placedRef = useRef(false);
   useLayoutEffect(() => {
     const host = container.current;
     const bar = indicator.current;
     if (!host || !bar) return;
-    let placed = false;
+    let placed = placedRef.current;
     const place = (animate: boolean) => {
       const target = host.querySelector<HTMLElement>(selector);
       if (!target || !target.offsetWidth) { bar.style.opacity = "0"; host.removeAttribute("data-slide"); placed = false; return; }
@@ -26,7 +27,7 @@ export function useSlideIndicator(container: RefObject<HTMLElement | null>, indi
       bar.style.transform = `translate(${x}px, ${y}px)`;
       bar.style.opacity = "1";
       host.setAttribute("data-slide", "");
-      placed = true;
+      placed = true; placedRef.current = true;
     };
     place(true);
     if (typeof ResizeObserver === "undefined") return;

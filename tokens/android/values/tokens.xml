@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated. Composite strings retain DTCG JSON; see ARCHITECTURE.md. -->
+<resources>
+  <color name="sw_primitive_color_hex142c2a">#ff142c2a</color>
+  <color name="sw_primitive_color_hex006e63">#ff006e63</color>
+  <color name="sw_primitive_color_hexff7447">#ffff7447</color>
+  <color name="sw_primitive_color_hexdfff8f">#ffdfff8f</color>
+  <color name="sw_primitive_color_hexb5cdff">#ffb5cdff</color>
+  <color name="sw_primitive_color_hexffd447">#ffffd447</color>
+  <color name="sw_primitive_color_hexfff4e8">#fffff4e8</color>
+  <color name="sw_primitive_color_hex000000">#ff000000</color>
+  <color name="sw_semantic_color_bg">#fffff4e8</color>
+  <color name="sw_semantic_color_surface">#fff6ece0</color>
+  <color name="sw_primitive_color_hexf6ece0">#fff6ece0</color>
+  <color name="sw_semantic_color_panel">#ffffffff</color>
+  <color name="sw_primitive_color_hexffffff">#ffffffff</color>
+  <color name="sw_semantic_color_hover">#ffefe6db</color>
+  <color name="sw_primitive_color_hexefe6db">#ffefe6db</color>
+  <color name="sw_semantic_color_line">#ffd5d0c6</color>
+  <color name="sw_primitive_color_hexd5d0c6">#ffd5d0c6</color>
+  <color name="sw_semantic_color_outline">#ff828a83</color>
+  <color name="sw_primitive_color_hex828a83">#ff828a83</color>
+  <color name="sw_semantic_color_ink">#ff142c2a</color>
+  <color name="sw_semantic_color_muted">#ff5b6863</color>
+  <color name="sw_primitive_color_hex5b6863">#ff5b6863</color>
+  <color name="sw_semantic_color_focus">#ff006e63</color>
+  <color name="sw_semantic_color_accent">#ff006e63</color>
+  <color name="sw_semantic_color_accent_hover">#ff02675d</color>
+  <color name="sw_primitive_color_hex02675d">#ff02675d</color>
+  <color name="sw_semantic_color_accent_active">#ff046158</color>
+  <color name="sw_primitive_color_hex046158">#ff046158</color>
+  <color name="sw_semantic_color_on_accent">#fffff4e8</color>
+  <color name="sw_semantic_color_accent_soft">#ffe0eeec</color>
+  <color name="sw_primitive_color_hexe0eeec">#ffe0eeec</color>
+  <color name="sw_semantic_color_accent_ink">#ff006e63</color>
+  <color name="sw_semantic_color_brand">#ff006e63</color>
+  <color name="sw_semantic_color_brand_hover">#ff02675d</color>
+  <color name="sw_semantic_color_brand_active">#ff046158</color>
+  <color name="sw_semantic_color_on_brand">#fffff4e8</color>
+  <color name="sw_semantic_color_brand_soft">#ffe0eeec</color>
+  <color name="sw_semantic_color_brand_ink">#ff006e63</color>
+  <color name="sw_semantic_color_brand_boundary">#ff006e63</color>
+  <color name="sw_semantic_color_emphasis">#ffff7447</color>
+  <color name="sw_semantic_color_emphasis_hover">#ffff8157</color>
+  <color name="sw_primitive_color_hexff8157">#ffff8157</color>
+  <color name="sw_semantic_color_emphasis_active">#ffff8e67</color>
+  <color name="sw_primitive_color_hexff8e67">#ffff8e67</color>
+  <color name="sw_semantic_color_on_emphasis">#ff142c2a</color>
+  <color name="sw_semantic_color_emphasis_soft">#ffffeee9</color>
+  <color name="sw_primitive_color_hexffeee9">#ffffeee9</color>
+  <color name="sw_semantic_color_success">#ffdfff8f</color>
+  <color name="sw_semantic_color_success_hover">#ffcbea85</color>
+  <color name="sw_primitive_color_hexcbea85">#ffcbea85</color>
+  <color name="sw_semantic_color_success_active">#ffb6d57b</color>
+  <color name="sw_primitive_color_hexb6d57b">#ffb6d57b</color>
+  <color name="sw_semantic_color_on_success">#ff142c2a</color>
+  <color name="sw_semantic_color_success_soft">#fffbfff2</color>
+  <color name="sw_primitive_color_hexfbfff2">#fffbfff2</color>
+  <color name="sw_semantic_color_success_ink">#ff536d49</color>
+  <color name="sw_primitive_color_hex536d49">#ff536d49</color>
+  <color name="sw_semantic_color_warn">#ffffd447</color>
+  <color name="sw_semantic_color_warn_hover">#ffe8c344</color>
+  <color name="sw_primitive_color_hexe8c344">#ffe8c344</color>
+  <color name="sw_semantic_color_warn_active">#ffd0b241</color>
+  <color name="sw_primitive_color_hexd0b241">#ffd0b241</color>
+  <color name="sw_semantic_color_on_warn">#ff142c2a</color>
+  <color name="sw_semantic_color_warn_soft">#fffffae9</color>
+  <color name="sw_primitive_color_hexfffae9">#fffffae9</color>
+  <color name="sw_semantic_color_warn_ink">#ff696834</color>
+  <color name="sw_primitive_color_hex696834">#ff696834</color>
+  <color name="sw_semantic_color_info">#ffb5cdff</color>
+  <color name="sw_semantic_color_info_hover">#ffa5bdea</color>
+  <color name="sw_primitive_color_hexa5bdea">#ffa5bdea</color>
+  <color name="sw_semantic_color_info_active">#ff95add4</color>
+  <color name="sw_primitive_color_hex95add4">#ff95add4</color>
+  <color name="sw_semantic_color_on_info">#ff142c2a</color>
+  <color name="sw_semantic_color_info_soft">#fff6f9ff</color>
+  <color name="sw_primitive_color_hexf6f9ff">#fff6f9ff</color>
+  <color name="sw_semantic_color_info_ink">#ff51697b</color>
+  <color name="sw_primitive_color_hex51697b">#ff51697b</color>
+  <color name="sw_semantic_color_danger">#ffb91c1c</color>
+  <color name="sw_primitive_color_hexb91c1c">#ffb91c1c</color>
+  <color name="sw_semantic_color_danger_hover">#ff991b1b</color>
+  <color name="sw_primitive_color_hex991b1b">#ff991b1b</color>
+  <color name="sw_semantic_color_danger_active">#ff851e1d</color>
+  <color name="sw_primitive_color_hex851e1d">#ff851e1d</color>
+  <color name="sw_semantic_color_on_danger">#fffff4e8</color>
+  <color name="sw_semantic_color_danger_line">#fffca5a5</color>
+  <color name="sw_primitive_color_hexfca5a5">#fffca5a5</color>
+  <color name="sw_semantic_color_sidebar">#ffdfff8f</color>
+  <color name="sw_semantic_color_sidebar_hover">#fff2ffd2</color>
+  <color name="sw_primitive_color_hexf2ffd2">#fff2ffd2</color>
+  <color name="sw_semantic_color_sidebar_active">#ff006e63</color>
+  <color name="sw_semantic_color_scrim">#ff142c2a</color>
+  <color name="sw_semantic_chart_series1">#ff006e63</color>
+  <color name="sw_semantic_chart_series2">#ffff7447</color>
+  <color name="sw_semantic_chart_series3">#ffdfff8f</color>
+  <color name="sw_semantic_chart_series4">#ffb5cdff</color>
+  <color name="sw_semantic_chart_series5">#ffffd447</color>
+  <color name="sw_semantic_chart_edge">#ff142c2a</color>
+  <color name="sw_semantic_chart_danger">#ffb91c1c</color>
+  <color name="sw_component_loader_under">#ff354845</color>
+  <color name="sw_primitive_color_hex354845">#ff354845</color>
+  <color name="sw_component_loader_spark">#ff142c2a</color>
+  <color name="sw_component_loader_seam">#ff142c2a</color>
+  <color name="sw_component_aurora_background">#fffff4e8</color>
+  <color name="sw_component_aurora_text">#ff142c2a</color>
+  <color name="sw_component_aurora_label">#ff006e63</color>
+  <color name="sw_component_aurora_header">#ff006e63</color>
+  <color name="sw_component_aurora_ribbon">#ffdfff8f</color>
+  <color name="sw_component_aurora_tail">#ffff7447</color>
+  <color name="sw_primitive_color_hex0b0b0b">#ff0b0b0b</color>
+  <color name="sw_primitive_color_hex141414">#ff141414</color>
+  <color name="sw_primitive_color_hex1c1c1c">#ff1c1c1c</color>
+  <color name="sw_primitive_color_hex2c2c2c">#ff2c2c2c</color>
+  <color name="sw_primitive_color_hex787878">#ff787878</color>
+  <color name="sw_primitive_color_hexacacac">#ffacacac</color>
+  <color name="sw_primitive_color_hex121d1c">#ff121d1c</color>
+  <color name="sw_primitive_color_hex80b1a6">#ff80b1a6</color>
+  <color name="sw_primitive_color_hex221a17">#ff221a17</color>
+  <color name="sw_primitive_color_hex20221b">#ff20221b</color>
+  <color name="sw_primitive_color_hexe9fcaa">#ffe9fcaa</color>
+  <color name="sw_primitive_color_hex222017">#ff222017</color>
+  <color name="sw_primitive_color_hexffde77">#ffffde77</color>
+  <color name="sw_primitive_color_hex1e1f22">#ff1e1f22</color>
+  <color name="sw_primitive_color_hexcbd9f8">#ffcbd9f8</color>
+  <color name="sw_primitive_color_hexfdb9b6">#fffdb9b6</color>
+  <color name="sw_primitive_color_hexfdc9c3">#fffdc9c3</color>
+  <color name="sw_primitive_color_hex7c6261">#ff7c6261</color>
+  <color name="sw_primitive_color_hex66625d">#ff66625d</color>
+  <color name="sw_primitive_brand_deep_ink">#ff142c2a</color>
+  <color name="sw_primitive_brand_maker_teal">#ff006e63</color>
+  <color name="sw_primitive_brand_workshop_orange">#ffff7447</color>
+  <color name="sw_primitive_brand_citron">#ffdfff8f</color>
+  <color name="sw_primitive_brand_sky_blue">#ffb5cdff</color>
+  <color name="sw_primitive_brand_warm_yellow">#ffffd447</color>
+  <color name="sw_primitive_brand_warm_cream">#fffff4e8</color>
+  <dimen name="sw_primitive_spacing_0">0dp</dimen>
+  <dimen name="sw_semantic_spacing_0">0dp</dimen>
+  <dimen name="sw_primitive_spacing_4">4dp</dimen>
+  <dimen name="sw_semantic_spacing_4">4dp</dimen>
+  <dimen name="sw_primitive_spacing_8">8dp</dimen>
+  <dimen name="sw_semantic_spacing_8">8dp</dimen>
+  <dimen name="sw_primitive_spacing_12">12dp</dimen>
+  <dimen name="sw_semantic_spacing_12">12dp</dimen>
+  <dimen name="sw_primitive_spacing_16">16dp</dimen>
+  <dimen name="sw_semantic_spacing_16">16dp</dimen>
+  <dimen name="sw_primitive_spacing_20">20dp</dimen>
+  <dimen name="sw_semantic_spacing_20">20dp</dimen>
+  <dimen name="sw_primitive_spacing_24">24dp</dimen>
+  <dimen name="sw_semantic_spacing_24">24dp</dimen>
+  <dimen name="sw_primitive_spacing_28">28dp</dimen>
+  <dimen name="sw_semantic_spacing_28">28dp</dimen>
+  <dimen name="sw_primitive_spacing_32">32dp</dimen>
+  <dimen name="sw_semantic_spacing_32">32dp</dimen>
+  <dimen name="sw_primitive_spacing_36">36dp</dimen>
+  <dimen name="sw_semantic_spacing_36">36dp</dimen>
+  <dimen name="sw_primitive_spacing_40">40dp</dimen>
+  <dimen name="sw_semantic_spacing_40">40dp</dimen>
+  <dimen name="sw_primitive_spacing_44">44dp</dimen>
+  <dimen name="sw_semantic_spacing_44">44dp</dimen>
+  <dimen name="sw_primitive_spacing_48">48dp</dimen>
+  <dimen name="sw_semantic_spacing_48">48dp</dimen>
+  <dimen name="sw_primitive_spacing_56">56dp</dimen>
+  <dimen name="sw_semantic_spacing_56">56dp</dimen>
+  <dimen name="sw_primitive_spacing_64">64dp</dimen>
+  <dimen name="sw_semantic_spacing_64">64dp</dimen>
+  <dimen name="sw_primitive_radius_none">0dp</dimen>
+  <dimen name="sw_semantic_radius_none">0dp</dimen>
+  <dimen name="sw_primitive_radius_sm">6dp</dimen>
+  <dimen name="sw_semantic_radius_sm">6dp</dimen>
+  <dimen name="sw_primitive_radius_base">8dp</dimen>
+  <dimen name="sw_semantic_radius_base">8dp</dimen>
+  <dimen name="sw_primitive_radius_md">10dp</dimen>
+  <dimen name="sw_semantic_radius_md">10dp</dimen>
+  <dimen name="sw_primitive_radius_lg">12dp</dimen>
+  <dimen name="sw_semantic_radius_lg">12dp</dimen>
+  <dimen name="sw_primitive_radius_xl">16dp</dimen>
+  <dimen name="sw_semantic_radius_xl">16dp</dimen>
+  <dimen name="sw_primitive_radius_2xl">20dp</dimen>
+  <dimen name="sw_semantic_radius_2xl">20dp</dimen>
+  <dimen name="sw_primitive_radius_full">9999dp</dimen>
+  <dimen name="sw_semantic_radius_full">9999dp</dimen>
+  <dimen name="sw_primitive_border_width_none">0dp</dimen>
+  <dimen name="sw_semantic_border_width_none">0dp</dimen>
+  <dimen name="sw_primitive_border_width_hairline">1dp</dimen>
+  <dimen name="sw_semantic_border_width_hairline">1dp</dimen>
+  <dimen name="sw_primitive_border_width_strong">2dp</dimen>
+  <dimen name="sw_semantic_border_width_strong">2dp</dimen>
+  <dimen name="sw_primitive_border_width_casing">4dp</dimen>
+  <dimen name="sw_semantic_border_width_casing">4dp</dimen>
+  <dimen name="sw_primitive_breakpoint_sm">640dp</dimen>
+  <dimen name="sw_semantic_breakpoint_sm">640dp</dimen>
+  <dimen name="sw_primitive_breakpoint_md">768dp</dimen>
+  <dimen name="sw_semantic_breakpoint_md">768dp</dimen>
+  <dimen name="sw_primitive_breakpoint_lg">1024dp</dimen>
+  <dimen name="sw_semantic_breakpoint_lg">1024dp</dimen>
+  <dimen name="sw_primitive_breakpoint_xl">1280dp</dimen>
+  <dimen name="sw_semantic_breakpoint_xl">1280dp</dimen>
+  <dimen name="sw_primitive_breakpoint_2xl">1536dp</dimen>
+  <dimen name="sw_semantic_breakpoint_2xl">1536dp</dimen>
+  <dimen name="sw_primitive_breakpoint_wide">1680dp</dimen>
+  <dimen name="sw_semantic_breakpoint_wide">1680dp</dimen>
+  <dimen name="sw_primitive_size_control">44dp</dimen>
+  <dimen name="sw_semantic_size_control">44dp</dimen>
+  <dimen name="sw_primitive_size_row_list">56dp</dimen>
+  <dimen name="sw_semantic_size_row_list">56dp</dimen>
+  <dimen name="sw_primitive_size_row_table">48dp</dimen>
+  <dimen name="sw_semantic_size_row_table">48dp</dimen>
+  <dimen name="sw_primitive_size_sidebar">256dp</dimen>
+  <dimen name="sw_semantic_size_sidebar">256dp</dimen>
+  <dimen name="sw_primitive_size_sidebar_app">264dp</dimen>
+  <dimen name="sw_semantic_size_sidebar_app">264dp</dimen>
+  <dimen name="sw_primitive_size_bottom_tabs">64dp</dimen>
+  <dimen name="sw_semantic_size_bottom_tabs">64dp</dimen>
+  <integer name="sw_primitive_layer_base">0</integer>
+  <integer name="sw_semantic_layer_base">0</integer>
+  <integer name="sw_primitive_layer_local">1</integer>
+  <integer name="sw_semantic_layer_local">1</integer>
+  <integer name="sw_primitive_layer_raised">2</integer>
+  <integer name="sw_semantic_layer_raised">2</integer>
+  <integer name="sw_primitive_layer_sticky">10</integer>
+  <integer name="sw_semantic_layer_sticky">10</integer>
+  <integer name="sw_primitive_layer_fixed">20</integer>
+  <integer name="sw_semantic_layer_fixed">20</integer>
+  <integer name="sw_primitive_layer_navigation">30</integer>
+  <integer name="sw_semantic_layer_navigation">30</integer>
+  <integer name="sw_primitive_layer_popover">40</integer>
+  <integer name="sw_semantic_layer_popover">40</integer>
+  <integer name="sw_primitive_layer_overlay">50</integer>
+  <integer name="sw_semantic_layer_overlay">50</integer>
+  <integer name="sw_primitive_layer_critical">60</integer>
+  <integer name="sw_semantic_layer_critical">60</integer>
+  <integer name="sw_primitive_opacity_hidden">0</integer>
+  <integer name="sw_semantic_opacity_hidden">0</integer>
+  <string name="sw_primitive_opacity_shadow_near" translatable="false">"0.06"</string>
+  <string name="sw_semantic_opacity_shadow_near" translatable="false">"0.06"</string>
+  <string name="sw_primitive_opacity_shadow_far" translatable="false">"0.1"</string>
+  <string name="sw_semantic_opacity_shadow_far" translatable="false">"0.1"</string>
+  <string name="sw_primitive_opacity_scrim_light" translatable="false">"0.3"</string>
+  <string name="sw_semantic_opacity_scrim_light" translatable="false">"0.3"</string>
+  <string name="sw_primitive_opacity_scrim_medium" translatable="false">"0.35"</string>
+  <string name="sw_semantic_opacity_scrim_medium" translatable="false">"0.35"</string>
+  <string name="sw_primitive_opacity_scrim_default" translatable="false">"0.4"</string>
+  <string name="sw_semantic_opacity_scrim_default" translatable="false">"0.4"</string>
+  <string name="sw_primitive_opacity_drag" translatable="false">"0.6"</string>
+  <string name="sw_semantic_opacity_drag" translatable="false">"0.6"</string>
+  <string name="sw_primitive_opacity_scrim_strong" translatable="false">"0.7"</string>
+  <string name="sw_semantic_opacity_scrim_strong" translatable="false">"0.7"</string>
+  <string name="sw_primitive_opacity_decoration" translatable="false">"0.8"</string>
+  <string name="sw_semantic_opacity_decoration" translatable="false">"0.8"</string>
+  <integer name="sw_primitive_opacity_solid">1</integer>
+  <integer name="sw_semantic_opacity_solid">1</integer>
+  <integer name="sw_primitive_duration_none">0</integer>
+  <integer name="sw_semantic_motion_duration_none">0</integer>
+  <integer name="sw_primitive_duration_fast">120</integer>
+  <integer name="sw_semantic_motion_duration_fast">120</integer>
+  <integer name="sw_primitive_duration_base">180</integer>
+  <integer name="sw_semantic_motion_duration_base">180</integer>
+  <integer name="sw_primitive_duration_slow">240</integer>
+  <integer name="sw_semantic_motion_duration_slow">240</integer>
+  <integer name="sw_primitive_duration_display_fade">400</integer>
+  <integer name="sw_semantic_motion_duration_display_fade">400</integer>
+  <integer name="sw_primitive_duration_scroll_reveal">640</integer>
+  <integer name="sw_semantic_motion_duration_scroll_reveal">640</integer>
+  <integer name="sw_primitive_duration_logo_box_open">2200</integer>
+  <integer name="sw_semantic_motion_duration_logo_box_open">2200</integer>
+  <string name="sw_primitive_easing_standard" translatable="false">"[0.2,0,0,1]"</string>
+  <string name="sw_semantic_motion_easing_standard" translatable="false">"[0.2,0,0,1]"</string>
+  <string name="sw_primitive_easing_enter" translatable="false">"[0.16,1,0.3,1]"</string>
+  <string name="sw_semantic_motion_easing_enter" translatable="false">"[0.16,1,0.3,1]"</string>
+  <string name="sw_primitive_easing_exit" translatable="false">"[0.4,0,1,1]"</string>
+  <string name="sw_semantic_motion_easing_exit" translatable="false">"[0.4,0,1,1]"</string>
+  <string name="sw_primitive_easing_out_soft" translatable="false">"[0.32,0.72,0,1]"</string>
+  <string name="sw_semantic_motion_easing_out_soft" translatable="false">"[0.32,0.72,0,1]"</string>
+  <dimen name="sw_primitive_distance_enter_y">8dp</dimen>
+  <dimen name="sw_semantic_motion_enter_y">8dp</dimen>
+  <string name="sw_primitive_distance_pop_scale" translatable="false">"0.98"</string>
+  <string name="sw_semantic_motion_pop_scale" translatable="false">"0.98"</string>
+  <dimen name="sw_primitive_distance_pop_offset">4dp</dimen>
+  <dimen name="sw_semantic_motion_pop_offset">4dp</dimen>
+  <integer name="sw_primitive_distance_slide_x">1</integer>
+  <integer name="sw_semantic_motion_slide_x">1</integer>
+  <string name="sw_primitive_font_family_display" translatable="false">"[\&quot;Gilroy\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;]"</string>
+  <string name="sw_primitive_font_family_sans" translatable="false">"[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;]"</string>
+  <string name="sw_primitive_font_family_accent" translatable="false">"[\&quot;Unbounded\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;]"</string>
+  <integer name="sw_primitive_font_weight_w300">300</integer>
+  <integer name="sw_primitive_font_weight_w400">400</integer>
+  <integer name="sw_primitive_font_weight_w500">500</integer>
+  <integer name="sw_primitive_font_weight_w600">600</integer>
+  <integer name="sw_primitive_font_weight_w700">700</integer>
+  <integer name="sw_primitive_font_weight_w800">800</integer>
+  <dimen name="sw_primitive_type_size_display">72sp</dimen>
+  <dimen name="sw_primitive_type_tracking_display">-1.44dp</dimen>
+  <string name="sw_primitive_type_line_display" translatable="false">"1.0555555555555556"</string>
+  <string name="sw_semantic_type_display" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Gilroy\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:72,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:800,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-1.44,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.0555555555555556}"</string>
+  <dimen name="sw_primitive_type_size_display_sub">32sp</dimen>
+  <dimen name="sw_primitive_type_tracking_display_sub">0dp</dimen>
+  <string name="sw_primitive_type_line_display_sub" translatable="false">"1.1875"</string>
+  <string name="sw_semantic_type_display_sub" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:400,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.1875}"</string>
+  <dimen name="sw_primitive_type_size_heading">48sp</dimen>
+  <dimen name="sw_primitive_type_tracking_heading">-0.72dp</dimen>
+  <string name="sw_primitive_type_line_heading" translatable="false">"1.0833333333333333"</string>
+  <string name="sw_semantic_type_heading" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Gilroy\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:48,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:800,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.72,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.0833333333333333}"</string>
+  <dimen name="sw_primitive_type_size_page">32sp</dimen>
+  <dimen name="sw_primitive_type_tracking_page">-0.32dp</dimen>
+  <string name="sw_primitive_type_line_page" translatable="false">"1.1875"</string>
+  <string name="sw_semantic_type_page" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.1875}"</string>
+  <dimen name="sw_primitive_type_size_panel">20sp</dimen>
+  <dimen name="sw_primitive_type_tracking_panel">-0.1dp</dimen>
+  <string name="sw_primitive_type_line_panel" translatable="false">"1.4"</string>
+  <string name="sw_semantic_type_panel" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:20,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.1,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.4}"</string>
+  <dimen name="sw_primitive_type_size_section">16sp</dimen>
+  <dimen name="sw_primitive_type_tracking_section">0dp</dimen>
+  <string name="sw_primitive_type_line_section" translatable="false">"1.5"</string>
+  <string name="sw_semantic_type_section" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:16,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.5}"</string>
+  <dimen name="sw_primitive_type_size_stat">32sp</dimen>
+  <dimen name="sw_primitive_type_tracking_stat">-0.32dp</dimen>
+  <string name="sw_primitive_type_line_stat" translatable="false">"1.1875"</string>
+  <string name="sw_semantic_type_stat" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.1875}"</string>
+  <dimen name="sw_primitive_type_size_date">20sp</dimen>
+  <dimen name="sw_primitive_type_tracking_date">0dp</dimen>
+  <string name="sw_primitive_type_line_date" translatable="false">"1.2"</string>
+  <string name="sw_semantic_type_date" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:20,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.2}"</string>
+  <dimen name="sw_primitive_type_size_body">16sp</dimen>
+  <dimen name="sw_primitive_type_tracking_body">0dp</dimen>
+  <string name="sw_primitive_type_line_body" translatable="false">"1.5"</string>
+  <string name="sw_semantic_type_body" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:16,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:400,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.5}"</string>
+  <dimen name="sw_primitive_type_size_label">14sp</dimen>
+  <dimen name="sw_primitive_type_tracking_label">0dp</dimen>
+  <string name="sw_primitive_type_line_label" translatable="false">"1.4285714285714286"</string>
+  <string name="sw_semantic_type_label" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:14,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:500,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.4285714285714286}"</string>
+  <dimen name="sw_primitive_type_size_button">14sp</dimen>
+  <dimen name="sw_primitive_type_tracking_button">0dp</dimen>
+  <string name="sw_primitive_type_line_button" translatable="false">"1.4285714285714286"</string>
+  <string name="sw_semantic_type_button" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:14,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.4285714285714286}"</string>
+  <dimen name="sw_primitive_type_size_caption">12sp</dimen>
+  <dimen name="sw_primitive_type_tracking_caption">0.12dp</dimen>
+  <string name="sw_primitive_type_line_caption" translatable="false">"1.3333333333333333"</string>
+  <string name="sw_semantic_type_caption" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:500,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0.12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.3333333333333333}"</string>
+  <dimen name="sw_primitive_type_size_eyebrow">12sp</dimen>
+  <dimen name="sw_primitive_type_tracking_eyebrow">0.96dp</dimen>
+  <string name="sw_primitive_type_line_eyebrow" translatable="false">"1.3333333333333333"</string>
+  <string name="sw_semantic_type_eyebrow" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0.96,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.3333333333333333}"</string>
+  <dimen name="sw_primitive_type_size_accent">48sp</dimen>
+  <dimen name="sw_primitive_type_tracking_accent">-0.48dp</dimen>
+  <string name="sw_primitive_type_line_accent" translatable="false">"1.1666666666666667"</string>
+  <string name="sw_semantic_type_accent" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Unbounded\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:48,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:500,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.48,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.1666666666666667}"</string>
+  <dimen name="sw_primitive_type_size_display_mobile">44sp</dimen>
+  <dimen name="sw_primitive_type_tracking_display_mobile">-0.88dp</dimen>
+  <string name="sw_primitive_type_line_display_mobile" translatable="false">"1.0909090909090908"</string>
+  <string name="sw_semantic_type_display_mobile" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Gilroy\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:44,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:800,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.88,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.0909090909090908}"</string>
+  <dimen name="sw_primitive_type_size_display_sub_mobile">24sp</dimen>
+  <dimen name="sw_primitive_type_tracking_display_sub_mobile">0dp</dimen>
+  <string name="sw_primitive_type_line_display_sub_mobile" translatable="false">"1.25"</string>
+  <string name="sw_semantic_type_display_sub_mobile" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:24,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:400,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.25}"</string>
+  <dimen name="sw_primitive_type_size_heading_mobile">34sp</dimen>
+  <dimen name="sw_primitive_type_tracking_heading_mobile">-0.51dp</dimen>
+  <string name="sw_primitive_type_line_heading_mobile" translatable="false">"1.1764705882352942"</string>
+  <string name="sw_semantic_type_heading_mobile" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Gilroy\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:34,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:800,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.51,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.1764705882352942}"</string>
+  <dimen name="sw_primitive_type_size_page_mobile">26sp</dimen>
+  <dimen name="sw_primitive_type_tracking_page_mobile">-0.26dp</dimen>
+  <string name="sw_primitive_type_line_page_mobile" translatable="false">"1.2307692307692308"</string>
+  <string name="sw_semantic_type_page_mobile" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:26,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.26,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.2307692307692308}"</string>
+  <dimen name="sw_primitive_type_size_accent_mobile">32sp</dimen>
+  <dimen name="sw_primitive_type_tracking_accent_mobile">-0.32dp</dimen>
+  <string name="sw_primitive_type_line_accent_mobile" translatable="false">"1.25"</string>
+  <string name="sw_semantic_type_accent_mobile" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Unbounded\&quot;,\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:500,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:-0.32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.25}"</string>
+  <string name="sw_primitive_shadow_flat" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0,0,0],\&quot;alpha\&quot;:0,\&quot;hex\&quot;:\&quot;#000000\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <string name="sw_primitive_shadow_overlay_light" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.06,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:2,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:6,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}},{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.1,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <string name="sw_primitive_shadow_overlay_dark" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0,0,0],\&quot;alpha\&quot;:0.06,\&quot;hex\&quot;:\&quot;#000000\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:2,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:6,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}},{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0,0,0],\&quot;alpha\&quot;:0.1,\&quot;hex\&quot;:\&quot;#000000\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <string name="sw_semantic_elevation_flat" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0,0,0],\&quot;alpha\&quot;:0,\&quot;hex\&quot;:\&quot;#000000\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <string name="sw_semantic_elevation_overlay" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.06,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:2,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:6,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}},{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.1,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <color name="sw_semantic_color_boundary_strong">#ff5b6863</color>
+  <color name="sw_semantic_color_state_indicator">#ff006e63</color>
+  <color name="sw_semantic_color_sidebar_ink">#ff142c2a</color>
+  <color name="sw_semantic_color_shadow">#ff142c2a</color>
+  <dimen name="sw_semantic_space_page_phone">16dp</dimen>
+  <dimen name="sw_semantic_space_page_tablet">24dp</dimen>
+  <dimen name="sw_semantic_space_page_desktop">32dp</dimen>
+  <dimen name="sw_semantic_space_card">20dp</dimen>
+  <dimen name="sw_semantic_space_settings">24dp</dimen>
+  <dimen name="sw_semantic_space_control_x">12dp</dimen>
+  <dimen name="sw_semantic_space_control_y">8dp</dimen>
+  <dimen name="sw_semantic_radius_control">10dp</dimen>
+  <dimen name="sw_semantic_radius_card">16dp</dimen>
+  <dimen name="sw_semantic_focus_width">2dp</dimen>
+  <dimen name="sw_semantic_focus_offset">2dp</dimen>
+  <color name="sw_semantic_focus_color">#ff006e63</color>
+  <integer name="sw_semantic_motion_reduced_duration">0</integer>
+  <dimen name="sw_component_button_height">44dp</dimen>
+  <dimen name="sw_component_button_radius">10dp</dimen>
+  <dimen name="sw_component_button_padding_x">12dp</dimen>
+  <dimen name="sw_component_button_padding_y">8dp</dimen>
+  <color name="sw_component_button_fill">#ff006e63</color>
+  <color name="sw_component_button_hover">#ff02675d</color>
+  <color name="sw_component_button_pressed">#ff046158</color>
+  <color name="sw_component_button_label">#fffff4e8</color>
+  <color name="sw_component_button_boundary">#ff006e63</color>
+  <color name="sw_component_button_disabled_fill">#fff6ece0</color>
+  <color name="sw_component_button_disabled_label">#ff5b6863</color>
+  <color name="sw_component_button_disabled_border">#ffd5d0c6</color>
+  <string name="sw_component_button_type" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:14,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:600,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.4285714285714286}"</string>
+  <dimen name="sw_component_input_height">44dp</dimen>
+  <dimen name="sw_component_input_radius">10dp</dimen>
+  <color name="sw_component_input_boundary">#ff5b6863</color>
+  <color name="sw_component_input_fill">#ffffffff</color>
+  <color name="sw_component_input_label">#ff142c2a</color>
+  <color name="sw_component_input_placeholder">#ff5b6863</color>
+  <string name="sw_component_input_type" translatable="false">"{\&quot;fontFamily\&quot;:[\&quot;Outfit\&quot;,\&quot;sans-serif\&quot;],\&quot;fontSize\&quot;:{\&quot;value\&quot;:16,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;fontWeight\&quot;:400,\&quot;letterSpacing\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;lineHeight\&quot;:1.5}"</string>
+  <color name="sw_component_tabs_indicator">#ff006e63</color>
+  <dimen name="sw_component_tabs_indicator_width">2dp</dimen>
+  <color name="sw_component_card_fill">#ffffffff</color>
+  <dimen name="sw_component_card_radius">16dp</dimen>
+  <dimen name="sw_component_card_padding">20dp</dimen>
+  <color name="sw_component_card_border">#ffd5d0c6</color>
+  <string name="sw_component_card_shadow" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0,0,0],\&quot;alpha\&quot;:0,\&quot;hex\&quot;:\&quot;#000000\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <string name="sw_component_overlay_shadow" translatable="false">"[{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.06,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:2,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:6,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}},{\&quot;color\&quot;:{\&quot;colorSpace\&quot;:\&quot;srgb\&quot;,\&quot;components\&quot;:[0.0784313725490196,0.17254901960784313,0.16470588235294117],\&quot;alpha\&quot;:0.1,\&quot;hex\&quot;:\&quot;#142C2A\&quot;},\&quot;offsetX\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;offsetY\&quot;:{\&quot;value\&quot;:12,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;blur\&quot;:{\&quot;value\&quot;:32,\&quot;unit\&quot;:\&quot;px\&quot;},\&quot;spread\&quot;:{\&quot;value\&quot;:0,\&quot;unit\&quot;:\&quot;px\&quot;}}]"</string>
+  <integer name="sw_component_overlay_layer">50</integer>
+  <string name="sw_component_overlay_scrim_opacity" translatable="false">"0.4"</string>
+  <color name="sw_component_focus_color">#ff006e63</color>
+  <dimen name="sw_component_focus_width">2dp</dimen>
+  <dimen name="sw_component_focus_offset">2dp</dimen>
+  <color name="sw_component_button_brand_fill">#ff006e63</color>
+  <color name="sw_component_button_brand_hover">#ff02675d</color>
+  <color name="sw_component_button_brand_pressed">#ff046158</color>
+  <color name="sw_component_button_brand_label">#fffff4e8</color>
+  <color name="sw_component_button_brand_boundary">#ff006e63</color>
+</resources>

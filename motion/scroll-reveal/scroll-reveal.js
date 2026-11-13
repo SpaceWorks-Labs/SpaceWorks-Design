@@ -35,25 +35,33 @@
     var p = {};
     ['scene', 'copy', 'stage', 'frame', 'figure', 'content', 'reveal', 'backdrop'].forEach(function (k) { p[k] = root.querySelector('[data-seq="' + k + '"]'); });
     root.setAttribute('data-animated', '');
-    var g, pending = false, moving;
+    var g, pending = false, moving, raf = 0;
+    var preference = global.matchMedia('(prefers-reduced-motion: reduce)');
+    var wide = global.matchMedia('(min-width: ' + min + 'px)');
+    var pieces = [p.copy,p.stage,p.frame,p.figure,p.reveal,p.backdrop];
+    function reset() { g=null; root.removeAttribute('data-animated'); root.removeAttribute('data-moving'); pieces.forEach(function(n){n.style.transform='';n.style.opacity='';n.inert=false;}); } 
     function measure() {
+      reset(); if(preference.matches||!wide.matches)return;root.setAttribute('data-animated','');
       var h = p.scene.offsetHeight, offset = parseFloat(getComputedStyle(root).getPropertyValue('--sw-hub-header-h')) || 0;
       g = { start: h * 0.92, rest: h * 0.3, scale: options.scale || 1.5, distance: root.offsetHeight - h, offset: offset };
       p.copy.style.setProperty('--sw-seq-copy-top', Math.round(h * 0.12) + 'px');
     }
     function paint() {
-      pending = false;
+      pending = false;if(!g)return;
       var progress = g.distance > 0 ? clamp((g.offset - root.getBoundingClientRect().top) / g.distance) : 0;
       var f = sequenceFrame(progress, g);
       p.copy.style.transform = 'translate3d(0,' + f.copyY + 'px,0)'; p.copy.style.opacity = f.copyOpacity;
       p.stage.style.transform = 'translate3d(0,' + f.stageY + 'px,0)'; p.frame.style.transform = 'scale(' + f.frameScale + ')';
       p.figure.style.opacity = f.figureOpacity; p.backdrop.style.opacity = f.backdropOpacity;
       p.reveal.style.opacity = f.revealOpacity; p.reveal.style.transform = 'translate3d(0,' + f.revealY + 'px,0) scale(' + f.revealScale + ')';
-      root.setAttribute('data-moving', ''); clearTimeout(moving); moving = setTimeout(function () { root.removeAttribute('data-moving'); }, 120);
+      p.copy.inert=f.copyOpacity===0;p.figure.inert=f.figureOpacity===0;p.reveal.inert=f.revealOpacity===0;
     }
-    function onScroll() { if (!pending) { pending = true; requestAnimationFrame(paint); } }
+    function onScroll() { if (!pending) { pending = true; raf=requestAnimationFrame(paint); } }
     measure(); paint();
-    addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', function () { measure(); paint(); });
+    function resize(){measure();paint();}
+    addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', resize);
+    preference.addEventListener('change',resize);
+    paint.destroy=function(){cancelAnimationFrame(raf);removeEventListener('scroll',onScroll);removeEventListener('resize',resize);preference.removeEventListener('change',resize);reset();};
     global.__swPaint = function () { measure(); paint(); };
     return paint;
   }

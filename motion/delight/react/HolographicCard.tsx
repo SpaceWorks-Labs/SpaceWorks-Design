@@ -66,7 +66,7 @@ export function HolographicCard({ card }: { card: MyCard }) {
       className={`relative w-full rounded-[4%] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus ${
         drawn.data && drawn.data.document.front.page_height_mm > drawn.data.document.front.page_width_mm ? "max-w-[16rem]" : "max-w-md"}`}>
       <div className="relative h-full w-full [transform-style:preserve-3d]" style={{ transform,
-        transition: motion ? "transform 650ms cubic-bezier(0.32,0.72,0,1)" : undefined }}>
+        transition: motion ? "transform var(--sw-dur-slow) var(--sw-ease-standard)" : undefined }}>
         <div className={face} aria-hidden={flipped} style={motion ? undefined : { visibility: flipped ? "hidden" : "visible" }}>
           {drawn.data ? <CardFaceSvg face={drawn.data} side="front" />
             : image(front.data, front.isError ? "The card image couldn't load." : "Loading the card…")}
@@ -77,7 +77,7 @@ export function HolographicCard({ card }: { card: MyCard }) {
             : image(back.data, back.isError ? "The card image couldn't load." : "Loading the back…")}
         </div> : null}
         {motion ? <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[4%] mix-blend-soft-light" style={{
-          opacity: 0.18, background: `linear-gradient(${115 + tilt.x * 40}deg, rgba(232,255,113,0) 20%, #E8FF71 ${45 + tilt.y * 15}%, #B7E4F9 ${55 + tilt.y * 15}%, #FFF4E8 70%, rgba(255,244,232,0) 85%)` }} /> : null}
+          opacity: 0.18, transform: `translate(${tilt.x * 4}%, ${tilt.y * 4}%)`, background: "linear-gradient(115deg, transparent 20%, #E8FF71 45%, #B7E4F9 55%, #FFF4E8 70%, transparent 85%)" }} /> : null}
       </div>
     </button>
     <div className="flex flex-wrap justify-center gap-2">

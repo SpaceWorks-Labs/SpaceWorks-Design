@@ -18,7 +18,7 @@ const PIECES = Array.from({ length: COUNT }, (_, index) => {
   const angle = (-165 + (150 * index) / (COUNT - 1)) * (Math.PI / 180);
   const reach = 64 + (index % 3) * 22;
   return { dx: Math.round(Math.cos(angle) * reach), dy: Math.round(Math.sin(angle) * reach), spin: (index % 2 ? 1 : -1) * (120 + index * 15),
-    shape: SHAPES[index % SHAPES.length], delay: (index % 4) * 30 };
+    shape: SHAPES[index % SHAPES.length], delay: (index % 4) / 4 };
 });
 
 /**
@@ -38,15 +38,14 @@ export function ReturnConfetti() {
     const box = anchor.current?.getBoundingClientRect();
     const tone = anchor.current?.closest<HTMLElement>("[data-tone]")?.dataset.tone;
     if (box) setOrigin({ x: box.left + box.width / 2, y: box.top, palette: confettiPalette(tone) });
-    const timer = window.setTimeout(() => setDone(true), 1300);
-    return () => window.clearTimeout(timer);
+
   }, [allowed]);
   if (!allowed || done) return null;
   return <span ref={anchor} aria-hidden="true" className="sw-confetti-anchor">
     {origin ? <span className="sw-confetti" style={{ left: origin.x, top: origin.y }}>
-      {PIECES.map((piece, index) => <span key={index} className={`sw-confetti-piece sw-confetti-${piece.shape}`} style={{
+      {PIECES.map((piece, index) => <span key={index} onAnimationEnd={() => { if (index === COUNT - 1) setDone(true); }} className={`sw-confetti-piece sw-confetti-${piece.shape}`} style={{
         "--dx": `${piece.dx}px`, "--dy": `${piece.dy}px`, "--spin": `${piece.spin}deg`, "--piece": `rgb(var(${origin.palette[index % origin.palette.length]}))`,
-        animationDelay: `${piece.delay}ms`,
+        animationDelay: `calc(var(--sw-dur-fast) * ${piece.delay})`,
       } as CSSProperties} />)}
     </span> : null}
   </span>;

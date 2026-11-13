@@ -17,6 +17,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .stamp{display:inline-block;padding:8px 18px;border:2px solid rgb(var(--color-success));color:rgb(var(--color-success-ink,var(--color-ink)));border-radius:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -24,18 +34,18 @@
     <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
   <p>Replay each moment. The confetti fans 16 brand-colour pieces from the button. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
 <section><div class="row"><button class="btn" data-f="stamp">Stamp</button><button class="btn" data-f="res">Result</button><button class="btn" data-f="pass">Pass</button><button class="btn" data-f="log">Logbook</button><button class="btn" id="cf">Confetti</button></div>
-<div class="stage" style="display:grid;place-items:center"><div id="o"><span class="stamp sw-verify-stamp">Verified</span></div></div></section>
-</main>
+<div class="stage" style="display:grid;place-items:center"><div id="o" role="status" aria-live="polite"><span class="stamp">Verified</span></div></div></section>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/confetti-dark-poster.png" data-poster="previews/confetti-dark-poster.png" data-animated="previews/confetti-dark.webp" alt="confetti dark motion end-state preview" loading="lazy"><figcaption>confetti dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/confetti-light-poster.png" data-poster="previews/confetti-light-poster.png" data-animated="previews/confetti-light.webp" alt="confetti light motion end-state preview" loading="lazy"><figcaption>confetti light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/stamp-dark-poster.png" data-poster="previews/stamp-dark-poster.png" data-animated="previews/stamp-dark.webp" alt="stamp dark motion end-state preview" loading="lazy"><figcaption>stamp dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/stamp-light-poster.png" data-poster="previews/stamp-light-poster.png" data-animated="previews/stamp-light.webp" alt="stamp light motion end-state preview" loading="lazy"><figcaption>stamp light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
 <script>
 var o=document.getElementById("o");
 var T={stamp:'<span class="stamp sw-verify-stamp">Verified</span>',res:'<div class="card sw-delight-result">Return recorded</div>',pass:'<div class="card sw-delight-pass">Member pass</div>',log:'<div class="card sw-delight-logbook">Workshop logbook</div>'};
-document.querySelectorAll("[data-f]").forEach(function(b){b.onclick=function(){o.innerHTML="";void o.offsetWidth;o.innerHTML=T[b.dataset.f]}});
+document.querySelectorAll("[data-f]").forEach(function(b){b.onclick=function(){if(o.getAnimations({subtree:true}).some(a=>a.playState==="running"))return;o.innerHTML=T[b.dataset.f]}});
 var FULL=["--color-accent","--color-emphasis","--color-success","--color-warn","--color-info"],SH=["square","circle","box"];
-document.getElementById("cf").onclick=function(e){var r=e.currentTarget.getBoundingClientRect();var c=document.createElement("span");c.className="sw-confetti";c.setAttribute("aria-hidden","true");c.style.left=(r.left+r.width/2)+"px";c.style.top=r.top+"px";
+document.getElementById("cf").onclick=function(e){var stage=document.querySelector(".stage");var c=document.createElement("span");c.className="sw-confetti";c.setAttribute("aria-hidden","true");c.style.left="50%";c.style.top="65%";c.style.position="absolute";
  for(var i=0;i<16;i++){var a=(-165+150*i/15)*Math.PI/180,reach=64+(i%3)*22,p=document.createElement("span");p.className="sw-confetti-piece sw-confetti-"+SH[i%3];
   p.style.setProperty("--dx",Math.round(Math.cos(a)*reach)+"px");p.style.setProperty("--dy",Math.round(Math.sin(a)*reach)+"px");p.style.setProperty("--spin",((i%2?1:-1)*(120+i*15))+"deg");
-  p.style.setProperty("--piece","rgb(var("+FULL[i%5]+"))");p.style.animationDelay=((i%4)*30)+"ms";c.appendChild(p)}
- document.body.appendChild(c);setTimeout(function(){c.remove()},1300)};
+  p.style.setProperty("--piece","rgb(var("+FULL[i%5]+"))");p.style.animationDelay="calc(var(--sw-dur-fast) * "+((i%4)/4)+")";c.appendChild(p)}
+ if(matchMedia("(prefers-reduced-motion: reduce)").matches||stage.querySelector(".sw-confetti"))return;stage.appendChild(c);Promise.allSettled(c.getAnimations({subtree:true}).map(a=>a.finished)).then(()=>c.remove())};
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

@@ -3,9 +3,16 @@ title: Using the kit
 description: Add the design kit to a project as a git submodule and use its CSS and JSON tokens.
 ---
 
+import ReleaseInstall from '../../../components/ReleaseInstall.astro';
 import { Steps } from '@astrojs/starlight/components';
 
 The kit is made to be pulled into other Space Works projects, so every surface draws from one source.
+
+## Pin a reviewed release
+
+<ReleaseInstall />
+
+> **Current rule (v2.1.0, 2026-11-13):** Pin the fetched release tag or reviewed immutable commit and record the submodule SHA. The retained setup below requires the checkout shown above before importing tokens. (3-N02) See [current release guidance](/current-rules/#cr-release-01).
 
 ## Add it to a project
 
@@ -47,6 +54,8 @@ The kit is made to be pulled into other Space Works projects, so every surface d
    git submodule update --remote design
    ```
 
+   > **Current rule (v2.1.0, 2026-11-13):** The command above tracks development. For production upgrades, fetch tags, check out the reviewed release in the submodule, read the migration notes and commit that SHA in an upgrade PR. (3-N03) See [current release guidance](/current-rules/#cr-release-01).
+
 </Steps>
 
 ## Solid colours only
@@ -82,3 +91,7 @@ and `dark`. Use it for native apps, Figma plugins or anything that can't read CS
 | `site/` | This website |
 
 The full token list is in the [token reference](/tokens/reference/).
+
+## Portable and native exports
+
+[Download portable.css beside tokens.css, both DTCG modes, Tailwind preset, Android XML/Compose and Swift/asset catalogue](/downloads/). Legacy colours are RGB triplets; new portable colour variables are complete CSS colours. [Architecture](/tokens/architecture/) specifies px/dp/sp/pt, seconds, aliases and native host responsibilities. [Choose a platform starter](/adoption/) for a first screen.

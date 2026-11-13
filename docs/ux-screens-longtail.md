@@ -38,6 +38,8 @@ differently, its names win.** The mapping is one-to-one, so a rename does not ch
 
 ### 0.2 Conventions used by every screen here (so they are not repeated per screen)
 
+> **Current rule (v2.0.1, 2026-11-13):** This is research, including every later wireframe’s “pill” action and light-colour shorthand: use 10 px product controls, 16 px cards, current theme tokens and CR-SIDEBAR-01 geometry. Pills describe status/metadata shape, not a fully round button default. Apply the shared voice guide for current content patterns. (1A-N26) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](current-rules.md#cr-scope-01).
+
 - **One primary action per page.** Actions are ranked as primary (dark/teal pill), secondary (outline
   pill, at most one or two) and the rest in a **More menu** (`[More v]`, an outline icon button; it opens a
   menu of labelled items). Exports (CSV/XLSX) always go in More as "Export CSV" / "Export Excel".
@@ -66,13 +68,19 @@ differently, its names win.** The mapping is one-to-one, so a rename does not ch
   - Filtered empty: "Nothing matches these filters." + "Clear filters" link.
   - Loading: skeleton rows or skeleton stat cards that match the final layout. No "Loading..." text
     except in `aria-live` status.
+
+> **Current rule (v2.0.1, 2026-11-13):** The canonical unknown-duration loading indicator is the full or inline box loader with a polite meaningful status label (SW-322/364, 2026-11-11/2026-11-13). A retained skeleton may reserve layout only where explicitly specified; reduced motion uses a still mark. (1A-N29) — supersedes the line above; see [docs/current-rules.md#cr-motion-01](current-rules.md#cr-motion-01).
   - Error (load): "Couldn't load {things}. Check your connection and try again." + "Try again" button.
     The raw server message goes in a muted second line when it is useful.
   - Error (action): an inline message under the control that failed: "Couldn't {verb}. {reason}." Never
     a stack of `<p className="text-danger">` lines at the top of a panel. Today's multi-error pile-ups
     (e.g. Transfers renders 5 separate error lines) collapse into one message per failed control.
   - Success: a toast "{Thing} {done}." with Undo where reversible.
+
+> **Current rule (v2.0.1, 2026-11-13):** Use confirmed success only after the operation completes. Queued/offline work and partial failures need their own messages. Never offer generic Undo for evidence, handovers, payments or audited records; follow [Voice and content](voice-and-content.md) and the actual reversal contract. (1A-N28) — supersedes the line above; see [docs/current-rules.md#cr-content-01](current-rules.md#cr-content-01).
 - **Status pills** are a soft tint plus a word, always (brand: never colour alone).
+
+> **Current rule (v2.0.1, 2026-11-13):** Success/warn/info small status marks use solid fills and on-* labels in both themes. Only large dark callouts use the soft-surface recipe; accent, danger and neutral retain their named exceptions. A word remains mandatory. (1A-N27) — supersedes the line above; see [docs/current-rules.md#cr-status-01](current-rules.md#cr-status-01).
 - **Copy rules:** sentence case; "Space Works" in prose; no raw enum values on screen
   (`paid_offline` → "Paid in person", `in_progress` → "Printing"); no `#123` IDs as primary labels;
   no feature-flag keys or app labels in user-facing text except on superadmin/deployment screens.

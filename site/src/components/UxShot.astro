@@ -27,10 +27,11 @@ const src = (size: string, mode: string) => kitUrl(`screenshots/ux/${name}-${siz
       phone && (
         <a class="sw-shot-phone" href={src('phone', 'light')}>
           <img src={src('phone', 'light')} alt={`${alt}, phone`} width="390" height="844" loading="lazy" decoding="async" />
-          <span>Phone</span>
+          <span>Phone<span data-media-metadata> · light theme</span></span>
         </a>
       )
     }
   </div>
   {caption && <figcaption>{caption}</figcaption>}
+  {phone && <p class="sw-demo-cap">The phone capture is light theme. The dark desktop comparison above remains available at every screen size.</p>}
 </figure>

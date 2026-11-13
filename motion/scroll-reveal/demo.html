@@ -18,6 +18,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .sw-hub-seq{--sw-hub-header-h:0px;margin:0 -16px}.sw-hub-seq-scene{background:rgb(var(--color-bg))}.sw-hub-seq-copy{text-align:center;padding:0!important}.sw-hub-seq-copy h2{font-size:2rem}.sw-hub-seq-stage{display:grid;place-items:start center}.sw-hub-seq-frame{width:min(620px,86%);height:260px;border-radius:16px;border:1px solid rgb(var(--color-line));background:rgb(var(--color-panel));display:grid;place-items:center}.sw-hub-seq-reveal{text-align:center}.sw-hub-seq-reveal h2{font-size:2rem}.rv{min-height:120px;display:grid;place-items:center}.spacer{height:30vh}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -27,10 +37,10 @@
 <section id="rv"><h2>Reveal on scroll (data-reveal)</h2><div class="card rv" data-reveal>Block one</div><div class="card rv" data-reveal>Block two</div><div class="card rv" data-reveal>Block three</div></section>
 <div class="sw-hub-seq" id="seq"><div class="sw-hub-seq-scene" data-seq="scene"><div class="sw-hub-seq-backdrop" data-seq="backdrop"></div><div class="sw-hub-seq-copy" data-seq="copy"><h2>Know where every tool is.</h2><p>Scroll</p></div><div class="sw-hub-seq-stage" data-seq="stage"><div class="sw-hub-seq-frame" data-seq="frame"><div data-seq="figure"><div data-seq="content">The console</div></div></div></div><div class="sw-hub-seq-reveal" data-seq="reveal"><h2>The whole overview</h2><p>Settled in</p></div></div></div>
 <div class="spacer"></div>
-</main>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/pinned-hero-dark-poster.png" data-poster="previews/pinned-hero-dark-poster.png" data-animated="previews/pinned-hero-dark.webp" alt="pinned hero dark motion end-state preview" loading="lazy"><figcaption>pinned hero dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/pinned-hero-light-poster.png" data-poster="previews/pinned-hero-light-poster.png" data-animated="previews/pinned-hero-light.webp" alt="pinned hero light motion end-state preview" loading="lazy"><figcaption>pinned hero light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/reveal-dark-poster.png" data-poster="previews/reveal-dark-poster.png" data-animated="previews/reveal-dark.webp" alt="reveal dark motion end-state preview" loading="lazy"><figcaption>reveal dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/reveal-light-poster.png" data-poster="previews/reveal-light-poster.png" data-animated="previews/reveal-light.webp" alt="reveal light motion end-state preview" loading="lazy"><figcaption>reveal light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
 <script>
 SwScroll.initReveal(document.getElementById("rv"));
 SwScroll.initSequence(document.getElementById("seq"));
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

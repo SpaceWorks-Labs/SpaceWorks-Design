@@ -1,5 +1,7 @@
 # Sidebar and tab indicator
 
+> **Current rule (v2.0.1, 2026-11-13):** Demo navigation uses real href links. The labelled tablist has tab/panel relationships, one tab stop, Left/Right and Home/End selection. Initial indicator placement and resize are immediate; section changes retarget one transform transition. Background colours change immediately to keep animation compositor-only. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#sidebar).
+
 The current section is shown by one box that slides to the selected item, instead of each item repainting its own highlight. The same hook moves the tab underline. A resize skips the transition so a collapsing section never makes the indicator lag.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -24,6 +26,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Moving one box shows where you came from and where you are now; repainting a list item does not. It is also the cheapest possible animation: one transform.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#sidebar) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Property | Value |
 |---|---|
@@ -52,6 +56,8 @@ Colours come from tokens (`--color-accent-soft` fill, `--color-accent-ink` under
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#sidebar) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <nav id="nav" style="position:relative">
   <div class="sw-indicator" id="bar"></div>
@@ -62,3 +68,17 @@ Colours come from tokens (`--color-accent-soft` fill, `--color-accent-ink` under
 Call the placement function from `demo.html` (a plain-JS port of `useSlideIndicator`) whenever the current item changes and on resize.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Demo navigation uses real href links. The labelled tablist has tab/panel relationships, one tab stop, Left/Right and Home/End selection. Initial indicator placement and resize are immediate; section changes retarget one transform transition. Background colours change immediately to keep animation compositor-only.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#sidebar). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-collapse-exit` | `calc(var(--sw-dur-base) * .75)` |

@@ -22,7 +22,7 @@ export function Companion() {
       const bounds = event.currentTarget.getBoundingClientRect();
       setPosition(Math.max(0, Math.min(80, (event.clientX - bounds.left) / Math.max(1, bounds.width) * 100)));
       setPose("companionFollow");
-    }}><span aria-hidden="true" className={`pointer-events-none absolute h-16 w-16 ${!reduced && pose === "companionWalk" ? "sw-delight-walk" : ""}`} style={{ left: `${reduced ? 50 : position}%` }}>
+    }}><span aria-hidden="true" className={`pointer-events-none absolute h-16 w-16 ${!reduced && pose === "companionWalk" ? "sw-delight-walk" : ""}`} style={{ left: 0, transform: `translateX(${reduced ? 50 : position}vw)` }}>
       <DelightArt name={reduced && pose !== "companionPrint" ? "companionNap" : pose} className="h-16 w-16" /></span></div>
       <button type="button" className="desk-button" onClick={() => setPose("companionPrint")}>{t`Print a tiny layer stack`}</button>
       <span className="sr-only" role="status">{pose === "companionPrint" ? t`The workshop companion printed a tiny layer stack.` : ""}</span></> : null}

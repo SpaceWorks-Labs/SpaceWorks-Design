@@ -1,8 +1,12 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-420: calc(var(--sw-dur-slow) * 1.75000000);
+}
 /* The one-off "stamp" on a valid card check (SPEC §7). Applied only with interface effects on
    and motion allowed; the media query is a second guard. No translate, a short scale-in. */
 @media (prefers-reduced-motion: no-preference) {
   .sw-verify-stamp {
-    animation: sw-verify-stamp 420ms cubic-bezier(0.32, 0.72, 0, 1) 1 both;
+    animation: sw-verify-stamp var(--sw-local-duration-420) var(--sw-ease-enter) 1 both;
   }
 }
 
@@ -10,4 +14,9 @@
   0% { opacity: 0; transform: scale(1.35) rotate(-8deg); }
   70% { opacity: 1; transform: scale(0.96) rotate(1deg); }
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

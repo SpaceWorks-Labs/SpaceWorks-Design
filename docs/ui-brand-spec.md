@@ -14,6 +14,8 @@ functionality is kept and re-themed. Every token below names its source:
 
 Nothing else (no OKLCH shifts, no black, no invented hues).
 
+> **Current rule (v2.0.1, 2026-11-13):** SW-316 (2026-11-11) permits and requires the neutral black dark family. Brand guidelines v2 are current (SW-373, 2026-11-13); v1 and measured UX boards remain historical sources. H.5 also preserves black as the final functional tenant-label fallback. (1A-N05) — supersedes the line above; see [docs/current-rules.md#cr-dark-01](current-rules.md#cr-dark-01).
+
 **Reproducibility.** Every number in this document comes from stdlib Python scripts, now copied to
 `docs/design-revamp/research/tools/`:
 
@@ -67,6 +69,8 @@ The maths is WCAG 2.x relative luminance. It reproduces the PDF's own tested pai
 | D10 | Attention counters and low-stock tags use `emphasis` (orange + ink; p.16 "2 left" is an orange tag). `danger` is reserved for destructive actions and errors. | brand p.16 |
 | D11 | **No "System" theme option.** The existing Light/Dark toggle stays as it is. | owner |
 | D12 | Logo masters are exported directly from the Figma component library into `logo/`. All three horizontal variants are supplied as masters, including reversed and one-colour ink. | current Figma component library |
+
+> **Current rule (v2.0.1, 2026-11-13):** D11 is superseded by SW-364 (2026-11-13): Light / Dark / System, light fallback, System follows the device only when chosen or configured as the space default. D6 is superseded by [CR-STATUS-01](current-rules.md#cr-status-01): small success/warn/info marks retain solid fills and on-* labels in both themes. D8/D9 retain 10 px controls, 16 px cards and the Citron/neutral text-only sidebar; measured reference styles are not alternate defaults. (1A-N06) — supersedes the line above; see [docs/current-rules.md#cr-theme-01](current-rules.md#cr-theme-01).
 
 ---
 
@@ -364,6 +368,8 @@ The greens are **not used**: Citron covers success (owner preference).
 **Shape** (UX spec P10 + brand p.16): fully round, 24 px tall (32 on public), 12/16 semibold, horizontal
 padding 8–10. The **word is mandatory and the icon is optional.** Neither source shows icons in pills.
 
+**Historical — do not copy (1A-E01):** the matrix below predates the small-mark/large-surface distinction.
+
 | Tone | Light | Dark |
 |---|---|---|
 | success | `bg-success text-on-success` (13.23) | `bg-success-soft text-success-ink` (14.52) |
@@ -373,6 +379,20 @@ padding 8–10. The **word is mandatory and the icon is optional.** Neither sour
 | accent | `bg-accent-soft text-accent-ink` (5.16) | same (7.19) |
 | danger (danger-zone vocabulary) | `bg-panel border border-danger-line text-danger` (6.47) | same (9.71) |
 | neutral | `bg-surface border border-line text-ink` (12.64) | same (18.14) |
+
+> **Current rule (v2.0.1, 2026-11-13):** The dark success/warn/info cells above are historical. Use the Current example immediately below (lesson 9, app toneMarkClasses, SW-373 on 2026-11-13). Accent, danger and neutral retain their documented exceptions. (1A-N07) — supersedes the line above; see [docs/current-rules.md#cr-status-01](current-rules.md#cr-status-01).
+
+**Current example (1A-E01):** same classes in light and dark for small status marks; each pill includes a word.
+
+| Tone | Both themes |
+|---|---|
+| success | `bg-success text-on-success` |
+| warn | `bg-warn text-on-warn` |
+| info | `bg-info text-on-info` |
+| emphasis | `bg-emphasis text-on-emphasis` |
+| accent | `bg-accent-soft text-accent-ink` |
+| danger | `bg-panel border border-danger-line text-danger` |
+| neutral | `bg-surface border border-line text-ink` |
 
 | Domain · status (backend value) → tone · word |
 |---|
@@ -411,6 +431,14 @@ are SIL OFL. See `fonts/README.md`. The logo wordmark is supplied as vector outl
 
 ### D.2 Self-hosted CSS
 
+**Current example (1A-E02):** use only shipped weights; the old Gilroy-600 quick start elsewhere in the documentation is historical. See [CR-TYPE-01](current-rules.md#cr-type-01).
+
+```css
+.product-display { font-family: var(--font-display); font-weight: 800; font-synthesis: none; }
+.product-heading { font-family: var(--font-sans); font-weight: 600; font-synthesis: none; }
+.product-body { font-family: var(--font-sans); font-weight: 400; }
+```
+
 Import `tokens/tokens.css`. Use `var(--font-sans)` for body and `var(--font-display)` for headings.
 `--font-display` resolves to Gilroy (use weight 800, or 300 for light display text); `--font-sans` resolves to Outfit. `var(--font-accent)` resolves to Unbounded with Outfit as fallback.
 Use explicit line heights and `font-synthesis: none`. IDs and code use Outfit with tabular figures,
@@ -447,6 +475,8 @@ There are 235 occurrences on 227 lines in 126 files, plus `.eyebrow`, `.chip` an
 
 ## E. Shape, borders, shadow, spacing, motion
 
+> **Current rule (v2.0.1, 2026-11-13):** The vector measurements immediately below are research provenance, not additional component defaults. The following role/token table supplies product defaults: control 10 px, card 16 px, round status tag; sidebar geometry 256/20/44/4. Cards are flat; shadow-overlay is the explicit floating-layer exception. (1A-N08) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](current-rules.md#cr-scope-01).
+
 Measured from the p.16 vector mock (the 1312 × 493 product frame):
 
 | Element | Measurement |
@@ -472,6 +502,8 @@ The UX reference (org5) shows the same pattern: a text-only nav, an active item 
 | Spacing | 4 px grid: 4/8/12/16/20/24/32/40/48/64. Page gutter 16 / 24 / 32. Sidebar 256 wide, 20 inset, items 44 tall with a 4 px gap. Card padding 20 (24 on settings). Rows 56 (list) / 48 (table). Every control is 44 tall. | |
 | Motion | Shipped 0.12.0 tokens (`tokens/tokens.css`, `motion` in `tokens.json`): durations `--sw-dur-fast` 120 ms (press, hover, exit), `--sw-dur-base` 180 ms (overlays, indicators), `--sw-dur-slow` 240 ms (route settle); curves `--sw-ease-standard` `cubic-bezier(0.2,0,0,1)`, `--sw-ease-enter` `cubic-bezier(0.16,1,0.3,1)`, `--sw-ease-exit` `cubic-bezier(0.4,0,1,1)`; distances `--sw-enter-y` 8px, `--sw-pop-scale` 0.98, `--sw-pop-offset` 4px, `--sw-slide-x` 100%. Kiosk and TV zero the distances (fade only); `prefers-reduced-motion` zeroes durations and distances. Transform and opacity only; no translate or scale on hover, with **one exception: the Space Works mark's box-open** (the box folds shut and opens back on hover and keyboard focus, 2200 ms, never on touch or under reduced motion; see [`motion.md`](motion.md)). | Supersedes the earlier 200 / 240 / 160 ms proposal |
 
+> **Current rule (v2.0.1, 2026-11-13):** No later owner switch to fully round product buttons is recorded. Keep the 10 px control and 16 px card defaults; “may switch” is conditional. The retained reference pill geometry does not authorise a switch. (1A-N09) — supersedes the line above; see [docs/current-rules.md#cr-radius-01](current-rules.md#cr-radius-01).
+
 ---
 
 ## F. Logo: exact extraction and in-product use
@@ -491,6 +523,8 @@ Source component IDs and bounds are in `brand/figma-styles.json`.
 Each basename has `.svg` and `.png`. The tenth variant is `app-icon`.
 
 ### F.2 Usage
+
+> **Current rule (v2.0.1, 2026-11-13):** SW-389 (2026-11-13) corrects the animated closed state: all four flaps stay visible, top-left/bottom-right green and top-right/bottom-left orange, in light and dark. Explicit mono keeps four separate regions. Static-rest fidelity and no-hole/depth-order rules remain. (1A-N10) — supersedes the line above; see [docs/current-rules.md#cr-logo-01](current-rules.md#cr-logo-01).
 
 Full-color artwork uses Deep Ink, Maker Teal and Workshop Orange. Reversed artwork is Warm Cream.
 The monochrome marks have a hollow opening and transparent fold gaps so all four flaps remain visible.
@@ -557,6 +591,8 @@ This replaces `components/icons.tsx` and `staffNavIcons.tsx`. The old nav-icon s
 
 ### H.1 Translucency bans (Codex 1)
 
+**Historical — do not copy (1A-E03):** the disabled-opacity exception in this retained table is superseded below.
+
 | Site | Today → measured | Replacement |
 |---|---|---|
 | `features/staff/panels/DashboardPanel.tsx:77–80,83,91` | `text-on-accent/75` (3.90), `text-on-secondary/75`, `text-on-success/75`, `text-on-warn/75`, `text-bg/80` on danger (3.90), `text-bg` | `StatCard`: a neutral panel with Outfit-600 number in `text-{tone}-ink` and a full-opacity label. The secondary tone becomes `emphasis`. |
@@ -570,6 +606,22 @@ This replaces `components/icons.tsx` and `staffNavIcons.tsx`. The old nav-icon s
 | **119 `bg-{tone}/NN` occurrences in 58 files** (12 of them `hover:`) | alpha tints | `/5`, `/10`, `/15` → `bg-{tone}-soft` (`secondary` → `brand-soft`). **`bg-danger/NN` → `bg-panel border border-danger-line`** (the danger card; there is no danger-soft) |
 | `border-{tone}/20–40` (≈40) | decorative | allowed; `border-danger/40` → `border-danger-line` |
 | `disabled:opacity-50` (14) | WCAG-exempt | allowed outside the button family |
+
+> **Current rule (v2.0.1, 2026-11-13):** The opacity exemption above is historical. Disabled controls use explicit opaque bg-surface/text-muted/border-line states, no hover/press effects, the appropriate disabled semantics and a nearby explanation when needed. (1A-N11) — supersedes the line above; see [docs/current-rules.md#cr-disabled-01](current-rules.md#cr-disabled-01).
+
+**Current example (1A-E03):** explicit state and an enabling instruction; the disabled rule wins over all interaction rules.
+
+```html
+<button class="current-disabled" type="button" disabled aria-describedby="issue-requirements">Confirm issue</button>
+<p id="issue-requirements">Check all quantities and required asset scans before continuing.</p>
+<style>
+.current-disabled:disabled {
+  background: rgb(var(--color-surface)); color: rgb(var(--color-muted));
+  border: 1px solid rgb(var(--color-line)); opacity: 1;
+  transform: none; box-shadow: none; transition: none;
+}
+</style>
+```
 
 ### H.2 Fill tokens used as text, and undefined tokens (Codex 2)
 
@@ -686,6 +738,8 @@ PINs (keep `tracking-widest`), versions and public codes. They include 8 inputs:
   Danger is not a series colour.
 - The PLAN's "theme (Light/Dark/System)" in the user menu becomes **Light/Dark** (D11).
 
+> **Current rule (v2.0.1, 2026-11-13):** Retain Light / Dark / System in the user menu (SW-364, 2026-11-13); D11 and this migration instruction predate that decision. (1A-N12) — supersedes the line above; see [docs/current-rules.md#cr-theme-01](current-rules.md#cr-theme-01).
+
 ---
 
 ## I. Contrast-guard changes
@@ -759,6 +813,8 @@ these tests live only in the main checkout (they are gitignored), so the updated
 | 20 | Calm in-product: quiet sidebar, one "+ Add item" primary, search + table (p.16) | staff shell, list pages | `PageHeader` accepts at most one `primary` action (TS tuple); text-only nav; Citron search field |
 | 21 | Theme: existing Light/Dark only (owner) | `ThemeToggle` | no "System" option; test pins the two options |
 
+> **Current rule (v2.0.1, 2026-11-13):** Checklist row 21 is historical: verify all three choices under SW-364 (2026-11-13). The retained row is not a two-option test contract. (1A-N13) — supersedes the line above; see [docs/current-rules.md#cr-theme-01](current-rules.md#cr-theme-01).
+
 **In-product logo sizes at a glance:**
 
 | Placement | Spec |
@@ -775,6 +831,8 @@ these tests live only in the main checkout (they are gitignored), so the updated
 ---
 
 ## J. Owner decisions still open
+
+> **Current rule (v2.0.1, 2026-11-13):** This is a historical open-items heading, not proof all six items remain open. Items 1/2 use the adopted 10 px/Citron defaults until explicitly changed; item 3 is supplied (D12/F.1); item 4 is resolved by H.5’s preserved black-label fallback; item 5 is accepted by SW-299 (2026-11-11). Item 6 remains product-copy review, governed by CR-CONTENT-01. (1A-N14) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](current-rules.md#cr-scope-01).
 
 1. Control radius: 10 px (brand p.16) or pill (UX reference).
 2. Citron sidebar (brand p.16) or the reference warm-neutral sidebar.

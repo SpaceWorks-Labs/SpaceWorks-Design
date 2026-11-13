@@ -11,7 +11,7 @@ export function SidebarItem({ item, activeKey, onNavigate }: { item: ShellItem; 
     <TransitionLink to={item.href} aria-current={current ? "page" : undefined}
       onFocus={event => event.currentTarget.scrollIntoView?.({ block: "nearest" })}
       onClick={() => { item.onSelect?.(); onNavigate?.(); }}
-      className={`sw-slide-item relative flex min-h-11 items-center gap-2.5 rounded-lg border transition-colors duration-[var(--sw-dur-fast)] motion-safe:active:scale-[0.98] px-2.5 py-2 text-[15px] ${focusRing} ${current ? "border-accent-ink bg-sidebar-active font-semibold text-on-accent" : "border-transparent text-ink hover:bg-sidebar-hover"}`}>
+      className={`sw-slide-item relative flex min-h-11 items-center gap-2.5 rounded-lg border transition-none motion-safe:active:scale-[0.98] px-2.5 py-2 text-[15px] ${focusRing} ${current ? "border-accent-ink bg-sidebar-active font-semibold text-on-accent" : "border-transparent text-ink hover:bg-sidebar-hover"}`}>
       <Glyph aria-hidden="true" size={24} strokeWidth={2} className="shrink-0" />
       <span className="min-w-0 flex-1 break-words">{item.label}</span>
       {badge > 0 ? <>{" "}<span className={`rounded-full px-2 text-xs tabular-nums ${current ? "bg-panel text-ink" : "bg-accent-soft text-accent-ink"}`}>{badge > 99 ? "99+" : badge}</span>{" "}

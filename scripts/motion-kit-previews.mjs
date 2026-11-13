@@ -9,6 +9,9 @@ import { ROOT } from './lib-previews.mjs';
 
 const THEME = { light: { bg: '#FFF4E8', ink: '#142C2A' }, dark: { bg: '#000000', ink: '#FFF4E8' } };
 const LIMIT = 390 * 1024;
+// Match the live demos: specified card heights include padding and labels keep their full width.
+export const PREVIEW_BASE_CSS = `*,*::before,*::after{box-sizing:border-box}
+button,[role=button],kbd{white-space:nowrap;flex-shrink:0}`;
 
 export async function motionKit({ withBrowser, setPage, shot, sharp, out, FONT_CSS, only }) {
   const rd = (rel) => readFileSync(join(ROOT, rel), 'utf8').replace(/^﻿/, '');
@@ -30,7 +33,7 @@ export async function motionKit({ withBrowser, setPage, shot, sharp, out, FONT_C
         let fps = sc.fps || 24, scale = 2, result;
         for (let attempt = 0; attempt < 4; attempt++) {
           await send('Emulation.setDeviceMetricsOverride', { width: sc.w, height: sc.h, deviceScaleFactor: scale, mobile: false });
-          await setPage(send, `<!doctype html><html lang="en" class="${th === 'dark' ? 'dark' : ''}"><head><meta charset="utf-8"><style>${FONT_CSS}${tokens}${css}
+          await setPage(send, `<!doctype html><html lang="en" class="${th === 'dark' ? 'dark' : ''}"><head><meta charset="utf-8"><style>${FONT_CSS}${tokens}${css}${PREVIEW_BASE_CSS}
             html,body{margin:0;${sc.at ? '' : `height:${sc.h}px;`}overflow:hidden;background:${THEME[th].bg};color:${THEME[th].ink};font:15px/1.4 Outfit,sans-serif}</style></head><body>${sc.body}</body></html>`);
           if (js) await send('Runtime.evaluate', { expression: js });
           if (sc.setup) { const r = await send('Runtime.evaluate', { expression: sc.setup }); if (r.exceptionDetails) throw new Error(`${sc.family}/${sc.name} setup: ${JSON.stringify(r.exceptionDetails)}`); }

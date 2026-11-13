@@ -1,0 +1,11 @@
+{
+  "note": "Immutable pre-batch-1B bytes; decision 395. Generator never writes these files.",
+  "sha256": {
+    "tokens/tokens.json": "0cb88c3fb50ed5eeca70084b398ce188923290e7baf7d87ccaf4f0c30d2c32c5",
+    "tokens/tokens.css": "303de35474e83ea1c3d8f84268498e1e7580bff8c07a700bbc6afe2e209f01a3"
+  },
+  "sha256LF": {
+    "tokens/tokens.json": "9979fa53c3dbeaa186e931bc1d549f306136dfdbf3a36df8e4cbb1efda4ac492",
+    "tokens/tokens.css": "c9a15052faf875240bf6a580a169a48d49a4ce73d920e3b33c6344e6bef6b3fa"
+  }
+}

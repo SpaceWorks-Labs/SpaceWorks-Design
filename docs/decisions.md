@@ -930,3 +930,34 @@ Index addition: [SW-389 — Four visible flaps keep their own colours when shut]
 - **Why:** The owner asked that every project present itself the way SpaceWorks does and take everything from
   the design system, so the family reads as one and the rules cannot drift per project.
 - **Status:** current. Rule text: [product rules §12.1](product-rules.md#121-landing-page-and-feature-docs-every-project-except-the-native-apps).
+
+
+### SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0
+- **Date:** 13 November
+- **Decision:** For coloured marks on light grounds, the orange top-right and bottom-left outer flaps close
+  over the hidden green top-left and bottom-right pair. Open them one after the other, then each green flap,
+  then one small damped settle to the exact static logo, with no decorative bursts. Close in exact reverse.
+  Preserve the 1600 ms once, 2200 ms hover and 4400 ms loop budgets and stepped matrices.
+  The owner's immediate correction restores dark/reversed, mono and forced-colour marks to the v2.0.0
+  black-and-white family, with no orange or green. This supersedes SW-389's visible-quarter closed lid
+  for coloured marks and its coloured reversed product mark.
+- **Why:** A real box closes its outer pair over its inner pair; separate turns preserve the panels' physical
+  order. Keeping a released black-and-white generator path prevents colour or choreography regressions
+  in dark marks and button spinners when the coloured animation changes.
+- **Status:** implemented at the app generator and exported to `motion/box-open/`; preserves SW-381's
+  solid lid, no-hole cap, overlap order, static rest and reduced-motion behavior. Snapshot hashes pin
+  the released CSS and markup; frame tests cover the changed sequence. Browser QA and preview/PDF
+  regeneration remain release-orchestrator steps.
+
+Index addition: [SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0](#sw-412--orange-outer-flaps-open-in-order-black-and-white-returns-to-v200).
+
+### SW-424 — Entry points follow the data
+- **Date:** 13 November
+- **Decision:** Every entry point in every product decides from what exists: nothing (or backend unreachable) →
+  introduction; exactly one item → open it directly; several → list. The product's links (docs, GitHub, features, the
+  full list, the introduction) stay one click away wherever it lands, and sign-in returns to the same action with the
+  visitor's choices kept. In SpaceWorks: `/` is the landing with no public makerspace, the makerspace's page with one,
+  the space list with several; the landing stays at `/about`.
+- **Why:** The owner asked for the SpaceWorks homepage to behave this way, then: "generalize and make a rule".
+- **Status:** current. Rule text: [product rules §12.2](product-rules.md#122-entry-points-follow-the-data-every-product).
+

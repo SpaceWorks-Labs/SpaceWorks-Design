@@ -1,5 +1,7 @@
 # Route transition
 
+> **Current rule (v2.0.1, 2026-11-13):** Route exit is now base (180 ms), enter slow (240 ms), with a token-derived quarter-fast lead (30 ms). Both use the same route origin. Latest navigation owns cleanup; focus moves to the main region only for pathname changes. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#route-transition).
+
 A page change reads as one move: only the main content region fades out (90 ms) and the new page fades in with a short rise, while the sidebar and top bar stay still. It uses the View Transitions API on the one named region and falls back to a CSS fade where the API is missing.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -23,6 +25,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 The visitor sees that the page changed without losing their place: the chrome is stable, the content is new. The old page leaves before the new one arrives, so the two are never visible together. Direction sets the settle distance (forward rises 8 px, a lateral move 6 px, back sinks 6 px, a fade-only change 0).
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#route-transition) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | What | Value |
 |---|---|
@@ -53,6 +57,8 @@ Colour-neutral: the transition animates opacity and transform of whatever the pa
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#route-transition) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```js
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function go(update) {
@@ -67,3 +73,18 @@ function go(update) {
 Mark the region `<main data-sw-main>`. Without View Transitions, add the class `sw-route-enter` (and `data-sw-enter="forward"`) to it after swapping the content.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Route exit is now base (180 ms), enter slow (240 ms), with a token-derived quarter-fast lead (30 ms). Both use the same route origin. Latest navigation owns cleanup; focus moves to the main region only for pathname changes.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#route-transition). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-70` | `calc(var(--sw-dur-fast) * 0.58333333)` |
+| `--sw-local-duration-90` | `calc(var(--sw-dur-fast) * 0.75000000)` |

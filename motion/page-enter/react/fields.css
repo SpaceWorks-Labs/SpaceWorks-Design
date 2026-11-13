@@ -1,3 +1,9 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-200: calc(var(--sw-dur-base) * 1.11111111);
+  --sw-local-duration-480: calc(var(--sw-dur-slow) * 2.00000000);
+  --sw-local-duration-640: calc(var(--sw-dur-slow) * 2.66666667);
+}
 /* Brand colour fields. Each field is a scoped token island: it redefines
    the tokens its subtree reads, so buttons, inputs, links and focus rings recolour themselves.
    Values are brand hexes as triplets (p.9) or documented brand-mixes; fields are flat (p.16). */
@@ -83,12 +89,17 @@
 @keyframes sw-facet-in { from { opacity: 0; translate: 8px 6px; } to { opacity: 1; translate: 0 0; } }
 @keyframes sw-rise { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
 @media (prefers-reduced-motion: no-preference) {
-  .sw-facets path { transform-box: fill-box; animation: sw-facet-in 640ms cubic-bezier(0.32, 0.72, 0, 1) 120ms both; }
-  .sw-facets path:nth-of-type(2) { animation-delay: 200ms; }
-  .sw-auth-showcase > * { animation: sw-rise 480ms cubic-bezier(0.32, 0.72, 0, 1) both; }
-  .sw-auth-showcase > :nth-child(2) { animation-delay: 120ms; }
-  .sw-auth-showcase > :nth-child(3) { animation-delay: 240ms; }
+  .sw-facets path { transform-box: fill-box; animation: sw-facet-in var(--sw-local-duration-640) var(--sw-ease-enter) var(--sw-dur-fast) both; }
+  .sw-facets path:nth-of-type(2) { animation-delay: var(--sw-local-duration-200); }
+  .sw-auth-showcase > * { animation: sw-rise var(--sw-local-duration-480) var(--sw-ease-enter) both; }
+  .sw-auth-showcase > :nth-child(2) { animation-delay: calc(var(--sw-dur-fast) / 4); }
+  .sw-auth-showcase > :nth-child(3) { animation-delay: calc(var(--sw-dur-fast) / 2); }
 }
 
 /* One checkbox/radio size and accent everywhere (44px row targets come from the label). */
 input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; accent-color: rgb(var(--color-accent)); }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

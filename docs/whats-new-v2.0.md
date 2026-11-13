@@ -236,3 +236,7 @@ matches synonyms, not only the label.
 
 Source for items 2, 5 and 12: `handover/reports/UX-PASS-0.12.0.md` in the main checkout; release notes in
 `docs/release-0.12.0.md` of the app repository.
+
+## What's new in v2.1
+
+The additive Design System v2.1.0 release is described in [What's new in v2.1](whats-new-v2.1.md). The v2.0 history above stays available; the repository `VERSION` identifies the current publication target.

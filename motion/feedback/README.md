@@ -1,5 +1,7 @@
 # Feedback: stamp, result, confetti
 
+> **Current rule (v2.0.1, 2026-11-13):** Feedback is caused by a completed action. The demo initial Verified label is still, active replays are ignored, confetti cannot overlap, and status is announced without moving focus. Bursts remove themselves after actual animation completion. All durations/easings are token-derived; decorative success moments do not block input. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#feedback).
+
 How the product confirms something worked. A valid card check lands with one stamp; a result panel arrives with a small scale-in; a pass tears in from above; the workshop logbook opens like a cover; a completed return fires one confetti burst (only with interface effects on). Errors do not bounce or shake: they appear.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -25,6 +27,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 A confirmed result should feel confirmed, once, without delaying anyone. The stamp echoes a physical handover; the confetti is a rare celebration of a completed return. None of it carries information the text does not already carry.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#feedback) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Animation | Duration | Easing |
 |---|---|---|
@@ -56,6 +60,8 @@ Confetti colours are brand tokens (`--color-accent`, `--color-emphasis`, `--colo
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#feedback) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="../../tokens/tokens.css"><link rel="stylesheet" href="feedback.css">
 <span class="sw-verify-stamp">Verified</span>
@@ -65,3 +71,20 @@ Confetti colours are brand tokens (`--color-accent`, `--color-emphasis`, `--colo
 Confetti: `demo.html` builds the 16 pieces (`.sw-confetti-piece` with `--dx`, `--dy`, `--spin`, `--piece`) exactly as `ReturnConfetti.tsx` does.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Feedback is caused by a completed action. The demo initial Verified label is still, active replays are ignored, confetti cannot overlap, and status is announced without moving focus. Bursts remove themselves after actual animation completion. All durations/easings are token-derived; decorative success moments do not block input.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#feedback). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-1100` | `calc(var(--sw-dur-slow) * 4.58333333)` |
+| `--sw-local-duration-360` | `calc(var(--sw-dur-slow) * 1.50000000)` |
+| `--sw-local-duration-4000` | `calc(var(--sw-dur-slow) * 16.66666667)` |
+| `--sw-local-duration-420` | `calc(var(--sw-dur-slow) * 1.75000000)` |

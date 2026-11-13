@@ -17,6 +17,16 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .pad{padding:10px 12px;border-radius:10px}.card.sw-card-hover{max-width:320px}</style>
+<link rel="stylesheet" href="../demo.css">
+
+<style data-ds-target-sizes>
+/* Publication integration: 44px house actions; 24px minimum native targets. */
+button, .btn, .sw-ov-btn, .sw-preview-btn, [role="tab"], [role="button"], a[href], select { min-width:44px; min-height:44px; }
+select { font:inherit; padding:8px; }
+input[type="checkbox"], input[type="radio"] { width:24px; height:24px; min-width:24px; min-height:24px; vertical-align:middle; flex-shrink:0; }
+label:has(input[type="checkbox"]), label:has(input[type="radio"]) { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:4px; }
+a[href] { display:inline-flex; align-items:center; }
+</style>
 </head>
 <body>
 <main>
@@ -26,6 +36,8 @@
 <section class="row"><button class="desk-button-primary">Save</button><button class="desk-button">Cancel</button><button class="desk-button-primary" disabled style="opacity:.5">Disabled</button></section>
 <section><div class="card sw-card-hover sw-hover"><strong>Card</strong><p>Border colour eases in on hover.</p></div></section>
 <section style="max-width:320px"><div class="sw-row-hover sw-hover pad">Row one</div><div class="sw-row-hover sw-hover pad">Row two</div><a href="#" class="sw-link-hover sw-hover" style="color:rgb(var(--color-ink))">Link underline</a></section>
-</main>
-</body>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/hover-press-dark-poster.png" data-poster="previews/hover-press-dark-poster.png" data-animated="previews/hover-press-dark.webp" alt="hover press dark motion end-state preview" loading="lazy"><figcaption>hover press dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/hover-press-light-poster.png" data-poster="previews/hover-press-light-poster.png" data-animated="previews/hover-press-light.webp" alt="hover press light motion end-state preview" loading="lazy"><figcaption>hover press light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section><section><h2>Easing at token duration</h2><p>Each Play button reverses its dot from its current position. The duration is the slow token (240 ms at the default scale).</p><div class="row" id="easing-demo"></div><p id="easing-status" role="status"></p></section></main>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script><script src="../flow.js"></script><script>
+['standard','enter','exit'].forEach(name=>{const card=document.createElement('div');card.innerHTML='<button type="button" class="btn ghost">Play '+name+'</button><div class="sw-easing-track"><div class="sw-easing-dot" aria-hidden="true"></div></div>';const dot=card.querySelector('.sw-easing-dot');dot.style.setProperty('--sw-demo-ease','var(--sw-ease-'+name+')');card.querySelector('button').onclick=()=>{dot.toggleAttribute('data-end');document.getElementById('easing-status').textContent=name+': '+(SwMotionFlow.reduced()?0:SwMotionFlow.milliseconds('--sw-dur-slow'))+' ms';};document.getElementById('easing-demo').appendChild(card);});
+</script></body>
 </html>

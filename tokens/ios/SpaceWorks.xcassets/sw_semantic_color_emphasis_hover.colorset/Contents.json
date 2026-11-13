@@ -1,0 +1,38 @@
+{
+  "colors": [
+    {
+      "idiom": "universal",
+      "color": {
+        "color-space": "srgb",
+        "components": {
+          "red": "1",
+          "green": "0.5058823529411764",
+          "blue": "0.3411764705882353",
+          "alpha": "1"
+        }
+      }
+    },
+    {
+      "idiom": "universal",
+      "appearances": [
+        {
+          "appearance": "luminosity",
+          "value": "dark"
+        }
+      ],
+      "color": {
+        "color-space": "srgb",
+        "components": {
+          "red": "1",
+          "green": "0.5058823529411764",
+          "blue": "0.3411764705882353",
+          "alpha": "1"
+        }
+      }
+    }
+  ],
+  "info": {
+    "author": "SpaceWorks",
+    "version": 1
+  }
+}

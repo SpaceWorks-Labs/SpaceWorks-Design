@@ -6,6 +6,8 @@ import { join } from 'node:path';
 import { syncThemeReveal } from './sync-theme-reveal.mjs';
 import { KIT_FAMILIES, syncMotionKit } from './sync-motion-kit.mjs';
 import { rewriteMovedAnchors, syncSplits } from './sync-split.mjs';
+import { PUBLICATIONS } from './publication-map.mjs';
+import { syncPublications, applyIndexingPolicy, appendPublicationLinks } from './sync-publications.mjs';
 
 export function syncExtra({ root, site, kit, assets }) {
   const generated = join(site, 'src', 'styles', 'generated');
@@ -48,6 +50,7 @@ export function syncExtra({ root, site, kit, assets }) {
   // and relative links point at the file on GitHub (they are not site pages).
   // Repo docs that are also site pages link to the page, not to GitHub.
   const pageRoutes = {
+    ...Object.fromEntries(PUBLICATIONS.map(p => [p.file, `/${p.route}/`])),
     "docs/motion.md": "/motion/principles/",
     "docs/theming.md": "/theming/",
     "docs/lessons-learned.md": "/lessons-learned/",
@@ -74,10 +77,15 @@ export function syncExtra({ root, site, kit, assets }) {
           return line;
         }
         if (fence) return line;
+        if (baseDir.startsWith('motion')) line = line.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (all, alt, path) => {
+          const resolved = join(baseDir, path).replaceAll('\\', '/');
+          return /\.(webp|gif)$/.test(resolved) ? `<MotionPreview path="${resolved}" alt="${alt.replaceAll('"', '&quot;')}" />` : all;
+        });
         return line
           .split(/(`[^`]*`)/)
           .map((seg, i) => {
             if (i % 2) return seg;
+            seg = seg.replace(/http:\/\/localhost:\d+[^\s)]+/g, '`$&`');
             seg = seg.replace(/<(https?:\/\/[^>\s]+)>/g, '[$1]($1)').replace(/\{/g, '&#123;').replace(/\}/g, '&#125;');
             seg = seg.replace(/<(?![A-Za-z\/!])/g, '&lt;');
             return seg.replace(/\]\(([^)\s]+)\)/g, (all, href) => {
@@ -85,6 +93,12 @@ export function syncExtra({ root, site, kit, assets }) {
               const [path, hash = ''] = href.split('#');
               const resolved = join(baseDir, path).replace(/\\/g, '/');
               if (pageRoutes[resolved]) return `](${pageRoutes[resolved]}${hash ? "#" + hash : ""})`;
+              if (resolved.startsWith('examples/web/') && /\.(html|css|mjs)$/.test(resolved) && !resolved.startsWith('examples/web/react/')) return `](/${resolved}${hash ? '#' + hash : ''})`;
+              const asset = resolved === 'scripts/tokens/schema.json' ? 'tokens/schema.json'
+                : resolved.startsWith('docs/components/') && resolved.endsWith('.json') ? resolved.replace('docs/', '')
+                : resolved.startsWith('docs/adoption/') && resolved.endsWith('.json') ? resolved.replace('docs/', '')
+                : /^(tokens|fonts|logo|icons|mascot|examples|motion)\//.test(resolved) && existsSync(join(root, resolved)) ? resolved : null;
+              if (asset && !baseDir.startsWith('motion')) return `](/kit/${asset}${hash ? '#' + hash : ''})`;
               return `](${repo}/blob/main/${resolved}${hash ? '#' + hash : ''})`;
             });
           })
@@ -94,7 +108,7 @@ export function syncExtra({ root, site, kit, assets }) {
   };
   const readDoc = (rel) => (existsSync(join(root, rel)) ? readFileSync(join(root, rel), 'utf8').replace(/^﻿/, '') : null);
   const splitTitle = (source, fallback) => {
-    const m = source.match(/^#\s+(.+)\r?\n/);
+    const m = source.match(/^\s*#\s+(.+)\r?\n/);
     return m ? { title: m[1].trim().replace(/"/g, '\\"'), body: source.slice(m[0].length) } : { title: fallback, body: source };
   };
   const sourceNote = (file) =>
@@ -138,14 +152,17 @@ export function syncExtra({ root, site, kit, assets }) {
   {
     const raw = readFileSync(join(box, 'README.md'), 'utf8').replace(/^﻿/, '');
     const { body } = splitTitle(raw, 'Box-open loader');
-    const rest = body.replace(/^[\s\S]*?(?=^## Usage)/m, '').replace(/^## Source of truth[\s\S]*$/m, '');
+    const rest = body;
     writeFileSync(
       join(docsDir, 'motion', 'box-open.mdx'),
-      `---\ntitle: Box-open loader\ndescription: "The Space Works loading animation, where the logo box opens flap by flap, in both themes and every size."\nsidebar: { order: 2 }\neditUrl: ${repo}/edit/main/motion/box-open/README.md\n---\n\nimport BoxOpenDemos from '../../../components/BoxOpenDemos.astro';\n\nThe box from the logo opens flap by flap, holds open, folds shut and repeats. It is drawn from the logo's own paths, so it is on-brand in both themes. Use it everywhere something loads; never a generic spinner.\n\n<BoxOpenDemos />\n\n${prepare(rest, 'motion/box-open')}\n## Source\n\nThe loader files are copied from [\`motion/box-open/\`](${repo}/tree/main/motion/box-open) on every build: [\`box-open.css\`](${repo}/blob/main/motion/box-open/box-open.css), [\`box-open-markup.html\`](${repo}/blob/main/motion/box-open/box-open-markup.html) and a standalone [\`demo.html\`](${repo}/blob/main/motion/box-open/demo.html).\n`,
+      `---\ntitle: Box-open loader\ndescription: "The Space Works loading animation, where the logo box opens flap by flap, in both themes and every size."\nsidebar: { order: 2 }\neditUrl: ${repo}/edit/main/motion/box-open/README.md\n---\n\nimport BoxOpenDemos from '../../../components/BoxOpenDemos.astro';\nimport MotionPreview from '../../../components/MotionPreview.astro';\n\nThe box from the logo opens flap by flap, holds open, folds shut and repeats. It is drawn from the logo's own paths, so it is on-brand in both themes. Use it everywhere something loads; never a generic spinner.\n\n<BoxOpenDemos />\n\n${prepare(rest, 'motion/box-open')}\n## Source\n\nThe loader files are copied from [\`motion/box-open/\`](${repo}/tree/main/motion/box-open) on every build: [\`box-open.css\`](${repo}/blob/main/motion/box-open/box-open.css), [\`box-open-markup.html\`](${repo}/blob/main/motion/box-open/box-open-markup.html) and a standalone [\`demo.html\`](${repo}/blob/main/motion/box-open/demo.html).\n`,
     );
   }
 
   syncThemeReveal({ root, kit, generated, docsDir, repo, prepare, splitTitle });
   syncMotionKit({ root, kit, docsDir, repo, prepare, splitTitle });
+  syncPublications({ root, site, kit, docsDir, repo, prepare, splitTitle });
+  applyIndexingPolicy({ site, pageRoutes });
   rewriteMovedAnchors(docsDir, moved, repo);
+  appendPublicationLinks(docsDir);
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { eggsAllowed, useDelight, useReducedMotion } from "../delight/DelightProvider";
 
 /**
@@ -11,10 +11,6 @@ export function StaggerGroup({ className = "", children }: { className?: string;
   const { enabled } = useDelight();
   const reduced = useReducedMotion();
   const [first, setFirst] = useState(true);
-  useEffect(() => {
-    const timer = window.setTimeout(() => setFirst(false), 600);
-    return () => window.clearTimeout(timer);
-  }, []);
   const stagger = first && enabled && !reduced && eggsAllowed(window.location.pathname);
-  return <div className={`${className}${stagger ? " sw-stagger" : ""}`}>{children}</div>;
+  return <div onAnimationEnd={event => { if (event.target === event.currentTarget.children[Math.min(7, event.currentTarget.children.length - 1)]) setFirst(false); }} className={`${className}${stagger ? " sw-stagger" : ""}`}>{children}</div>;
 }

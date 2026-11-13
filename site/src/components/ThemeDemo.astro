@@ -19,7 +19,7 @@ import Wordmark from './Wordmark.astro';
     </div>
     <div class="sw-sample__grid">
       <div class="sw-sample__card">
-        <h4>Issue the laser cutter</h4>
+        <p class="sw-sample__title">Issue the laser cutter</p>
         <p>Scan the box, add the issue photo, hand it over.</p>
         <label class="sw-sample__label" for="sw-demo-input">Remark</label>
         <input id="sw-demo-input" class="sw-sample__input" placeholder="Anything the next person should know" />
@@ -30,14 +30,14 @@ import Wordmark from './Wordmark.astro';
         </div>
       </div>
       <div class="sw-sample__card">
-        <h4>Status</h4>
+        <p class="sw-sample__title">Status</p>
         <div class="sw-sample__row">
           <span class="sw-pill sw-pill--success"><i></i>Returned</span>
           <span class="sw-pill sw-pill--info"><i></i>Issued</span>
           <span class="sw-pill sw-pill--warn"><i></i>Due soon</span>
           <span class="sw-pill sw-pill--danger"><i></i>Lost</span>
         </div>
-        <h4>Chart series</h4>
+        <p class="sw-sample__title">Chart series</p>
         <div class="sw-bars" role="img" aria-label="Five bars in the five chart colours">
           <span style="--v:90;background:rgb(var(--chart-1));box-shadow:inset 0 0 0 1px rgb(var(--chart-edge))"></span>
           <span style="--v:70;background:rgb(var(--chart-2));box-shadow:inset 0 0 0 1px rgb(var(--chart-edge))"></span>
@@ -45,7 +45,7 @@ import Wordmark from './Wordmark.astro';
           <span style="--v:40;background:rgb(var(--chart-4));box-shadow:inset 0 0 0 1px rgb(var(--chart-edge))"></span>
           <span style="--v:25;background:rgb(var(--chart-5));box-shadow:inset 0 0 0 1px rgb(var(--chart-edge))"></span>
         </div>
-        <h4>Loading</h4>
+        <p class="sw-sample__title">Loading</p>
         <div class="sw-sample__row">
           <div role="status" aria-label="Loading"><BoxMark height={40} variant="loop" /></div>
           <button type="button" class="sw-sample__btn" aria-busy="true"><BoxMark height={18} variant="mono" /> Saving</button>

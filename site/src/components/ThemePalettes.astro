@@ -2,6 +2,12 @@
 // Light and dark side by side: every semantic token as a swatch with its hex, each panel drawn in its own scoped
 // theme from tokens/tokens.json. Followed by the chart and loader colour groups.
 import tokens from '../assets/kit/tokens.json';
+import ComponentOutline from './ComponentOutline.astro';
+interface Props { headingLevel?: 2 | 3 | 4 }
+const { headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+const GroupHeading = `h${headingLevel + 1}` as 'h3' | 'h4' | 'h5';
+const sectionId = (set: string, group = '') => `palette-${set}${group ? `-${group.toLowerCase().replace(/[^a-z0-9]+/g, '-')}` : ''}`;
 
 const sets = [
   { key: 'light', label: 'Light: Warm Cream', values: tokens.light as Record<string, string> },
@@ -22,14 +28,15 @@ const chart = tokens.chart as Record<string, any>;
 const loader = tokens.loader as Record<string, any>;
 ---
 
+<ComponentOutline label="Palette sections" entries={sets.flatMap(set => [{ id: sectionId(set.key), title: set.label }, ...[...groups.keys(), 'Chart series', 'Box-open loader'].map(group => ({ id: sectionId(set.key, group), title: `${set.label}: ${group}` }))])} />
 <div class="sw-palettes not-content">
   {
     sets.map((set) => (
       <section class:list={['sw-scope', 'sw-palette', { dark: set.key === 'dark' }]} aria-label={set.label}>
-        <h3 class="sw-palette__title">{set.label}</h3>
+        <Heading id={sectionId(set.key)} class="sw-palette__title">{set.label}</Heading>
         {shown.map(([group, list]) => (
           <div class="sw-palette__group">
-            <h4>{group}</h4>
+            <GroupHeading id={sectionId(set.key, group)}>{group}</GroupHeading>
             <ul>
               {list.map((n) => (
                 <li>
@@ -42,7 +49,7 @@ const loader = tokens.loader as Record<string, any>;
           </div>
         ))}
         <div class="sw-palette__group">
-          <h4>Chart series</h4>
+          <GroupHeading id={sectionId(set.key, 'Chart series')}>Chart series</GroupHeading>
           <ul>
             {chart.order.map((n: string) => (
               <li>
@@ -54,7 +61,7 @@ const loader = tokens.loader as Record<string, any>;
           </ul>
         </div>
         <div class="sw-palette__group">
-          <h4>Box-open loader</h4>
+          <GroupHeading id={sectionId(set.key, 'Box-open loader')}>Box-open loader</GroupHeading>
           <ul>
             {Object.entries(loader[set.key]).map(([n, hex]) => (
               <li>

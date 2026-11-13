@@ -1,5 +1,7 @@
 # Toast
 
+> **Current rule (v2.0.1, 2026-11-13):** Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base ? .75 (180/135 ms), from the same 12 px origin. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#toast).
+
 A status toast arrives from just below its slot (12 px, fading in) and leaves by dropping 8 px while fading. It never steals focus; the message is announced through a polite live region (errors through an alert region).
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -23,6 +25,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Status appears without taking focus or moving anything else, and its short exit confirms the dismissal. The tone (error colour) is carried by colour and text, never by shaking or bouncing.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#toast) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Phase | Value |
 |---|---|
@@ -50,6 +54,8 @@ Colour-neutral; the panel, border and error text colours are tokens.
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#toast) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="../../tokens/tokens.css"><link rel="stylesheet" href="toast.css">
 <div class="sw-fx-toast" data-state="open" role="status">Saved.</div>
@@ -58,3 +64,18 @@ Colour-neutral; the panel, border and error text colours are tokens.
 To dismiss: set `data-state="closed"` and `inert`, then remove the element on `animationend`.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base ? .75 (180/135 ms), from the same 12 px origin.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#toast). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-menu-exit` | `calc(var(--sw-dur-fast) * .75)` |
+| `--sw-overlay-exit` | `calc(var(--sw-dur-base) * .75)` |
