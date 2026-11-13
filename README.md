@@ -14,6 +14,8 @@ pattern specs. Use it as a git submodule in any Space Works project so every sur
 **Version: Space Works Design System v2.0** (`VERSION` = `2.0.0`), which ships alongside SpaceWorks 0.12.0. What
 changed is in [`docs/whats-new-v2.0.md`](docs/whats-new-v2.0.md).
 
+> **Current rule (v2.0.1, 2026-11-13):** Design System v2.0 is independent of app 0.12.0. v2.0.0 was released 2026-11-13; 2.0.1 is the fix checkpoint and ledger 397 sets phase 2 to v2.1.0. Observed at the 2026-11-13 batch baseline: local VERSION still reads 2.0.0 and tag v2.0.0 exists; publication and a target version are different facts. (1A-N01) — supersedes the line above; see [docs/current-rules.md#cr-release-01](docs/current-rules.md#cr-release-01).
+
 ```bash
 git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System.git design
 ```
@@ -23,6 +25,8 @@ masters, colours, type, voice, every design token and the UI specs, published fr
 `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 
 ## Contents
+
+> **Current rule (v2.0.1, 2026-11-13):** The current brand book is v2 (50 pages); the retained v1 book is historical (17 pages). The three type families are Gilroy, Outfit and Unbounded. Start with [Current rules](docs/current-rules.md) and use [Voice and content](docs/voice-and-content.md) for product writing. (1A-N02) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](docs/current-rules.md#cr-scope-01).
 
 | Folder | What it holds |
 |---|---|
@@ -79,6 +83,8 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 
 - **README banner** added: `brand/readme/banner-light.svg` and `banner-dark.svg` (1280×320, rounded corners, the lockup masters, the seven brand colours; text is outlined from Gilroy ExtraBold and Outfit by `brand/readme/make-banner.py`, so GitHub shows the brand fonts; no external references), shown through a `<picture>` that follows the reader's colour scheme.
 - **`docs/motion.md` and `docs/theming.md` added.** `motion.md` catalogues every shipped animation (where, why, tokens, trigger, reduced motion, dark), gives the "which animation to use where" defaults and the rules, including the new logo rule: **the Space Works mark opens (one-shot box opening, 1600 ms) on hover and keyboard focus everywhere it appears; it never loops except as the loader; tenant logos never animate; no hover animation on touch; reduced motion shows the static mark.** `theming.md` documents the light/dark switch (token layer, `html.dark`, system preference, pre-paint script, meta theme-color, React and plain examples). `motion/box-open/` documents the hover/focus one-shot usage.
+
+> **Current rule (v2.0.1, 2026-11-13):** SW-367 (2026-11-13) specifies the full hover/focus cycle: fold shut 600 ms then open 1600 ms (2200 ms total), finishing once without restart. The 1600 ms value above is the opening phase only; SW-389 governs the four-colour closed state. (1A-N04) — supersedes the line above; see [docs/current-rules.md#cr-motion-01](docs/current-rules.md#cr-motion-01).
 - **Dark theme is one solid black family** (decision 316, superseding the green-tinted dark of 275/300). Neutral
   surfaces only, no green or teal tint; teal, Citron and orange stay accents.
 - **Old green-black dark → new solid-black dark** (`:root.dark`, as RGB triplets):
@@ -93,6 +99,8 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 - **Dark palette re-checked against the app on 2026-11-13:** all 55 `:root.dark` colour tokens match SpaceWorks
   0.12.0 exactly. Added the **chart series tokens** (`--chart-accent/-info/-success/-warn/-danger`, light and dark; dark
   uses the ink/fill variants for contrast) under `chart` in `tokens.json`, and the box loader's colours under `loader`.
+
+> **Current rule (v2.0.1, 2026-11-13):** SW-380 (2026-11-13) uses --chart-1 through --chart-5, the same bright teal/orange/citron/sky/yellow in both themes, with --chart-edge boundaries/casings. The named ink/fill series recipe above is historical; danger is not an ordinary series colour. (1A-N03) — supersedes the line above; see [docs/current-rules.md#cr-chart-01](docs/current-rules.md#cr-chart-01).
 - **Box-open loader** added in `motion/box-open/`: the logo box opens, holds, folds shut and repeats (4400 ms
   cycle, 1600 ms one-shot opening, still open logo under reduced motion), with a `mono` variant for buttons.
 - **Motion tokens** added (`--sw-dur-*`, `--sw-ease-*`, `--sw-enter-y`, `--sw-pop-*`, `--sw-slide-x`), also under `motion`

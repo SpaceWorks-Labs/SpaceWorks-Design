@@ -72,7 +72,7 @@ export function CardJobList({ listPath }: { listPath: string }) {
       </div>
       {!isTerminal(job) ? <div className="h-2 overflow-hidden rounded-full bg-line" role="progressbar" aria-valuemin={0}
         aria-valuemax={100} aria-valuenow={job.progress} aria-label={t`Progress`}>
-        <div className="h-full bg-accent-ink motion-safe:transition-[width]" style={{ width: `${job.progress}%` }} />
+        <div className="h-full bg-accent-ink motion-safe:transition-transform duration-[var(--sw-dur-base)] ease-[var(--sw-ease-standard)]" style={{ width: "100%", transformOrigin: "left", transform: `scaleX(${Math.max(0, Math.min(100, job.progress)) / 100})` }} />
       </div> : null}
       <div className="flex flex-wrap gap-2">
         {!isTerminal(job) ? <button type="button" className="desk-button-ghost min-h-11" disabled={cancel.isPending}

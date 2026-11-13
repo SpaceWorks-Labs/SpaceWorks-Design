@@ -1,0 +1,216 @@
+{
+  "base": "/SpaceWorks-Design-System/",
+  "status": "requested-not-wired",
+  "pages": [
+    {
+      "order": 1,
+      "source": "docs/adoption/README.md",
+      "route": "adoption/",
+      "sidebar": "Start here > Adopt the system > Choose a platform"
+    },
+    {
+      "order": 2,
+      "source": "docs/adoption/plain-html-css.md",
+      "route": "adoption/plain-html-css/",
+      "sidebar": "Start here > Adopt the system > Plain HTML and CSS"
+    },
+    {
+      "order": 3,
+      "source": "docs/adoption/react-tailwind.md",
+      "route": "adoption/react-tailwind/",
+      "sidebar": "Start here > Adopt the system > React and Tailwind"
+    },
+    {
+      "order": 4,
+      "source": "docs/adoption/android-compose.md",
+      "route": "adoption/android-compose/",
+      "sidebar": "Start here > Adopt the system > Android Compose"
+    },
+    {
+      "order": 5,
+      "source": "docs/adoption/ios-swiftui.md",
+      "route": "adoption/ios-swiftui/",
+      "sidebar": "Start here > Adopt the system > iOS SwiftUI"
+    },
+    {
+      "order": 6,
+      "source": "docs/accessibility.md",
+      "route": "foundations/accessibility/",
+      "sidebar": "Foundations > Accessibility"
+    },
+    {
+      "order": 7,
+      "source": "docs/components/README.md",
+      "route": "components/",
+      "sidebar": "Components > All components"
+    },
+    {
+      "order": 8,
+      "source": "docs/components/button.md",
+      "route": "components/button/",
+      "sidebar": "Components > Actions > Button"
+    },
+    {
+      "order": 9,
+      "source": "docs/components/link.md",
+      "route": "components/link/",
+      "sidebar": "Components > Actions > Link"
+    },
+    {
+      "order": 10,
+      "source": "docs/components/icon-button.md",
+      "route": "components/icon-button/",
+      "sidebar": "Components > Actions > IconButton"
+    },
+    {
+      "order": 11,
+      "source": "docs/components/text-field.md",
+      "route": "components/text-field/",
+      "sidebar": "Components > Forms > TextField and SearchField"
+    },
+    {
+      "order": 12,
+      "source": "docs/components/checkbox.md",
+      "route": "components/checkbox/",
+      "sidebar": "Components > Forms > Checkbox"
+    },
+    {
+      "order": 13,
+      "source": "docs/components/radio.md",
+      "route": "components/radio/",
+      "sidebar": "Components > Forms > Radio"
+    },
+    {
+      "order": 14,
+      "source": "docs/components/switch.md",
+      "route": "components/switch/",
+      "sidebar": "Components > Forms > Switch"
+    },
+    {
+      "order": 15,
+      "source": "docs/components/select.md",
+      "route": "components/select/",
+      "sidebar": "Components > Forms > Select"
+    },
+    {
+      "order": 16,
+      "source": "docs/components/tabs.md",
+      "route": "components/tabs/",
+      "sidebar": "Components > Navigation > Tabs"
+    },
+    {
+      "order": 17,
+      "source": "docs/components/segmented-control.md",
+      "route": "components/segmented-control/",
+      "sidebar": "Components > Navigation > SegmentedControl"
+    },
+    {
+      "order": 18,
+      "source": "docs/components/pagination.md",
+      "route": "components/pagination/",
+      "sidebar": "Components > Navigation > Pagination"
+    },
+    {
+      "order": 19,
+      "source": "docs/components/table.md",
+      "route": "components/table/",
+      "sidebar": "Components > Data and display > Table"
+    },
+    {
+      "order": 20,
+      "source": "docs/components/status-pill.md",
+      "route": "components/status-pill/",
+      "sidebar": "Components > Data and display > StatusPill"
+    },
+    {
+      "order": 21,
+      "source": "docs/components/empty-state.md",
+      "route": "components/empty-state/",
+      "sidebar": "Components > Feedback > EmptyState"
+    },
+    {
+      "order": 22,
+      "source": "docs/components/toast.md",
+      "route": "components/toast/",
+      "sidebar": "Components > Feedback > Toast"
+    },
+    {
+      "order": 23,
+      "source": "docs/components/skeleton-loader.md",
+      "route": "components/skeleton-loader/",
+      "sidebar": "Components > Feedback > Skeleton / Loader"
+    },
+    {
+      "order": 24,
+      "source": "docs/components/dialog.md",
+      "route": "components/dialog/",
+      "sidebar": "Components > Layers > Dialog"
+    },
+    {
+      "order": 25,
+      "source": "docs/components/drawer-sheet.md",
+      "route": "components/drawer-sheet/",
+      "sidebar": "Components > Layers > Drawer / Sheet"
+    },
+    {
+      "order": 26,
+      "source": "docs/components/menu.md",
+      "route": "components/menu/",
+      "sidebar": "Components > Layers > Menu"
+    },
+    {
+      "order": 27,
+      "source": "docs/patterns/README.md",
+      "route": "patterns/",
+      "sidebar": "Patterns and layouts > Named patterns and layouts (P1–P30 / L1–L10)"
+    },
+    {
+      "order": 28,
+      "source": "docs/contributing-design-system.md",
+      "route": "contributing-design-system/",
+      "sidebar": "Resources and governance > Contribute"
+    },
+    {
+      "order": 29,
+      "source": "docs/releases/README.md",
+      "route": "releases/",
+      "sidebar": "Resources and governance > Releases > Overview"
+    },
+    {
+      "order": 30,
+      "source": "docs/releases/versioning.md",
+      "route": "releases/versioning/",
+      "sidebar": "Resources and governance > Releases > Versioning and support"
+    },
+    {
+      "order": 31,
+      "source": "docs/releases/deprecation.md",
+      "route": "releases/deprecation/",
+      "sidebar": "Resources and governance > Releases > Deprecation"
+    },
+    {
+      "order": 32,
+      "source": "docs/releases/migration.md",
+      "route": "releases/migration/",
+      "sidebar": "Resources and governance > Releases > Migrate v1 / v2.0 / v2.0.1"
+    },
+    {
+      "order": 33,
+      "source": "docs/releases/changelog.md",
+      "route": "releases/changelog/",
+      "sidebar": "Resources and governance > Releases > Changelog format"
+    },
+    {
+      "order": 34,
+      "source": "docs/adoption/verification.md",
+      "route": "adoption/verification/",
+      "sidebar": "Resources and governance > Maintainer reference > Starter verification"
+    },
+    {
+      "order": 35,
+      "source": "docs/adoption/sidebar-placement.md",
+      "route": "adoption/sidebar-placement/",
+      "sidebar": "Resources and governance > Maintainer reference > Batch 1C sidebar handoff"
+    }
+  ]
+}

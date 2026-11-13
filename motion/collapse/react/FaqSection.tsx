@@ -30,7 +30,7 @@ export function FaqSection() {
       </div>
       <div className="grid">
         {questions().map(({ q, a }) => <details key={q} className="sw-hub-faq group">
-          <summary><span>{q}</span><Plus size={20} aria-hidden="true" className="shrink-0 transition-transform duration-200 group-open:rotate-45" /></summary>
+          <summary><span>{q}</span><Plus size={20} aria-hidden="true" className="shrink-0 transition-transform duration-[var(--sw-dur-base)] ease-[var(--sw-ease-standard)] group-open:rotate-45" /></summary>
           <p>{a}</p>
         </details>)}
       </div>

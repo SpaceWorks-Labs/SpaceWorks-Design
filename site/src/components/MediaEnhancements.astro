@@ -1,0 +1,72 @@
+---
+// Compatibility layer for generated Markdown images; batch 3 can use the same data-animation contract directly.
+import { media, publicUrl, downloadInfo } from './media';
+import { kitUrl } from './kit-url';
+import { motionDescription } from './motion-description';
+const animations = Object.fromEntries(Object.entries(media).filter(([, a]) => a.animated).map(([path, a]) => [kitUrl(path), { poster: publicUrl(a.variants[0].path), width: a.width, height: a.height, description: path.startsWith('motion/') ? motionDescription(path) : '' }]));
+// CSS supplies a static image even with JavaScript disabled, before the HTML parser reaches any preview.
+const posters = Object.entries(animations).map(([src, a]) => `img[src="${src}"]:not(.sw-preview-playing){content:url("${a.poster}")}`).join('\n');
+const pdfs = Object.fromEntries(['v1', 'v2'].map(v => [`space-works-brand-guidelines-${v}.pdf`, downloadInfo(`brand/space-works-brand-guidelines-${v}.pdf`)]));
+---
+<style is:global set:html={posters} />
+<script is:inline define:vars={{ animations, pdfs }}>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const stops = new Set();
+  function enhance(root) {
+    const images = [...(root.matches?.('img') ? [root] : []), ...root.querySelectorAll('img')];
+    for (const img of images) {
+      if (img.dataset.previewReady) continue;
+      const source = img.dataset.animation || img.getAttribute('src');
+      const asset = animations[source];
+      if (!asset) continue;
+      img.dataset.previewReady = 'true';
+      img.dataset.animation = source;
+      if (asset.description) img.alt = `${img.alt}. ${asset.description}`;
+      img.src = asset.poster;
+      const posterSet = img.getAttribute('srcset');
+      img.width = asset.width; img.height = asset.height;
+      const wrapper = document.createElement('span');
+      wrapper.className = 'sw-preview';
+      const target = img.parentElement.tagName === 'A' ? img.parentElement : img;
+      target.before(wrapper); wrapper.append(target);
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'sw-preview-control';
+      let playing = false;
+      const paint = value => {
+        playing = value;
+        img.classList.toggle('sw-preview-playing', value);
+        img.src = value ? source : asset.poster;
+        if (value) img.removeAttribute('srcset');
+        else if (posterSet) img.setAttribute('srcset', posterSet);
+        button.textContent = value ? 'Pause' : 'Play';
+        button.setAttribute('aria-label', `${value ? 'Pause' : 'Play'} ${img.alt || 'animated preview'}`);
+        button.setAttribute('aria-pressed', String(value));
+      };
+      button.addEventListener('click', () => paint(!playing));
+      wrapper.append(button); paint(false);
+      stops.add(() => paint(false));
+    }
+    // Existing PDF button wording remains visible. Its accessible name and adjacent metadata are additive.
+    for (const link of root.querySelectorAll('a[href$=".pdf"]')) {
+      if (link.dataset.mediaReady) continue;
+      const filename = link.getAttribute('href').split('/').pop();
+      if (!pdfs[filename]) continue;
+      link.dataset.mediaReady = 'true';
+      const old = filename.includes('v1');
+      link.setAttribute('aria-label', `Download Brand guidelines ${old ? 'v1, historical, 17' : 'v2, 50'} pages, ${pdfs[filename]}`);
+      const info = document.createElement('span');
+      info.className = 'sw-file-info'; info.dataset.mediaMetadata = '';
+      info.textContent = `${old ? 'v1 · Historical · 17' : 'v2 · 50'} pages · ${pdfs[filename]}`;
+      link.after(info);
+    }
+  }
+  const observer = new MutationObserver(records => {
+    for (const record of records) for (const node of record.addedNodes) if (node.nodeType === 1) enhance(node);
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  enhance(document);
+  reduce.addEventListener('change', e => { if (e.matches) stops.forEach(stop => stop()); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stops.forEach(stop => stop()); });
+})();
+</script>

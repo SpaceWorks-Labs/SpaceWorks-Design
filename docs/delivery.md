@@ -8,6 +8,8 @@ for the main SpaceWorks repository, from the current integration branch, which i
 `main` (it has the `version-bump` check, the signed installer assets and `docs/release-0.12.0.md`; `main`
 on GitHub is still at 0.9.3). Where something could not be verified it says **not checked**.
 
+> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: organisation tables below retain the original research snapshot, not live promises. The design-system VERSION/tag/release correction is recorded beside §§6–8; no new remote organisation audit was run by batch 1A. (1A-N30) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
+
 Plain words used below: a **workflow** is a script GitHub runs for us (GitHub Actions); a **job** is one
 step-group inside it; a **required check** is a job that must be green before GitHub allows a merge;
 **ghcr.io** is GitHub's container registry, where our Docker images live; a **tag** is a permanent label on one
@@ -171,6 +173,8 @@ archives or uploads a `.ipa`, and **no GitHub Release is created** today. Both m
 
 ## 6. Stack 5: static sites (Website, Docs, Design System)
 
+> **Current rule (v2.0.1, 2026-11-13):** The SpaceWorks-Docs row is a historical site snapshot. SW-405 (2026-11-13) retires that separate site: each product owns its in-product feature docs; native apps link to the hub. The stack heading is retained for route stability. (1A-N32) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
+
 | Site | Workflow | What it does |
 |---|---|---|
 | **Design System** (`SpaceWorks-Design-System`) | `deploy-site.yml` | On PRs: builds only, so a broken page or link fails before `main`. First runs `scripts/check-previews.mjs` (animated previews match the token and motion sources), then in `site/` runs `npm ci` and `npm run build`, which syncs the kit, runs `check-tokens.mjs` (site colours equal the tokens) and the Astro link validation. On `main`: uploads `site/dist` and deploys to GitHub Pages (environment `github-pages`, concurrency group `pages`). Site URL from the `DESIGN_SITE_URL` variable. |
@@ -181,6 +185,8 @@ Design System version: the kit is **Design System v2.0** (named in `README.md` a
 there is **no `VERSION` file, no git tag and no GitHub Release yet**. The product release it tracks is the
 SpaceWorks release it was synced to (for example "0.12.0 token sync"). Rule going forward: tag the repository
 `v2.0.0` when a wave is complete, and bump the minor for added tokens or motion families.
+
+> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: v2.0.0 was released 2026-11-13 (owner/lane record; local tag v2.0.0 exists). The v2.0.1 fix checkpoint calls for VERSION 2.0.1; this checkout still reads 2.0.0 at the batch baseline, so that bump is pending the release owner. Ledger 397 sets the phase-2 additions to v2.1.0. A target version is not a published release. (1A-N31) — supersedes the line above; see [docs/current-rules.md#cr-release-01](current-rules.md#cr-release-01).
 
 ## 7. Where each repo stands
 
@@ -201,6 +207,8 @@ Legend: **yes**, **partial**, **no**, **n/a**, **not checked**. Checked on 13 No
 | **Docs** | yes (build on PR) | n/a | n/a | n/a | n/a | yes (workflow) | yes | partial: maintainer-only push, no checks | **not checked** |
 | **Design System** | yes (build, previews, tokens) | no (no `VERSION`) | no (no tag) | n/a | **no** | yes (workflow) | **no** | partial: maintainer-only push, no checks | n/a |
 | **.github** | no workflows | n/a | n/a | n/a | n/a | n/a | n/a (community health files) | partial: maintainer-only push | n/a |
+
+> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: the Design System row’s “no VERSION”, “no tag” and “no GitHub Releases” cells are historical. v2.0.0 is the released baseline; the requested checkpoint is VERSION 2.0.1 (local baseline still 2.0.0), with phase 2 targeting v2.1.0. See the §6 observation for evidence boundaries. (1A-N33) — supersedes the line above; see [docs/current-rules.md#cr-release-01](current-rules.md#cr-release-01).
 
 "Partial" on branch protection means `main` is protected from force-push and limited to the maintainer (admins
 included) but GitHub is not told which checks must be green. Required checks on Docker/Next.js repos are a
@@ -225,7 +233,11 @@ Ordered by how much risk each gap leaves open.
 | **Machines, Bookings, Organization** | Security audit and tests run as separate PR workflows with no shared required list | Require `Lint, typecheck, unit tests, build`, `Integration and end-to-end tests` and `npm-audit` together. |
 | **Every repo** | The weekly audit exists only in SpaceWorks | Add a weekly `schedule:` trigger to each `npm audit` workflow so new advisories surface without a PR. |
 
+> **Current rule (v2.0.1, 2026-11-13):** The Design System gap row’s missing VERSION/tag/release claims are superseded by CR-RELEASE-01. SW-386 (2026-11-13) makes all proposed workflow/CODEOWNERS/required-check changes in this table rules only, deferred from implementation; this batch adds none. (1A-N34) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
+
 ### Checklist for a new repository
+
+> **Current rule (v2.0.1, 2026-11-13):** This checklist states the desired pipeline, not authorisation to provision it now. SW-386 (2026-11-13) defers workflows, CODEOWNERS and branch-protection changes; preserve existing automation. (1A-N35) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
 
 1. `dev` and `main` branches; `main` protected (maintainer-only, admins enforced, no force-push).
 2. A PR workflow whose job names are the required checks.

@@ -1,5 +1,7 @@
 # Skeleton and progress
 
+> **Current rule (v2.0.1, 2026-11-13):** Determinate progress uses a named 0?100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#skeleton).
+
 Loading placeholders and progress. A skeleton reserves the shape of what is coming and puts the Space Works box spinner in it; it does not shimmer. A progress bar grows to its new value instead of jumping.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -23,6 +25,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 The page keeps its layout while data loads, so nothing jumps when it arrives, and the one brand-owned loading indicator tells the person something is coming. A shimmer would keep repainting an idle screen; progress that eases to its value reads as continuous.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#skeleton) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -50,6 +54,8 @@ The surface and fill are tokens; the box spinner uses the reversed artwork in da
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#skeleton) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="../box-open/box-open.css"><link rel="stylesheet" href="skeleton.css">
 <div class="sw-skeleton" style="height:56px" aria-hidden="true">
@@ -59,3 +65,35 @@ The surface and fill are tokens; the box spinner uses the reversed artwork in da
 ```
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Determinate progress uses a named 0?100 range and one setter for semantics and scaleX fill; only completion is announced. The fill reserves 100% width. Indeterminate work uses the existing status-labelled box loader, never an invented percentage. Skeleton loading on first paint is the documented loading exception.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#skeleton). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-150` | `calc(var(--sw-dur-fast) * 1.25000000)` |
+
+### Current determinate progress recipe
+
+```html
+<div class="sw-progress" role="progressbar" aria-label="Loan export progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40">
+  <div class="sw-progress-fill" style="--sw-progress-value:.4"></div>
+</div>
+<p role="status" id="export-complete"></p>
+<script>
+function setProgress(value) {
+  const bar = document.querySelector('[role=progressbar]');
+  const percent = Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0));
+  bar.setAttribute('aria-valuenow', String(percent));
+  bar.firstElementChild.style.setProperty('--sw-progress-value', percent / 100);
+  document.getElementById('export-complete').textContent = percent === 100 ? 'Export complete.' : '';
+}
+</script>
+```

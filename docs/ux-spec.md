@@ -54,6 +54,8 @@ components were read in this worktree at `d3e5ed29`.
 
 ### 1.0 Observed scale (use these, not ad-hoc values)
 
+> **Current rule (v2.0.1, 2026-11-13):** Despite the retained heading, this section records measured inspiration-board styles. Product defaults use CR-RADIUS-01/CR-SIDEBAR-01/CR-TYPE-01: 10 px controls, 16 px cards, text-only Citron/neutral sidebar and shipped font roles. Cream/white describes light mode; dark uses CR-DARK-01. Reference shadows do not override the explicit floating-layer exception. (1A-N20) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](current-rules.md#cr-scope-01).
+
 - **Spacing steps actually used:** 4, 8, 12, 16, 20, 24, 28, 32, 36, 40. Card-to-card gap is
   **12**; section-to-section gap is **32–40**; page gutter beside the sidebar is **36**.
 - **Radii:** nav pill 8 · input, card, table container, stat card 12 · callout 14 · camera and
@@ -75,6 +77,8 @@ components were read in this worktree at `d3e5ed29`.
   · kiosk keys 76.
 
 ### P1. App shell and sidebar (R1–R10, R16, R17)
+
+> **Current rule (v2.0.1, 2026-11-13):** The P1 drawing and measurements are research. Current product sidebar is 256 px with text-only navigation, Citron in light, neutral in dark and a teal current item; keep the user-menu theme choices. Logo sizes come from brand F.3, not the 30 px reference tile. Apply this visual precedence also to L1 and §2. (1A-N21) — supersedes the line above; see [docs/current-rules.md#cr-sidebar-01](current-rules.md#cr-sidebar-01).
 
 ```
 ┌──────────── 240–300 ────────────┬───────────────────── main ─────────────────────┐
@@ -245,6 +249,8 @@ There are no info-blue "tips". **A callout replaces a toast or banner for standi
 
 ### P10. Pills and chips
 
+> **Current rule (v2.0.1, 2026-11-13):** The tinted measurements below are research. Current status marks use the named tone classes and a word; success/warn/info remain solid in both themes. Accent/danger/neutral exceptions and the corrected matrix are in brand C. (1A-N22) — supersedes the line above; see [docs/current-rules.md#cr-status-01](current-rules.md#cr-status-01).
+
 - **Status pill:** 20–22 tall, 8 px horizontal padding, 12 semibold, tinted fill with dark text
   in the same hue. Observed: Published, Going, Verified and Unused in green; Waitlist and
   "Running 5 min late" in yellow; Owner and "as a Member" in grey; Live in green with a 6 px dot.
@@ -255,6 +261,8 @@ There are no info-blue "tips". **A callout replaces a toast or banner for standi
 - **Track tag** (R18 schedule): a tinted pill aligned right in the row.
 
 ### P11. Buttons
+
+> **Current rule (v2.0.1, 2026-11-13):** The near-black fully round reference buttons below are historical visual examples. Product buttons use a 10 px control radius and semantic action tokens, Outfit 600 labels and the explicit opaque disabled state; round status tags remain round. Use brand B/E for canonical roles. (1A-N23) — supersedes the line above; see [docs/current-rules.md#cr-radius-01](current-rules.md#cr-radius-01).
 
 - **Primary:** filled near-black pill, white 15 semibold, 44 tall in headers and 50–52 full
   width in auth. One per view region.
@@ -555,6 +563,8 @@ Speakers (2-col cards) · Partners (2-col) · Venue (map | text, Get directions 
 | States | Dashed empty cards that point at a visible control; disabled = grey fill; zero shown as "0". |
 
 ### 1.32 Microcopy style
+
+**Content contract (1A-X01):** apply [Voice and content](voice-and-content.md) for validation, failure/recovery, pending/offline states, localisation and audited actions. The examples below remain reference copy. [CR-CONTENT-01](current-rules.md#cr-content-01) preserves the no-Undo boundary for evidence, handovers and payments.
 
 - **Sentence case everywhere,** including buttons and tabs ("Page & programme", "Save changes").
   Caps only in 11–12 px eyebrows.
@@ -884,6 +894,8 @@ All targets ≥56 px, text ≥18, no hover-only affordances. Used by: kiosk hand
 ---
 
 ## 2. Staff console sidebar IA
+
+> **Current rule (v2.0.1, 2026-11-13):** The 264 px proposal in §2.2 is retained research geometry. Adopted brand E defaults are 256 px width / 20 px inset / 44 px items / 4 px gaps; keep the IA and responsive disclosure behaviour. The current item is teal, navigation is text-only and the user menu offers Light / Dark / System. (1A-N24) — supersedes the line above; see [docs/current-rules.md#cr-sidebar-01](current-rules.md#cr-sidebar-01).
 
 ### 2.0 App-wide navigation rules (all shells)
 
@@ -2026,6 +2038,8 @@ audit would be empty.
 ---
 
 ## 6. Items that need a decision or data before implementation
+
+> **Current rule (v2.0.1, 2026-11-13):** This heading is a historical implementation checklist, not an assertion that all entries are still undecided. Item 9’s primary fill is settled: product accent is Maker Teal and tenant brand is public/member only. Other endpoint/data availability must be verified in the app; do not infer it from the age of this list. (1A-N25) — supersedes the line above; see [docs/current-rules.md#cr-scope-01](current-rules.md#cr-scope-01).
 
 1. **Request tab counts and the sidebar Requests badge.** Use per-query `count` (free in the
    default view) and the cached dashboard query for the sidebar. Confirm the dashboard endpoint

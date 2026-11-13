@@ -1,0 +1,582 @@
+[
+  {
+    "slug": "button",
+    "name": "Button",
+    "html": "<button type=\"button\" class=\"primary\" data-action=\"save\">Save changes</button>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "N/A — an action/destination is not a result collection; an empty label is invalid. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "link",
+    "name": "Link",
+    "html": "<a href=\"#main-content\">View the first-screen example</a>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "The destination region owns route loading; href remains meaningful. RouteLink has no loading prop. Product supplies title and route focus.",
+      "Empty": "N/A — an action/destination is not a result collection; an empty label is invalid. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "Destination errors belong to the destination error region. Retain a working Back/retry route; Link itself does not fetch.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "icon-button",
+    "name": "IconButton",
+    "html": "<button type=\"button\" aria-label=\"Close details\"><span aria-hidden=\"true\">×</span></button>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "N/A — an action/destination is not a result collection; an empty label is invalid. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "text-field",
+    "name": "TextField and SearchField",
+    "html": "<label for=\"query\">Search inventory</label><input id=\"query\" type=\"search\" aria-describedby=\"query-hint\"><p id=\"query-hint\">Search by name or code.</p>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Read-only",
+      "Loading / pending",
+      "Empty",
+      "Filtered-empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "Preserve selectable text with readOnly and explain the lock. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "“No items match your filters. Clear filters above.” Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "checkbox",
+    "name": "Checkbox",
+    "html": "<label class=\"choice\"><input type=\"checkbox\">Include archived items</label>",
+    "states": [
+      "Default",
+      "Selected",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "radio",
+    "name": "Radio",
+    "html": "<fieldset><legend>Layout</legend><label class=\"choice\"><input type=\"radio\" name=\"layout\" value=\"list\" checked>List</label><label class=\"choice\"><input type=\"radio\" name=\"layout\" value=\"cards\">Cards</label></fieldset>",
+    "states": [
+      "Default",
+      "Selected",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "switch",
+    "name": "Switch",
+    "html": "<label class=\"choice\"><input type=\"checkbox\" role=\"switch\">Send the follow-up</label>",
+    "states": [
+      "Default",
+      "Selected",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "select",
+    "name": "Select",
+    "html": "<label for=\"density\">Density</label><select id=\"density\"><option value=\"comfortable\">Comfortable</option><option value=\"compact\">Compact</option></select>",
+    "states": [
+      "Default",
+      "Selected",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "tabs",
+    "name": "Tabs",
+    "html": "<nav aria-label=\"Item sections\"><a href=\"#tabs\" aria-current=\"page\">Details</a> <a href=\"#table\">History</a></nav>",
+    "states": [
+      "Default",
+      "Selected",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A — Tabs/SegmentedControl have no disabled-option API. Omit gated options before render and explain blocked tasks outside the group.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Do not render an empty choice bar. Fallback requires at least one option; the product handles no available views.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "segmented-control",
+    "name": "SegmentedControl",
+    "html": "<fieldset class=\"segments\"><legend>Inventory view</legend><label class=\"choice\"><input type=\"radio\" name=\"segment\" value=\"list\" checked>List</label><label class=\"choice\"><input type=\"radio\" name=\"segment\" value=\"cards\">Cards</label></fieldset>",
+    "states": [
+      "Default",
+      "Selected",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A — Tabs/SegmentedControl have no disabled-option API. Omit gated options before render and explain blocked tasks outside the group.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Do not render an empty choice bar. Fallback requires at least one option; the product handles no available views.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "dialog",
+    "name": "Dialog",
+    "html": "<details><summary>Review deletion consequences</summary><p>This permanently deletes the draft.</p><button type=\"button\" data-open=\"dialog-demo\">Open confirmation</button></details><dialog id=\"dialog-demo\" aria-labelledby=\"dialog-title\"><h3 id=\"dialog-title\">Delete draft?</h3><p>This permanently deletes the draft.</p><form method=\"dialog\"><button value=\"cancel\">Cancel</button><button value=\"confirm\">Delete draft</button></form></dialog>",
+    "states": [
+      "Default",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A for the layer container; disable individual footer actions if needed. Pending does not automatically prevent Escape/scrim; parent owns cancellation.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep title and Close visible; body supplies Loading details… or pending form feedback. Do not reset first-field focus on rerender. Parent owns fetched state and cancellation.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "drawer-sheet",
+    "name": "Drawer / Sheet",
+    "html": "<button type=\"button\" data-open=\"drawer-demo\">Open item details</button><dialog id=\"drawer-demo\" class=\"drawer\" aria-labelledby=\"drawer-title\"><h3 id=\"drawer-title\">Drill press</h3><p>Available for supervised use.</p><form method=\"dialog\"><button>Close</button></form></dialog><noscript><p>Drill press: available for supervised use.</p></noscript>",
+    "states": [
+      "Default",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A for the layer container; disable individual footer actions if needed. Pending does not automatically prevent Escape/scrim; parent owns cancellation.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep title and Close visible; body supplies Loading details… or pending form feedback. Do not reset first-field focus on rerender. Parent owns fetched state and cancellation.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "menu",
+    "name": "Menu",
+    "html": "<details><summary>More actions for Drill press</summary><a href=\"#table\">View history</a><button type=\"button\" data-action=\"archive\">Archive</button></details>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this is an action menu without checked-menu-item API. Use Select/Radio for a value.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "No actions/mobileActions: render null. Never show a trigger which opens an empty menu.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "table",
+    "name": "Table",
+    "html": "<div class=\"table-scroll\" role=\"region\" aria-label=\"Inventory\" tabindex=\"0\"><table><caption>Inventory</caption><thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Status</th></tr></thead><tbody><tr><td>Drill press</td><td>Available</td></tr></tbody></table></div>",
+    "states": [
+      "Default",
+      "Selected",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Filtered-empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "Checked/current semantics and a non-colour selection mark. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "Show absence only after a successful load, with a useful next step. Never confuse no records with pending, denied access or failure.",
+      "Filtered-empty": "“No items match your filters. Clear filters above.” Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "pagination",
+    "name": "Pagination",
+    "html": "<nav aria-label=\"Pagination\"><span>1–24 of 248</span><button type=\"button\" disabled>Previous</button><span>Page 1 of 11</span><button type=\"button\" data-page-next>Next</button></nav>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Filtered-empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — page position is text, not a selectable page-number control. Previous/Next request a new page.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Keep context; use task-specific pending copy such as “Saving…”. Disable only the mutation in progress, announce once and preserve drafts. Fetch state is product-owned unless §11 says otherwise.",
+      "Empty": "totalPages<=1: component renders nothing. Parent supplies zero/single-page range and result state.",
+      "Filtered-empty": "“No items match your filters. Clear filters above.” Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "“Couldn’t save/load. Try again.” plus persistent explanation and specific recovery. Keep the user’s value/context, relate field errors by ID and retry only the failed operation.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Show the completed effect and truthful updated value; use precise confirmation. Announce once without taking focus; visible in-place changes need no redundant toast or invented success prop.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "status-pill",
+    "name": "StatusPill",
+    "html": "<span class=\"pill\">Available</span>",
+    "states": [
+      "Default"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "N/A — this container/artwork is not interactive. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "N/A — this primitive has no activation. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "N/A — content/artwork is not a Tab stop. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A — noninteractive information remains readable. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Empty": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Filtered-empty": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Error / retry": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Offline": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Success": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically.",
+      "Interrupted work": "N/A as an interaction state — the span names only a supplied status. Product can supply Pending/Unknown/Failed/Offline/Available when truthful. The pill never fetches, retries or announces automatically."
+    }
+  },
+  {
+    "slug": "empty-state",
+    "name": "EmptyState",
+    "html": "<div class=\"empty\"><p>No items match your filters. Clear filters above to see all inventory.</p><button type=\"button\" data-clear-filters>Clear filters</button></div>",
+    "states": [
+      "Default",
+      "Empty",
+      "Filtered-empty",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "One centred sentence naming the situation and next step. Keep filter focus; current message branch is role=status.",
+      "Hover": "N/A — this container/artwork is not interactive. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "N/A — this primitive has no activation. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "N/A — content/artwork is not a Tab stop. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A — noninteractive information remains readable. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "N/A — unresolved, failed or offline fetches are not empty outcomes. Use Loader or an explicit persistent error/offline block with Retry.",
+      "Empty": "Successful zero records: No items yet. Use Add item above. Only point to visible, permitted controls.",
+      "Filtered-empty": "“No items match your filters. Clear filters above.” Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "N/A — unresolved, failed or offline fetches are not empty outcomes. Use Loader or an explicit persistent error/offline block with Retry.",
+      "Offline": "N/A — unresolved, failed or offline fetches are not empty outcomes. Use Loader or an explicit persistent error/offline block with Retry.",
+      "Success": "N/A — records replace the empty block. Announce a changed result count once after a user action.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  },
+  {
+    "slug": "toast",
+    "name": "Toast",
+    "html": "<button type=\"button\" data-toast>Archive sample item</button><aside class=\"toast-list\" aria-label=\"Notifications\"></aside>",
+    "states": [
+      "Default",
+      "Disabled",
+      "Loading / pending",
+      "Empty",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Required visible name, correct role and truthful current value/context. Enabled actions follow §8; no automatic announcement for static content.",
+      "Hover": "Use B hover roles without hiding the label or necessary boundary. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "Use B active colours during activation; do not mutate on pointer-down. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "Visible 2 px ring plus offset; ≥3:1 against actual adjacent colour. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "Explicit surface/muted/line colours and an understandable prerequisite. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Awaited Undo displays Undoing… and disables this toast’s controls. Cancel expiry; retain focus until compensation settles.",
+      "Empty": "No live messages: render no visible rows. Keep host announcement nodes available.",
+      "Filtered-empty": "N/A — this primitive does not filter results; the affected result region owns this state. Preserve query and scope, offer Clear filters and announce the result once.",
+      "Error / retry": "Error tone persists until dismissal or resolution; failed Undo becomes an error. Offer an accurate recovery action, not a misleading remaining Undo.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Non-error default is 8000 ms. Pause expiry on hover/focus/action and never remove a focused control. Source lacks this safeguard; standalone gallery demonstrates it.",
+      "Interrupted work": "Session reset clears rows/timers and invalidates old compensation. Do not publish an old session result into a new session."
+    }
+  },
+  {
+    "slug": "skeleton-loader",
+    "name": "Skeleton / Loader",
+    "html": "<section aria-label=\"Inventory loading\" aria-busy=\"true\"><p role=\"status\">Loading inventory…</p><div class=\"placeholder\" aria-hidden=\"true\"></div><label for=\"upload-progress\">Uploading evidence</label><progress id=\"upload-progress\" max=\"100\" value=\"40\">40%</progress></section>",
+    "states": [
+      "Default",
+      "Loading / pending",
+      "Error / retry",
+      "Offline",
+      "Success",
+      "Interrupted work"
+    ],
+    "stateCopy": {
+      "Default": "Decorative still placeholder plus one named loading status. Product exposes aria-busy on the affected region.",
+      "Hover": "N/A — this container/artwork is not interactive. No hover-exclusive instructions; child controls retain their own contracts.",
+      "Pressed": "N/A — this primitive has no activation. Native click/release activates once; optional child actions use Button.",
+      "Focus-visible": "N/A — content/artwork is not a Tab stop. Keep focused actions visible above sticky chrome and the software keyboard.",
+      "Selected": "N/A — this primitive is not a choice; IconButton can accept aria-pressed for a genuine toggle. Caller controls selection; keep values stable through failed persistence.",
+      "Disabled": "N/A — noninteractive information remains readable. Use native disabled where supported; aria-disabled requires event guards. Consult §11 for unsupported props.",
+      "Read-only": "N/A — no read-only component mode; noneditable information already reads as text. Checkbox, radio and select have no native readOnly lock; show a labelled static value instead. Search hides clear and does not clear on Escape.",
+      "Loading / pending": "Unknown: named status/indeterminate progress. Known: labelled finite fraction. Update visible/semantic progress together; hide repeated artwork from AT.",
+      "Empty": "N/A — pending is not a completed empty result. Replace with EmptyState on successful zero results.",
+      "Filtered-empty": "N/A while a result is unresolved. Show filtered-empty only after successful completion.",
+      "Error / retry": "Stop loader; explain failure and offer Retry. Clear busy state and preserve previous content/draft.",
+      "Offline": "Keep clearly labelled last-known values and unsent drafts; explain network-only limitations. Local navigation/editing/Close can remain available. Product owns safe retry/idempotency; queued is not completed.",
+      "Success": "Replace placeholder with content; clear aria-busy. Announce meaningful completion once, never every animation frame.",
+      "Interrupted work": "Retain safe drafts/context and say whether completion is known or still unresolved. Reconcile server/session state before repeating a mutation; never automatically replay irreversible work."
+    }
+  }
+]

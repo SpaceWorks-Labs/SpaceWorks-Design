@@ -17,6 +17,7 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid>*{min-height:56px}.show{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.show>*{min-height:90px}.sw-hub-area-panel{min-height:90px;display:grid;place-items:center}</style>
+<link rel="stylesheet" href="../demo.css">
 </head>
 <body>
 <main>
@@ -26,9 +27,9 @@
 <section><h2>Stagger (sw-stagger)</h2><div class="row"><button class="btn" data-r="st">Replay</button></div><div id="st" class="grid sw-stagger"><div class="card">1</div><div class="card">2</div><div class="card">3</div><div class="card">4</div><div class="card">5</div><div class="card">6</div><div class="card">7</div><div class="card">8</div></div></section>
 <section><h2>Showcase cards (sw-auth-showcase)</h2><div class="row"><button class="btn" data-r="sc">Replay</button></div><div id="sc" class="show sw-auth-showcase"><div class="card">Card one</div><div class="card">Card two</div><div class="card">Card three</div></div></section>
 <section><h2>Areas panel (sw-hub-area-panel)</h2><div class="row"><button class="btn" data-r="ar">Replay</button></div><div id="ar" class="card sw-hub-area-panel">Area panel: wipes in top to bottom</div></section>
-</main>
+<section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/showcase-dark-poster.png" data-poster="previews/showcase-dark-poster.png" data-animated="previews/showcase-dark.webp" alt="showcase dark motion end-state preview" loading="lazy"><figcaption>showcase dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/showcase-light-poster.png" data-poster="previews/showcase-light-poster.png" data-animated="previews/showcase-light.webp" alt="showcase light motion end-state preview" loading="lazy"><figcaption>showcase light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/stagger-dark-poster.png" data-poster="previews/stagger-dark-poster.png" data-animated="previews/stagger-dark.webp" alt="stagger dark motion end-state preview" loading="lazy"><figcaption>stagger dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/stagger-light-poster.png" data-poster="previews/stagger-light-poster.png" data-animated="previews/stagger-light.webp" alt="stagger light motion end-state preview" loading="lazy"><figcaption>stagger light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
 <script>
-document.querySelectorAll("[data-r]").forEach(function(b){b.onclick=function(){var el=document.getElementById(b.dataset.r);var n=el.cloneNode(true);el.replaceWith(n)}});
+document.querySelectorAll("[data-r]").forEach(function(b){b.onclick=function(){var el=document.getElementById(b.dataset.r);var animations=el.getAnimations({subtree:true});if(animations.some(a=>a.playState==="running"))return;animations.forEach(a=>{a.currentTime=0;a.play()})}});
 </script>
-</body>
+<script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body>
 </html>

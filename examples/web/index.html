@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Inventory · Space Works starter</title>
+<script>try{document.documentElement.classList.toggle('dark',localStorage.getItem('sw-starter-theme')==='dark')}catch{}</script>
+<link rel="stylesheet" href="./styles.css"></head><body>
+<a class="skip" href="#main-content">Skip to content</a>
+<header class="page-header"><img class="logo logo-light" src="../../logo/lockup-horizontal.svg" alt="Space Works" width="180"><img class="logo logo-dark" src="../../logo/lockup-horizontal-reversed.svg" alt="Space Works" width="180">
+<label>Theme <select data-theme><option value="light">Light</option><option value="dark">Dark</option></select></label></header>
+<main id="main-content" tabindex="-1"><h1>Inventory</h1><p>Find equipment available in your makerspace.</p>
+<form id="filter-form" class="card"><div class="field"><label for="inventory-query">Search inventory</label><input type="search" id="inventory-query" name="query" aria-describedby="search-hint"><span id="search-hint" class="muted">Search by name. This starter uses local sample data.</span></div><div class="actions"><button class="primary" type="submit">Search</button><button type="reset">Clear filters</button></div></form>
+<p id="results-status" role="status">1 item available.</p><section aria-label="Inventory results" id="results" class="card"><h2>Drill press</h2><span class="pill">Available</span><p>Ask a staff member before use.</p></section>
+<p><a href="./component-gallery.html">Explore component examples</a> · <a href="./react/dist/">Built React first screen</a></p>
+<noscript><p>The sample inventory remains readable. Search and theme switching need JavaScript.</p></noscript></main><script type="module" src="./first-screen.mjs"></script></body></html>

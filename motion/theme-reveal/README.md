@@ -1,5 +1,7 @@
 # Theme reveal
 
+> **Current rule (v2.0.1, 2026-11-13):** The page-snapshot circle uses --sw-theme-duration = slow ? 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#theme-reveal).
+
 The Space Works light/dark switch animation. When someone presses the theme toggle, the new theme grows from the
 toggle as a circle and covers the page in 720 ms, so the change reads as chosen, not as a flash. Where the browser
 cannot do that it cross-fades; under reduced motion it switches instantly.
@@ -32,6 +34,8 @@ picker). It uses the design tokens from [`../../tokens/tokens.css`](../../tokens
    truth. Storage failing (a private window) never stops the theme from changing for the session.
 
 ## Timing and tokens
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#theme-reveal) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -117,3 +121,18 @@ The SpaceWorks app (`frontend/src/lib/themeTransition.ts`, `themeTransition.css`
 and `theme-reveal.css` are its framework-free mirror; change them together. `scripts/check-previews.mjs` fails when
 `theme-reveal.css`, `theme-reveal.js` or `demo.html` change without the preview being regenerated
 (`node scripts/make-previews.mjs theme-reveal`).
+
+## Flow contract (decision 399)
+
+The page-snapshot circle uses --sw-theme-duration = slow ? 3 (720 ms) and standard easing. Repeated requests reverse the same mask animation from its current radius. clip-path is the documented snapshot exception. Without View Transitions the theme changes immediately, avoiding per-surface colour repaints. Reduced motion also changes immediately. This supersedes the retained feather/surface-fade recipe and hard-coded easing values.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#theme-reveal). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-420` | `calc(var(--sw-dur-slow) * 1.75000000)` |
+| `--sw-theme-duration` | `calc(var(--sw-dur-slow) * 3)` |

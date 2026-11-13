@@ -901,3 +901,52 @@ people still remember it.
   essential sentence into the entry.
 - A change that adds or changes a rule also updates the matching doc (`docs/ui-brand-spec.md`,
   `docs/motion.md`, `docs/theming.md`, `docs/product-rules.md`) in the same pull request.
+
+
+### SW-389 — Four visible flaps keep their own colours when shut
+- **Date:** 13 November
+- **Decision:** In both themes the closed logo lid shows all four flap regions: top-left and bottom-right
+  green (`#006E63`), top-right and bottom-left orange (`#FF7447`). Each flap keeps that colour on both sides
+  throughout the animation. Explicit mono and forced-colours variants keep four separate regions in one colour.
+- **Why:** The owner asked for "in closed also make sure 2 orange and 2 green". This supersedes SW-381's
+  one-orange-lid interpretation and its cream-only reversed lid. Hiding two flaps or recolouring a reverse face
+  obscures the mark's four-flap arrangement.
+- **Status:** current; supersedes SW-381's closed-lid colour rule. Its no-hole, depth-order, static-rest and
+  reduced-motion rules remain current. Ships with Design System v2.0.1 and SpaceWorks 0.12.0.
+- **Implemented in:** `motion/box-open/` (generated CSS, markup, demo and React sources),
+  `scripts/check-box-frames.mjs`; app `frontend/src/components/boxOpen/`, `components/brand/` and the
+  generated splash block in `frontend/index.html`. The regular reversed product mark retains the reversed
+  geometry and cream body, using the same approved flap palette as the light mark; explicit mono is unchanged.
+
+Index addition: [SW-389 — Four visible flaps keep their own colours when shut](#sw-389--four-visible-flaps-keep-their-own-colours-when-shut).
+
+### SW-405 — Every project has its own landing page and feature docs, built from this system
+- **Date:** 13 November
+- **Decision:** Every Space Works project except the Android and iOS apps has its own landing page — with its
+  GitHub repository, release and install, docs, licence and changelog links — and its own feature docs inside
+  the product (one page per area, sources in the repository's `docs/`), both built from this design system's
+  rules, tokens, components, logo, motion and voice. The native apps link to the hub's landing page and docs.
+  The separate SpaceWorks-Docs site is retired.
+- **Why:** The owner asked that every project present itself the way SpaceWorks does and take everything from
+  the design system, so the family reads as one and the rules cannot drift per project.
+- **Status:** current. Rule text: [product rules §12.1](product-rules.md#121-landing-page-and-feature-docs-every-project-except-the-native-apps).
+
+
+### SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0
+- **Date:** 13 November
+- **Decision:** For coloured marks on light grounds, the orange top-right and bottom-left outer flaps close
+  over the hidden green top-left and bottom-right pair. Open them one after the other, then each green flap,
+  then one small damped settle to the exact static logo, with no decorative bursts. Close in exact reverse.
+  Preserve the 1600 ms once, 2200 ms hover and 4400 ms loop budgets and stepped matrices.
+  The owner's immediate correction restores dark/reversed, mono and forced-colour marks to the v2.0.0
+  black-and-white family, with no orange or green. This supersedes SW-389's visible-quarter closed lid
+  for coloured marks and its coloured reversed product mark.
+- **Why:** A real box closes its outer pair over its inner pair; separate turns preserve the panels' physical
+  order. Keeping a released black-and-white generator path prevents colour or choreography regressions
+  in dark marks and button spinners when the coloured animation changes.
+- **Status:** implemented at the app generator and exported to `motion/box-open/`; preserves SW-381's
+  solid lid, no-hole cap, overlap order, static rest and reduced-motion behavior. Snapshot hashes pin
+  the released CSS and markup; frame tests cover the changed sequence. Browser QA and preview/PDF
+  regeneration remain release-orchestrator steps.
+
+Index addition: [SW-412 ? Orange outer flaps open in order; black-and-white returns to v2.0.0](#sw-412--orange-outer-flaps-open-in-order-black-and-white-returns-to-v200).

@@ -1,0 +1,4496 @@
+{
+  "assets": {
+    "mascot/compressed/patch-animated.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 150532,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/compressed/patch-animated-256.webp",
+          "width": 256,
+          "bytes": 12464
+        }
+      ]
+    },
+    "mascot/compressed/walk/patch-walk-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 65494,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/compressed/walk/patch-walk-animated-256.webp",
+          "width": 256,
+          "bytes": 8158
+        }
+      ]
+    },
+    "mascot/compressed/walk-left/patch-walk-left-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 65460,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/compressed/walk-left/patch-walk-left-animated-256.webp",
+          "width": 256,
+          "bytes": 8316
+        }
+      ]
+    },
+    "mascot/concept/patch-concept-sheet.webp": {
+      "width": 1774,
+      "height": 887,
+      "bytes": 245170,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/concept/patch-concept-sheet-256.webp",
+          "width": 256,
+          "bytes": 10336
+        },
+        {
+          "path": "thumbs/mascot/concept/patch-concept-sheet-512.webp",
+          "width": 512,
+          "bytes": 27620
+        }
+      ]
+    },
+    "mascot/concept/patch-walk-sheet.webp": {
+      "width": 1774,
+      "height": 887,
+      "bytes": 89612,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/concept/patch-walk-sheet-256.webp",
+          "width": 256,
+          "bytes": 3800
+        },
+        {
+          "path": "thumbs/mascot/concept/patch-walk-sheet-512.webp",
+          "width": 512,
+          "bytes": 10026
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-01-idle.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13436,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-01-idle-256.webp",
+          "width": 256,
+          "bytes": 11088
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-02-blink.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13158,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-02-blink-256.webp",
+          "width": 256,
+          "bytes": 10972
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-03-left-ear.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 14142,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-03-left-ear-256.webp",
+          "width": 256,
+          "bytes": 11898
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-04-right-ear.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13942,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-04-right-ear-256.webp",
+          "width": 256,
+          "bytes": 11776
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-05-sneeze-prep.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13390,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-05-sneeze-prep-256.webp",
+          "width": 256,
+          "bytes": 10990
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-06-sneeze.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13914,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-06-sneeze-256.webp",
+          "width": 256,
+          "bytes": 11998
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-07-recover.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13370,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-07-recover-256.webp",
+          "width": 256,
+          "bytes": 11314
+        }
+      ]
+    },
+    "mascot/dark/compressed/frames/patch-08-back-to-idle.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 13502,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/frames/patch-08-back-to-idle-256.webp",
+          "width": 256,
+          "bytes": 11266
+        }
+      ]
+    },
+    "mascot/dark/compressed/patch-animated.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 127782,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/patch-animated-256.webp",
+          "width": 256,
+          "bytes": 12810
+        }
+      ]
+    },
+    "mascot/dark/compressed/patch.webp": {
+      "width": 321,
+      "height": 321,
+      "bytes": 22182,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/patch-256.webp",
+          "width": 256,
+          "bytes": 13732
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-01.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7404,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-01-256.webp",
+          "width": 256,
+          "bytes": 6274
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-02.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7386,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-02-256.webp",
+          "width": 256,
+          "bytes": 6232
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-03.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7424,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-03-256.webp",
+          "width": 256,
+          "bytes": 6238
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-04.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7440,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-04-256.webp",
+          "width": 256,
+          "bytes": 6358
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-05.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7218,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-05-256.webp",
+          "width": 256,
+          "bytes": 6024
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-06.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7260,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-06-256.webp",
+          "width": 256,
+          "bytes": 6178
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-07.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7042,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-07-256.webp",
+          "width": 256,
+          "bytes": 5752
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/frames/patch-walk-08.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7224,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/frames/patch-walk-08-256.webp",
+          "width": 256,
+          "bytes": 6120
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/patch-walk-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 50354,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/patch-walk-animated-256.webp",
+          "width": 256,
+          "bytes": 6142
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk/patch-walk.webp": {
+      "width": 484,
+      "height": 364,
+      "bytes": 18346,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk/patch-walk-256.webp",
+          "width": 256,
+          "bytes": 9706
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-01.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7416,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-01-256.webp",
+          "width": 256,
+          "bytes": 6418
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-02.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7520,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-02-256.webp",
+          "width": 256,
+          "bytes": 6286
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-03.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7382,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-03-256.webp",
+          "width": 256,
+          "bytes": 6192
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-04.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7574,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-04-256.webp",
+          "width": 256,
+          "bytes": 6364
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-05.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7198,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-05-256.webp",
+          "width": 256,
+          "bytes": 6124
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-06.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7374,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-06-256.webp",
+          "width": 256,
+          "bytes": 6344
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-07.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 6990,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-07-256.webp",
+          "width": 256,
+          "bytes": 5814
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/frames/patch-walk-left-08.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 7306,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/frames/patch-walk-left-08-256.webp",
+          "width": 256,
+          "bytes": 6214
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/patch-walk-left-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 50612,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/patch-walk-left-animated-256.webp",
+          "width": 256,
+          "bytes": 6164
+        }
+      ]
+    },
+    "mascot/dark/compressed/walk-left/patch-walk-left.webp": {
+      "width": 484,
+      "height": 364,
+      "bytes": 18830,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/compressed/walk-left/patch-walk-left-256.webp",
+          "width": 256,
+          "bytes": 9550
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-01-idle.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 106846,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-01-idle-256.webp",
+          "width": 256,
+          "bytes": 13000
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-02-blink.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 105416,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-02-blink-256.webp",
+          "width": 256,
+          "bytes": 12610
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-03-left-ear.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 107967,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-03-left-ear-256.webp",
+          "width": 256,
+          "bytes": 13924
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-04-right-ear.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 107367,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-04-right-ear-256.webp",
+          "width": 256,
+          "bytes": 13826
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-05-sneeze-prep.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 104648,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-05-sneeze-prep-256.webp",
+          "width": 256,
+          "bytes": 12724
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-06-sneeze.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 108644,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-06-sneeze-256.webp",
+          "width": 256,
+          "bytes": 14050
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-07-recover.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 104634,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-07-recover-256.webp",
+          "width": 256,
+          "bytes": 13166
+        }
+      ]
+    },
+    "mascot/dark/frames/patch-08-back-to-idle.png": {
+      "width": 272,
+      "height": 272,
+      "bytes": 105951,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/frames/patch-08-back-to-idle-256.webp",
+          "width": 256,
+          "bytes": 12944
+        }
+      ]
+    },
+    "mascot/dark/patch-animated.webp": {
+      "width": 272,
+      "height": 272,
+      "bytes": 704226,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/patch-animated-256.webp",
+          "width": 256,
+          "bytes": 13000
+        }
+      ]
+    },
+    "mascot/dark/patch.png": {
+      "width": 642,
+      "height": 642,
+      "bytes": 383735,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/patch-256.webp",
+          "width": 256,
+          "bytes": 15672
+        },
+        {
+          "path": "thumbs/mascot/dark/patch-512.webp",
+          "width": 512,
+          "bytes": 31908
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-01.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 42379,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-01-256.webp",
+          "width": 256,
+          "bytes": 6206
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-02.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 40638,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-02-256.webp",
+          "width": 256,
+          "bytes": 6152
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-03.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41238,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-03-256.webp",
+          "width": 256,
+          "bytes": 6202
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-04.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41579,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-04-256.webp",
+          "width": 256,
+          "bytes": 6208
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-05.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41334,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-05-256.webp",
+          "width": 256,
+          "bytes": 6068
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-06.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41740,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-06-256.webp",
+          "width": 256,
+          "bytes": 6156
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-07.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 40259,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-07-256.webp",
+          "width": 256,
+          "bytes": 5878
+        }
+      ]
+    },
+    "mascot/dark/walk/frames/patch-walk-08.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41457,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/frames/patch-walk-08-256.webp",
+          "width": 256,
+          "bytes": 6084
+        }
+      ]
+    },
+    "mascot/dark/walk/patch-walk-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 200532,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/patch-walk-animated-256.webp",
+          "width": 256,
+          "bytes": 6186
+        }
+      ]
+    },
+    "mascot/dark/walk/patch-walk.png": {
+      "width": 484,
+      "height": 364,
+      "bytes": 140568,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk/patch-walk-256.webp",
+          "width": 256,
+          "bytes": 11686
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-01.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 42430,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-01-256.webp",
+          "width": 256,
+          "bytes": 6352
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-02.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 40607,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-02-256.webp",
+          "width": 256,
+          "bytes": 6282
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-03.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41271,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-03-256.webp",
+          "width": 256,
+          "bytes": 6204
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-04.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41510,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-04-256.webp",
+          "width": 256,
+          "bytes": 6342
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-05.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41370,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-05-256.webp",
+          "width": 256,
+          "bytes": 6026
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-06.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41694,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-06-256.webp",
+          "width": 256,
+          "bytes": 6200
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-07.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 40253,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-07-256.webp",
+          "width": 256,
+          "bytes": 5854
+        }
+      ]
+    },
+    "mascot/dark/walk-left/frames/patch-walk-left-08.png": {
+      "width": 256,
+      "height": 176,
+      "bytes": 41481,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/frames/patch-walk-left-08-256.webp",
+          "width": 256,
+          "bytes": 6232
+        }
+      ]
+    },
+    "mascot/dark/walk-left/patch-walk-left-animated.webp": {
+      "width": 256,
+      "height": 176,
+      "bytes": 200978,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/patch-walk-left-animated-256.webp",
+          "width": 256,
+          "bytes": 6310
+        }
+      ]
+    },
+    "mascot/dark/walk-left/patch-walk-left.png": {
+      "width": 484,
+      "height": 364,
+      "bytes": 140593,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/dark/walk-left/patch-walk-left-256.webp",
+          "width": 256,
+          "bytes": 11670
+        }
+      ]
+    },
+    "mascot/frames/patch-01-idle.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 634562,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-01-idle-256.webp",
+          "width": 256,
+          "bytes": 12644
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-01-idle-512.webp",
+          "width": 512,
+          "bytes": 25752
+        }
+      ]
+    },
+    "mascot/frames/patch-02-blink.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 620663,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-02-blink-256.webp",
+          "width": 256,
+          "bytes": 12372
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-02-blink-512.webp",
+          "width": 512,
+          "bytes": 24942
+        }
+      ]
+    },
+    "mascot/frames/patch-03-left-ear.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 641919,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-03-left-ear-256.webp",
+          "width": 256,
+          "bytes": 13498
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-03-left-ear-512.webp",
+          "width": 512,
+          "bytes": 27680
+        }
+      ]
+    },
+    "mascot/frames/patch-04-right-ear.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 635003,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-04-right-ear-256.webp",
+          "width": 256,
+          "bytes": 13508
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-04-right-ear-512.webp",
+          "width": 512,
+          "bytes": 28306
+        }
+      ]
+    },
+    "mascot/frames/patch-05-sneeze-prep.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 617950,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-05-sneeze-prep-256.webp",
+          "width": 256,
+          "bytes": 12396
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-05-sneeze-prep-512.webp",
+          "width": 512,
+          "bytes": 25364
+        }
+      ]
+    },
+    "mascot/frames/patch-06-sneeze.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 641550,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-06-sneeze-256.webp",
+          "width": 256,
+          "bytes": 13604
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-06-sneeze-512.webp",
+          "width": 512,
+          "bytes": 27814
+        }
+      ]
+    },
+    "mascot/frames/patch-07-recover.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 630217,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-07-recover-256.webp",
+          "width": 256,
+          "bytes": 12762
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-07-recover-512.webp",
+          "width": 512,
+          "bytes": 25854
+        }
+      ]
+    },
+    "mascot/frames/patch-08-back-to-idle.png": {
+      "width": 1088,
+      "height": 1088,
+      "bytes": 633705,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/frames/patch-08-back-to-idle-256.webp",
+          "width": 256,
+          "bytes": 12704
+        },
+        {
+          "path": "thumbs/mascot/frames/patch-08-back-to-idle-512.webp",
+          "width": 512,
+          "bytes": 25682
+        }
+      ]
+    },
+    "mascot/patch-animated.webp": {
+      "width": 544,
+      "height": 544,
+      "bytes": 486960,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/patch-animated-256.webp",
+          "width": 256,
+          "bytes": 12808
+        },
+        {
+          "path": "thumbs/mascot/patch-animated-512.webp",
+          "width": 512,
+          "bytes": 26126
+        }
+      ]
+    },
+    "mascot/patch.png": {
+      "width": 2560,
+      "height": 2560,
+      "bytes": 2079592,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/patch-256.webp",
+          "width": 256,
+          "bytes": 15212
+        },
+        {
+          "path": "thumbs/mascot/patch-512.webp",
+          "width": 512,
+          "bytes": 30996
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-01.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 274609,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-01-256.webp",
+          "width": 256,
+          "bytes": 8570
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-01-512.webp",
+          "width": 512,
+          "bytes": 17292
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-02.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 263974,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-02-256.webp",
+          "width": 256,
+          "bytes": 8450
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-02-512.webp",
+          "width": 512,
+          "bytes": 17274
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-03.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 266701,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-03-256.webp",
+          "width": 256,
+          "bytes": 8314
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-03-512.webp",
+          "width": 512,
+          "bytes": 17000
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-04.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 270406,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-04-256.webp",
+          "width": 256,
+          "bytes": 8538
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-04-512.webp",
+          "width": 512,
+          "bytes": 17110
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-05.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 265864,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-05-256.webp",
+          "width": 256,
+          "bytes": 8260
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-05-512.webp",
+          "width": 512,
+          "bytes": 16424
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-06.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 262947,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-06-256.webp",
+          "width": 256,
+          "bytes": 8340
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-06-512.webp",
+          "width": 512,
+          "bytes": 17072
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-07.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 262101,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-07-256.webp",
+          "width": 256,
+          "bytes": 8096
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-07-512.webp",
+          "width": 512,
+          "bytes": 16292
+        }
+      ]
+    },
+    "mascot/walk/frames/patch-walk-08.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 267941,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-08-256.webp",
+          "width": 256,
+          "bytes": 8158
+        },
+        {
+          "path": "thumbs/mascot/walk/frames/patch-walk-08-512.webp",
+          "width": 512,
+          "bytes": 16958
+        }
+      ]
+    },
+    "mascot/walk/patch-walk-animated.webp": {
+      "width": 512,
+      "height": 352,
+      "bytes": 198220,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/patch-walk-animated-256.webp",
+          "width": 256,
+          "bytes": 8614
+        },
+        {
+          "path": "thumbs/mascot/walk/patch-walk-animated-512.webp",
+          "width": 512,
+          "bytes": 16806
+        }
+      ]
+    },
+    "mascot/walk/patch-walk.png": {
+      "width": 1920,
+      "height": 1440,
+      "bytes": 733903,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk/patch-walk-256.webp",
+          "width": 256,
+          "bytes": 11360
+        },
+        {
+          "path": "thumbs/mascot/walk/patch-walk-512.webp",
+          "width": 512,
+          "bytes": 22160
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-01.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 274508,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-01-256.webp",
+          "width": 256,
+          "bytes": 8648
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-01-512.webp",
+          "width": 512,
+          "bytes": 17382
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-02.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 264145,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-02-256.webp",
+          "width": 256,
+          "bytes": 8464
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-02-512.webp",
+          "width": 512,
+          "bytes": 17316
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-03.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 266697,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-03-256.webp",
+          "width": 256,
+          "bytes": 8232
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-03-512.webp",
+          "width": 512,
+          "bytes": 16914
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-04.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 270375,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-04-256.webp",
+          "width": 256,
+          "bytes": 8564
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-04-512.webp",
+          "width": 512,
+          "bytes": 17102
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-05.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 265847,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-05-256.webp",
+          "width": 256,
+          "bytes": 8192
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-05-512.webp",
+          "width": 512,
+          "bytes": 16476
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-06.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 263194,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-06-256.webp",
+          "width": 256,
+          "bytes": 8384
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-06-512.webp",
+          "width": 512,
+          "bytes": 17122
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-07.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 262316,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-07-256.webp",
+          "width": 256,
+          "bytes": 8072
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-07-512.webp",
+          "width": 512,
+          "bytes": 16346
+        }
+      ]
+    },
+    "mascot/walk-left/frames/patch-walk-left-08.png": {
+      "width": 1024,
+      "height": 704,
+      "bytes": 268145,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-08-256.webp",
+          "width": 256,
+          "bytes": 8258
+        },
+        {
+          "path": "thumbs/mascot/walk-left/frames/patch-walk-left-08-512.webp",
+          "width": 512,
+          "bytes": 17176
+        }
+      ]
+    },
+    "mascot/walk-left/patch-walk-left-animated.webp": {
+      "width": 512,
+      "height": 352,
+      "bytes": 198894,
+      "animated": true,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/patch-walk-left-animated-256.webp",
+          "width": 256,
+          "bytes": 8710
+        },
+        {
+          "path": "thumbs/mascot/walk-left/patch-walk-left-animated-512.webp",
+          "width": 512,
+          "bytes": 16898
+        }
+      ]
+    },
+    "mascot/walk-left/patch-walk-left.png": {
+      "width": 1920,
+      "height": 1440,
+      "bytes": 734528,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/mascot/walk-left/patch-walk-left-256.webp",
+          "width": 256,
+          "bytes": 11336
+        },
+        {
+          "path": "thumbs/mascot/walk-left/patch-walk-left-512.webp",
+          "width": 512,
+          "bytes": 22498
+        }
+      ]
+    },
+    "brand/guidelines/01.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 62655,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/01-320.webp",
+          "width": 320,
+          "bytes": 5226
+        },
+        {
+          "path": "thumbs/brand/guidelines/01-640.webp",
+          "width": 640,
+          "bytes": 12370
+        }
+      ]
+    },
+    "brand/guidelines/02.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 66854,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/02-320.webp",
+          "width": 320,
+          "bytes": 5446
+        },
+        {
+          "path": "thumbs/brand/guidelines/02-640.webp",
+          "width": 640,
+          "bytes": 14500
+        }
+      ]
+    },
+    "brand/guidelines/03.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 65093,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/03-320.webp",
+          "width": 320,
+          "bytes": 4714
+        },
+        {
+          "path": "thumbs/brand/guidelines/03-640.webp",
+          "width": 640,
+          "bytes": 12200
+        }
+      ]
+    },
+    "brand/guidelines/04.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 99227,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/04-320.webp",
+          "width": 320,
+          "bytes": 7950
+        },
+        {
+          "path": "thumbs/brand/guidelines/04-640.webp",
+          "width": 640,
+          "bytes": 19752
+        }
+      ]
+    },
+    "brand/guidelines/05.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 74609,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/05-320.webp",
+          "width": 320,
+          "bytes": 5888
+        },
+        {
+          "path": "thumbs/brand/guidelines/05-640.webp",
+          "width": 640,
+          "bytes": 15746
+        }
+      ]
+    },
+    "brand/guidelines/06.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 75526,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/06-320.webp",
+          "width": 320,
+          "bytes": 4556
+        },
+        {
+          "path": "thumbs/brand/guidelines/06-640.webp",
+          "width": 640,
+          "bytes": 13122
+        }
+      ]
+    },
+    "brand/guidelines/07.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 101823,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/07-320.webp",
+          "width": 320,
+          "bytes": 8652
+        },
+        {
+          "path": "thumbs/brand/guidelines/07-640.webp",
+          "width": 640,
+          "bytes": 21838
+        }
+      ]
+    },
+    "brand/guidelines/08.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 86619,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/08-320.webp",
+          "width": 320,
+          "bytes": 5766
+        },
+        {
+          "path": "thumbs/brand/guidelines/08-640.webp",
+          "width": 640,
+          "bytes": 14370
+        }
+      ]
+    },
+    "brand/guidelines/09.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 94160,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/09-320.webp",
+          "width": 320,
+          "bytes": 6260
+        },
+        {
+          "path": "thumbs/brand/guidelines/09-640.webp",
+          "width": 640,
+          "bytes": 17932
+        }
+      ]
+    },
+    "brand/guidelines/10.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 68874,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/10-320.webp",
+          "width": 320,
+          "bytes": 4894
+        },
+        {
+          "path": "thumbs/brand/guidelines/10-640.webp",
+          "width": 640,
+          "bytes": 13644
+        }
+      ]
+    },
+    "brand/guidelines/11.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 72836,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/11-320.webp",
+          "width": 320,
+          "bytes": 5670
+        },
+        {
+          "path": "thumbs/brand/guidelines/11-640.webp",
+          "width": 640,
+          "bytes": 15260
+        }
+      ]
+    },
+    "brand/guidelines/12.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 71165,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/12-320.webp",
+          "width": 320,
+          "bytes": 5158
+        },
+        {
+          "path": "thumbs/brand/guidelines/12-640.webp",
+          "width": 640,
+          "bytes": 14574
+        }
+      ]
+    },
+    "brand/guidelines/13.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 57328,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/13-320.webp",
+          "width": 320,
+          "bytes": 4906
+        },
+        {
+          "path": "thumbs/brand/guidelines/13-640.webp",
+          "width": 640,
+          "bytes": 11986
+        }
+      ]
+    },
+    "brand/guidelines/14.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 71482,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/14-320.webp",
+          "width": 320,
+          "bytes": 4774
+        },
+        {
+          "path": "thumbs/brand/guidelines/14-640.webp",
+          "width": 640,
+          "bytes": 13452
+        }
+      ]
+    },
+    "brand/guidelines/15.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 66432,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/15-320.webp",
+          "width": 320,
+          "bytes": 4742
+        },
+        {
+          "path": "thumbs/brand/guidelines/15-640.webp",
+          "width": 640,
+          "bytes": 13650
+        }
+      ]
+    },
+    "brand/guidelines/16.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 66708,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/16-320.webp",
+          "width": 320,
+          "bytes": 4380
+        },
+        {
+          "path": "thumbs/brand/guidelines/16-640.webp",
+          "width": 640,
+          "bytes": 11914
+        }
+      ]
+    },
+    "brand/guidelines/17.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 69579,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines/17-320.webp",
+          "width": 320,
+          "bytes": 4582
+        },
+        {
+          "path": "thumbs/brand/guidelines/17-640.webp",
+          "width": 640,
+          "bytes": 12980
+        }
+      ]
+    },
+    "brand/guidelines-v2/01.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 105696,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/01-320.webp",
+          "width": 320,
+          "bytes": 6274
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/01-640.webp",
+          "width": 640,
+          "bytes": 15806
+        }
+      ]
+    },
+    "brand/guidelines-v2/02.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 89041,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/02-320.webp",
+          "width": 320,
+          "bytes": 5044
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/02-640.webp",
+          "width": 640,
+          "bytes": 16310
+        }
+      ]
+    },
+    "brand/guidelines-v2/03.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 149549,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/03-320.webp",
+          "width": 320,
+          "bytes": 7622
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/03-640.webp",
+          "width": 640,
+          "bytes": 24978
+        }
+      ]
+    },
+    "brand/guidelines-v2/04.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 95040,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/04-320.webp",
+          "width": 320,
+          "bytes": 6338
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/04-640.webp",
+          "width": 640,
+          "bytes": 17090
+        }
+      ]
+    },
+    "brand/guidelines-v2/05.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 91238,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/05-320.webp",
+          "width": 320,
+          "bytes": 5362
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/05-640.webp",
+          "width": 640,
+          "bytes": 14310
+        }
+      ]
+    },
+    "brand/guidelines-v2/06.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 89986,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/06-320.webp",
+          "width": 320,
+          "bytes": 5280
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/06-640.webp",
+          "width": 640,
+          "bytes": 15308
+        }
+      ]
+    },
+    "brand/guidelines-v2/07.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 139627,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/07-320.webp",
+          "width": 320,
+          "bytes": 8602
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/07-640.webp",
+          "width": 640,
+          "bytes": 21734
+        }
+      ]
+    },
+    "brand/guidelines-v2/08.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 103700,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/08-320.webp",
+          "width": 320,
+          "bytes": 5920
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/08-640.webp",
+          "width": 640,
+          "bytes": 16830
+        }
+      ]
+    },
+    "brand/guidelines-v2/09.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 132040,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/09-320.webp",
+          "width": 320,
+          "bytes": 6000
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/09-640.webp",
+          "width": 640,
+          "bytes": 19214
+        }
+      ]
+    },
+    "brand/guidelines-v2/10.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 160450,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/10-320.webp",
+          "width": 320,
+          "bytes": 9854
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/10-640.webp",
+          "width": 640,
+          "bytes": 25254
+        }
+      ]
+    },
+    "brand/guidelines-v2/11.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 134280,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/11-320.webp",
+          "width": 320,
+          "bytes": 7322
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/11-640.webp",
+          "width": 640,
+          "bytes": 19242
+        }
+      ]
+    },
+    "brand/guidelines-v2/12.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 132236,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/12-320.webp",
+          "width": 320,
+          "bytes": 7102
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/12-640.webp",
+          "width": 640,
+          "bytes": 20802
+        }
+      ]
+    },
+    "brand/guidelines-v2/13.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 181500,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/13-320.webp",
+          "width": 320,
+          "bytes": 9102
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/13-640.webp",
+          "width": 640,
+          "bytes": 23626
+        }
+      ]
+    },
+    "brand/guidelines-v2/14.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 179530,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/14-320.webp",
+          "width": 320,
+          "bytes": 10774
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/14-640.webp",
+          "width": 640,
+          "bytes": 28104
+        }
+      ]
+    },
+    "brand/guidelines-v2/15.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 203029,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/15-320.webp",
+          "width": 320,
+          "bytes": 10402
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/15-640.webp",
+          "width": 640,
+          "bytes": 28082
+        }
+      ]
+    },
+    "brand/guidelines-v2/16.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 101598,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/16-320.webp",
+          "width": 320,
+          "bytes": 4918
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/16-640.webp",
+          "width": 640,
+          "bytes": 13878
+        }
+      ]
+    },
+    "brand/guidelines-v2/17.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 110927,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/17-320.webp",
+          "width": 320,
+          "bytes": 6298
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/17-640.webp",
+          "width": 640,
+          "bytes": 18074
+        }
+      ]
+    },
+    "brand/guidelines-v2/18.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 142857,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/18-320.webp",
+          "width": 320,
+          "bytes": 7708
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/18-640.webp",
+          "width": 640,
+          "bytes": 21466
+        }
+      ]
+    },
+    "brand/guidelines-v2/19.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 148389,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/19-320.webp",
+          "width": 320,
+          "bytes": 8740
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/19-640.webp",
+          "width": 640,
+          "bytes": 24536
+        }
+      ]
+    },
+    "brand/guidelines-v2/20.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 132145,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/20-320.webp",
+          "width": 320,
+          "bytes": 7856
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/20-640.webp",
+          "width": 640,
+          "bytes": 23546
+        }
+      ]
+    },
+    "brand/guidelines-v2/21.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 107399,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/21-320.webp",
+          "width": 320,
+          "bytes": 4944
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/21-640.webp",
+          "width": 640,
+          "bytes": 15108
+        }
+      ]
+    },
+    "brand/guidelines-v2/22.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 138462,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/22-320.webp",
+          "width": 320,
+          "bytes": 6688
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/22-640.webp",
+          "width": 640,
+          "bytes": 20538
+        }
+      ]
+    },
+    "brand/guidelines-v2/23.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 114725,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/23-320.webp",
+          "width": 320,
+          "bytes": 6140
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/23-640.webp",
+          "width": 640,
+          "bytes": 17948
+        }
+      ]
+    },
+    "brand/guidelines-v2/24.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 129150,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/24-320.webp",
+          "width": 320,
+          "bytes": 6896
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/24-640.webp",
+          "width": 640,
+          "bytes": 18754
+        }
+      ]
+    },
+    "brand/guidelines-v2/25.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 153780,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/25-320.webp",
+          "width": 320,
+          "bytes": 8764
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/25-640.webp",
+          "width": 640,
+          "bytes": 25666
+        }
+      ]
+    },
+    "brand/guidelines-v2/26.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 154404,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/26-320.webp",
+          "width": 320,
+          "bytes": 8660
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/26-640.webp",
+          "width": 640,
+          "bytes": 25084
+        }
+      ]
+    },
+    "brand/guidelines-v2/27.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 138141,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/27-320.webp",
+          "width": 320,
+          "bytes": 6974
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/27-640.webp",
+          "width": 640,
+          "bytes": 23854
+        }
+      ]
+    },
+    "brand/guidelines-v2/28.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 115057,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/28-320.webp",
+          "width": 320,
+          "bytes": 6386
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/28-640.webp",
+          "width": 640,
+          "bytes": 18252
+        }
+      ]
+    },
+    "brand/guidelines-v2/29.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 107380,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/29-320.webp",
+          "width": 320,
+          "bytes": 5176
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/29-640.webp",
+          "width": 640,
+          "bytes": 15464
+        }
+      ]
+    },
+    "brand/guidelines-v2/30.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 121159,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/30-320.webp",
+          "width": 320,
+          "bytes": 5826
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/30-640.webp",
+          "width": 640,
+          "bytes": 17392
+        }
+      ]
+    },
+    "brand/guidelines-v2/31.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 124599,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/31-320.webp",
+          "width": 320,
+          "bytes": 6742
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/31-640.webp",
+          "width": 640,
+          "bytes": 22400
+        }
+      ]
+    },
+    "brand/guidelines-v2/32.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 120616,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/32-320.webp",
+          "width": 320,
+          "bytes": 6624
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/32-640.webp",
+          "width": 640,
+          "bytes": 21878
+        }
+      ]
+    },
+    "brand/guidelines-v2/33.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 123504,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/33-320.webp",
+          "width": 320,
+          "bytes": 6140
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/33-640.webp",
+          "width": 640,
+          "bytes": 17900
+        }
+      ]
+    },
+    "brand/guidelines-v2/34.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 121648,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/34-320.webp",
+          "width": 320,
+          "bytes": 6420
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/34-640.webp",
+          "width": 640,
+          "bytes": 21052
+        }
+      ]
+    },
+    "brand/guidelines-v2/35.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 125489,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/35-320.webp",
+          "width": 320,
+          "bytes": 6472
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/35-640.webp",
+          "width": 640,
+          "bytes": 20078
+        }
+      ]
+    },
+    "brand/guidelines-v2/36.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 86161,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/36-320.webp",
+          "width": 320,
+          "bytes": 5894
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/36-640.webp",
+          "width": 640,
+          "bytes": 15314
+        }
+      ]
+    },
+    "brand/guidelines-v2/37.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 115211,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/37-320.webp",
+          "width": 320,
+          "bytes": 6412
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/37-640.webp",
+          "width": 640,
+          "bytes": 18408
+        }
+      ]
+    },
+    "brand/guidelines-v2/38.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 179212,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/38-320.webp",
+          "width": 320,
+          "bytes": 6170
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/38-640.webp",
+          "width": 640,
+          "bytes": 18698
+        }
+      ]
+    },
+    "brand/guidelines-v2/39.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 302895,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/39-320.webp",
+          "width": 320,
+          "bytes": 7774
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/39-640.webp",
+          "width": 640,
+          "bytes": 23374
+        }
+      ]
+    },
+    "brand/guidelines-v2/40.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 297910,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/40-320.webp",
+          "width": 320,
+          "bytes": 9326
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/40-640.webp",
+          "width": 640,
+          "bytes": 28424
+        }
+      ]
+    },
+    "brand/guidelines-v2/41.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 111505,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/41-320.webp",
+          "width": 320,
+          "bytes": 5884
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/41-640.webp",
+          "width": 640,
+          "bytes": 15990
+        }
+      ]
+    },
+    "brand/guidelines-v2/42.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 135602,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/42-320.webp",
+          "width": 320,
+          "bytes": 6992
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/42-640.webp",
+          "width": 640,
+          "bytes": 24860
+        }
+      ]
+    },
+    "brand/guidelines-v2/43.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 130011,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/43-320.webp",
+          "width": 320,
+          "bytes": 6838
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/43-640.webp",
+          "width": 640,
+          "bytes": 24192
+        }
+      ]
+    },
+    "brand/guidelines-v2/44.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 124950,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/44-320.webp",
+          "width": 320,
+          "bytes": 6902
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/44-640.webp",
+          "width": 640,
+          "bytes": 21548
+        }
+      ]
+    },
+    "brand/guidelines-v2/45.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 132771,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/45-320.webp",
+          "width": 320,
+          "bytes": 6482
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/45-640.webp",
+          "width": 640,
+          "bytes": 19082
+        }
+      ]
+    },
+    "brand/guidelines-v2/46.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 124503,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/46-320.webp",
+          "width": 320,
+          "bytes": 7104
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/46-640.webp",
+          "width": 640,
+          "bytes": 20694
+        }
+      ]
+    },
+    "brand/guidelines-v2/47.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 123396,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/47-320.webp",
+          "width": 320,
+          "bytes": 7780
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/47-640.webp",
+          "width": 640,
+          "bytes": 20804
+        }
+      ]
+    },
+    "brand/guidelines-v2/48.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 136075,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/48-320.webp",
+          "width": 320,
+          "bytes": 6170
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/48-640.webp",
+          "width": 640,
+          "bytes": 17286
+        }
+      ]
+    },
+    "brand/guidelines-v2/49.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 138201,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/49-320.webp",
+          "width": 320,
+          "bytes": 8378
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/49-640.webp",
+          "width": 640,
+          "bytes": 26730
+        }
+      ]
+    },
+    "brand/guidelines-v2/50.png": {
+      "width": 1440,
+      "height": 1000,
+      "bytes": 106317,
+      "animated": false,
+      "posterFrame": 0,
+      "variants": [
+        {
+          "path": "thumbs/brand/guidelines-v2/50-320.webp",
+          "width": 320,
+          "bytes": 5312
+        },
+        {
+          "path": "thumbs/brand/guidelines-v2/50-640.webp",
+          "width": 640,
+          "bytes": 17224
+        }
+      ]
+    },
+    "motion/box-open/previews/button-saving-dark.gif": {
+      "width": 340,
+      "height": 128,
+      "bytes": 17774,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/button-saving-dark-gif-340.webp",
+          "width": 340,
+          "bytes": 1848
+        }
+      ]
+    },
+    "motion/box-open/previews/button-saving-dark.webp": {
+      "width": 340,
+      "height": 128,
+      "bytes": 26772,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/button-saving-dark-340.webp",
+          "width": 340,
+          "bytes": 1792
+        }
+      ]
+    },
+    "motion/box-open/previews/button-saving-light.gif": {
+      "width": 340,
+      "height": 128,
+      "bytes": 19938,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/button-saving-light-gif-340.webp",
+          "width": 340,
+          "bytes": 2150
+        }
+      ]
+    },
+    "motion/box-open/previews/button-saving-light.webp": {
+      "width": 340,
+      "height": 128,
+      "bytes": 31252,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/button-saving-light-340.webp",
+          "width": 340,
+          "bytes": 2012
+        }
+      ]
+    },
+    "motion/box-open/previews/inline-row-dark.gif": {
+      "width": 460,
+      "height": 104,
+      "bytes": 23698,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/inline-row-dark-gif-460.webp",
+          "width": 460,
+          "bytes": 2770
+        }
+      ]
+    },
+    "motion/box-open/previews/inline-row-dark.webp": {
+      "width": 460,
+      "height": 104,
+      "bytes": 39280,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/inline-row-dark-460.webp",
+          "width": 460,
+          "bytes": 2522
+        }
+      ]
+    },
+    "motion/box-open/previews/inline-row-light.gif": {
+      "width": 460,
+      "height": 104,
+      "bytes": 23833,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/inline-row-light-gif-460.webp",
+          "width": 460,
+          "bytes": 2714
+        }
+      ]
+    },
+    "motion/box-open/previews/inline-row-light.webp": {
+      "width": 460,
+      "height": 104,
+      "bytes": 40902,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/inline-row-light-460.webp",
+          "width": 460,
+          "bytes": 2446
+        }
+      ]
+    },
+    "motion/box-open/previews/loader-dark.gif": {
+      "width": 260,
+      "height": 216,
+      "bytes": 103610,
+      "animated": true,
+      "posterFrame": 52,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/loader-dark-gif-260.webp",
+          "width": 260,
+          "bytes": 2230
+        }
+      ]
+    },
+    "motion/box-open/previews/loader-dark.webp": {
+      "width": 260,
+      "height": 216,
+      "bytes": 140946,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/loader-dark-260.webp",
+          "width": 260,
+          "bytes": 2192
+        }
+      ]
+    },
+    "motion/box-open/previews/loader-light.gif": {
+      "width": 260,
+      "height": 216,
+      "bytes": 97628,
+      "animated": true,
+      "posterFrame": 53,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/loader-light-gif-260.webp",
+          "width": 260,
+          "bytes": 2424
+        }
+      ]
+    },
+    "motion/box-open/previews/loader-light.webp": {
+      "width": 260,
+      "height": 216,
+      "bytes": 152844,
+      "animated": true,
+      "posterFrame": 51,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/loader-light-260.webp",
+          "width": 260,
+          "bytes": 2312
+        }
+      ]
+    },
+    "motion/box-open/previews/logo-hover-dark.gif": {
+      "width": 300,
+      "height": 260,
+      "bytes": 163253,
+      "animated": true,
+      "posterFrame": 46,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/logo-hover-dark-gif-300.webp",
+          "width": 300,
+          "bytes": 3528
+        }
+      ]
+    },
+    "motion/box-open/previews/logo-hover-dark.webp": {
+      "width": 300,
+      "height": 260,
+      "bytes": 203592,
+      "animated": true,
+      "posterFrame": 46,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/logo-hover-dark-300.webp",
+          "width": 300,
+          "bytes": 3536
+        }
+      ]
+    },
+    "motion/box-open/previews/logo-hover-light.gif": {
+      "width": 300,
+      "height": 260,
+      "bytes": 152234,
+      "animated": true,
+      "posterFrame": 48,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/logo-hover-light-gif-300.webp",
+          "width": 300,
+          "bytes": 4390
+        }
+      ]
+    },
+    "motion/box-open/previews/logo-hover-light.webp": {
+      "width": 300,
+      "height": 260,
+      "bytes": 221836,
+      "animated": true,
+      "posterFrame": 46,
+      "variants": [
+        {
+          "path": "thumbs/motion/box-open/previews/logo-hover-light-300.webp",
+          "width": 300,
+          "bytes": 4044
+        }
+      ]
+    },
+    "motion/collapse/previews/collapse-dark.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 11834,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/collapse/previews/collapse-dark-gif-600.webp",
+          "width": 600,
+          "bytes": 4772
+        }
+      ]
+    },
+    "motion/collapse/previews/collapse-dark.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 15822,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/collapse/previews/collapse-dark-600.webp",
+          "width": 600,
+          "bytes": 4428
+        }
+      ]
+    },
+    "motion/collapse/previews/collapse-light.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 11686,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/collapse/previews/collapse-light-gif-600.webp",
+          "width": 600,
+          "bytes": 4934
+        }
+      ]
+    },
+    "motion/collapse/previews/collapse-light.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 15384,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/collapse/previews/collapse-light-600.webp",
+          "width": 600,
+          "bytes": 4400
+        }
+      ]
+    },
+    "motion/delight/previews/card-tilt-dark.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 40230,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/card-tilt-dark-gif-600.webp",
+          "width": 600,
+          "bytes": 2644
+        }
+      ]
+    },
+    "motion/delight/previews/card-tilt-dark.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 21310,
+      "animated": true,
+      "posterFrame": 9,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/card-tilt-dark-600.webp",
+          "width": 600,
+          "bytes": 2572
+        }
+      ]
+    },
+    "motion/delight/previews/card-tilt-light.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 45151,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/card-tilt-light-gif-600.webp",
+          "width": 600,
+          "bytes": 2982
+        }
+      ]
+    },
+    "motion/delight/previews/card-tilt-light.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 27632,
+      "animated": true,
+      "posterFrame": 10,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/card-tilt-light-600.webp",
+          "width": 600,
+          "bytes": 3038
+        }
+      ]
+    },
+    "motion/delight/previews/logo-flaps-dark.gif": {
+      "width": 400,
+      "height": 240,
+      "bytes": 17297,
+      "animated": true,
+      "posterFrame": 10,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/logo-flaps-dark-gif-400.webp",
+          "width": 400,
+          "bytes": 828
+        }
+      ]
+    },
+    "motion/delight/previews/logo-flaps-dark.webp": {
+      "width": 400,
+      "height": 240,
+      "bytes": 11348,
+      "animated": true,
+      "posterFrame": 9,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/logo-flaps-dark-400.webp",
+          "width": 400,
+          "bytes": 842
+        }
+      ]
+    },
+    "motion/delight/previews/logo-flaps-light.gif": {
+      "width": 400,
+      "height": 240,
+      "bytes": 17062,
+      "animated": true,
+      "posterFrame": 10,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/logo-flaps-light-gif-400.webp",
+          "width": 400,
+          "bytes": 1118
+        }
+      ]
+    },
+    "motion/delight/previews/logo-flaps-light.webp": {
+      "width": 400,
+      "height": 240,
+      "bytes": 15896,
+      "animated": true,
+      "posterFrame": 9,
+      "variants": [
+        {
+          "path": "thumbs/motion/delight/previews/logo-flaps-light-400.webp",
+          "width": 400,
+          "bytes": 1068
+        }
+      ]
+    },
+    "motion/feedback/previews/confetti-dark.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 67797,
+      "animated": true,
+      "posterFrame": 21,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/confetti-dark-gif-600.webp",
+          "width": 600,
+          "bytes": 3710
+        }
+      ]
+    },
+    "motion/feedback/previews/confetti-dark.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 56020,
+      "animated": true,
+      "posterFrame": 19,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/confetti-dark-600.webp",
+          "width": 600,
+          "bytes": 3966
+        }
+      ]
+    },
+    "motion/feedback/previews/confetti-light.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 66308,
+      "animated": true,
+      "posterFrame": 21,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/confetti-light-gif-600.webp",
+          "width": 600,
+          "bytes": 3694
+        }
+      ]
+    },
+    "motion/feedback/previews/confetti-light.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 46482,
+      "animated": true,
+      "posterFrame": 19,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/confetti-light-600.webp",
+          "width": 600,
+          "bytes": 3856
+        }
+      ]
+    },
+    "motion/feedback/previews/stamp-dark.gif": {
+      "width": 440,
+      "height": 220,
+      "bytes": 21698,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/stamp-dark-gif-440.webp",
+          "width": 440,
+          "bytes": 2340
+        }
+      ]
+    },
+    "motion/feedback/previews/stamp-dark.webp": {
+      "width": 440,
+      "height": 220,
+      "bytes": 19614,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/stamp-dark-440.webp",
+          "width": 440,
+          "bytes": 2274
+        }
+      ]
+    },
+    "motion/feedback/previews/stamp-light.gif": {
+      "width": 440,
+      "height": 220,
+      "bytes": 20922,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/stamp-light-gif-440.webp",
+          "width": 440,
+          "bytes": 1578
+        }
+      ]
+    },
+    "motion/feedback/previews/stamp-light.webp": {
+      "width": 440,
+      "height": 220,
+      "bytes": 12270,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/feedback/previews/stamp-light-440.webp",
+          "width": 440,
+          "bytes": 1564
+        }
+      ]
+    },
+    "motion/hover-press/previews/hover-press-dark.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 12057,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/hover-press/previews/hover-press-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 6552
+        }
+      ]
+    },
+    "motion/hover-press/previews/hover-press-dark.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 10414,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/hover-press/previews/hover-press-dark-720.webp",
+          "width": 720,
+          "bytes": 5666
+        }
+      ]
+    },
+    "motion/hover-press/previews/hover-press-light.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 12149,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/hover-press/previews/hover-press-light-gif-720.webp",
+          "width": 720,
+          "bytes": 7082
+        }
+      ]
+    },
+    "motion/hover-press/previews/hover-press-light.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 13046,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/hover-press/previews/hover-press-light-720.webp",
+          "width": 720,
+          "bytes": 6050
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/kiosk-vs-normal-dark.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 13217,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/kiosk-vs-normal-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 5812
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/kiosk-vs-normal-dark.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 11412,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/kiosk-vs-normal-dark-720.webp",
+          "width": 720,
+          "bytes": 5366
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/kiosk-vs-normal-light.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 13148,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/kiosk-vs-normal-light-gif-720.webp",
+          "width": 720,
+          "bytes": 5804
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/kiosk-vs-normal-light.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 11936,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/kiosk-vs-normal-light-720.webp",
+          "width": 720,
+          "bytes": 5330
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/slide-fade-dark.gif": {
+      "width": 600,
+      "height": 220,
+      "bytes": 17073,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/slide-fade-dark-gif-600.webp",
+          "width": 600,
+          "bytes": 1498
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/slide-fade-dark.webp": {
+      "width": 600,
+      "height": 220,
+      "bytes": 10186,
+      "animated": true,
+      "posterFrame": 6,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/slide-fade-dark-600.webp",
+          "width": 600,
+          "bytes": 1456
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/slide-fade-light.gif": {
+      "width": 600,
+      "height": 220,
+      "bytes": 17261,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/slide-fade-light-gif-600.webp",
+          "width": 600,
+          "bytes": 1350
+        }
+      ]
+    },
+    "motion/kiosk-display/previews/slide-fade-light.webp": {
+      "width": 600,
+      "height": 220,
+      "bytes": 9524,
+      "animated": true,
+      "posterFrame": 6,
+      "variants": [
+        {
+          "path": "thumbs/motion/kiosk-display/previews/slide-fade-light-600.webp",
+          "width": 600,
+          "bytes": 1474
+        }
+      ]
+    },
+    "motion/overlays/previews/dialog-dark.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 16607,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/dialog-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 4332
+        }
+      ]
+    },
+    "motion/overlays/previews/dialog-dark.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 14308,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/dialog-dark-720.webp",
+          "width": 720,
+          "bytes": 4080
+        }
+      ]
+    },
+    "motion/overlays/previews/dialog-light.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 19293,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/dialog-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4868
+        }
+      ]
+    },
+    "motion/overlays/previews/dialog-light.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 15606,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/dialog-light-720.webp",
+          "width": 720,
+          "bytes": 4076
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-dark.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 23342,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 4678
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-dark.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 22178,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-dark-720.webp",
+          "width": 720,
+          "bytes": 4306
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-light.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 25385,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4760
+        }
+      ]
+    },
+    "motion/overlays/previews/drawer-light.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 22942,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/drawer-light-720.webp",
+          "width": 720,
+          "bytes": 4230
+        }
+      ]
+    },
+    "motion/overlays/previews/menu-dark.gif": {
+      "width": 720,
+      "height": 300,
+      "bytes": 6847,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/menu-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 3696
+        }
+      ]
+    },
+    "motion/overlays/previews/menu-dark.webp": {
+      "width": 720,
+      "height": 300,
+      "bytes": 5182,
+      "animated": true,
+      "posterFrame": 1,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/menu-dark-720.webp",
+          "width": 720,
+          "bytes": 3364
+        }
+      ]
+    },
+    "motion/overlays/previews/menu-light.gif": {
+      "width": 720,
+      "height": 300,
+      "bytes": 6864,
+      "animated": true,
+      "posterFrame": 2,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/menu-light-gif-720.webp",
+          "width": 720,
+          "bytes": 3858
+        }
+      ]
+    },
+    "motion/overlays/previews/menu-light.webp": {
+      "width": 720,
+      "height": 300,
+      "bytes": 5524,
+      "animated": true,
+      "posterFrame": 1,
+      "variants": [
+        {
+          "path": "thumbs/motion/overlays/previews/menu-light-720.webp",
+          "width": 720,
+          "bytes": 3592
+        }
+      ]
+    },
+    "motion/page-enter/previews/showcase-dark.gif": {
+      "width": 720,
+      "height": 280,
+      "bytes": 49602,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/showcase-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 2604
+        }
+      ]
+    },
+    "motion/page-enter/previews/showcase-dark.webp": {
+      "width": 720,
+      "height": 280,
+      "bytes": 17062,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/showcase-dark-720.webp",
+          "width": 720,
+          "bytes": 2530
+        }
+      ]
+    },
+    "motion/page-enter/previews/showcase-light.gif": {
+      "width": 720,
+      "height": 280,
+      "bytes": 51785,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/showcase-light-gif-720.webp",
+          "width": 720,
+          "bytes": 3116
+        }
+      ]
+    },
+    "motion/page-enter/previews/showcase-light.webp": {
+      "width": 720,
+      "height": 280,
+      "bytes": 19322,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/showcase-light-720.webp",
+          "width": 720,
+          "bytes": 2850
+        }
+      ]
+    },
+    "motion/page-enter/previews/stagger-dark.gif": {
+      "width": 720,
+      "height": 280,
+      "bytes": 40723,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/stagger-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 2658
+        }
+      ]
+    },
+    "motion/page-enter/previews/stagger-dark.webp": {
+      "width": 720,
+      "height": 280,
+      "bytes": 14122,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/stagger-dark-720.webp",
+          "width": 720,
+          "bytes": 2686
+        }
+      ]
+    },
+    "motion/page-enter/previews/stagger-light.gif": {
+      "width": 720,
+      "height": 280,
+      "bytes": 40708,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/stagger-light-gif-720.webp",
+          "width": 720,
+          "bytes": 3222
+        }
+      ]
+    },
+    "motion/page-enter/previews/stagger-light.webp": {
+      "width": 720,
+      "height": 280,
+      "bytes": 15468,
+      "animated": true,
+      "posterFrame": 7,
+      "variants": [
+        {
+          "path": "thumbs/motion/page-enter/previews/stagger-light-720.webp",
+          "width": 720,
+          "bytes": 3278
+        }
+      ]
+    },
+    "motion/route-transition/previews/page-swap-dark.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 13618,
+      "animated": true,
+      "posterFrame": 5,
+      "variants": [
+        {
+          "path": "thumbs/motion/route-transition/previews/page-swap-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 4142
+        }
+      ]
+    },
+    "motion/route-transition/previews/page-swap-dark.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 9472,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/route-transition/previews/page-swap-dark-720.webp",
+          "width": 720,
+          "bytes": 3836
+        }
+      ]
+    },
+    "motion/route-transition/previews/page-swap-light.gif": {
+      "width": 720,
+      "height": 340,
+      "bytes": 13765,
+      "animated": true,
+      "posterFrame": 5,
+      "variants": [
+        {
+          "path": "thumbs/motion/route-transition/previews/page-swap-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4054
+        }
+      ]
+    },
+    "motion/route-transition/previews/page-swap-light.webp": {
+      "width": 720,
+      "height": 340,
+      "bytes": 9416,
+      "animated": true,
+      "posterFrame": 4,
+      "variants": [
+        {
+          "path": "thumbs/motion/route-transition/previews/page-swap-light-720.webp",
+          "width": 720,
+          "bytes": 3698
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/pinned-hero-dark.gif": {
+      "width": 800,
+      "height": 450,
+      "bytes": 45447,
+      "animated": true,
+      "posterFrame": 15,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-dark-gif-800.webp",
+          "width": 800,
+          "bytes": 906
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/pinned-hero-dark.webp": {
+      "width": 800,
+      "height": 450,
+      "bytes": 25852,
+      "animated": true,
+      "posterFrame": 15,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-dark-800.webp",
+          "width": 800,
+          "bytes": 1130
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/pinned-hero-light.gif": {
+      "width": 800,
+      "height": 450,
+      "bytes": 46554,
+      "animated": true,
+      "posterFrame": 15,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-light-gif-800.webp",
+          "width": 800,
+          "bytes": 1076
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/pinned-hero-light.webp": {
+      "width": 800,
+      "height": 450,
+      "bytes": 28138,
+      "animated": true,
+      "posterFrame": 15,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/pinned-hero-light-800.webp",
+          "width": 800,
+          "bytes": 1968
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/reveal-dark.gif": {
+      "width": 720,
+      "height": 300,
+      "bytes": 50809,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/reveal-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 3658
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/reveal-dark.webp": {
+      "width": 720,
+      "height": 300,
+      "bytes": 32480,
+      "animated": true,
+      "posterFrame": 10,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/reveal-dark-720.webp",
+          "width": 720,
+          "bytes": 3350
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/reveal-light.gif": {
+      "width": 720,
+      "height": 300,
+      "bytes": 51138,
+      "animated": true,
+      "posterFrame": 12,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/reveal-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4122
+        }
+      ]
+    },
+    "motion/scroll-reveal/previews/reveal-light.webp": {
+      "width": 720,
+      "height": 300,
+      "bytes": 37444,
+      "animated": true,
+      "posterFrame": 10,
+      "variants": [
+        {
+          "path": "thumbs/motion/scroll-reveal/previews/reveal-light-720.webp",
+          "width": 720,
+          "bytes": 3834
+        }
+      ]
+    },
+    "motion/search/previews/search-field-dark.gif": {
+      "width": 680,
+      "height": 500,
+      "bytes": 28223,
+      "animated": true,
+      "posterFrame": 18,
+      "variants": [
+        {
+          "path": "thumbs/motion/search/previews/search-field-dark-gif-680.webp",
+          "width": 680,
+          "bytes": 3142
+        }
+      ]
+    },
+    "motion/search/previews/search-field-dark.webp": {
+      "width": 680,
+      "height": 500,
+      "bytes": 22052,
+      "animated": true,
+      "posterFrame": 18,
+      "variants": [
+        {
+          "path": "thumbs/motion/search/previews/search-field-dark-680.webp",
+          "width": 680,
+          "bytes": 3172
+        }
+      ]
+    },
+    "motion/search/previews/search-field-light.gif": {
+      "width": 680,
+      "height": 500,
+      "bytes": 29028,
+      "animated": true,
+      "posterFrame": 18,
+      "variants": [
+        {
+          "path": "thumbs/motion/search/previews/search-field-light-gif-680.webp",
+          "width": 680,
+          "bytes": 3232
+        }
+      ]
+    },
+    "motion/search/previews/search-field-light.webp": {
+      "width": 680,
+      "height": 500,
+      "bytes": 23722,
+      "animated": true,
+      "posterFrame": 18,
+      "variants": [
+        {
+          "path": "thumbs/motion/search/previews/search-field-light-680.webp",
+          "width": 680,
+          "bytes": 3252
+        }
+      ]
+    },
+    "motion/sidebar/previews/indicator-dark.gif": {
+      "width": 520,
+      "height": 340,
+      "bytes": 13335,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/sidebar/previews/indicator-dark-gif-520.webp",
+          "width": 520,
+          "bytes": 4144
+        }
+      ]
+    },
+    "motion/sidebar/previews/indicator-dark.webp": {
+      "width": 520,
+      "height": 340,
+      "bytes": 13000,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/sidebar/previews/indicator-dark-520.webp",
+          "width": 520,
+          "bytes": 4088
+        }
+      ]
+    },
+    "motion/sidebar/previews/indicator-light.gif": {
+      "width": 520,
+      "height": 340,
+      "bytes": 12687,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/sidebar/previews/indicator-light-gif-520.webp",
+          "width": 520,
+          "bytes": 4060
+        }
+      ]
+    },
+    "motion/sidebar/previews/indicator-light.webp": {
+      "width": 520,
+      "height": 340,
+      "bytes": 12340,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/sidebar/previews/indicator-light-520.webp",
+          "width": 520,
+          "bytes": 3844
+        }
+      ]
+    },
+    "motion/skeleton/previews/skeleton-dark.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 34894,
+      "animated": true,
+      "posterFrame": 24,
+      "variants": [
+        {
+          "path": "thumbs/motion/skeleton/previews/skeleton-dark-gif-600.webp",
+          "width": 600,
+          "bytes": 2082
+        }
+      ]
+    },
+    "motion/skeleton/previews/skeleton-dark.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 42026,
+      "animated": true,
+      "posterFrame": 24,
+      "variants": [
+        {
+          "path": "thumbs/motion/skeleton/previews/skeleton-dark-600.webp",
+          "width": 600,
+          "bytes": 2126
+        }
+      ]
+    },
+    "motion/skeleton/previews/skeleton-light.gif": {
+      "width": 600,
+      "height": 300,
+      "bytes": 32601,
+      "animated": true,
+      "posterFrame": 24,
+      "variants": [
+        {
+          "path": "thumbs/motion/skeleton/previews/skeleton-light-gif-600.webp",
+          "width": 600,
+          "bytes": 2354
+        }
+      ]
+    },
+    "motion/skeleton/previews/skeleton-light.webp": {
+      "width": 600,
+      "height": 300,
+      "bytes": 42778,
+      "animated": true,
+      "posterFrame": 24,
+      "variants": [
+        {
+          "path": "thumbs/motion/skeleton/previews/skeleton-light-600.webp",
+          "width": 600,
+          "bytes": 2338
+        }
+      ]
+    },
+    "motion/theme-reveal/previews/theme-reveal.gif": {
+      "width": 480,
+      "height": 270,
+      "bytes": 128948,
+      "animated": true,
+      "posterFrame": 30,
+      "variants": [
+        {
+          "path": "thumbs/motion/theme-reveal/previews/theme-reveal-gif-480.webp",
+          "width": 480,
+          "bytes": 7908
+        }
+      ]
+    },
+    "motion/theme-reveal/previews/theme-reveal.webp": {
+      "width": 480,
+      "height": 270,
+      "bytes": 73602,
+      "animated": true,
+      "posterFrame": 30,
+      "variants": [
+        {
+          "path": "thumbs/motion/theme-reveal/previews/theme-reveal-480.webp",
+          "width": 480,
+          "bytes": 6724
+        }
+      ]
+    },
+    "motion/toast/previews/toast-dark.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 13286,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/toast/previews/toast-dark-gif-720.webp",
+          "width": 720,
+          "bytes": 4410
+        }
+      ]
+    },
+    "motion/toast/previews/toast-dark.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 12204,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/toast/previews/toast-dark-720.webp",
+          "width": 720,
+          "bytes": 4086
+        }
+      ]
+    },
+    "motion/toast/previews/toast-light.gif": {
+      "width": 720,
+      "height": 260,
+      "bytes": 12838,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/toast/previews/toast-light-gif-720.webp",
+          "width": 720,
+          "bytes": 4592
+        }
+      ]
+    },
+    "motion/toast/previews/toast-light.webp": {
+      "width": 720,
+      "height": 260,
+      "bytes": 12364,
+      "animated": true,
+      "posterFrame": 3,
+      "variants": [
+        {
+          "path": "thumbs/motion/toast/previews/toast-light-720.webp",
+          "width": 720,
+          "bytes": 4168
+        }
+      ]
+    }
+  },
+  "books": {
+    "brand/guidelines-v2/01.png": {
+      "title": "Less searching. More making.",
+      "chapter": "Identity system",
+      "summary": "Less searching. More making.",
+      "transcript": "Less searching. More making. Design System v2.0 Brand guidelines v2 · November 2026 Supersedes brand guidelines v1 wherever the two differ. Ships alongside SpaceWorks 0.12.0 Light and dark · Motion · Product",
+      "source": "brand/guidelines-v2/src/pages/00-front.html"
+    },
+    "brand/guidelines-v2/02.png": {
+      "title": "Contents.",
+      "chapter": "Contents",
+      "summary": "Everything from v1 that is still true, and everything that changed alongside SpaceWorks 0.12.0.",
+      "transcript": "Contents. Everything from v1 that is still true, and everything that changed alongside SpaceWorks 0.12.0. How to read the pages Cream pages show rules and the light theme. Black pages show the dark theme, as it ships. Split pages put the same thing in light and dark, side by side. Citron pages are principles; Deep Ink pages are brand and print.",
+      "source": "brand/guidelines-v2/src/pages/00-front.html"
+    },
+    "brand/guidelines-v2/03.png": {
+      "title": "What changed since v1.",
+      "chapter": "What's new in v2",
+      "summary": "Brand guidelines v2 follow the product as it ships in SpaceWorks 0.12.0. Where v1 and v2 differ, v2 wins.",
+      "transcript": "What changed since v1. Brand guidelines v2 follow the product as it ships in SpaceWorks 0.12.0. Where v1 and v2 differ, v2 wins. Area v1 said v2 says Decision Typography Gilroy Regular to Bold for everything; Unbounded for accents. Only the free Gilroy weights ship : ExtraBold 800 for display, Light 300 for light display text. Outfit (OFL) for body, labels and controls. Unbounded stays for one phrase. 299 Dark theme Deep Ink and teal as dark surfaces. One solid black neutral family : page #000000 , layers 11, 20, 28. Teal, Citron and Orange are accents only. 225, 316 Logo Static masters only. Same masters. The mark now folds shut and opens on hover and keyboard focus (600 + 1600 ms). Tenant logos never animate. 362 Loading Not covered. One loader everywhere : the box that opens. Cold-start splash, page loader, inline spinner, mono in buttons. 313, 322 Motion Not covered. Three durations, three curves, distance tokens, a which-animation-where table and a reduced-motion floor. 323 Colour roles Seven colours and four tested pairs. Product tokens for both themes: fills vs inks, line vs outline , status softs, scrim, chart series and loader colours. 316, 363 Charts Not covered. Five bright brand colours as series, the same hex in both themes ; a 1 px edge on fills and a 4 px casing under lines carry the contrast. SW-380 Status Add a word or icon. The word is mandatory . Small marks are solid in both themes; large callouts go soft in dark. D6 New sections 17 pages. Logo in motion, theming, charts, mascot Patch, components, UX patterns, product rules, accessibility, ID cards, signage and social. Unchanged: the purpose and personality, the seven brand colours, the logo masters, clear space (H ÷ 4), minimum sizes and the voice.",
+      "source": "brand/guidelines-v2/src/pages/00-front.html"
+    },
+    "brand/guidelines-v2/04.png": {
+      "title": "Less searching. More making.",
+      "chapter": "01 / Brand",
+      "summary": "Free, open software for the people running makerspaces and tool libraries.",
+      "transcript": "Less searching. More making. Free, open software for the people running makerspaces and tool libraries. Find it. Use it. Make something. Our purpose Help teams keep shared parts, tools and materials organised, and prove every handover. Our personality Clear. Capable. Curious. Playful. Carried over from v1 unchanged. What grew is the product: loans, machines, events, bookings and membership now sit under the same name.",
+      "source": "brand/guidelines-v2/src/pages/01-brand.html"
+    },
+    "brand/guidelines-v2/05.png": {
+      "title": "An open invitation.",
+      "chapter": "01 / Brand",
+      "summary": "A familiar box, built for a space full of possibilities. In v2 the box also moves.",
+      "transcript": "An open invitation. A familiar box, built for a space full of possibilities. In v2 the box also moves. Open Four flaps invite the next project. Organised A clear structure gives every part a place. Energetic Teal grounds it. Orange gets it moving. Alive New The box opens when something loads, and when you point at it.",
+      "source": "brand/guidelines-v2/src/pages/01-brand.html"
+    },
+    "brand/guidelines-v2/06.png": {
+      "title": "Sound like a helpful maker.",
+      "chapter": "01 / Brand",
+      "summary": "Clear, warm and specific. Make the next step easy.",
+      "transcript": "Sound like a helpful maker. Clear, warm and specific. Make the next step easy. Say Skip Find the right part. Optimise your asset ecosystem. No parts added yet. Add your first item. Inventory database is empty. Couldn't save. Try again. Oops! Something went horribly wrong. Filters, 3 active Filters (3) Areas and add-ons Modules, capabilities, tenant settings Partly returned · 2 left partially_returned · 409 Whole sentences. Translate full sentences with real plurals, never fragments glued together. No internal words. People never see “tenant”, “module key” or a raw status code. Names. In copy: Space Works. Wordmark: space works. One name per thing.",
+      "source": "brand/guidelines-v2/src/pages/01-brand.html"
+    },
+    "brand/guidelines-v2/07.png": {
+      "title": "One name. A flexible family.",
+      "chapter": "02 / Logo",
+      "summary": "Use the supplied masters in logo/ . Keep the spelling and the lowercase wordmark intact.",
+      "transcript": "One name. A flexible family. Use the supplied masters in logo/ . Keep the spelling and the lowercase wordmark intact. Primary / lockup-stacked Symbol / recognition at a glance Horizontal / narrow headers Reversed / dark theme and Deep Ink Ten masters: symbol, stacked and horizontal lockups, each in full colour, reversed Cream and one-colour Deep Ink, plus the app icon. SVG with matching 4× PNG. Wordmarks are outlined, so no font is needed to draw the logo.",
+      "source": "brand/guidelines-v2/src/pages/02-logo.html"
+    },
+    "brand/guidelines-v2/08.png": {
+      "title": "Room to breathe.",
+      "chapter": "02 / Logo",
+      "summary": "Keep the lockup together. Measure visible artwork.",
+      "transcript": "Room to breathe. Keep the lockup together. Measure visible artwork. X X H = symbol height. Scale the supplied master as one object. 1.25× Symbol / stacked wordmark height H ÷ 6 Gap between symbol and wordmark H ÷ 4 Clear space on every side The animated mark keeps this box. It opens inside the symbol's own frame and never changes size or shifts layout.",
+      "source": "brand/guidelines-v2/src/pages/02-logo.html"
+    },
+    "brand/guidelines-v2/09.png": {
+      "title": "Keep it legible.",
+      "chapter": "02 / Logo",
+      "summary": "Minimums from v1, and where each master sits in the product today.",
+      "transcript": "Keep it legible. Minimums from v1, and where each master sits in the product today. 48 px Symbol height 180 px Stacked lockup width In print 12 mm symbol / 40 mm lockup Proof at actual size before production. App icon Symbol about 62 % of the tile on a Warm Cream field. Favicons and PWA icons are rasterised from app-icon.svg . Placement Master (light / dark) Size Console sidebar, 1024 px and up lockup-stacked / -reversed 180 px wide Phone top bar symbol / symbol-reversed 48 px Public header, 768 px and up lockup-horizontal / -reversed symbol 48 px Public header, phones symbol / symbol-reversed 48 px Sign-in brand panel lockup-stacked on Cream 240–320 px Control plane sidebar lockup-horizontal / -reversed 288 px Email header lockup-stacked PNG @2× 180 px Social card lockup-stacked on Cream 1200 × 630 600 px Touch icon / PWA app-icon, maskable 180 · 192 · 512 Below 48 px (favicons at 16 and 32) test a dedicated small-size asset. The logo component clamps its size to these minimums and takes no colour or transform overrides.",
+      "source": "brand/guidelines-v2/src/pages/02-logo.html"
+    },
+    "brand/guidelines-v2/10.png": {
+      "title": "Choose the right background.",
+      "chapter": "02 / Logo",
+      "summary": "Full colour on light grounds. Reversed Cream on dark grounds. One colour for single-colour print.",
+      "transcript": "Choose the right background. Full colour on light grounds. Reversed Cream on dark grounds. One colour for single-colour print. 01 Full colour / Warm Cream 02 One colour / Deep Ink on white 03 Full colour / Citron 04 Reversed / Deep Ink (print) 05 Reversed / dark theme black New 06 Reversed / Maker Teal In the product the logo component picks the master from the painted theme, and takes a ground override for a surface that is always dark, such as an ink island in a light page.",
+      "source": "brand/guidelines-v2/src/pages/02-logo.html"
+    },
+    "brand/guidelines-v2/11.png": {
+      "title": "Keep the system intact.",
+      "chapter": "02 / Logo",
+      "summary": "The box is a fixed piece of artwork. Treat it as one recognisable unit, in every theme.",
+      "transcript": "Keep the system intact. The box is a fixed piece of artwork. Treat it as one recognisable unit, in every theme. 01 Don't stretch 02 Don't rotate 03 Don't recolour panels 04 Don't lose dark panels 05 Don't add effects Space Works 06 Don't change the type 07 Don't put full colour on black Since 2019 08 Don't crowd the clear space Also never: fork the box geometry or keyframes, loop the mark outside the loader, or animate a tenant (makerspace) logo.",
+      "source": "brand/guidelines-v2/src/pages/02-logo.html"
+    },
+    "brand/guidelines-v2/12.png": {
+      "title": "The box opens.",
+      "chapter": "03 / Logo in motion",
+      "summary": "One piece of artwork, generated from the logo masters, plays three jobs. Nothing else in the brand moves like this.",
+      "transcript": "The box opens. One piece of artwork, generated from the logo masters, plays three jobs. Nothing else in the brand moves like this. Splash · once per cold load 1600 ms On a cold page load the box opens, then flies into the header logo. The first screen is never blank. Loader · loops while loading 4400 ms Open, hold, fold shut, repeat. The only loading indicator in the product, from a page down to a button. Hover and focus · once 600 + 1600 ms Point at the mark, or tab to it, and it folds shut and opens back. Every Space Works logo, never a tenant's. See all three play: spaceworks-labs.github.io/SpaceWorks-Design-System/motion/box-open/ Frames on the following pages are frozen from the shipped CSS, motion/box-open/box-open.css , not redrawn.",
+      "source": "brand/guidelines-v2/src/pages/03-motion-logo.html"
+    },
+    "brand/guidelines-v2/13.png": {
+      "title": "Splash: one opening.",
+      "chapter": "03 / Logo in motion",
+      "summary": "Plays once on a cold load, before the app mounts. Flaps open bottom-left, top-left, bottom-right, top-right.",
+      "transcript": "Splash: one opening. Plays once on a cold load, before the app mounts. Flaps open bottom-left, top-left, bottom-right, top-right. Light · on Warm Cream Dark · on #000 Inline, before the app. A generated block in index.html shows it, so a slow first load still shows the brand, then hands off to the header logo. Background follows the theme. Warm Cream in light, in dark; the meta theme colour matches. Reduced motion. The still, open logo shows at once. Total time on screen is about 1.2 to 1.6 s, never a wall.",
+      "source": "brand/guidelines-v2/src/pages/03-motion-logo.html"
+    },
+    "brand/guidelines-v2/14.png": {
+      "title": "Loader: open, hold, fold, repeat.",
+      "chapter": "03 / Logo in motion",
+      "summary": "A 4400 ms cycle for anything that loads for an unknown time. It replaces ring spinners and skeleton shimmer.",
+      "transcript": "Loader: open, hold, fold, repeat. A 4400 ms cycle for anything that loads for an unknown time. It replaces ring spinners and skeleton shimmer. Open · flap by flap Hold open Fold shut Rest 0 1.4 s 2.8 s 3.7 s 4.4 s Flaps are stepped, never interpolated. Each flap's matrix() is sampled 160 times per cycle and played with steps(1, end) . Browsers glitch when they blend two matrices near edge-on. Colours per theme. Box faces are the masters' own colours. Under-face light, dark; spark / ; the dark seam is the page colour so it vanishes on black. Fixed aspect 136 : 126. Width = height × 136 ÷ 126. The box never changes size while it plays, so nothing around it moves.",
+      "source": "brand/guidelines-v2/src/pages/03-motion-logo.html"
+    },
+    "brand/guidelines-v2/15.png": {
+      "title": "Hover and focus: fold, then open.",
+      "chapter": "03 / Logo in motion",
+      "summary": "From the resting logo the box folds shut in 600 ms and opens back in 1600 ms. No hold, no snap at either end.",
+      "transcript": "Hover and focus: fold, then open. From the resting logo the box folds shut in 600 ms and opens back in 1600 ms. No hold, no snap at either end. Fold shut · 600 ms · the loader's fold Open · 1600 ms · the splash opening Starts on pointer-enter of a mouse or pen, or on keyboard :focus-visible . Never on touch: gate on @media (hover: hover) . Always finishes. Leaving mid-way lets it finish; re-entering while it plays does not restart it. It never loops. Reduced motion shows the still mark. The mark never takes focus itself and never changes size. One component ( AnimatedLogoMark ) draws every placement; a guard test fails the build otherwise. Tenant logos never animate.",
+      "source": "brand/guidelines-v2/src/pages/03-motion-logo.html"
+    },
+    "brand/guidelines-v2/16.png": {
+      "title": "One loader, four sizes.",
+      "chapter": "03 / Logo in motion",
+      "summary": "Use the box wherever something loads. Never a generic spinner.",
+      "transcript": "One loader, four sizes. Use the box wherever something loads. Never a generic spinner. LogoLoader · page or panel · 72 px Loading inventory… role=\"status\" with a polite label Same loader in dark Loading inventory… Reversed artwork, seam in the page colour BoxSpinner · rows and fields · 16–24 px Arduino Uno Checking stock… Search parts BoxSpinner mono · inside a button Saving Paying Deleting Loading Drawn in currentColor , at the label size. The button keeps its width and sets aria-busy=\"true\" . Don't ring spinners, progress bars for unknown time, shimmer sweeps, a spinner on every row at once. Do pair a Skeleton shape with one box for lists; the still open logo under reduced motion.",
+      "source": "brand/guidelines-v2/src/pages/03-motion-logo.html"
+    },
+    "brand/guidelines-v2/17.png": {
+      "title": "Seven colours. One clear system.",
+      "chapter": "04 / Colour",
+      "summary": "Exact sRGB values, unchanged from v1. Three core colours, three accents and a warm canvas.",
+      "transcript": "Seven colours. One clear system. Exact sRGB values, unchanged from v1. Three core colours, three accents and a warm canvas. Deep Ink RGB 20, 44, 42 Text · structure · depth · print dark Maker Teal RGB 0, 110, 99 Primary brand · actions Workshop Orange RGB 255, 116, 71 Energy · one bold moment Citron RGB 223, 255, 143 Success · light sidebar · dark focus Sky Blue RGB 181, 205, 255 Info · supporting Warm Yellow RGB 255, 212, 71 Warn · small highlights Warm Cream RGB 255, 244, 232 Light canvas · dark-mode text New in v2: each brand colour now has a named job in the product tokens (bottom line of each card). The palette has no red; danger is a sampled red used only for errors and destructive actions.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/18.png": {
+      "title": "The product, in light.",
+      "chapter": "04 / Colour",
+      "summary": "Warm Cream page, white cards, a Citron sidebar. Every value is a token in tokens/tokens.json .",
+      "transcript": "The product, in light. Warm Cream page, white cards, a Citron sidebar. Every value is a token in tokens/tokens.json . Neutrals · ratio against the page “Aa” on a fill is its fixed on-* label. “Aa” on white is the *-ink text colour. In light, accent-ink equals the fill; the status inks are darkened so they reach 4.5 : 1. Accent and status families · fill, hover, active, soft, ink",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/19.png": {
+      "title": "The product, in dark.",
+      "chapter": "04 / Colour",
+      "summary": "One solid black neutral family. Page #000 , layers step up 11, 20, 28. No green anywhere in a surface.",
+      "transcript": "The product, in dark. One solid black neutral family. Page #000 , layers step up 11, 20, 28. No green anywhere in a surface. Neutrals · ratio against the page Fills keep their light-theme hex, so a Citron pill is the same Citron in both themes. What changes is every colour that is read as text: inks lift (teal text becomes ), danger flips to a soft red with a Deep Ink label, and focus becomes Citron. Accent and status families · fill, hover, active, soft, ink",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/20.png": {
+      "title": "From green-black to solid black.",
+      "chapter": "04 / Colour",
+      "summary": "Dark was redone three times in one month. Each step fixed a real problem and exposed the next.",
+      "transcript": "From green-black to solid black. Dark was redone three times in one month. Each step fixed a real problem and exposed the next. To 15 Oct Grey-green, then teal-lit panels. Teal text measured about 1.76 : 1 on the lit panel. 10 Nov · decision 225 True black page for OLED, but the layers above it stayed teal-lit. 11 Nov am · 275, 300 Black page with teal-tinted surfaces and borders. Surfaces seamed against the page. 11 Nov · decision 316 · ships One neutral black family. Brand colours become accents only. Token Before (teal-lit) After (solid black) Hex bg 20 44 42 0 0 0 surface 25 57 53 11 11 11 panel 31 67 63 20 20 20 line 77 109 103 44 44 44 outline 147 161 152 120 120 120 muted 199 196 186 172 172 172 accent-ink 171 200 188 128 177 166 accent-soft 26 74 69 18 29 28 Why 01 Two families on one screen fight. Black beside dark green reads as a mistake. 02 Tinted surfaces cost contrast. Teal on a teal-lit panel is dim; on neutral black it reads. 03 Brand colour works as an accent, not a floor. Teal, Citron and Orange now stand out. 04 True black is calmer and cheaper on OLED phones. Token names never changed, so no screen needed edits. Ink, focus, accent and status fills are unchanged.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/21.png": {
+      "title": "Fills are not inks.",
+      "chapter": "04 / Colour",
+      "summary": "A fill is a background with its own label. An ink is a colour you read. Never use one for the other.",
+      "transcript": "Fills are not inks. A fill is a background with its own label. An ink is a colour you read. Never use one for the other. Light Issue item on-accent on accent · View public page accent-ink on panel · 2 left ink on Orange · Orange text No on cream · Two label families on-* is fixed. Deep Ink on Citron, Yellow, Sky and Orange; Cream on teal and light danger. Only for text on that tone's solid fill. *-ink follows the theme. For standalone text and for text on a *-soft tint. Mixing the two made Citron pills unreadable in dark once. Dark Issue item same fill, same label · View public page accent-ink on panel · View public page No teal fill as text · Delete danger flips: Ink on soft red · On black Teal as a fill is : 1 on the page and : 1 on a panel. A selected teal fill always carries a label or a second cue. Text, icons and chart marks use accent-ink : teal mixed 50 % with Cream.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/22.png": {
+      "title": "Status: a word first.",
+      "chapter": "04 / Colour",
+      "summary": "Colour helps you scan. The word carries the meaning. Never colour alone.",
+      "transcript": "Status: a word first. Colour helps you scan. The word carries the meaning. Never colour alone. Small marks · solid in both themes Returned Pending approval Accepted Issued 2 left Closed with issue Draft Large callouts · solid fill in light 4 people are waiting for approval. 1 event is still a draft. Returned. Photo and remark saved to the record. Tone Means success Done, available, paid, returned warn Waiting on someone, unpaid, maintenance info Accepted, reserved, waitlisted, completed accent In progress: issued, checked out, running emphasis Attention: low stock, counters. Never danger. Small marks · identical in dark Returned Pending approval Accepted Issued 2 left Closed with issue Draft Large callouts · soft fill and ink in dark 4 people are waiting for approval. 1 event is still a draft. Returned. Photo and remark saved to the record. Why the split? A soft pill in dark looked dim beside the same pill in light, so a table scanned differently per theme. But a full-width pastel slab glares on black. Ratios: Citron , Yellow , Sky with the Deep Ink label. Dark callouts: success , warn , info . Danger is only for errors and destructive actions: a panel pill with a danger-line border and danger text.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/23.png": {
+      "title": "Readable by design.",
+      "chapter": "04 / Colour",
+      "summary": "Every ratio below is computed from tokens.json with the WCAG 2.x formula. Text needs 4.5, large text and UI edges 3.",
+      "transcript": "Readable by design. Every ratio below is computed from tokens.json with the WCAG 2.x formula. Text needs 4.5, large text and UI edges 3. Pair Light Dark Needs ink on bg / panel / / 4.5 muted on bg / hover / / 4.5 accent-ink on panel 4.5 on-accent on accent 4.5 on-accent on accent-active 4.5 on-emphasis on emphasis 4.5 on-success · on-warn · on-info · · same fills 4.5 success-ink on success-soft 4.5 warn-ink on warn-soft 4.5 info-ink on hover (worst light cell) 4.5 danger on panel 4.5 on-danger on danger 4.5 focus ring on bg 3 outline (control edge) on bg / panel / / 3 line, decorative only none Brand pairs (from v1) Aa Cream on teal · Aa Ink on cream · Aa Ink on orange · Aa Ink on citron · Aa Ink on sky · Aa Ink on yellow · Never orange text on cream: : 1. No translucent text, ever.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/24.png": {
+      "title": "Chart colours.",
+      "chapter": "04 / Colour",
+      "summary": "Five bright brand colours, the same in both themes. An edge carries the contrast, so no fill is ever dulled.",
+      "transcript": "Chart colours. Five bright brand colours, the same in both themes. An edge carries the contrast, so no fill is ever dulled. Series Hex, both themes Dash fill on panel 1 · teal solid 2 · orange 8 4 3 · citron 2 4 4 · sky 10 3 2 3 5 · yellow solid edge Deep Ink 1 px · 4 px In dark Hex fill on panel 1 · teal same 3 · citron same edge Cream danger (light ) Edge: 1 px on every filled mark (bars, dots, slices), a 4 px casing under every 2 px line. Danger is not a series. Use it on purpose for a bad or negative value. Colour follows the series identity (hashed), plus a dash per series, so it survives sorting and is never the only cue.",
+      "source": "brand/guidelines-v2/src/pages/04-colour.html"
+    },
+    "brand/guidelines-v2/25.png": {
+      "title": "Two free weights. No exceptions.",
+      "chapter": "05 / Typography",
+      "summary": "Only the free Gilroy weights ship. Everything else is set in Outfit. This replaces the four-weight Gilroy of v1.",
+      "transcript": "Two free weights. No exceptions. Only the free Gilroy weights ship. Everything else is set in Outfit. This replaces the four-weight Gilroy of v1. Gilroy ExtraBold · 800 · free Ready to make. Gilroy Light · 300 · free Everything in its place. Withdrawn · paid weights, no licence held Regular 400 Medium 500 SemiBold 600 Bold 700 Why Gilroy is a commercial family. Its author releases Light and ExtraBold free, under an EULA that allows websites ( @font-face ), graphics, print and embedding in software. Regular to Bold are paid. The project does not hold that licence, so those files were removed from every repository (decision 299, 11 November 2026) and are never re-added. What fills the gap Outfit (SIL OFL, variable 400–700) takes every role between the two Gilroy weights: body, labels, buttons, table text, numbers and IDs. Unbounded (OFL) keeps its one accent phrase. Never Ask the browser for a Gilroy weight that does not ship. Set font-synthesis: none . Fake a middle weight with a stroke, a shadow or faux bold. Download a paid weight “just for a mock-up”.",
+      "source": "brand/guidelines-v2/src/pages/05-type.html"
+    },
+    "brand/guidelines-v2/26.png": {
+      "title": "Three families. Clear roles.",
+      "chapter": "05 / Typography",
+      "summary": "Gilroy for the big moment, Outfit for the work, Unbounded for one phrase.",
+      "transcript": "Three families. Clear roles. Gilroy for the big moment, Outfit for the work, Unbounded for one phrase. Display · Gilroy Gilroy Everything in its place. Less searching, more making. 800 for display headings, landing heroes and section heads. 300 for light display text such as sub-lines on big pages. Never under 24 px. var(--font-display) · fonts/Gilroy-ExtraBold.woff2, Gilroy-Light.woff2 Interface · Outfit Outfit Regular 400 · body and inputs Medium 500 · labels and nav SemiBold 600 · titles, buttons Bold 700 · inline strong Every interface word. IDs and codes too: ARD-001 · 0042 with tabular figures, never a monospace family. var(--font-sans) · fonts/Outfit-Variable.woff2 · OFL Accent · Unbounded Unbounded Make room. 500–600 , one short phrase per layout: the landing hero, the sign-in brand panel, an empty-state hero. Never in staff chrome, never a paragraph. var(--font-accent) · fonts/Unbounded-Variable.woff2 · OFL Weight map · who covers which weight Aa 300 Gilroy Light Aa 400 Outfit Aa 500 Outfit Aa 600 Outfit Aa 700 Outfit Aa 800 Gilroy ExtraBold",
+      "source": "brand/guidelines-v2/src/pages/05-type.html"
+    },
+    "brand/guidelines-v2/27.png": {
+      "title": "Fallbacks, per platform.",
+      "chapter": "05 / Typography",
+      "summary": "Same roles everywhere. Ship the files in fonts/ , and know what shows when a face cannot load.",
+      "transcript": "Fallbacks, per platform. Same roles everywhere. Ship the files in fonts/ , and know what shows when a face cannot load. Platform How the faces ship Stack / fallback Watch for Web Self-hosted WOFF2 through tokens/tokens.css ( @font-face , font-display: swap ). Gilroy registered at 300 and 800 only. \"Gilroy\", sans-serif \"Outfit\", sans-serif \"Unbounded\", \"Outfit\", sans-serif font-synthesis: none so a 600 heading never fakes Gilroy; use Outfit 600 instead. Android Bundle Outfit and Unbounded (OFL) and the two free Gilroy files as font resources; map display 800 / 300, sans 400–700. Missing face: the system sans (Roboto). Never let display fall to a serif. Compose / XML weights must name 300 and 800 for Gilroy; anything else is Outfit. iOS Bundle the same files and register them in the app; Dynamic Type scales the roles, not the families. Missing face: San Francisco (system). Do not let the system substitute a Gilroy weight; request Outfit for 400–700. PDF and print Embed the free Gilroy files where the engine allows. Where Gilroy cannot be embedded: Outfit for every role (lesson 22). Card Studio and badges: proof the printed PDF, not the screen. Email Web fonts are unreliable in mail clients. Outfit if it loads, else the system sans stack; logo always as a PNG @2×. Never set the wordmark in live text. Logo Outlined vectors in logo/ : no font needed anywhere. n/a Never retype “space works” in any font. Licences live beside the files: fonts/LICENSES/Gilroy-Free-Font-EULA.txt , OFL-Outfit.txt , OFL-Unbounded.txt . Read the Gilroy EULA before using the face outside a Space Works product; Outfit and Unbounded are free to use anywhere under the OFL.",
+      "source": "brand/guidelines-v2/src/pages/05-type.html"
+    },
+    "brand/guidelines-v2/28.png": {
+      "title": "A lean type scale.",
+      "chapter": "05 / Typography",
+      "summary": "Desktop and phone sizes (size / line height in px). Under 640 px the display sizes drop.",
+      "transcript": "A lean type scale. Desktop and phone sizes (size / line height in px). Under 640 px the display sizes drop. Role Desktop Phone Face Sample Display 72 / 76 44 / 48 Gilroy 800 Ready to make. Heading 48 / 52 34 / 40 Gilroy 800 Everything in its place. Accent 48 / 56 32 / 40 Unbounded 500 Make room. Display sub 32 / 38 24 / 30 Outfit 400 Find the right part. Page title 32 / 38 26 / 32 Outfit 600 Inventory Panel title 20 / 28 20 / 28 Outfit 600 Recent handovers Body 16 / 24 16 / 24 Outfit 400 Manage the parts, tools and materials in your space. Label · button 14 / 20 14 / 20 Outfit 500 · 600 Location View inventory Caption · eyebrow 12 / 16 12 / 16 Outfit 500 · 600 Updated 2 min ago Electronics Stat numbers use Outfit 600 with tabular figures (32 / 38, hero stats 48 / 52). Give phone headers enough height for a two-line title.",
+      "source": "brand/guidelines-v2/src/pages/05-type.html"
+    },
+    "brand/guidelines-v2/29.png": {
+      "title": "Type, done right.",
+      "chapter": "05 / Typography",
+      "summary": "The mistakes that came up most while moving off the paid weights.",
+      "transcript": "Type, done right. The mistakes that came up most while moving off the paid weights. Do Book a laser slot. Gilroy 800 for the one big heading. Display role Don't Gilroy Light as body text. At reading sizes the thin strokes fade on cream and vanish on black, and long paragraphs tire the eye quickly. Light is for display sizes only (24 px and up) Don't Inventory overview Mixing 800 and 300 in one line to fake a hierarchy. Use size and Outfit, not a weight clash Do ARD-001 · Shelf A-03 Qty 0012 · 0108 · 1440 IDs in Outfit with tabular figures. No monospace family anywhere Don't Make room. Book a bench. Settings · Members Unbounded twice, or in staff chrome Don't Couldn't save. Try again. Translucent text. Its real colour depends on what is under it. Use the opaque muted token",
+      "source": "brand/guidelines-v2/src/pages/05-type.html"
+    },
+    "brand/guidelines-v2/30.png": {
+      "title": "Both themes, always.",
+      "chapter": "06 / Light and dark",
+      "summary": "The same screen, one class apart. Light is the default; dark is a saved choice or the system setting.",
+      "transcript": "Both themes, always. The same screen, one class apart. Light is the default; dark is a saved choice or the system setting. Inventory Loans Machines Events Reports Settings Inventory + Add item Search parts, tools or materials Item Location Stock Arduino Uno ARD-001 A-03 12 available Raspberry Pi 4 RPI-004 A-04 2 left Soldering station SOL-002 B-01 Issued Citron sidebar, white cards on Warm Cream, no borders needed. Citron search field with a Deep Ink label. Inventory Loans Machines Events Reports Settings Inventory + Add item Search parts, tools or materials Item Location Stock Arduino Uno ARD-001 A-03 12 available Raspberry Pi 4 RPI-004 A-04 2 left Soldering station SOL-002 B-01 Issued Sidebar is the surface layer with a 1 px line edge; cards get a border, never a shadow. Search becomes a surface field with a Citron edge, not a glaring slab.",
+      "source": "brand/guidelines-v2/src/pages/06-theming.html"
+    },
+    "brand/guidelines-v2/31.png": {
+      "title": "Theming rules.",
+      "chapter": "06 / Light and dark",
+      "summary": "What changes between themes is values, artwork and edges. Names, layout and motion stay the same.",
+      "transcript": "Theming rules. What changes between themes is values, artwork and edges. Names, layout and motion stay the same. 01 · One class Dark is html.dark . Every colour is a token redefined under :root.dark . Components read tokens, never hex. 02 · No flash A pre-paint script reads the saved choice before first paint. theme-color is light and dark. 03 · Artwork per theme Logo: full colour on light, reversed Cream on dark. Patch: mascot/dark/ . Box: the .dk drawing. Illustrations ship as twins. 04 · Inks, not fills Coloured text and icons use *-ink . Teal as text on black is , never . 05 · Edges on black Cards and the sidebar get a 1 px line . Anything a person must find (inputs, segmented controls) uses outline , at least 3 : 1. 06 · Layers, not glow Raise by one lightness step: 0, 11, 20, 28. Never skip a step to make something pop, and never add a custom “elevated” grey. 07 · Islands rejoin A Deep Ink panel inside a light page ( .sw-island-dark ) becomes the black family when the page goes dark. No green fields on black. 08 · Scrims and shadows Scrim is Deep Ink in light, black in dark. A dark dialog separates by being a raised panel with a line, not by its shadow. Light Email address outline : 1 on panel Dark Email address outline : 1 on panel Don't Email address line : 1, the field disappears Don't Search a full Citron slab glares on black Checklist for every new page: tokens only · open it in light, dark and system with the OS flipped · themed logo and artwork · no flash on reload · charts use --chart-* · new motion checked in both themes and under reduced motion.",
+      "source": "brand/guidelines-v2/src/pages/06-theming.html"
+    },
+    "brand/guidelines-v2/32.png": {
+      "title": "Motion shows what changed.",
+      "chapter": "07 / Motion",
+      "summary": "It never decorates. If removing an animation loses no information, keep it short or drop it.",
+      "transcript": "Motion shows what changed. It never decorates. If removing an animation loses no information, keep it short or drop it. 01 Animate content, not chrome. On a page change only the main area moves; sidebar and top bar stay still. 02 Transform and opacity only. No layout properties. Collapses use grid rows 0fr to 1fr, never height . 03 Enter decelerates, exit accelerates, and exits are shorter than entrances. 04 Nothing on an interaction path runs longer than 240 ms. Longer motion is page- or brand-level and never blocks input. 05 Hover is colour only , 120 ms. No lift, scale or shadow. The Space Works mark is the single exception. 06 One loader: the box that opens. Never loop anything else, except two decorative touches that reduced motion switches off. 07 Reduced motion is a floor, not a flag. Every animation has a still version that carries the same information. 08 No hover animation on touch. Gate on @media (hover: hover) ; keyboard focus still plays. 09 Both themes, every time. Motion is colour-neutral, so it behaves the same in light and dark. 10 Never block navigation on an animation. A slow page settles after 160 ms and the route goes on.",
+      "source": "brand/guidelines-v2/src/pages/07-motion.html"
+    },
+    "brand/guidelines-v2/33.png": {
+      "title": "Three durations. Three curves.",
+      "chapter": "07 / Motion",
+      "summary": "Tokens in tokens/tokens.css and under motion in tokens.json . Use names, not numbers.",
+      "transcript": "Three durations. Three curves. Tokens in tokens/tokens.css and under motion in tokens.json . Use names, not numbers. --sw-ease-standard most movement cubic-bezier(0.2, 0, 0, 1) --sw-ease-enter arrivals, decelerate cubic-bezier(0.16, 1, 0.3, 1) --sw-ease-exit departures, accelerate cubic-bezier(0.4, 0, 1, 1) Durations · interface --sw-dur-fast 120 ms press, hover, exits, menus --sw-dur-base 180 ms overlays, indicators --sw-dur-slow 240 ms route settle, drawers Distances · zero on kiosk, TV and reduced motion --sw-enter-y 8 px arrival rise --sw-pop-scale 0.98 dialog pop --sw-pop-offset 4 px menu drop --sw-slide-x 100 % drawer slide Brand-level motion is longer on purpose and never on the input path: theme reveal 720 ms, splash 1600 ms, mark 2200 ms, loader 4400 ms. Anatomy of a dialog · open, then close Scrim fade · 180 · standard Pop in · 180 · enter Open: focus inside, layer interactive Out · 120 · exit Scrim · 120 Arrives from 0.98 scale and 4 px; leaves faster than it came. While closing it stays mounted but inert, so nothing can focus it.",
+      "source": "brand/guidelines-v2/src/pages/07-motion.html"
+    },
+    "brand/guidelines-v2/34.png": {
+      "title": "Which animation, where.",
+      "chapter": "07 / Motion",
+      "summary": "When the situation occurs, use the listed default. Don't invent a new animation for a situation that has one.",
+      "transcript": "Which animation, where. When the situation occurs, use the listed default. Don't invent a new animation for a situation that has one. Situation Use Timing Don't Page or panel loading LogoLoader, 72 px, centred, with a label 4400 ms loop Generic spinner, progress bar Button busy BoxSpinner mono, aria-busy 16–24 px, currentColor Change the button width Route change View Transition on the main area only out 90 ms · in 240 ms + 8 px rise Animate sidebar or top bar Sidebar or tab switch One sliding indicator box 180 ms · standard Repaint each item Dialog · drawer · menu · toast pop · drawer · menu · toast, scrim fades enter 120–240 ms · exit 120–180 ms Unmount without the exit Expand a group Collapse (grid rows) 180 ms open · 120 ms close Animate height List first appears Stagger rise, first eight items 200 ms, 30 ms apart, 6 px Re-run on every refetch Marketing scroll Reveal once on entry 640 ms Replay on scroll back up Hover on anything Colour only 120 ms Translate, scale, lift The Space Works logo AnimatedLogoMark: fold, then open 600 + 1600 ms, once Loop it, animate a tenant logo Success Status toast · verify stamp 180 ms in · stamp 420 ms Confetti in staff or kiosk flows Theme switch Circle reveal from the toggle 720 ms; cross-fade fallback Fade surfaces one by one Kiosk and TV Fades only; slide fade on displays 400 ms Anything that repaints while idle Never animated: layout properties, text swaps in forms, validation errors, focus rings, tables on sort or filter, anything while a person types.",
+      "source": "brand/guidelines-v2/src/pages/07-motion.html"
+    },
+    "brand/guidelines-v2/35.png": {
+      "title": "Still is a design too.",
+      "chapter": "07 / Motion",
+      "summary": "Reduced motion, touch screens and shared displays each get their own, equally finished version.",
+      "transcript": "Still is a design too. Reduced motion, touch screens and shared displays each get their own, equally finished version. Reduced motion Loader, splash and mark show the still, open logo. Durations drop to 0, distances to 0; only fades remain. Scroll is instant; View Transitions are skipped. The scroll story becomes a plain page, top to bottom. Patch shows frame one; the 404 “z” stops. @media (prefers-reduced-motion: reduce) Touch A tap never starts the mark's hover opening. Hover effects stick on touch, so gate them on (hover: hover) . Pointer-enter from pointerType \"touch\" is ignored. Keyboard :focus-visible still plays it. Phone sheets rise from the edge they dock to. Applies to the web app on tablets and to the native apps. Kiosk and TV 400 ms fade Shared screens never slide, scale or loop. .sw-kiosk and .sw-tv zero every distance token. Display slides cross-fade once, so a Raspberry Pi stays idle between slides. No confetti, no delight touches in kiosk flows. No mascot loops on shared screens. Distances: 0 px, scale 1, slide 0 %. Every animation in the product (where, why, tokens, trigger, reduced motion, dark): spaceworks-labs.github.io/SpaceWorks-Design-System/motion/principles/ and docs/motion.md .",
+      "source": "brand/guidelines-v2/src/pages/07-motion.html"
+    },
+    "brand/guidelines-v2/36.png": {
+      "title": "Built from the box.",
+      "chapter": "08 / Graphic system",
+      "summary": "Use flap shapes as quiet accents. Keep the logo itself intact.",
+      "transcript": "Built from the box. Use flap shapes as quiet accents. Keep the logo itself intact. Make room. 01 Use one bold moment. 02 Align to a simple grid. 03 Let empty space do its job. 04 Flaps are flat shapes. No gradients, no shadows, no outlines. 05 In dark artwork the flaps sit on Deep Ink or black, never on a green-tinted grey. Colour balance · neutral first, accent second In the dark theme",
+      "source": "brand/guidelines-v2/src/pages/08-graphics.html"
+    },
+    "brand/guidelines-v2/37.png": {
+      "title": "Useful icons. Text-only nav.",
+      "chapter": "08 / Graphic system",
+      "summary": "A 24 px grid, 2 px stroke, round ends. Icons appear only where they earn it; the sidebar never has them.",
+      "transcript": "Useful icons. Text-only nav. A 24 px grid, 2 px stroke, round ends. Icons appear only where they earn it; the sidebar never has them. Search Search fields Archive Storage Cpu Parts MapPin Location Plus “+ Add item” ArrowLeft “← All items” ArrowUpRight View public page ChevronsUpDown Space switcher Info Callouts TriangleAlert Warnings CircleCheck Success Ellipsis Overflow menu Sun Light theme Moon Dark theme LogOut Sign out Lucide, pinned. The product draws icons with lucide, which already meets the v1 spec: 24 grid, 2 px stroke, round caps and joins. Render at 20 or 16 px. Label the unfamiliar. Icon-only buttons need an aria-label and a tooltip; the SVG is aria-hidden . Colour follows text. Icons use currentColor , so they take ink , muted or an *-ink in both themes. Never a fill colour. Do Inventory Loans Machines Don't Inventory Loans Machines Neither the brand's own product mock nor the UX reference puts icons in the sidebar, and the phone tabs follow the same rule. Words are faster to scan than a column of look-alike glyphs, and they translate.",
+      "source": "brand/guidelines-v2/src/pages/08-graphics.html"
+    },
+    "brand/guidelines-v2/38.png": {
+      "title": "Show the real space.",
+      "chapter": "08 / Graphic system",
+      "summary": "Parts, hands and shared benches. Soft daylight. Honest materials. Never recoloured.",
+      "transcript": "Show the real space. Parts, hands and shared benches. Soft daylight. Honest materials. Never recoloured. Illustration twins · light SK Plain artwork on light. A tenant logo shown as supplied. Photography Real objects and real people at real benches; keep the work in focus. Soft daylight, honest materials. Avoid staged tech clichés and busy backdrops. Evidence photos are records, not imagery: never cropped for style, filtered or reused in marketing. Illustration twins · dark SK -dark artwork with the Cream sticker border. A tenant logo gets a line edge if it would merge with black. On black Every illustration, empty-state glyph and landing graphic ships as a light and dark pair, picked by theme so only one downloads. Dark artwork keeps its Deep Ink content; it does not turn teal-tinted. Uploaded photos and tenant logos are never recoloured or inverted.",
+      "source": "brand/guidelines-v2/src/pages/08-graphics.html"
+    },
+    "brand/guidelines-v2/39.png": {
+      "title": "Meet Patch.",
+      "chapter": "09 / Mascot",
+      "summary": "A painted wolf with a wrench: the friendly face for empty states and onboarding. The box stays the logo.",
+      "transcript": "Meet Patch. A painted wolf with a wrench: the friendly face for empty states and onboarding. The box stays the logo. What painted wolves do What it says about Space Works No two coats are alike. Very different makers, all one pack. They vote by sneezing. Enough sneezes and the pack moves. The community decides together. Everyone gets a voice. They look after everyone. Pups eat first; food is brought back to the sick and old. A commons: access for everyone, nobody left behind. They succeed as a team. Collaboration over lone genius. They are endangered. A real story and a cause worth telling. Why “Patch”. The patchwork coat, patching things up, a software patch. Easy to say in any language. Honest detail. Sneeze votes are not equal; say “everyone gets a voice”, not “one dog, one vote”. Anatomy. Huge round ears, kind dark eyes, silver wrench, Maker Teal badge with a Warm Yellow orbit. Never fierce, never mirrored.",
+      "source": "brand/guidelines-v2/src/pages/09-mascot.html"
+    },
+    "brand/guidelines-v2/40.png": {
+      "title": "Patch on light and dark.",
+      "chapter": "09 / Mascot",
+      "summary": "On dark surfaces use mascot/dark/ : the same art with a thin Warm Cream sticker border.",
+      "transcript": "Patch on light and dark. On dark surfaces use mascot/dark/ : the same art with a thin Warm Cream sticker border. Plain files · light surfaces Warm Cream, white and the light brand colours. Patch's dark outline reads at 6 to 14.5 : 1 on cream. The sneeze loop · 7 s · eight frames 0.0 s 2.0 3.5 4.0 5.3 5.6 6.0 6.6 Idle, blink, left ear, right ear, sneeze prep, sneeze (the vote), recover, back to idle. Where Patch goes Empty states, the 404 page, onboarding, a few still moments, merch. Never in staff chrome ; never looping beside work or on shared screens. mascot/dark/ · dark surfaces only The outline alone measures about 1.0 to 2.3 : 1 on Deep Ink and vanishes. The Cream border (4 px per 256 px) is the one approved outline. The same frames, dark set 0.0 s 2.0 3.5 4.0 5.3 5.6 6.0 6.6 Same canvas as the light twin, so a dark file drops in and frames still line up. Rules Pick the file from the page theme, so only one downloads. Reduced motion shows the idle frame only. Coat browns and the silver wrench belong to the art; never use them as UI colours.",
+      "source": "brand/guidelines-v2/src/pages/09-mascot.html"
+    },
+    "brand/guidelines-v2/41.png": {
+      "title": "Components, calm.",
+      "chapter": "10 / Product",
+      "summary": "44 px controls, 10 px corners, 16 px cards, round pills. No shadows except on layers that float.",
+      "transcript": "Components, calm. 44 px controls, 10 px corners, 16 px cards, round pills. No shadows except on layers that float. Buttons · rest Save Cancel Edit Join now Delete Disabled Fields Item name Arduino| Tabs · segmented · pills Overview History Evidence Week Month Available Reserved Maintenance 3 Card Laser cutter Running Booked until 16:30 · Bay 2 Primary · rest, hover, active Save Save Save label · · Buttons · rest Save Cancel Edit Join now Delete Disabled Fields Item name Arduino| Tabs · segmented · pills Overview History Evidence Week Month Available Reserved Maintenance 3 Card Laser cutter Running Booked until 16:30 · Bay 2 Primary · rest, hover, active Save Save Save label · ·",
+      "source": "brand/guidelines-v2/src/pages/10-product.html"
+    },
+    "brand/guidelines-v2/42.png": {
+      "title": "Patterns that carry over.",
+      "chapter": "10 / Product",
+      "summary": "What SpaceWorks 0.12.0 settled. Every Space Works app copies these rather than reinventing them.",
+      "transcript": "Patterns that carry over. What SpaceWorks 0.12.0 settled. Every Space Works app copies these rather than reinventing them. Ask areas, not modules Setup asks which areas a space runs. What is off is hidden everywhere. Never show internal words. Settings by intent Seven groups (Space, People, Areas, Money, Communication, Integrations, Administration), search over all, one line of help per row. Views per role Each area manager sees their whole area; the Space Manager sees it all, grouped by area with totals. Five states, not one Design loading, empty, no results, offline and error-with-retry for every list, in both themes. Shared pager and confirm Every list uses the one pager; every destructive action a real confirm dialog with a close button. Dialogs that stay put Close on the backdrop only if press and release both land there, so a text selection dragged out never closes it. Scroll that remembers Back restores the position; a new page starts at the top. Focus moves only on a real page change. Bulk actions A sticky bar appears with the count and a “Clear selection” action. Search knows synonyms The palette matches both names of a page: Home and dashboard, Notifications and Inbox. Colours that fix themselves A space picks two colours; the product shows where they apply, checks both themes and offers a one-click fix instead of refusing. Simple and advanced Card Studio offers Quick and Advanced modes on the same document, and shows the photo consent notice where the photo is taken. Motion with a fallback A scroll story always has a static version for reduced motion and phones. Layouts, navigation and screen specs, with screenshots in light, dark and phone: spaceworks-labs.github.io/SpaceWorks-Design-System/ux/patterns/",
+      "source": "brand/guidelines-v2/src/pages/10-product.html"
+    },
+    "brand/guidelines-v2/43.png": {
+      "title": "Product rules, in short.",
+      "chapter": "10 / Product",
+      "summary": "What every Space Works product follows, from the main app to the phone apps.",
+      "transcript": "Product rules, in short. What every Space Works product follows, from the main app to the phone apps. Areas Everything optional is an area with one registry key. Off means gone everywhere. Switching off keeps data; purge is a separate, deliberate step. Role views Permissions are actions, not role names. Each person sees only what their role holds; the server refuses too. One space, one scope Every record belongs to one space and every query is scoped. Public pages never show locations, QR codes or evidence. Audit trail Every state change writes an append-only audit entry. Evidence is immutable. No issue without a scan and a photo. Money Record the debt first, add a payment rail second. Minor units with currency, never floats. Idempotent, and the ledger is permanent. Analytics Counts only: how many, by channel and day, never who. Web, iOS, Android and API clients are tagged. API Every endpoint in OpenAPI with typed errors. The same authority on web and native tokens; 429 with Retry-After. Code size About 200 lines per file, 300 at most. Split by responsibility behind a thin barrel; split first, then add. Install in one line One command asks every question first, changes nothing until you confirm, and runs again to update. Hosted or hybrid One space, many spaces, or a platform. The website can live here or elsewhere with this as the API. Words Every string translated as a whole sentence with real plurals. Error codes stay stable; messages translate. Tests Test what people can observe. The baseline is zero failures, and no test is ever deleted. Install curl -fsSL https://github.com/SpaceWorks-Labs/SpaceWorks/releases/latest/download/install.sh | sh",
+      "source": "brand/guidelines-v2/src/pages/10-product.html"
+    },
+    "brand/guidelines-v2/44.png": {
+      "title": "The accessibility floor.",
+      "chapter": "10 / Product",
+      "summary": "Not a target to aim at. The level nothing ships below, in light and dark, with no allow-list.",
+      "transcript": "The accessibility floor. Not a target to aim at. The level nothing ships below, in light and dark, with no allow-list. 4.5 : 1 Text against every surface it can sit on, including hover and soft fills. 3 : 1 Icons, control edges ( outline ) and focus rings. 44 px Every control's height. One checkbox and radio size. 2 + 2 Focus ring: 2 px wide, 2 px offset, opaque focus token. A word for every status. Colour is never the only cue; charts add a dash per series. No translucent text , and never focus:outline-none . Everything works from the keyboard. The skip link target always renders; collapsed content is unmounted. Accessible names match the visible label. Icon-only buttons are named. Reduced motion is honoured everywhere, with a still version that carries the same information. Loaders speak: role=\"status\" with a polite label; busy buttons set aria-busy ; error toasts are alerts. Both themes are tested: axe in component tests, and a browser suite (WCAG 2.1 AA, light and dark journeys) fails the build on any violation. Tenant colours are proven readable in both themes before they render. Focused button Focused in dark Teal ring on light ( : 1), Citron ring on dark ( : 1).",
+      "source": "brand/guidelines-v2/src/pages/10-product.html"
+    },
+    "brand/guidelines-v2/45.png": {
+      "title": "Calm where it counts.",
+      "chapter": "11 / Applications",
+      "summary": "In the product, the inventory takes the lead. Phones get the same palette, OLED black in dark.",
+      "transcript": "Calm where it counts. In the product, the inventory takes the lead. Phones get the same palette, OLED black in dark. My loans Return by Friday. Soldering station · SOL-002 Arduino Uno Issued ARD-001 · since Mon Laser slot Confirmed Thu 18:00 · Bay 2 Membership Unpaid INR 500 due 1 Dec Home Borrow Book Me My loans Return by Friday. Soldering station · SOL-002 Arduino Uno Issued ARD-001 · since Mon Laser slot Confirmed Thu 18:00 · Bay 2 Membership Unpaid INR 500 due 1 Dec Home Borrow Book Me Loading your loans… On phones Display 44 / 48, heading 34 / 40, accent 32 / 40. Member tabs are text-only, like the console sidebar. Large callouts go soft in dark; pills stay solid. Sheets rise from the bottom edge. No hover animation. The loader is the same box. Use the platform's reduce-motion setting. Superadmin stays in the browser; the apps refuse it. Never the platform's automatic dark inversion: two colour sets with the same role names.",
+      "source": "brand/guidelines-v2/src/pages/11-applications.html"
+    },
+    "brand/guidelines-v2/46.png": {
+      "title": "Cards and badges.",
+      "chapter": "11 / Applications",
+      "summary": "Member cards, staff IDs, event badges and tickets come from Card Studio. Built-in looks ship in light and dark.",
+      "transcript": "Cards and badges. Member cards, staff IDs, event badges and tickets come from Card Studio. Built-in looks ship in light and dark. MEMBER AN Ann Mathew Space Works Kochi Member ID SWK-0042 Valid to Nov 2027 STAFF SA Sana Ali Inventory Manager Staff ID SWK-S-007 Valid to Nov 2027 Aurora look · tokens cards.aurora Part Light Dark Background Text Labels Header Maker Teal, both Ribbon · tail Citron · Workshop Orange Printed cards keep Deep Ink as their dark ground: print artwork never uses the screen's black. In dark, only the text that sits on the card background is recoloured. Quick mode for a fast start, Advanced for a full canvas with bleed and safe zone; print-ready PDF out. Seven barcode types; the verify page stamps a valid card once (420 ms). Ask before removing a photo background, and show the opt-out where the photo is taken. The two cards here show the palette; the layout is illustrative.",
+      "source": "brand/guidelines-v2/src/pages/11-applications.html"
+    },
+    "brand/guidelines-v2/47.png": {
+      "title": "From the screen to the shelf.",
+      "chapter": "11 / Applications",
+      "summary": "Name first, details second. Test size and contrast at the real viewing distance.",
+      "transcript": "From the screen to the shelf. Name first, details second. Test size and contrast at the real viewing distance. Arduino Uno ARD-001 Shelf A-03 Electronics · scan to borrow or return Shelf label · 90 × 50 mm Box · BOX-0042 Soldering kit Scan the box, take a photo, add a remark. Every handover leaves evidence. Return here. Put it back where you found it. Staff will check it in. A3 poster TV · 18:02 Open now 3 machines free Workshop 19:00 Slides fade once, 400 ms. Nothing moves while idle. Print and signage Print keeps Deep Ink as the dark ground; screens use black. Proof at actual size: symbol at least 12 mm, lockup 40 mm. One accent phrase per poster, in Unbounded. Labels in Outfit with tabular figures for IDs.",
+      "source": "brand/guidelines-v2/src/pages/11-applications.html"
+    },
+    "brand/guidelines-v2/48.png": {
+      "title": "Social card and banners.",
+      "chapter": "11 / Applications",
+      "summary": "Derived from the masters. Light and dark twins wherever the reader's theme can change.",
+      "transcript": "Social card and banners. Derived from the masters. Light and dark twins wherever the reader's theme can change. Social card · 1200 × 630 · icons/og-1200x630.png Warm Cream field, stacked lockup 600 px wide, centred, clear space H ÷ 4. Used for Open Graph and Twitter cards. App and favicon sizes 512, 192, 180, 32, 16, from app-icon.svg. README banner · light README banner · dark Shown through a <picture> element that follows the reader's colour scheme. 1280 × 320, the lockup masters and the seven brand colours.",
+      "source": "brand/guidelines-v2/src/pages/11-applications.html"
+    },
+    "brand/guidelines-v2/49.png": {
+      "title": "Everything, in one place.",
+      "chapter": "12 / Resources",
+      "summary": "The design system site and repository hold every file in this book, and the live versions of every animation.",
+      "transcript": "Everything, in one place. The design system site and repository hold every file in this book, and the live versions of every animation. Hosted site spaceworks-labs.github.io/ SpaceWorks-Design-System/ Repository github.com/SpaceWorks-Labs/ SpaceWorks-Design-System Path What it holds brand/ This PDF, brand guidelines v1, page renders, logo reference sheets, README banners logo/ Ten masters (SVG and 4× PNG): symbol, stacked, horizontal × full colour, reversed, one colour; app icon tokens/tokens.json · tokens.css Every colour for light and dark, chart, loader, card and motion tokens; @font-face fonts/ Gilroy Light and ExtraBold (free), Outfit and Unbounded (OFL), with licences motion/box-open/ Loader CSS, SVG markup, demo page, React LogoLoader, BoxSpinner, AnimatedLogoMark mascot/ · mascot/dark/ Patch: hero, sneeze loop, walk cycles; full, original and compressed; dark sticker set icons/ favicon.svg, app icons 16 to 512, social card 1200 × 630 docs/ui-brand-spec.md Token derivations, contrast matrices, states, status pills, type scale, logo use docs/theming.md · motion.md How to build the light/dark switch; every animation and the which-where table docs/lessons-learned.md 38 lessons from light and dark, with the pairing table for mobile apps docs/whats-new-v2.0.md What's new in v2.0 and what each app must change docs/product-rules.md · ux-spec.md Product and engineering rules; UX patterns, layouts and screens Add the repository to a project as a git submodule so every surface draws from one source. Tokens are the single source: generate from them, never retype a hex.",
+      "source": "brand/guidelines-v2/src/pages/12-resources.html"
+    },
+    "brand/guidelines-v2/50.png": {
+      "title": "Colophon",
+      "chapter": "Colophon",
+      "summary": "Colophon",
+      "transcript": "Ready to make. Version Space Works Design System v2.0 · Brand guidelines v2 , November 2026. Ships alongside SpaceWorks 0.12.0. Supersedes brand guidelines v1 wherever the two differ; everything v1 says that this book does not change still stands. Sources Colours, ratios and motion values are read from tokens/tokens.json when the book is built. Frames of the box are frozen from motion/box-open/box-open.css . Decisions cited: 225, 299, 313, 316, 322, 323, 362. Set in Gilroy ExtraBold and Gilroy Light (free weights), Outfit and Unbounded (SIL OFL). Built from HTML and CSS in brand/guidelines-v2/src/ , rendered with headless Microsoft Edge. Rebuild with node brand/guidelines-v2/build.mjs . Licence Space Works design assets: AGPL-3.0-or-later. Fonts keep their own licences.",
+      "source": "brand/guidelines-v2/src/pages/12-resources.html"
+    }
+  }
+}

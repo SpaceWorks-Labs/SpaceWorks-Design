@@ -1,3 +1,8 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-70: calc(var(--sw-dur-fast) * 0.58333333);
+  --sw-local-duration-90: calc(var(--sw-dur-fast) * 0.75000000);
+}
 /* Route changes. View Transitions (src/lib/motion/routeTransition.ts) name only the main content
    region while a route transition runs; the sidebar and top bar belong to the unanimated root
    layer and stay still. Where View Transitions are missing, `.sw-route-enter` replays a CSS
@@ -15,11 +20,16 @@ html[data-sw-vt="route"]::view-transition-new(root) { animation: none; mix-blend
 html[data-sw-vt="route"]::view-transition-group(sw-main) { animation: none; }
 html[data-sw-vt="route"]::view-transition-old(sw-main),
 html[data-sw-vt="route"]::view-transition-new(sw-main) { mix-blend-mode: normal; }
-html[data-sw-vt="route"]::view-transition-old(sw-main) { animation: sw-vt-out 90ms var(--sw-ease-exit) both; }
-html[data-sw-vt="route"]::view-transition-new(sw-main) { animation: sw-vt-in var(--sw-dur-slow) var(--sw-ease-enter) 70ms both; }
+html[data-sw-vt="route"]::view-transition-old(sw-main) { animation: sw-vt-out var(--sw-dur-base) var(--sw-ease-exit) both; }
+html[data-sw-vt="route"]::view-transition-new(sw-main) { animation: sw-vt-in var(--sw-dur-slow) var(--sw-ease-enter) calc(var(--sw-dur-fast) / 4) both; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .sw-route-enter { animation: sw-vt-in var(--sw-dur-slow) var(--sw-ease-enter) 70ms backwards; }
+  .sw-route-enter { animation: sw-vt-in var(--sw-dur-slow) var(--sw-ease-enter) calc(var(--sw-dur-fast) / 4) backwards; }
 }
 @keyframes sw-vt-in { from { opacity: 0; transform: translateY(var(--sw-vt-y, 8px)); } }
-@keyframes sw-vt-out { to { opacity: 0; } }
+@keyframes sw-vt-out { to { opacity: 0; transform: translateY(var(--sw-vt-y, 8px)); } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

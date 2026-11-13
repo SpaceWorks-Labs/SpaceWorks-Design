@@ -1,0 +1,147 @@
+{
+  "verified": "2026-11-13",
+  "sourceWorktree": "C:\\Users\\shaan\\Music\\SpaceWorks\\SpaceWorks\\.claude\\worktrees\\int-stage-r2final\\frontend",
+  "scope": "Read-only source inspection; no production, browser or assistive-technology certification implied. Worktree may differ from upstream main.",
+  "files": [
+    {
+      "path": "frontend/src/components/ui/ActionControl.tsx",
+      "sha256": "0c9d2cc04ee39df7758afc2cec1ee6a1c3b041f568795d89ac49e66c355b280f",
+      "lines": 34
+    },
+    {
+      "path": "frontend/src/components/ui/RouteLink.tsx",
+      "sha256": "2788aeb391ef79dfecca08d6e8efd8e1c4e931c958f1868ebc9ddc37941872bc",
+      "lines": 14
+    },
+    {
+      "path": "frontend/src/components/ui/IconButton.tsx",
+      "sha256": "6f677067ed83178b9bfde6bd1e89b81f8614b074ad08067a49146fa982c1cbce",
+      "lines": 44
+    },
+    {
+      "path": "frontend/src/components/ui/Field.tsx",
+      "sha256": "317822376013c851d0cef49c2a3cf85bca6ca09b874f9547b35ba42f50c7c274",
+      "lines": 18
+    },
+    {
+      "path": "frontend/src/components/ui/SearchField.tsx",
+      "sha256": "f1b5f517994aa8e8451eeb8fa9af1aa7f55c1906fce1aea2ef12cced88dad942",
+      "lines": 89
+    },
+    {
+      "path": "frontend/src/components/ui/Tabs.tsx",
+      "sha256": "c6ef8daf70caf09b8bd14b062fe862b2e74ef578673c94e4db45b63096339c19",
+      "lines": 67
+    },
+    {
+      "path": "frontend/src/components/ui/SegmentedControl.tsx",
+      "sha256": "4a180a835288d3b9117f613d15447c62a5d89e0fa5367227f285f675ce2f663d",
+      "lines": 16
+    },
+    {
+      "path": "frontend/src/components/ui/Modal.tsx",
+      "sha256": "5a579423860c8f884e765f493a963f3831b8b47c1d2cb542b6060dc12047f919",
+      "lines": 136
+    },
+    {
+      "path": "frontend/src/components/ui/ConfirmDialog.tsx",
+      "sha256": "02b64bc2511d5834c4e1f3ac5c066d98d051d584d9ee2a507cf663616733ae50",
+      "lines": 53
+    },
+    {
+      "path": "frontend/src/components/ui/DetailDrawer.tsx",
+      "sha256": "0ccb9f002956be9f330e73457a4eb11d048aed394cdf82073924612de515141c",
+      "lines": 122
+    },
+    {
+      "path": "frontend/src/components/ui/OverflowMenu.tsx",
+      "sha256": "d64ec024bbb026f22dcc90f37c576e57e414c1222ed644e4bd0f48dc717b04a5",
+      "lines": 82
+    },
+    {
+      "path": "frontend/src/components/ui/DataTable.tsx",
+      "sha256": "a147d654dddbc38cf07fadcb6b98a76f27a654416f9aa6e1828500faa3358102",
+      "lines": 203
+    },
+    {
+      "path": "frontend/src/components/ui/Pagination.tsx",
+      "sha256": "60f4297a5342d5ed0ed841479af8ddbda2ee1a756c277fab6a6b56d4eca3a988",
+      "lines": 47
+    },
+    {
+      "path": "frontend/src/components/ui/StatusPill.tsx",
+      "sha256": "f3899aa8652d9f22abbac0c1b75b216a028c59340fd477be817e5680ade66b5e",
+      "lines": 13
+    },
+    {
+      "path": "frontend/src/components/ui/EmptyState.tsx",
+      "sha256": "51f4e768b8da97d1f83e8f82b9edbef63922cf72ab76510fae12718668a930de",
+      "lines": 13
+    },
+    {
+      "path": "frontend/src/components/ui/ToastHost.tsx",
+      "sha256": "b6efb917f992d48a1f15b0b61074642a2b7df2d05c8f5fe631da6f44ad1d978b",
+      "lines": 42
+    },
+    {
+      "path": "frontend/src/components/ui/Skeleton.tsx",
+      "sha256": "9052cb94452add943a7d1951803405b1f6567db30bb79029d3540e1a10b1a109",
+      "lines": 24
+    },
+    {
+      "path": "frontend/src/components/ui/ProgressBar.tsx",
+      "sha256": "a00dc78974d6dc4a1032abb90c76fccf55c030cf3cb12fc030de1c0a274be320",
+      "lines": 9
+    },
+    {
+      "path": "frontend/src/components/ui/ListColumns.tsx",
+      "sha256": "ae257f17270736659d3785247b24edf49e6c9ae9e1cb62bd66999d647deb807b",
+      "lines": 26
+    },
+    {
+      "path": "frontend/src/components/ui/types.ts",
+      "sha256": "7539bd518f7fe4127b8c163e2ca288925b1f0040b6e70261b705f6fda1ba47d1",
+      "lines": 25
+    },
+    {
+      "path": "frontend/src/components/ui/toastStore.ts",
+      "sha256": "6d032d493906950596a987797e339b18add4388e4578fb15a9df6567edaa0de2",
+      "lines": 64
+    },
+    {
+      "path": "frontend/src/components/ui/dialogFocus.ts",
+      "sha256": "a3f94acf69e5dbaac0f67c310a8b90888e1e1b3b45401be430b0a2cd5f854a1a",
+      "lines": 148
+    },
+    {
+      "path": "frontend/src/components/ui/useRovingFocus.ts",
+      "sha256": "2d32f988f68d42e8bef5dec9223035025b18205802c46112d1c0eee2aa6d26cc",
+      "lines": 24
+    },
+    {
+      "path": "frontend/src/components/ui/tones.ts",
+      "sha256": "fe3b490fd9c64535a04d792031233dc91365a2cebe64ce686b2c6607f71e6f53",
+      "lines": 28
+    },
+    {
+      "path": "frontend/src/components/BoxSpinner.tsx",
+      "sha256": "6b310170507509594b3c3a56ee32ed6fcbf49355f5302145f4f49c89aa6ca412",
+      "lines": 28
+    },
+    {
+      "path": "frontend/src/features/community/settings/CommunityPolicySettings.tsx",
+      "sha256": "8082e0b502b6dd27bf6f4ccd38b9eecab708152bc56986b6721ba9866f77a938",
+      "lines": 77
+    },
+    {
+      "path": "frontend/src/components/delight/WordFeedback.tsx",
+      "sha256": "9790bc5201d09ca4c41e8eafd8afb49b240e5c5b130515b7b46d3489a55fc0a8",
+      "lines": 26
+    },
+    {
+      "path": "frontend/src/components/shell/LanguageSwitcher.tsx",
+      "sha256": "032b64d7aba5c46065780eda15404d87f54b4de77c7c62e457ff1c544be5c490",
+      "lines": 104
+    }
+  ]
+}

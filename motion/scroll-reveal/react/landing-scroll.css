@@ -1,3 +1,7 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-640: calc(var(--sw-dur-slow) * 2.66666667);
+}
 /* The landing page's scroll story: the pinned hero sequence (useScrollSequence), the handover steps
    beside a pinned record (HandoverScrolly) and reveal-on-scroll (useRevealOnScroll). Tokens only.
    Motion is transform and opacity; will-change is set only while the sequence moves ([data-moving]).
@@ -30,7 +34,7 @@
 .sw-hub-seq[data-animated] .sw-hub-seq-reveal { position: absolute; inset: 0; z-index: 1; display: grid; align-content: center;
   border: 0; background: none; opacity: 0; transform-origin: 50% 40%; }
 .sw-hub-seq[data-animated] .sw-hub-intro { padding-block: 32px; }
-.sw-hub-seq[data-moving] :is(.sw-hub-seq-copy, .sw-hub-seq-stage, .sw-hub-seq-frame, .sw-hub-seq-reveal) { will-change: transform, opacity; }
+.sw-hub-seq[data-moving] :is(.sw-hub-seq-copy, .sw-hub-seq-stage, .sw-hub-seq-frame, .sw-hub-seq-reveal) {  }
 
 /* ── Handover steps beside the pinned record ───────────────────────────────────────────── */
 .sw-hub-scrolly { display: grid; gap: 48px; margin-top: 48px; }
@@ -44,8 +48,8 @@
 @media (min-width: 1024px) and (min-height: 640px) {
   .sw-hub-scrolly { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 96px; margin-top: 0; }
   .sw-hub-scrolly-steps { gap: 0; padding-block: 8svh 22svh; }
-  .sw-hub-scrolly-step { min-height: 62svh; align-content: center; padding-left: 28px; transition: border-color 240ms ease-out; }
-  .sw-hub-scrolly-step :is(.sw-hub-scrolly-title, .sw-hub-scrolly-index) { transition: color 240ms ease-out; }
+  .sw-hub-scrolly-step { min-height: 62svh; align-content: center; padding-left: 28px; transition: none; }
+  .sw-hub-scrolly-step :is(.sw-hub-scrolly-title, .sw-hub-scrolly-index) { transition: none; }
   .sw-hub-scrolly-step:not([aria-current]) .sw-hub-scrolly-title { color: rgb(var(--color-muted)); }
   .sw-hub-scrolly-step[aria-current] { border-left-color: rgb(var(--color-accent-ink)); }
   .sw-hub-scrolly-step[aria-current] .sw-hub-scrolly-index { color: rgb(var(--color-accent-ink)); }
@@ -56,11 +60,11 @@
 
 /* ── Reveal on scroll: once, only after the hook marks the page ready ──────────────────── */
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal-ready] [data-reveal] { transition: opacity 640ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 640ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+  [data-reveal-ready] [data-reveal] { transition: opacity var(--sw-local-duration-640) var(--sw-ease-standard), transform var(--sw-local-duration-640) var(--sw-ease-standard); }
   [data-reveal-ready] [data-reveal]:not([data-revealed]) { opacity: 0; transform: translate3d(0, 24px, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sw-hub-scrolly-step, .sw-hub-scrolly-step * { transition: none !important; }
+  .sw-hub-scrolly-step, .sw-hub-scrolly-step * { transition: none; }
 }
 
 @media print {
@@ -68,4 +72,9 @@
   .sw-hub-seq[data-animated] { height: auto; }
   .sw-hub-seq[data-animated] :is(.sw-hub-seq-scene, .sw-hub-seq-copy, .sw-hub-seq-stage, .sw-hub-seq-reveal) { position: static; height: auto;
     opacity: 1 !important; transform: none !important; }
+}
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

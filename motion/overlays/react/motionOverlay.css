@@ -2,32 +2,37 @@
    mounted until the exit finishes. All of it is inside no-preference: under reduced motion (and in
    jsdom) the components unmount immediately instead. Kiosk and TV screens zero the distances via
    the tokens in index.css, leaving a fade. */
-@media (prefers-reduced-motion: no-preference) {
-  .sw-fx-fade[data-state="open"] { animation: sw-fade-in var(--sw-dur-base) var(--sw-ease-standard) both; }
-  .sw-fx-fade[data-state="closed"] { animation: sw-fade-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  .sw-fx-pop[data-state="open"] { animation: sw-pop-in var(--sw-dur-base) var(--sw-ease-enter) both; }
-  .sw-fx-pop[data-state="closed"] { animation: sw-pop-out var(--sw-dur-fast) var(--sw-ease-exit) both; }
-
-  .sw-fx-drawer[data-state="open"] { animation: sw-drawer-in var(--sw-dur-slow) var(--sw-ease-enter) both; }
-  .sw-fx-drawer[data-state="closed"] { animation: sw-drawer-out var(--sw-dur-base) var(--sw-ease-exit) both; }
-  .sw-fx-drawer[data-edge="left"][data-state="open"] { animation-name: sw-drawer-in-left; }
-  .sw-fx-drawer[data-edge="left"][data-state="closed"] { animation-name: sw-drawer-out-left; }
-
-  .sw-fx-menu { --sw-from-y: calc(var(--sw-pop-offset) * -1); }
-  .sw-fx-menu[data-above] { --sw-from-y: var(--sw-pop-offset); }
-  .sw-fx-menu[data-state="open"] { animation: sw-menu-in var(--sw-dur-fast) var(--sw-ease-enter) both; }
-  .sw-fx-menu[data-state="closed"] { animation: sw-menu-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  .sw-fx-toast[data-state="open"] { animation: sw-toast-in var(--sw-dur-base) var(--sw-ease-enter) both; }
-  .sw-fx-toast[data-state="closed"] { animation: sw-toast-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  /* Phones show the modal as a bottom sheet, so it rises instead of scaling. */
-  @media (max-width: 639px) {
-    .sw-fx-pop[data-state="open"] { animation-name: sw-sheet-in; }
-    .sw-fx-pop[data-state="closed"] { animation-name: sw-sheet-out; }
-  }
+/* Decision 399: state transitions continue from the current interpolated value. */
+:root { --sw-overlay-exit: calc(var(--sw-dur-base) * .75); --sw-menu-exit: calc(var(--sw-dur-fast) * .75); }
+.sw-fx-fade, .sw-fx-pop, .sw-fx-drawer, .sw-fx-menu, .sw-fx-toast {
+  opacity: 1; transform: none;
+  transition: opacity var(--sw-dur-base) var(--sw-ease-enter), transform var(--sw-dur-base) var(--sw-ease-enter);
 }
+.sw-fx-fade[data-state="closed"], .sw-fx-pop[data-state="closed"], .sw-fx-drawer[data-state="closed"], .sw-fx-menu[data-state="closed"], .sw-fx-toast[data-state="closed"] {
+  opacity: 0; pointer-events: none; transition-duration: var(--sw-overlay-exit); transition-timing-function: var(--sw-ease-exit);
+}
+.sw-fx-pop[data-state="closed"] { transform: scale(var(--sw-pop-scale)); }
+.sw-fx-drawer { transition-duration: var(--sw-dur-slow); }
+.sw-fx-drawer[data-state="closed"] { transform: translateX(var(--sw-slide-x)); transition-duration: var(--sw-dur-base); }
+.sw-fx-drawer[data-edge="left"][data-state="closed"] { transform: translateX(calc(var(--sw-slide-x) * -1)); }
+.sw-fx-menu { --sw-from-y: calc(var(--sw-pop-offset) * -1); transition-duration: var(--sw-dur-fast); }
+.sw-fx-menu[data-above] { --sw-from-y: var(--sw-pop-offset); }
+.sw-fx-menu[data-state="closed"] { transform: translateY(var(--sw-from-y)); transition-duration: var(--sw-menu-exit); }
+.sw-fx-toast[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 1.5)); }
+@starting-style {
+  .sw-fx-fade[data-state="open"] { opacity: 0; }
+  .sw-fx-pop[data-state="open"] { opacity: 0; transform: scale(var(--sw-pop-scale)); }
+  .sw-fx-drawer[data-state="open"] { opacity: 0; transform: translateX(var(--sw-slide-x)); }
+  .sw-fx-drawer[data-edge="left"][data-state="open"] { transform: translateX(calc(var(--sw-slide-x) * -1)); }
+  .sw-fx-menu[data-state="open"] { opacity: 0; transform: translateY(var(--sw-from-y)); }
+  .sw-fx-toast[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 1.5)); }
+}
+@media (max-width: 639px) {
+ .sw-fx-pop[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 2)); }
+ @starting-style { .sw-fx-pop[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 2)); } }
+}
+.sw-ov-sheet.sw-fx-pop[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 2)); }
+@starting-style { .sw-ov-sheet.sw-fx-pop[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 2)); } }
 @keyframes sw-fade-in { from { opacity: 0; } }
 @keyframes sw-fade-out { to { opacity: 0; } }
 @keyframes sw-pop-in { from { opacity: 0; transform: scale(var(--sw-pop-scale)); } }
@@ -42,3 +47,8 @@
 @keyframes sw-menu-out { to { opacity: 0; transform: translateY(var(--sw-from-y)); } }
 @keyframes sw-toast-in { from { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 1.5)); } }
 @keyframes sw-toast-out { to { opacity: 0; transform: translateY(var(--sw-enter-y)); } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

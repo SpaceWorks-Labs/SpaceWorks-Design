@@ -17,21 +17,22 @@
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
 .tstack{position:absolute;right:12px;bottom:12px;display:grid;gap:8px;width:min(22rem,calc(100% - 24px))}.t{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-outline));border-radius:14px;padding:14px;display:grid;gap:8px;font-size:.9rem}.t.err p{color:rgb(var(--color-danger))}.t p{color:rgb(var(--color-ink))}</style>
+<link rel="stylesheet" href="../demo.css">
 </head>
 <body>
 <main>
   <header class="row"><h1>Toast</h1>
     <button type="button" class="btn ghost" onclick="document.documentElement.classList.toggle('dark')">Toggle dark</button></header>
   <p>Add a toast; it leaves by itself after four seconds or with Dismiss. Under <code>prefers-reduced-motion: reduce</code> the motion is removed and the end state shows at once.</p>
-<section><div class="row"><button class="btn" data-t="ok">Saved</button><button class="btn ghost" data-t="err">Error</button></div><div class="stage"><div class="tstack" id="ts" aria-live="polite"></div></div></section>
-</main>
+<p><strong>Current rule (v2.0.1, 2026-11-13):</strong> Success uses eight seconds of reading time; errors persist, and hover/focus pause expiry. Supersedes the line above; see <a href="../../docs/current-rules.md#cr-motion-01">current motion rules</a>.</p>
+<section><div class="row"><button class="btn" data-t="ok">Saved</button><button class="btn ghost" data-t="err">Error</button></div><div class="stage"><div class="tstack" id="ts" data-toast-stack></div></div></section>
+<p data-toast-status role="status" aria-atomic="true"></p><p data-toast-alert role="alert" aria-atomic="true"></p><label><input id="fail-undo" type="checkbox"> Simulate Undo failure</label><p>Undo simulates one second of service latency.</p><p>Current flow: success expires after eight seconds of reading time; hover and focus pause the clock. Errors remain until dismissed. Undo waits for completion; failures persist.</p><section class="sw-preview-section"><h2>Image previews</h2><p>Static posters are shown first. Play starts an animated image; Pause restores its poster. Reduced motion keeps posters visible.</p><div class="sw-preview-gallery"><figure data-motion-preview><img src="previews/toast-dark-poster.png" data-poster="previews/toast-dark-poster.png" data-animated="previews/toast-dark.webp" alt="toast dark motion end-state preview" loading="lazy"><figcaption>toast dark</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure><figure data-motion-preview><img src="previews/toast-light-poster.png" data-poster="previews/toast-light-poster.png" data-animated="previews/toast-light.webp" alt="toast light motion end-state preview" loading="lazy"><figcaption>toast light</figcaption><button type="button" class="btn ghost" aria-pressed="false">Play preview</button></figure></div></section></main>
+<script src="../flow.js"></script>
+<script src="toast.js"></script>
 <script>
-var ts=document.getElementById("ts");
-function add(err){var n=document.createElement("div");n.className="t sw-fx-toast"+(err?" err":"");n.dataset.state="open";n.setAttribute("role",err?"alert":"status");
- n.innerHTML="<p>"+(err?"Could not save. Try again.":"Saved the loan record.")+"</p><div><button class='btn ghost'>Dismiss</button></div>";
- var gone=false;function bye(){if(gone)return;gone=true;n.setAttribute("inert","");n.dataset.state="closed";setTimeout(function(){n.remove()},200)}
- n.querySelector("button").onclick=bye;setTimeout(bye,4000);ts.appendChild(n)}
-document.querySelectorAll("[data-t]").forEach(function(b){b.onclick=function(){add(b.dataset.t==="err")}});
-</script>
-</body>
-</html>
+SwToasts.initToasts(document.querySelector('main'), { undo: async () => {
+  // Artificial service latency demonstrates the pending state; this is not motion timing.
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  if (document.getElementById('fail-undo').checked) throw new Error('Demo failure');
+} });
+</script><script src="../previews.js"></script><script>SwMotionPreviews.init();</script></body></html>

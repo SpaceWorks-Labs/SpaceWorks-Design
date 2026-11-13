@@ -1,0 +1,68 @@
+{
+  "collapse": {
+    "--sw-collapse-exit": "calc(var(--sw-dur-base) * .75)",
+    "--sw-local-duration-160": "calc(var(--sw-dur-base) * 0.88888889)",
+    "--sw-local-duration-200": "calc(var(--sw-dur-base) * 1.11111111)"
+  },
+  "delight": {
+    "--sw-local-duration-1600": "calc(var(--sw-dur-slow) * 6.66666667)",
+    "--sw-local-duration-2400": "calc(var(--sw-dur-slow) * 10.00000000)",
+    "--sw-local-duration-4000": "calc(var(--sw-dur-slow) * 16.66666667)",
+    "--sw-local-duration-460": "calc(var(--sw-dur-slow) * 1.91666667)",
+    "--sw-local-duration-560": "calc(var(--sw-dur-slow) * 2.33333333)",
+    "--sw-local-duration-650": "calc(var(--sw-dur-slow) * 2.70833333)",
+    "--sw-local-duration-960": "calc(var(--sw-dur-slow) * 4.00000000)"
+  },
+  "feedback": {
+    "--sw-local-duration-1100": "calc(var(--sw-dur-slow) * 4.58333333)",
+    "--sw-local-duration-360": "calc(var(--sw-dur-slow) * 1.50000000)",
+    "--sw-local-duration-4000": "calc(var(--sw-dur-slow) * 16.66666667)",
+    "--sw-local-duration-420": "calc(var(--sw-dur-slow) * 1.75000000)"
+  },
+  "hover-press": {
+    "--sw-collapse-exit": "calc(var(--sw-dur-base) * .75)",
+    "--sw-demo-ease": "var(--sw-ease-standard)"
+  },
+  "kiosk-display": {
+    "--sw-local-duration-400": "calc(var(--sw-dur-slow) * 1.66666667)"
+  },
+  "overlays": {
+    "--sw-menu-exit": "calc(var(--sw-dur-fast) * .75)",
+    "--sw-overlay-exit": "calc(var(--sw-dur-base) * .75)"
+  },
+  "page-enter": {
+    "--sw-local-duration-150": "calc(var(--sw-dur-fast) * 1.25000000)",
+    "--sw-local-duration-200": "calc(var(--sw-dur-base) * 1.11111111)",
+    "--sw-local-duration-210": "calc(var(--sw-dur-base) * 1.16666667)",
+    "--sw-local-duration-30": "calc(var(--sw-dur-fast) * 0.25000000)",
+    "--sw-local-duration-360": "calc(var(--sw-dur-slow) * 1.50000000)",
+    "--sw-local-duration-480": "calc(var(--sw-dur-slow) * 2.00000000)",
+    "--sw-local-duration-60": "calc(var(--sw-dur-fast) * 0.50000000)",
+    "--sw-local-duration-640": "calc(var(--sw-dur-slow) * 2.66666667)",
+    "--sw-local-duration-90": "calc(var(--sw-dur-fast) * 0.75000000)"
+  },
+  "route-transition": {
+    "--sw-local-duration-70": "calc(var(--sw-dur-fast) * 0.58333333)",
+    "--sw-local-duration-90": "calc(var(--sw-dur-fast) * 0.75000000)"
+  },
+  "scroll-reveal": {
+    "--sw-local-duration-640": "calc(var(--sw-dur-slow) * 2.66666667)"
+  },
+  "search": {
+    "--sw-local-duration-20": "calc(var(--sw-dur-fast) * 0.16666667)"
+  },
+  "sidebar": {
+    "--sw-collapse-exit": "calc(var(--sw-dur-base) * .75)"
+  },
+  "skeleton": {
+    "--sw-local-duration-150": "calc(var(--sw-dur-fast) * 1.25000000)"
+  },
+  "theme-reveal": {
+    "--sw-local-duration-420": "calc(var(--sw-dur-slow) * 1.75000000)",
+    "--sw-theme-duration": "calc(var(--sw-dur-slow) * 3)"
+  },
+  "toast": {
+    "--sw-menu-exit": "calc(var(--sw-dur-fast) * .75)",
+    "--sw-overlay-exit": "calc(var(--sw-dur-base) * .75)"
+  }
+}

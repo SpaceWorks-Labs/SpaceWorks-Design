@@ -1,5 +1,7 @@
 # Collapse and disclosure chevrons
 
+> **Current rule (v2.0.1, 2026-11-13):** The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base ? .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#collapse).
+
 Opening or closing a group animates its height through grid rows (1fr to 0fr, never `height`) with a fade, and its arrow turns with it. The inner padding and negative margin keep focus rings of edge items from being clipped.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -23,6 +25,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Opening a group keeps its neighbours in view and shows what moved; the turning arrow reports the state before the content finishes moving. Closing is faster than opening.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#collapse) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -51,6 +55,8 @@ None: colour-neutral.
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#collapse) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <button aria-expanded="true" aria-controls="more">More <svg class="sw-chevron sw-chevron-flip">…</svg></button>
 <div id="more" class="sw-collapse" data-state="open"><div class="sw-collapse-inner">…items…</div></div>
@@ -59,3 +65,19 @@ None: colour-neutral.
 To close set `data-state="closed"` (and `inert`); hide or remove it on `animationend`.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base ? .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#collapse). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-collapse-exit` | `calc(var(--sw-dur-base) * .75)` |
+| `--sw-local-duration-160` | `calc(var(--sw-dur-base) * 0.88888889)` |
+| `--sw-local-duration-200` | `calc(var(--sw-dur-base) * 1.11111111)` |

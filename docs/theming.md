@@ -18,10 +18,16 @@ layers, no green tint. Teal, Citron and orange are accents, never surfaces.
               --color-panel: 20 20 20; --color-hover: 28 28 28; --color-line: 44 44 44; /* ... */ }
 ```
 
+**Historical — do not copy (1A-E04):** the following paragraph contains a text-alpha expression retained as history.
+
 Triplets (not hex) so alpha works: `rgb(var(--color-ink) / 0.6)`. Names never change between themes; only values do.
 Universal set: `bg`, `surface`, `panel`, `hover`, `line`, `outline`, `ink`, `muted`, `focus`, the accent, emphasis,
 success, warn, info and danger families (fill, hover, active, ink, soft). `color-scheme` makes native controls and
 scrollbars follow the theme.
+
+> **Current rule (v2.0.1, 2026-11-13):** Triplet syntax does not permit translucent text: use opaque ink or muted. Alpha is reserved for explicitly specified compositing roles, not secondary text. (1A-N15) — supersedes the line above; see [docs/current-rules.md#cr-opacity-01](current-rules.md#cr-opacity-01).
+
+**Current example (1A-E04):** `color: rgb(var(--color-muted));` for secondary text; `color: rgb(var(--color-ink));` for primary text.
 
 ## 2. The switch
 
@@ -183,6 +189,8 @@ Call `initializeTheme()` in `main.tsx` before `createRoot(...).render`.
 
 ## 5. How components consume tokens
 
+**Historical — do not copy (1A-E05, 1A-E06):** the following intact Plain CSS/Tailwind example predates the opaque text and named soft-fill rules. Do not copy the text alpha, `bg-accent/20` or alpha-capable colour recipes below.
+
 - **Plain CSS**: `background: rgb(var(--color-surface)); color: rgb(var(--color-ink) / 0.8);`.
 - **Tailwind**: `darkMode: "class"` and colours mapped to the variables, so `bg-surface`, `text-ink`, `border-line`,
   `bg-accent/20` and `dark:` variants all follow `html.dark`:
@@ -198,6 +206,29 @@ Call `initializeTheme()` in `main.tsx` before `createRoot(...).render`.
   as the app does, keep `@config "../tailwind.config.ts"` in `src/index.css`.
 - **Never hard-code a hex** where a token exists. A component that needs a dark-only or light-only look uses an island
   (`.sw-island-dark`), not a one-off colour.
+
+**Current example (1A-E05):** `background: rgb(var(--color-surface)); color: rgb(var(--color-muted));` — opaque secondary text. See [CR-OPACITY-01](current-rules.md#cr-opacity-01).
+
+**Current example (1A-E06):** named opaque roles, Gilroy 800 for display, Outfit 600 for UI headings, and explicit disabled state. Import the shipped tokens and font faces first.
+
+```ts
+// Tailwind configuration fragment; no text-alpha or brand-fill-alpha utilities.
+export default { darkMode: "class", theme: { extend: { colors: {
+  surface: "rgb(var(--color-surface))", ink: "rgb(var(--color-ink))",
+  muted: "rgb(var(--color-muted))", line: "rgb(var(--color-line))",
+  "accent-soft": "rgb(var(--color-accent-soft))"
+} } } };
+```
+
+```html
+<section class="bg-accent-soft text-ink">
+  <h2 style="font-family:var(--font-display);font-weight:800;font-synthesis:none">Inventory</h2>
+  <p class="text-muted">Check all quantities and required asset scans before continuing.</p>
+  <button type="button" disabled class="disabled:bg-surface disabled:text-muted disabled:border-line disabled:opacity-100">Confirm issue</button>
+</section>
+```
+
+The shared button component also suppresses disabled hover/press effects; [the explicit state example](ui-brand-spec.md#h1-translucency-bans-codex-1) shows the complete CSS. See [CR-TYPE-01](current-rules.md#cr-type-01), [CR-OPACITY-01](current-rules.md#cr-opacity-01) and [CR-DISABLED-01](current-rules.md#cr-disabled-01).
 
 ## The bright brand colours are the same in both themes
 
@@ -223,6 +254,8 @@ What changes in dark is how a colour is used as **text or a thin mark**: use the
 text on black. Fills, buttons, pills, chart bars and illustrations keep the bright brand colours.
 
 ## 6. Artwork per theme
+
+> **Current rule (v2.0.1, 2026-11-13):** The reversed product mark keeps its cream body, but SW-389 (2026-11-13) requires two orange and two green flaps in the closed animated lid in both themes. “Reversed cream” below is not a cream-only animated-lid recipe. (1A-N16) — supersedes the line above; see [docs/current-rules.md#cr-logo-01](current-rules.md#cr-logo-01).
 
 - **Logo**: two drawings, full colour on light (`symbol`, `lockup-*`) and reversed cream on dark
   (`symbol-reversed`, `lockup-*-reversed`). One-colour ink is for print and never recoloured full-colour paths. The

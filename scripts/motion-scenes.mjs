@@ -24,12 +24,14 @@ export const MOTION_SCENES = [
     body: stage(`<div class="sw-stagger" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px">${[1, 2, 3, 4, 5, 6, 7, 8].map((i) => `<div style="${card};height:48px">${i}</div>`).join('')}</div>`) },
   { family: 'page-enter', name: 'showcase', css: [M('page-enter')], w: 360, h: 140, dur: 760, hold: 500,
     body: stage(`<div class="sw-auth-showcase" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px">${['One', 'Two', 'Three'].map((t) => `<div style="${card};height:100px">${t}</div>`).join('')}</div>`) },
-  { family: 'overlays', name: 'dialog', css: [M('overlays')], w: 360, h: 170, dur: 220, hold: 700,
-    body: stage(`<div class="sw-fx-fade" data-state="open" style="position:absolute;inset:0;background:rgb(var(--color-scrim)/.5);display:grid;place-items:center"><div class="sw-fx-pop" data-state="open" style="${card};width:230px;display:grid;gap:10px"><b>Hand over this tool?</b><button style="${btn}">Confirm</button></div></div>`) },
-  { family: 'overlays', name: 'drawer', css: [M('overlays')], w: 360, h: 170, dur: 280, hold: 700,
-    body: stage(`<div class="sw-fx-fade" data-state="open" style="position:absolute;inset:0;background:rgb(var(--color-scrim)/.5)"></div><aside class="sw-fx-drawer" data-state="open" style="position:absolute;right:0;top:0;bottom:0;width:190px;${card};border-radius:0;display:grid;align-content:start;gap:8px"><b>Detail drawer</b><span>Slides from its edge</span></aside>`) },
-  { family: 'overlays', name: 'menu', css: [M('overlays')], w: 360, h: 150, dur: 160, hold: 700,
-    body: stage(`<button style="${btn};position:absolute;left:16px;top:16px">Actions</button><ul class="sw-fx-menu" data-state="open" style="position:absolute;left:16px;top:60px;margin:0;padding:6px;list-style:none;${card};width:170px"><li style="padding:6px 8px">Edit</li><li style="padding:6px 8px">Duplicate</li><li style="padding:6px 8px">Archive</li></ul>`) },
+  { family: 'overlays', name: 'dialog', css: [M('overlays')], w: 360, h: 260, dur: 220, hold: 700,
+    body: stage(`<div class="sw-ov-layer sw-ov-scrim sw-fx-fade" data-state="open"><div class="sw-ov-panel sw-ov-dialog sw-fx-pop" data-state="open"><div class="sw-ov-handle"></div><div class="sw-ov-head"><h2>Hand over this tool?</h2></div><div class="sw-ov-body"><p>The scrim dims only this frame.</p></div><div class="sw-ov-foot"><button class="sw-ov-btn">Confirm</button></div></div></div>`, 'isolation:isolate;') },
+  { family: 'overlays', name: 'sheet', css: [M('overlays')], w: 360, h: 280, dur: 220, hold: 700,
+    body: stage(`<div class="sw-ov-layer sheet sw-ov-scrim sw-fx-fade" data-state="open"><div class="sw-ov-panel sw-ov-sheet sw-fx-pop" data-state="open"><div class="sw-ov-handle"></div><div class="sw-ov-head"><h2>Filter requests</h2></div><div class="sw-ov-body"><p>A padded, scrollable bottom sheet.</p></div><div class="sw-ov-foot"><button class="sw-ov-btn">Apply</button></div></div></div>`, 'isolation:isolate;') },
+  ...['right', 'left'].map((edge) => ({ family: 'overlays', name: edge === 'right' ? 'drawer' : 'drawer-left', css: [M('overlays')], w: 360, h: 240, dur: 280, hold: 700,
+    body: stage(`<div class="sw-ov-layer edge-${edge} sw-ov-scrim sw-fx-fade" data-state="open"><aside class="sw-ov-panel sw-ov-drawer sw-fx-drawer" data-edge="${edge}" data-state="open" style="width:78%"><div class="sw-ov-head"><h2>${edge === 'right' ? 'Detail' : 'Sidebar'} drawer</h2></div><div class="sw-ov-body"><p>Full height, from the ${edge} edge.</p></div></aside></div>`, 'isolation:isolate;') })),
+  { family: 'overlays', name: 'menu', css: [M('overlays')], w: 360, h: 250, dur: 160, hold: 700,
+    body: stage(`<button class="sw-ov-btn ghost" style="position:absolute;left:16px;top:16px">Actions</button><ul class="sw-ov-menu sw-fx-menu" data-state="open" style="left:16px;top:68px;max-height:170px" role="menu"><li role="menuitem">Edit</li><li role="menuitem">Duplicate</li><li role="menuitem">Archive</li></ul>`, 'isolation:isolate;') },
   { family: 'toast', name: 'toast', css: [M('toast')], w: 360, h: 130, dur: 220, hold: 800,
     body: stage(`<div class="sw-fx-toast" data-state="open" style="position:absolute;right:12px;bottom:12px;width:250px;background:rgb(var(--color-panel));border:1px solid rgb(var(--color-outline));border-radius:14px;padding:14px;font-size:14px">Saved the loan record.<div style="margin-top:8px"><span style="padding:4px 10px;border-radius:999px;border:1px solid rgb(var(--color-outline))">Dismiss</span></div></div>`) },
   { family: 'sidebar', name: 'indicator', css: [M('sidebar')], w: 260, h: 170, dur: 220, hold: 800,
@@ -84,7 +86,7 @@ document.getAnimations().forEach(function(a){if(!own.has(a))own.set(a,t0);a.paus
 export const FAMILIES = [...new Set(MOTION_SCENES.map((s) => s.family))];
 export const sceneBase = (s) => `motion/${s.family}/previews/${s.name}`;
 export const MOTION_KIT_SOURCES = (() => {
-  const set = new Set();
+  const set = new Set(['motion/demo.css', 'motion/overlays/overlays.js']);
   for (const s of MOTION_SCENES) for (const f of [...s.css, ...(s.js || [])]) set.add(f);
   for (const f of FAMILIES) set.add(`motion/${f}/demo.html`);
   return [...set];

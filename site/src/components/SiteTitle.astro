@@ -32,8 +32,14 @@ const version = `v${major}.${minor}`;
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
+    min-width: 0;
   }
   .sw-version {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    min-width: 24px;
     font-size: 0.75rem;
     font-weight: 600;
     line-height: 1;
@@ -54,5 +60,11 @@ const version = `v${major}.${minor}`;
     min-height: 2.75rem;
     color: var(--sl-color-white);
     text-decoration: none;
+  }
+  /* Leave room for the search, theme and mobile navigation controls. The badge keeps its label. */
+  @media (max-width: 30rem) {
+    .sw-title-row { gap: 6px; width: 100%; }
+    .sw-site-title { gap: 6px; flex: 1 1 auto; min-width: 0; }
+    .sw-site-title :global(svg[role='img']) { flex: 0 1 auto; min-width: 0; max-width: 7rem; height: auto; }
   }
 </style>

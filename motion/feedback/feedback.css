@@ -1,10 +1,16 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-1100: calc(var(--sw-dur-slow) * 4.58333333);
+  --sw-local-duration-360: calc(var(--sw-dur-slow) * 1.50000000);
+  --sw-local-duration-420: calc(var(--sw-dur-slow) * 1.75000000);
+}
 /* Space Works motion kit. Values are copied unchanged from the app (SpaceWorks 0.12.0), `features/cards/cardVerify.css`, `components/delight/confetti.css`, `components/delight/delight.css`.
    Tokens (--sw-dur-*, --sw-ease-*, --sw-enter-y, --sw-pop-*, --sw-slide-x) come from ../../tokens/tokens.css. */
 /* The one-off "stamp" on a valid card check (SPEC §7). Applied only with interface effects on
    and motion allowed; the media query is a second guard. No translate, a short scale-in. */
 @media (prefers-reduced-motion: no-preference) {
   .sw-verify-stamp {
-    animation: sw-verify-stamp 420ms cubic-bezier(0.32, 0.72, 0, 1) 1 both;
+    animation: sw-verify-stamp var(--sw-local-duration-420) var(--sw-ease-enter) 1 both;
   }
 }
 
@@ -19,7 +25,7 @@
 .sw-confetti { position: fixed; z-index: 60; width: 0; height: 0; pointer-events: none; }
 .sw-confetti-piece {
   position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; background: var(--piece); opacity: 0;
-  animation: sw-confetti-burst 1100ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: sw-confetti-burst var(--sw-local-duration-1100) var(--sw-ease-enter) both;
 }
 .sw-confetti-circle { border-radius: 9999px; }
 .sw-confetti-square { border-radius: 1px; }
@@ -36,10 +42,15 @@
 @keyframes sw-pass-tear { from { transform: translateY(-8px); } to { transform: translateY(0); } }
 @keyframes sw-result-arrive { from { transform: scale(.96); } to { transform: scale(1); } }
 @keyframes sw-logbook-open { from { transform: perspective(600px) rotateY(-8deg); } to { transform: perspective(600px) rotateY(0); } }
-.sw-delight-pass { animation: sw-pass-tear 360ms ease-out; }
-.sw-delight-result { animation: sw-result-arrive 360ms ease-out; }
-.sw-delight-logbook { animation: sw-logbook-open 360ms ease-out; }
+.sw-delight-pass { animation: sw-pass-tear var(--sw-local-duration-360) var(--sw-ease-enter); }
+.sw-delight-result { animation: sw-result-arrive var(--sw-local-duration-360) var(--sw-ease-enter); }
+.sw-delight-logbook { animation: sw-logbook-open var(--sw-local-duration-360) var(--sw-ease-enter); }
   .sw-delight-pass, .sw-delight-result, .sw-delight-walk, .sw-delight-logbook { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   .sw-delight-pass, .sw-delight-result, .sw-delight-logbook { animation: none; }
+}
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

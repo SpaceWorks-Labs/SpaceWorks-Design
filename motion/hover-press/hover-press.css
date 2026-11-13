@@ -3,7 +3,7 @@
 /* Buttons: colours ease in 120 ms; pressing sinks the control to 0.98. Focus rings are untouched. */
 :is(.desk-button, .desk-button-primary, .desk-button-brand, .desk-button-emphasis, .desk-button-success,
   .desk-button-warn, .desk-button-danger, .desk-button-ghost, .desk-button-danger-outline, .desk-tab, .desk-nav-item) {
-  transition-property: color, background-color, border-color, transform;
+  transition-property: transform;
   transition-duration: var(--sw-dur-fast);
   transition-timing-function: var(--sw-ease-standard);
 }
@@ -23,10 +23,21 @@
 .desk-button-primary.is-active, .desk-button.is-active { transform: scale(0.98); }
 
 /* Colour-only hover for cards, rows, tabs and links: 120 ms, nothing moves. */
-.sw-hover { transition: color 120ms, background-color 120ms, border-color 120ms; }
+.sw-hover { transition: none; }
 .sw-card-hover { border: 1px solid rgb(var(--color-line)); background: rgb(var(--color-panel)); border-radius: 16px; }
 .sw-card-hover:hover, .sw-card-hover.is-hover { border-color: rgb(var(--color-outline)); }
 .sw-row-hover:hover, .sw-row-hover.is-hover { background: rgb(var(--color-hover)); color: rgb(var(--color-ink)); }
-.sw-link-hover { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; transition: text-decoration-color 120ms; }
+.sw-link-hover { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; transition: none; }
 .sw-link-hover:hover, .sw-link-hover.is-hover { text-decoration-color: rgb(var(--color-ink)); }
-@media (prefers-reduced-motion: reduce) { .sw-hover { transition-duration: 0.01ms; } }
+@media (prefers-reduced-motion: reduce) { .sw-hover { transition-duration: calc(var(--sw-dur-fast) * 0); } }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Easing teaching example: the advertised duration is the actual slow token. */
+.sw-easing-track { padding: 8px; min-height: 40px; }
+.sw-easing-dot { --sw-demo-ease: var(--sw-ease-standard); width: 24px; height: 24px; border-radius: 50%; background: rgb(var(--color-accent)); transition: transform var(--sw-dur-slow) var(--sw-demo-ease); }
+.sw-easing-dot[data-end] { transform: translateX(100px); }
+@media (prefers-reduced-motion: reduce) { .sw-easing-dot { transition: none; } }

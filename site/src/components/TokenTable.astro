@@ -1,6 +1,11 @@
 ---
 // Every semantic colour token, light and dark side by side, read from tokens/tokens.json.
 import tokens from '../assets/kit/tokens.json';
+import ComponentOutline from './ComponentOutline.astro';
+interface Props { headingLevel?: 2 | 3 | 4 }
+const { headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+const sectionId = (title: string) => `token-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
 const light = tokens.light as Record<string, string>;
 const dark = tokens.dark as Record<string, string>;
@@ -23,10 +28,12 @@ for (const name of Object.keys(light)) {
 }
 ---
 
+<ComponentOutline label="Token reference sections" entries={[...groups.keys(), 'Chart series', 'Box-open loader'].map(title => ({ title, id: sectionId(title) }))} />
+
 {
   [...groups].map(([group, names]) => (
     <>
-      <h3>{group}</h3>
+      <Heading id={sectionId(group)}>{group}</Heading>
       <table class="sw-tokens">
         <thead>
           <tr>
@@ -57,7 +64,7 @@ for (const name of Object.keys(light)) {
   ))
 }
 
-<h3>Chart series</h3>
+<Heading id={sectionId('Chart series')}>Chart series</Heading>
 <p>{chart.note}</p>
 <table class="sw-tokens">
   <thead>
@@ -88,7 +95,7 @@ for (const name of Object.keys(light)) {
   </tbody>
 </table>
 
-<h3>Box-open loader</h3>
+<Heading id={sectionId('Box-open loader')}>Box-open loader</Heading>
 <p>{loader.note}</p>
 <table class="sw-tokens">
   <thead>

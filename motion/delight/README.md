@@ -1,5 +1,7 @@
 # Delight: logo flaps, Patch, card tilt
 
+> **Current rule (v2.0.1, 2026-11-13):** Decorative demo loops start paused and have a Play/Pause control; reduced motion wins. Sprite trot uses a static frame translated on the compositor instead of animating background-position. Card flip remains available instantly with reduced motion, with no pointer tilt. React PatchMoment/NotFoundPatch accept an additive paused option. Existing artwork, exports and class names are retained. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#delight).
+
 The optional playful layer, shown only when interface effects ("delight") are on and motion is allowed, never on kiosk, scanner, checkout or payment paths: the logo's four flaps springing on hover or click, the 404 pet Patch (walk, nap, paw prints, a still moment that trots), a small companion walk, a glyph tilt and the member card that tilts with the pointer and flips.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -25,6 +27,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Small human moments that make a workshop tool feel friendly, kept out of staff chrome and every flow where speed or trust matters. They carry no information; removing them loses nothing.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#delight) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Animation | Value |
 |---|---|
@@ -58,6 +62,8 @@ Patch uses the `-dark` sprite sheets (never recoloured or mirrored by hand); the
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#delight) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="delight.css">
 <html data-sw-delight> … <a data-logo href="#"><svg>…<path class="sw-logo-flap sw-logo-flap-tl"/>…</svg></a>
@@ -66,3 +72,23 @@ Patch uses the `-dark` sprite sheets (never recoloured or mirrored by hand); the
 See `demo.html` for the flaps, the "z", the companion walk and the tilting card.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+Decorative demo loops start paused and have a Play/Pause control; reduced motion wins. Sprite trot uses a static frame translated on the compositor instead of animating background-position. Card flip remains available instantly with reduced motion, with no pointer tilt. React PatchMoment/NotFoundPatch accept an additive paused option. Existing artwork, exports and class names are retained.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#delight). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-1600` | `calc(var(--sw-dur-slow) * 6.66666667)` |
+| `--sw-local-duration-2400` | `calc(var(--sw-dur-slow) * 10.00000000)` |
+| `--sw-local-duration-4000` | `calc(var(--sw-dur-slow) * 16.66666667)` |
+| `--sw-local-duration-460` | `calc(var(--sw-dur-slow) * 1.91666667)` |
+| `--sw-local-duration-560` | `calc(var(--sw-dur-slow) * 2.33333333)` |
+| `--sw-local-duration-650` | `calc(var(--sw-dur-slow) * 2.70833333)` |
+| `--sw-local-duration-960` | `calc(var(--sw-dur-slow) * 4.00000000)` |

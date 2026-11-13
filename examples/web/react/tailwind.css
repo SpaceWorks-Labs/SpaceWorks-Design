@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@source "./src.jsx";
+@theme inline {
+  --color-canvas: rgb(var(--color-bg));
+  --color-content: rgb(var(--color-ink));
+  --font-body: var(--font-sans);
+}

@@ -1,5 +1,7 @@
 # Page enter
 
+> **Current rule (v2.0.1, 2026-11-13):** First-mount animation is an explicitly documented page-arrival exception. Children follow their parent; eight-card staggering uses fast/4 (30 ms). Replay while running is ignored, so it cannot restart mid-flight. Refetches do not replay. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#page-enter).
+
 How content arrives when a page or panel first appears: a list or dashboard that assembles in order (stagger), the sign-in brand panel (facets and showcase cards), and the landing page's areas panel and story proof. Each runs once and never on hover.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -25,6 +27,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 First load of a list reads as assembled in order, so the eye knows where to start; the sign-in panel gives the brand a single quiet entrance; switching an area swaps panel and proof so the change is noticed. It is page-level motion, once, so it never competes with input.
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#page-enter) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Animation | Duration | Easing | Distance |
 |---|---|---|---|
@@ -56,6 +60,8 @@ Colour-neutral. The sign-in brand panel is an island-dark in light and part of t
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#page-enter) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="page-enter.css">
 <div class="sw-stagger"> <!-- first 8 children rise in 30 ms apart -->
@@ -66,3 +72,25 @@ Colour-neutral. The sign-in brand panel is an island-dark in light and part of t
 Remove the `sw-stagger` class after about 600 ms so it never replays. For the areas panel, give the panel the class `sw-hub-area-panel` and remount it (change its `key`) when the selection changes.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+First-mount animation is an explicitly documented page-arrival exception. Children follow their parent; eight-card staggering uses fast/4 (30 ms). Replay while running is ignored, so it cannot restart mid-flight. Refetches do not replay.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#page-enter). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-150` | `calc(var(--sw-dur-fast) * 1.25000000)` |
+| `--sw-local-duration-200` | `calc(var(--sw-dur-base) * 1.11111111)` |
+| `--sw-local-duration-210` | `calc(var(--sw-dur-base) * 1.16666667)` |
+| `--sw-local-duration-30` | `calc(var(--sw-dur-fast) * 0.25000000)` |
+| `--sw-local-duration-360` | `calc(var(--sw-dur-slow) * 1.50000000)` |
+| `--sw-local-duration-480` | `calc(var(--sw-dur-slow) * 2.00000000)` |
+| `--sw-local-duration-60` | `calc(var(--sw-dur-fast) * 0.50000000)` |
+| `--sw-local-duration-640` | `calc(var(--sw-dur-slow) * 2.66666667)` |
+| `--sw-local-duration-90` | `calc(var(--sw-dur-fast) * 0.75000000)` |

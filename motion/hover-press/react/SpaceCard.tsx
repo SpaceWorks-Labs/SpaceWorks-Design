@@ -25,7 +25,7 @@ export function spaceTileTone(slug: string) {
 /** Name first, details second (brand p.17); the whole card is one link to the makerspace overview. */
 export function SpaceCard({ space }: { space: Makerspace }) {
   const tone = spaceTileTone(space.slug);
-  return <article className="group relative flex min-w-0 flex-col rounded-2xl border border-line bg-panel transition-colors duration-120 hover:border-outline">
+  return <article className="group relative flex min-w-0 flex-col rounded-2xl border border-line bg-panel transition-none hover:border-outline">
     <div className={`relative aspect-[1.8] overflow-hidden rounded-t-2xl ${space.cover_image_url ? "bg-surface" : TILES[tone]}`} data-tile={space.cover_image_url ? undefined : tone}>
       {space.cover_image_url ? <img src={space.cover_image_url} alt={`${space.name} banner`} loading="lazy" className="h-full w-full object-cover" />
         : <>

@@ -11,7 +11,7 @@
 /* Colours */
 .sw-colours {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
   gap: 1rem;
   margin-block: 1.5rem;
 }
@@ -46,7 +46,7 @@
 /* Contrast pairs */
 .sw-pairs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   gap: 1rem;
   margin-block: 1.5rem;
 }
@@ -66,11 +66,13 @@
 /* Logos */
 .sw-logos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  /* Cards keep a useful minimum; captions wrap the download group below the title when needed. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
   gap: 1rem;
   margin-block: 1.5rem;
 }
 .sw-logo {
+  min-width: 0;
   margin: 0;
   border: 1px solid var(--sl-color-hairline);
   border-radius: 16px;
@@ -90,7 +92,7 @@
 /* Mascot animation frames */
 .sw-frames {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
   gap: 1rem;
   margin-block: 1.5rem;
 }
@@ -120,19 +122,22 @@
 .sw-frame a:hover { border-color: var(--sw-teal); color: var(--sw-teal); }
 .sw-logo figcaption {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.6rem 1rem;
   padding: 0.9rem 1rem;
   border-top: 1px solid var(--sl-color-hairline);
 }
-.sw-logo figcaption > span:first-child { display: grid; }
+.sw-logo figcaption > span:first-child { display: grid; flex: 1 1 9rem; min-width: 0; }
 .sw-logo strong { font-weight: 600; }
 .sw-logo__use { font-size: 0.8125rem; color: var(--sl-color-gray-3); }
-.sw-logo__links { display: flex; gap: 0.5rem; }
+.sw-logo__links { display: flex; gap: 0.5rem; flex: 0 0 auto; }
 /* Mascot cards carry up to four downloads: stack the caption and let the pills wrap. */
 .sw-logo--mascot figcaption { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
 .sw-logo--mascot .sw-logo__links { flex-wrap: wrap; }
+.sw-logo--mascot figcaption > span:first-child { flex: none; }
+.sw-logo--mascot .sw-logo__links { flex: initial; }
 .sw-logo__links a {
   font-size: 0.8125rem;
   font-weight: 600;
@@ -147,7 +152,7 @@
 /* Guideline pages */
 .sw-pages {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
   gap: 1rem;
   margin-block: 1.5rem;
 }
@@ -222,7 +227,7 @@
 .sw-shot figcaption { margin-top: 0.5rem; color: var(--sl-color-gray-2); font-size: 0.9375rem; }
 @media (max-width: 50rem) {
   .sw-shot-row, .sw-shot-row.has-phone { grid-template-columns: 1fr; }
-  .sw-shot-row .sw-shot-dark { display: none; }
+  .sw-shot-row .sw-shot-dark { display: grid; }
   .sw-shot-row .sw-shot-phone { max-width: 14rem; }
 }
 .sw-boards { display: grid; gap: 1.5rem; margin-block: 1.5rem; }
@@ -230,25 +235,25 @@
 .sw-boards img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--sl-color-hairline); }
 
 /* Live demos (theming, box-open, motion tokens). Scoped containers use the real tokens via .sw-scope. */
-.sw-seg { display: inline-flex; border: 1px solid var(--sl-color-hairline); border-radius: 999px; overflow: hidden; margin-block: 0.5rem; }
+.sw-seg { display: inline-flex; flex-wrap: wrap; max-inline-size: 100%; border: 1px solid var(--sl-color-hairline); border-radius: 10px; margin-block: 0.5rem; }
 .sw-seg button { font: inherit; padding: 0.55rem 1.1rem; min-height: 2.75rem; background: transparent; color: var(--sl-color-text); border: 0; cursor: pointer; }
 .sw-seg button[aria-checked='true'] { background: var(--sw-teal); color: var(--sw-cream); }
 .sw-seg button:hover:not([aria-checked='true']) { background: var(--sw-hover); }
 .sw-demo-cap { font-size: 0.875rem; color: var(--sl-color-gray-3); margin-block: 0.75rem 0.35rem; }
 .sw-demo-title { margin: 0 0 0.5rem; font-size: 1rem; }
-.sw-demo-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-block: 1rem; }
+.sw-demo-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; margin-block: 1rem; }
 .sw-sample { border: 1px solid rgb(var(--color-line)); border-radius: 16px; padding: 1.25rem; font-family: var(--sl-font); }
 .sw-sample h4 { margin: 0.5rem 0; font-size: 1rem; color: rgb(var(--color-ink)); }
 .sw-sample p { color: rgb(var(--color-muted)); margin: 0.25rem 0 0.75rem; font-size: 0.9375rem; }
 .sw-sample .sw-demo-cap { color: rgb(var(--color-muted)); }
-.sw-sample__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.sw-sample__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; margin-top: 1rem; }
 .sw-sample__card { background: rgb(var(--color-panel)); border: 1px solid rgb(var(--color-line)); border-radius: 16px; padding: 1rem; }
 .sw-sample__logo { display: inline-flex; align-items: center; gap: 0.75rem; color: rgb(var(--color-ink)); text-decoration: none; }
 .sw-sample__row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-block: 0.5rem; }
 .sw-sample__label { display: block; font-size: 0.8125rem; color: rgb(var(--color-muted)); margin-top: 0.5rem; }
 .sw-sample__input { width: 100%; box-sizing: border-box; padding: 0.55rem 0.75rem; border-radius: 10px; border: 1px solid rgb(var(--color-outline)); background: rgb(var(--color-bg)); color: rgb(var(--color-ink)); font: inherit; margin-top: 0.25rem; }
 .sw-sample__input:focus-visible, .sw-sample__btn:focus-visible { outline: 2px solid rgb(var(--color-focus)); outline-offset: 2px; }
-.sw-sample__btn { display: inline-flex; align-items: center; gap: 0.5rem; font: inherit; font-weight: 600; min-height: 2.5rem; padding: 0 1rem; border-radius: 10px; border: 1px solid rgb(var(--color-accent)); background: rgb(var(--color-accent)); color: rgb(var(--color-on-accent)); cursor: pointer; }
+.sw-sample__btn { display: inline-flex; align-items: center; gap: 0.5rem; font: inherit; font-weight: 600; min-height: max(44px, 2.75rem); max-inline-size: 100%; white-space: normal; padding: 0.4rem 1rem; border-radius: 10px; border: 1px solid rgb(var(--color-accent)); background: rgb(var(--color-accent)); color: rgb(var(--color-on-accent)); cursor: pointer; }
 .sw-sample__btn--ghost { background: transparent; color: rgb(var(--color-ink)); border-color: rgb(var(--color-outline)); }
 .sw-sample__btn--emph { background: rgb(var(--color-emphasis)); border-color: rgb(var(--color-emphasis)); color: rgb(var(--color-on-emphasis)); }
 .sw-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; }
@@ -263,7 +268,7 @@
 .sw-sample__btn .sw-box { color: inherit; }
 
 /* Palettes */
-.sw-palettes { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1rem; margin-block: 1.5rem; }
+.sw-palettes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; margin-block: 1.5rem; }
 .sw-palette { border: 1px solid rgb(var(--color-line)); border-radius: 16px; padding: 1.25rem; }
 .sw-palette__title { margin: 0 0 0.5rem; font-size: 1.1rem; color: rgb(var(--color-ink)); }
 .sw-palette__group h4 { margin: 1rem 0 0.35rem; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; color: rgb(var(--color-muted)); }
@@ -282,3 +287,36 @@
 
 /* Header logo */
 .sw-site-title .sw-box { flex: none; }
+
+/* Media/accessibility additions (DSA-013/016/021–027/035). */
+:is(.sw-colours, .sw-pages, .sw-logos, .sw-frames, .sw-palettes, .sw-sample__grid, .sw-demo-pair, .sw-shot-row) > * { min-inline-size: 0; }
+.sw-download { display: inline-grid; gap: 0.25rem; align-content: start; justify-items: start; flex: 0 0 auto; }
+.sw-download small, .sw-book-page > small, .sw-file-info { display: block; font-size: 0.75rem; color: var(--sl-color-gray-3); }
+.sw-download small { max-width: 12rem; white-space: normal; }
+.sw-logo__links { flex-wrap: wrap; max-inline-size: 100%; }
+.sw-logo__links a, .sw-frame figcaption a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; box-sizing: border-box; }
+.sw-frame > a { display: grid; padding: 0; border: 0; margin-inline: auto; width: fit-content; }
+.sw-frame small { color: var(--sw-ink); }
+.sw-frame .sw-download { justify-items: center; }
+.sw-logo__stage--mascot { height: auto; min-height: 14rem; }
+.sw-preview { display: grid; justify-items: center; gap: 0.5rem; min-width: 0; max-width: 100%; }
+.sw-preview img { max-width: 100%; height: auto; }
+.sw-preview-control { display: inline-flex; align-items: center; justify-content: center; min-width: 72px; min-height: 44px; padding: 0.4rem 0.75rem; border: 1px solid var(--sl-color-gray-4); border-radius: 10px; background: var(--sl-color-bg); color: var(--sl-color-text); cursor: pointer; font: 600 0.875rem var(--sl-font); white-space: nowrap; }
+.sw-book-chapter { margin-block: 1rem; border: 1px solid var(--sl-color-hairline); padding: 0.75rem; border-radius: 10px; }
+.sw-book-chapter > summary, .sw-page-text > summary, .sw-component-outline summary { min-height: 44px; padding: 0.5rem; cursor: pointer; overflow-wrap: break-word; }
+.sw-component-outline a { display: block; min-height: 24px; }
+.sw-page-text { margin-block: 0.5rem; }
+.sw-page-text p { font-size: 0.9375rem; line-height: 1.6; }
+.sw-boards .sw-demo-cap a { display: inline-block; min-height: 24px; }
+.sw-book-page strong { color: var(--sl-color-text); }
+.sw-sample .sw-sample__title { margin: 0.5rem 0; font: 700 1rem var(--sl-font); color: rgb(var(--color-ink)); }
+.sw-sample__logo { flex-wrap: wrap; max-width: 100%; }
+.sw-palette li { flex-wrap: wrap; }
+.sw-palette code { overflow-wrap: anywhere; }
+.sw-palette__hex { margin-inline-start: 0.5rem; }
+@media (max-width: 30rem) {
+  .sw-pair { grid-template-columns: minmax(0, 1fr); padding: 0.75rem; }
+  .sw-sample, .sw-sample__card, .sw-palette { padding: 0.75rem; }
+  .sw-sample__btn { padding-inline: 0.75rem; }
+  .sw-seg button { padding-inline: 0.75rem; }
+}

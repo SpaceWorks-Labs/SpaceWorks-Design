@@ -1,10 +1,14 @@
+/* Local token-derived steps; see README.md flow addendum and docs/motion-flow.md. */
+:root {
+  --sw-local-duration-20: calc(var(--sw-dur-fast) * 0.16666667);
+}
 /* SearchField motion. Tokens only (styles/motionTokens.css); colours are theme tokens, so light and dark
    follow. Components layer, so a utility class on the call site still wins. Mirrored in the design
    system at motion/search/. Reduced motion keeps colour changes and the spinner swap, drops all movement. */
 @layer components {
   .sw-search-slot { display: block; width: 100%; min-width: 0; }
   .sw-search { position: relative; display: block; width: 100%; min-width: 0; }
-  .sw-search-slot > .sw-search[data-expand] { width: 72%; transition: width var(--sw-dur-slow) var(--sw-ease-standard); }
+  .sw-search-slot > .sw-search[data-expand] { width: 100%; }
   .sw-search-slot > .sw-search[data-expand]:focus-within { width: 100%; }
   .sw-search-input { padding-inline-start: 2.5rem; padding-inline-end: 2.5rem; }
   .sw-search-input::-webkit-search-cancel-button, .sw-search-input::-webkit-search-decoration { appearance: none; display: none; }
@@ -16,7 +20,7 @@
   .sw-search-icon {
     position: absolute; inset-block: 0; inset-inline-start: 0.75rem; display: grid; width: 1.125rem; place-items: center;
     pointer-events: none; color: rgb(var(--color-muted));
-    transition: color var(--sw-dur-base) var(--sw-ease-standard);
+    transition: none;
   }
   .sw-search-glyph {
     grid-area: 1 / 1; opacity: 1;
@@ -31,7 +35,7 @@
   .sw-search-clear {
     position: absolute; inset-block: 0; inset-inline-end: 0.25rem; display: grid; width: 2.25rem; place-items: center;
     border-radius: 0.5rem; color: rgb(var(--color-muted));
-    transition: color var(--sw-dur-fast) var(--sw-ease-standard);
+    transition: none;
     animation: sw-search-clear-in var(--sw-dur-fast) var(--sw-ease-enter) both;
   }
   .sw-search-clear:focus-visible { outline: 2px solid rgb(var(--color-focus)); outline-offset: -2px; }
@@ -45,7 +49,7 @@
 
   /* Suggestion dropdown: 4px rise + fade, the first six rows stagger 20 ms; "No results" fades in. */
   .sw-search-pop { animation: sw-search-rise var(--sw-dur-base) var(--sw-ease-enter) both; }
-  .sw-search-item { animation: sw-search-rise var(--sw-dur-base) var(--sw-ease-enter) both; animation-delay: calc(var(--sw-i, 0) * 20ms); }
+  .sw-search-item { animation: sw-search-rise var(--sw-dur-base) var(--sw-ease-enter) both; animation-delay: calc(var(--sw-i, 0) * var(--sw-local-duration-20)); }
   .sw-search-empty { animation: sw-search-fade var(--sw-dur-base) var(--sw-ease-standard) both; }
 
   @keyframes sw-search-fade { from { opacity: 0; } to { opacity: 1; } }
@@ -55,7 +59,14 @@
   @media (prefers-reduced-motion: reduce) {
     .sw-search:focus-within .sw-search-glyph { transform: none; }
     .sw-search-clear { animation-name: sw-search-fade; }
-    .sw-search-pop, .sw-search-item { animation-name: sw-search-fade; animation-delay: 0s; }
+    .sw-search-pop, .sw-search-item { animation-name: sw-search-fade; animation-delay: calc(var(--sw-dur-fast) * 0); }
     .sw-search-slot > .sw-search[data-expand] { width: 100%; transition: none; }
   }
 }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.sw-search-pop, .sw-search-item, .sw-search-empty, .sw-search-clear, .sw-search-spin { animation: none; }

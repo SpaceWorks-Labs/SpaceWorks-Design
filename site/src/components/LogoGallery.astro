@@ -1,6 +1,7 @@
 ---
 // Every logo master in logo/, shown on the background it is made for, with SVG and PNG downloads.
 import { kitUrl } from './kit-url';
+import DownloadLink from './DownloadLink.astro';
 
 const logos = [
   { file: 'lockup-stacked', name: 'Primary', use: 'Symbol + two-line wordmark', surface: 'white' },
@@ -29,8 +30,8 @@ const logos = [
             <span class="sw-logo__use">{l.use}</span>
           </span>
           <span class="sw-logo__links">
-            <a href={kitUrl(`logo/${l.file}.svg`)} download>SVG</a>
-            <a href={kitUrl(`logo/${l.file}.png`)} download>PNG</a>
+            <DownloadLink path={`logo/${l.file}.svg`} name={`${l.name.toLowerCase()} logo`} label="SVG" />
+            <DownloadLink path={`logo/${l.file}.png`} name={`${l.name.toLowerCase()} logo`} label="PNG" />
           </span>
         </figcaption>
       </figure>

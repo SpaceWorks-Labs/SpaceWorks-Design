@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-13",
+  "componentPages": 19,
+  "templateSections": 12,
+  "statesPerPage": 14,
+  "criteria": 55,
+  "patterns": 30,
+  "layouts": 10,
+  "pages": 35,
+  "localLinks": 999,
+  "fragmentLinks": 346,
+  "preservation": [
+    {
+      "source": "docs/ux-spec.md",
+      "headings": 94,
+      "tableRows": 132,
+      "links": 1,
+      "codeBlocks": 39,
+      "unchangedHash": true
+    },
+    {
+      "source": "docs/ui-brand-spec.md",
+      "headings": 30,
+      "tableRows": 364,
+      "links": 1,
+      "codeBlocks": 1,
+      "unchangedHash": true
+    },
+    {
+      "source": "docs/ux-screens-longtail.md",
+      "headings": 97,
+      "tableRows": 171,
+      "links": 0,
+      "codeBlocks": 43,
+      "unchangedHash": true
+    },
+    {
+      "source": "docs/decisions.md",
+      "headings": 76,
+      "tableRows": 77,
+      "links": 4,
+      "codeBlocks": 1,
+      "unchangedHash": false
+    }
+  ],
+  "errors": []
+}

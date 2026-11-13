@@ -6,11 +6,11 @@ import Wordmark from './Wordmark.astro';
 const themes = ['light', 'dark'] as const;
 ---
 
-<div class="sw-demo-pair not-content">
+<div class="sw-demo-pair not-content" id="logo">
   {
     themes.map((t) => (
       <section class:list={['sw-scope', 'sw-sample', { dark: t === 'dark' }]} aria-label={`${t} theme demos`}>
-        <h4 class="sw-demo-title">{t === 'light' ? 'Light' : 'Dark'}</h4>
+        <p class="sw-demo-title sw-sample__title">{t === 'light' ? 'Light' : 'Dark'}</p>
         <p class="sw-demo-cap">Page loader, 72px</p>
         <div role="status" aria-label="Loading"><BoxMark height={72} variant="loop" /></div>
         <p class="sw-demo-cap">Inline, 16 / 20 / 24px</p>
@@ -25,10 +25,10 @@ const themes = ['light', 'dark'] as const;
           <button type="button" class="sw-sample__btn sw-sample__btn--ghost" aria-busy="true"><BoxMark height={18} variant="mono" /> Loading</button>
         </div>
         <p class="sw-demo-cap">Logo: folds shut, then opens, on hover or keyboard focus (2200 ms)</p>
-        <span tabindex="0" role="img" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
+        <a href="#logo" class="sw-sample__logo sw-demo-replay" data-replay aria-label="Space Works logo, folds and opens on hover or focus">
           <BoxMark height={40} variant="once" />
           <Wordmark height="2rem" />
-        </span>
+        </a>
       </section>
     ))
   }

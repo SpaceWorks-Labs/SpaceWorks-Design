@@ -1,5 +1,7 @@
 # Search field
 
+> **Current rule (v2.0.1, 2026-11-13):** The field always occupies the reserved slot; width no longer animates. Suggestions are a plain, non-selectable list with a separate result-count status; typing does not restart row animations. Clear is a native keyboard-reachable button and Escape returns focus to the input. Loading state is aria-busy. Focus/loading transitions retarget from current values. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#search).
+
 One search input for the whole product: focus eases the border to the focus colour and nudges the magnifier, a running query swaps the magnifier for the box-open spinner, the clear button fades in with the text, Escape clears, and suggestion lists rise in with a short stagger.
 
 Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) and use "Toggle dark" to check both themes.
@@ -28,6 +30,8 @@ Open [`demo.html`](demo.html) in a browser (it links `../../tokens/tokens.css`) 
 Search is the most repeated gesture in the console and on the public pages. One component means one feel: the field answers focus at once, shows when a query is running without moving anything, and resetting is one tap or one key. It never steals focus and never changes layout (the optional grow uses a reserved slot).
 
 ## Timing, easing and distance
+
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#search) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
 
 | Part | Value |
 |---|---|
@@ -64,6 +68,8 @@ Colour-neutral: every colour is a token. The focus border is Citron in dark and 
 
 ## Copy-paste usage
 
+> **Current rule (v2.0.1, 2026-11-13):** The retained table/snippet below records the original app copy. Use the current executable files and the [complete flow recipe](../../docs/motion-flow.md#search) for decision 399; see [current rules](../../docs/current-rules.md#cr-motion-01).
+
 ```html
 <link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="box-open.css"><link rel="stylesheet" href="search.css">
 <div class="sw-search" id="s">
@@ -79,3 +85,17 @@ SwSearch.setLoading(document.getElementById('s'), true);</script>
 In React: `<SearchField aria-label="Search tools" value={q} onChange={e => setQ(e.target.value)} loading={isFetching} shortcut="Ctrl K" />`; give a suggestion list the `sw-search-pop` class and each row `className="sw-search-item" style={searchItemStyle(index)}`.
 
 Every other animation in the product, and the rules behind them: [`../../docs/motion.md`](../../docs/motion.md). Index of the kit: [`../README.md`](../README.md).
+
+## Flow contract (decision 399)
+
+The field always occupies the reserved slot; width no longer animates. Suggestions are a plain, non-selectable list with a separate result-count status; typing does not restart row animations. Clear is a native keyboard-reachable button and Escape returns focus to the input. Loading state is aria-busy. Focus/loading transitions retarget from current values.
+
+[Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#search). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
+
+### Local token steps for batch 1B
+
+These aliases are local additions; global tokens are unchanged. Promote through the token batch when adopted.
+
+| Local custom property | Definition |
+|---|---|
+| `--sw-local-duration-20` | `calc(var(--sw-dur-fast) * 0.16666667)` |

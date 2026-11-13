@@ -184,6 +184,8 @@ Things this table shows at a glance:
 - *Enforced.* `components/ui/tones.ts` exports `toneMarkClasses` (small) and `toneSurfaceClasses` (large).
 - *Source.* App `6e60c20c4`; design spec D6 and section C.
 
+> **Current rule (v2.0.1, 2026-11-13):** Lesson 9 is the current small-mark rule; the older D6/C dark soft-pill cells are superseded. Success/warn/info use solid fills and on-* labels in both themes; large dark callouts use soft fills. Accent/danger/neutral retain their explicit exceptions. (1A-N17) — supersedes the line above; see [docs/current-rules.md#cr-status-01](current-rules.md#cr-status-01).
+
 **10. Fill labels are fixed per tone; text-on-tint colours change per theme. Do not mix the two token sets.**
 - *Problem.* The `-ink` tokens were first made theme-adaptive (light in dark mode) and were then used on the
   solid pastel fills too, so labels on a Citron pill turned light in dark and became unreadable. A second
@@ -375,6 +377,8 @@ Things this table shows at a glance:
   logos never animate, and under reduced motion it stays static.
 - *Source.* Decision 362; design repo `docs/motion.md`.
 
+> **Current rule (v2.0.1, 2026-11-13):** SW-367 (2026-11-13) refines lesson 27: hover/focus folds shut 600 ms then opens 1600 ms, finishing the 2200 ms cycle even after pointer leave, without restarting in flight. Touch, tenant-logo and reduced-motion exclusions remain. (1A-N18) — supersedes the line above; see [docs/current-rules.md#cr-motion-01](current-rules.md#cr-motion-01).
+
 **28. Use one loader everywhere: the box that opens.**
 - *Problem.* Ring spinners and grey skeleton blocks gave two different loading looks, and the ring had its own
   dark-mode bugs (see 29).
@@ -486,6 +490,8 @@ Things this table shows at a glance:
 - *Enforced.* `scripts/check-box-frames.mjs` (headless Edge); app `boxOpen.frames.test.ts`.
 - *Source.* Decision 381; design repo `motion/box-open/README.md` "Known-good states".
 
+> **Current rule (v2.0.1, 2026-11-13):** SW-389 (2026-11-13), also recorded in lesson 40, supersedes lesson 39’s one-orange-face and face-recolouring rules: four solid regions, two orange and two green, in both themes throughout movement. Keep the no-hole, depth-order and exact-rest checks. (1A-N19) — supersedes the line above; see [docs/current-rules.md#cr-logo-01](current-rules.md#cr-logo-01).
+
 ---
 
 ## For Android, iOS and sibling apps
@@ -506,3 +512,29 @@ Things this table shows at a glance:
 3. Controls need an `outline` edge; `line` is decoration on black (lesson 3).
 4. Tenant colours must be derived and proven in both themes, and fixed rather than rejected (lessons 14, 15).
 5. One generated token source, plus tests that read it, stops every consumer drifting (lessons 35, 36).
+
+
+**40. Test every flap's identity, not just the number of colours.**
+- *Problem.* The earlier closed-lid fix hid two flaps and recoloured reverse faces. A total colour count alone
+  could pass while the orange flap changed to green, or the dark mark became entirely cream.
+- *Rule.* Follow the same named flap through every frame. The closed lid must expose four substantial regions
+  in the logo's arrangement: two orange and two green in both themes. Check region positions as well as counts;
+  mono and forced-colours variants still need four separate regions. Retain the no-hole and depth-order checks.
+- *Enforced.* App `boxOpen.frames.test.ts` and design `scripts/check-box-frames.mjs`; generate CSS, markup,
+  the inline splash and the design copies together. This corrects lesson 39's one-orange-face shut-state rule.
+- *Source.* SW-389, superseding that part of SW-381.
+
+
+**41. Preserve an approved animation family separately when only another family changes.**
+- *Problem.* SW-389 applied coloured flaps to the reversed mark as well as the light mark. The owner then
+  specified a physical outer-pair lid for coloured marks and explicitly restored black-and-white to v2.0.0.
+  Sharing the new choreography or recolouring the reversed artwork would silently change the wrong family.
+- *Rule.* Track flap identity and stacking order, then scope the new animation to the intended artwork.
+  For SW-412 the closed coloured lid has two orange outer regions and no visible green; black-and-white
+  retains the released geometry, fills and animation. Pin approved output to the release's actual hashes,
+  keep matrix sampling stepped, and test reverse choreography, moving-frame holes and exact static rest.
+- *Enforced.* App `boxOpen.frames.test.ts` and `boxOpen.sync.test.ts`; design `scripts/check-box-frames.mjs`
+  with its additional browser-independent `--raster` mode. Export CSS, three artwork layers and React sources
+  together. Raster proofs supplement the actual browser cascade/compositor check.
+- *Source.* SW-412 and its immediate owner correction ? superseding lesson 40's four-visible-regions and
+  coloured-dark rules. Earlier lesson text is retained as history.

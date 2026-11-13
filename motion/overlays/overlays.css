@@ -4,32 +4,37 @@
    mounted until the exit finishes. All of it is inside no-preference: under reduced motion (and in
    jsdom) the components unmount immediately instead. Kiosk and TV screens zero the distances via
    the tokens in index.css, leaving a fade. */
-@media (prefers-reduced-motion: no-preference) {
-  .sw-fx-fade[data-state="open"] { animation: sw-fade-in var(--sw-dur-base) var(--sw-ease-standard) both; }
-  .sw-fx-fade[data-state="closed"] { animation: sw-fade-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  .sw-fx-pop[data-state="open"] { animation: sw-pop-in var(--sw-dur-base) var(--sw-ease-enter) both; }
-  .sw-fx-pop[data-state="closed"] { animation: sw-pop-out var(--sw-dur-fast) var(--sw-ease-exit) both; }
-
-  .sw-fx-drawer[data-state="open"] { animation: sw-drawer-in var(--sw-dur-slow) var(--sw-ease-enter) both; }
-  .sw-fx-drawer[data-state="closed"] { animation: sw-drawer-out var(--sw-dur-base) var(--sw-ease-exit) both; }
-  .sw-fx-drawer[data-edge="left"][data-state="open"] { animation-name: sw-drawer-in-left; }
-  .sw-fx-drawer[data-edge="left"][data-state="closed"] { animation-name: sw-drawer-out-left; }
-
-  .sw-fx-menu { --sw-from-y: calc(var(--sw-pop-offset) * -1); }
-  .sw-fx-menu[data-above] { --sw-from-y: var(--sw-pop-offset); }
-  .sw-fx-menu[data-state="open"] { animation: sw-menu-in var(--sw-dur-fast) var(--sw-ease-enter) both; }
-  .sw-fx-menu[data-state="closed"] { animation: sw-menu-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  .sw-fx-toast[data-state="open"] { animation: sw-toast-in var(--sw-dur-base) var(--sw-ease-enter) both; }
-  .sw-fx-toast[data-state="closed"] { animation: sw-toast-out var(--sw-dur-fast) var(--sw-ease-exit) both; pointer-events: none; }
-
-  /* Phones show the modal as a bottom sheet, so it rises instead of scaling. */
-  @media (max-width: 639px) {
-    .sw-fx-pop[data-state="open"] { animation-name: sw-sheet-in; }
-    .sw-fx-pop[data-state="closed"] { animation-name: sw-sheet-out; }
-  }
+/* Decision 399: state transitions continue from the current interpolated value. */
+:root { --sw-overlay-exit: calc(var(--sw-dur-base) * .75); --sw-menu-exit: calc(var(--sw-dur-fast) * .75); }
+.sw-fx-fade, .sw-fx-pop, .sw-fx-drawer, .sw-fx-menu, .sw-fx-toast {
+  opacity: 1; transform: none;
+  transition: opacity var(--sw-dur-base) var(--sw-ease-enter), transform var(--sw-dur-base) var(--sw-ease-enter);
 }
+.sw-fx-fade[data-state="closed"], .sw-fx-pop[data-state="closed"], .sw-fx-drawer[data-state="closed"], .sw-fx-menu[data-state="closed"], .sw-fx-toast[data-state="closed"] {
+  opacity: 0; pointer-events: none; transition-duration: var(--sw-overlay-exit); transition-timing-function: var(--sw-ease-exit);
+}
+.sw-fx-pop[data-state="closed"] { transform: scale(var(--sw-pop-scale)); }
+.sw-fx-drawer { transition-duration: var(--sw-dur-slow); }
+.sw-fx-drawer[data-state="closed"] { transform: translateX(var(--sw-slide-x)); transition-duration: var(--sw-dur-base); }
+.sw-fx-drawer[data-edge="left"][data-state="closed"] { transform: translateX(calc(var(--sw-slide-x) * -1)); }
+.sw-fx-menu { --sw-from-y: calc(var(--sw-pop-offset) * -1); transition-duration: var(--sw-dur-fast); }
+.sw-fx-menu[data-above] { --sw-from-y: var(--sw-pop-offset); }
+.sw-fx-menu[data-state="closed"] { transform: translateY(var(--sw-from-y)); transition-duration: var(--sw-menu-exit); }
+.sw-fx-toast[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 1.5)); }
+@starting-style {
+  .sw-fx-fade[data-state="open"] { opacity: 0; }
+  .sw-fx-pop[data-state="open"] { opacity: 0; transform: scale(var(--sw-pop-scale)); }
+  .sw-fx-drawer[data-state="open"] { opacity: 0; transform: translateX(var(--sw-slide-x)); }
+  .sw-fx-drawer[data-edge="left"][data-state="open"] { transform: translateX(calc(var(--sw-slide-x) * -1)); }
+  .sw-fx-menu[data-state="open"] { opacity: 0; transform: translateY(var(--sw-from-y)); }
+  .sw-fx-toast[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 1.5)); }
+}
+@media (max-width: 639px) {
+ .sw-fx-pop[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 2)); }
+ @starting-style { .sw-fx-pop[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 2)); } }
+}
+.sw-ov-sheet.sw-fx-pop[data-state="closed"] { transform: translateY(calc(var(--sw-enter-y) * 2)); }
+@starting-style { .sw-ov-sheet.sw-fx-pop[data-state="open"] { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 2)); } }
 @keyframes sw-fade-in { from { opacity: 0; } }
 @keyframes sw-fade-out { to { opacity: 0; } }
 @keyframes sw-pop-in { from { opacity: 0; transform: scale(var(--sw-pop-scale)); } }
@@ -44,3 +49,84 @@
 @keyframes sw-menu-out { to { opacity: 0; transform: translateY(var(--sw-from-y)); } }
 @keyframes sw-toast-in { from { opacity: 0; transform: translateY(calc(var(--sw-enter-y) * 1.5)); } }
 @keyframes sw-toast-out { to { opacity: 0; transform: translateY(var(--sw-enter-y)); } }
+
+/* ---------------------------------------------------------------------------------------------------------
+   Layer skins. Not part of the app's motion CSS: the app builds these with Tailwind utilities (Modal.tsx,
+   DetailDrawer.tsx, OverflowMenu.tsx); this is the same look from the tokens, so the template is usable alone.
+   A "frame" is the area an overlay covers: position:relative, overflow:hidden. In the app the frame is the viewport
+   and layers are position:fixed. Dark uses --color-line borders instead of shadows. */
+.sw-ov-frame { position: relative; overflow: hidden; contain: paint; isolation: isolate; }
+.sw-ov-layer { position: absolute; inset: 0; z-index: 5; display: flex; justify-content: center; align-items: center; padding: 16px; box-sizing: border-box; }
+.sw-ov-layer[hidden] { display: none; }
+.sw-ov-scrim { background: rgb(var(--color-scrim) / 0.5); }
+.sw-ov-panel { position: relative; display: flex; flex-direction: column; min-width: 0; box-sizing: border-box; overflow: hidden;
+  background: rgb(var(--color-panel)); color: rgb(var(--color-ink)); border: 1px solid rgb(var(--color-line));
+  box-shadow: 0 12px 32px rgb(var(--shadow-color) / 0.18); }
+:root.dark .sw-ov-panel, .dark .sw-ov-panel { box-shadow: none; }
+.sw-ov-panel:focus-visible { outline: 2px solid rgb(var(--color-focus)); outline-offset: 2px; }
+.sw-ov-head { flex: none; display: flex; align-items: center; gap: 12px; padding: 14px 16px 14px 20px; border-bottom: 1px solid rgb(var(--color-line)); }
+.sw-ov-head h2 { margin: 0; min-width: 0; flex: 1; font-size: 1.125rem; line-height: 1.3; font-weight: 600; overflow-wrap: anywhere; }
+.sw-ov-body { min-height: 0; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 20px; display: grid; gap: 12px; align-content: start; }
+.sw-ov-body p { margin: 0; color: rgb(var(--color-muted)); }
+.sw-ov-foot { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding: 12px 16px; border-top: 1px solid rgb(var(--color-line)); }
+.sw-ov-btn { font: inherit; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
+  background: rgb(var(--color-accent)); color: rgb(var(--color-on-accent)); transition: none; }
+.sw-ov-btn:hover { background: rgb(var(--color-accent-hover)); }
+.sw-ov-btn.ghost { background: transparent; color: rgb(var(--color-ink)); border-color: rgb(var(--color-outline)); }
+.sw-ov-btn.ghost:hover { background: rgb(var(--color-hover)); }
+.sw-ov-btn:focus-visible { outline: 2px solid rgb(var(--color-focus)); outline-offset: 2px; }
+
+/* Dialog: centred, 28rem, scrolls inside. */
+.sw-ov-dialog { width: min(100%, 28rem); max-height: 100%; border-radius: 12px; }
+/* Bottom sheet (phones): docks to the bottom edge, top corners rounded, safe-area padding, handle, scrolls inside. */
+.sw-ov-layer.sheet { align-items: flex-end; padding: 8px 0 0; }
+.sw-ov-sheet { width: 100%; max-height: min(85%, 100%); border-radius: 16px 16px 0 0; border-bottom: 0; }
+.sw-ov-sheet .sw-ov-handle { flex: none; width: 36px; height: 4px; margin: 8px auto 0; border-radius: 999px; background: rgb(var(--color-outline)); }
+.sw-ov-sheet .sw-ov-foot { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+@media (prefers-reduced-motion: no-preference) {
+  .sw-ov-sheet.sw-fx-pop[data-state="open"] {  }
+  .sw-ov-sheet.sw-fx-pop[data-state="closed"] {  }
+}
+/* Drawer: full height of the frame, docked to its edge. */
+.sw-ov-layer.edge-right { justify-content: flex-end; align-items: stretch; padding: 0; }
+.sw-ov-layer.edge-left { justify-content: flex-start; align-items: stretch; padding: 0; }
+.sw-ov-drawer { width: min(100%, 22rem); height: 100%; border-width: 0 0 0 1px; border-radius: 0; }
+.sw-ov-layer.edge-left .sw-ov-drawer { border-width: 0 1px 0 0; }
+/* Menu: a popover anchored under its trigger (.sw-ov-anchor is position:relative around the button and the menu). */
+.sw-ov-anchor { position: relative; display: inline-block; }
+.sw-ov-menu { position: absolute; z-index: 6; top: 100%; right: 0; margin: 8px 0 0; padding: 4px; list-style: none; width: 16rem; max-width: calc(100vw - 2rem);
+  max-height: min(60dvh, 28rem); overflow-y: auto; box-sizing: border-box; border-radius: 12px; background: rgb(var(--color-panel)); border: 1px solid rgb(var(--color-line));
+  box-shadow: 0 12px 32px rgb(var(--shadow-color) / 0.18); }
+:root.dark .sw-ov-menu, .dark .sw-ov-menu { box-shadow: none; }
+.sw-ov-anchor.start .sw-ov-menu { left: 0; right: auto; }   /* align to the trigger's left edge (alignStart) */
+.sw-ov-menu[hidden] { display: none; }
+.sw-ov-menu [role="menuitem"] { display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border-radius: 8px; cursor: pointer; color: rgb(var(--color-ink));
+  transition: none; }
+.sw-ov-menu [role="menuitem"]:hover, .sw-ov-menu [role="menuitem"]:focus-visible { background: rgb(var(--color-hover)); outline: none; }
+@media (max-width: 420px) { .sw-ov-menu { width: min(16rem, calc(100vw - 4rem)); } }
+
+/* Common frame presentation, also used by the React adapter. */
+.sw-ov-frame { height: 420px; border: 1px solid rgb(var(--color-line)); border-radius: 16px; background: rgb(var(--color-surface)); }
+.sw-ov-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.sw-ov-bar { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid rgb(var(--color-line)); background: rgb(var(--color-panel)); }
+.sw-ov-bar strong { flex: 1; min-width: 0; }
+.sw-ov-page { padding: 16px; display: grid; gap: 8px; }
+.sw-ov-page i { display: block; height: 10px; border-radius: 5px; background: rgb(var(--color-line)); }
+.sw-ov-status { min-height: 1.5em; font-size: .9rem; }
+.sw-ov-btn { white-space: nowrap; flex-shrink: 0; }
+.sw-ov-menu { right: auto; margin: 0; max-height: calc(100% - 80px); overscroll-behavior: contain; }
+.sw-ov-menu [role='menuitem'] { box-sizing: border-box; white-space: nowrap; }
+.sw-ov-handle { flex: none; width: 36px; height: 4px; margin: 8px auto 0; border-radius: 999px; background: rgb(var(--color-outline)); }
+.sw-ov-dialog .sw-ov-handle { display: none; }
+@media (max-width: 639px) {
+  .sw-ov-layer:has(.sw-ov-dialog) { align-items: flex-end; padding: 8px 0 0; }
+  .sw-ov-dialog { max-height: 85%; border-radius: 16px 16px 0 0; border-bottom: 0; }
+  .sw-ov-dialog .sw-ov-handle { display: block; }
+}
+
+.sw-ov-frame, .sw-ov-head, .sw-ov-body, .sw-ov-foot, .sw-ov-btn { box-sizing: border-box; }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

@@ -10,7 +10,7 @@ import {
   subscribe,
   trapDialogFocus,
 } from "./dialogFocus";
-import { usePresence } from "../../lib/motion";
+import { MOTION_MS, usePresence } from "../../lib/motion";
 import { revealFieldAboveKeyboard } from "./keyboardSafe";
 import { OverlayPortal } from "./OverlayPortal";
 
@@ -25,7 +25,7 @@ export type DetailDrawerProps = {
 
 export function DetailDrawer({ open, title, onClose, children, edge = "right" }: DetailDrawerProps) {
   const titleId = useId();
-  const presence = usePresence(open, 180);
+  const presence = usePresence(open, MOTION_MS.base);
   const layerRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const tokenRef = useRef<symbol | null>(null);

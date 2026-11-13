@@ -81,7 +81,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(functi
     <input {...rest} ref={setRef} type="search" className={`${bare ? "sw-search-bare" : "desk-input"} sw-search-input w-full min-w-0 ${parts.input}`} value={value} defaultValue={defaultValue}
       disabled={disabled} readOnly={readOnly}
       onChange={event => { setLocal(event.target.value); onChange?.(event); }} onKeyDown={keyDown} />
-    {canClear ? <button type="button" tabIndex={-1} aria-label={clearLabel ?? t`Clear search`} className={`sw-search-clear ${adornmentClassName}`}
+    {canClear ? <button type="button" tabIndex={0} aria-label={clearLabel ?? t`Clear search`} className={`sw-search-clear ${adornmentClassName}`}
       onMouseDown={event => event.preventDefault()} onClick={clear}><X aria-hidden="true" size={16} /></button> : null}
     {shortcut ? <kbd className="sw-search-kbd code-text text-xs text-muted" data-text={text ? "" : undefined} aria-hidden="true">{shortcut}</kbd> : null}
   </span>;

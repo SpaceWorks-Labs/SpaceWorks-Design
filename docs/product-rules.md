@@ -552,6 +552,8 @@ iOS: credentials in Keychain / Android keystore only, no secrets in the reposito
 
 ## 11. Language, accessibility, themes and motion
 
+**Shared guidance (1A-X02):** [Current rules](current-rules.md) resolves retained theme/visual/version conflicts; [Voice and content](voice-and-content.md) supplies the common vocabulary, state messages, localised formats and audited-action wording. These additions leave §12.1 and SW-405 as supplied.
+
 **Rule.** Every user-facing string can be translated, every screen passes the accessibility floor in light
 **and** dark, and colour, loader and motion come from the shared system.
 
@@ -649,6 +651,35 @@ security-audit and release workflows, `CODEOWNERS`. Organization: tests, securit
 `main` merged by the owner; `CODEOWNERS` **not found**. The organisation's shared contributing guide lives in
 the `.github` repository. (Some contributing text still says the old organisation name; update it to
 SpaceWorks-Labs.)
+
+### 12.1 Landing page and feature docs (every project except the native apps)
+
+**Rule.** Every Space Works project other than the Android and iOS apps has its **own landing page** and its
+**own feature docs**, built the way SpaceWorks builds them. The landing page carries the project's links — its
+**GitHub repository**, releases and install, docs, licence and changelog. Landing page and docs take their
+rules, palette, type, components, logo, animation and copy voice from this design system; nothing is designed
+separately per project.
+
+**Why.** A visitor meets a project on its landing page or in its docs before they ever sign in. If each project
+invents its own look, the family stops reading as one and the rules drift. SpaceWorks already has the pattern
+(a hub landing page with a scroll story and its GitHub link, and a docs viewer at `/docs` with a page per
+area). The separate SpaceWorks-Docs site is retired, so documentation lives in each repository and changes in
+the same pull request as the code (decided 13 November 2026).
+
+**How to apply.**
+- **Landing page.** Served by the project itself (on by default, switchable off like SpaceWorks'
+  `HUB_LANDING_ENABLED`): hero with the project name and one-line promise, the box-mark splash and logo hover,
+  the scroll-reveal story, a section per feature area, screenshots in light and dark, and the links — **GitHub
+  repository**, latest release and the install one-liner, docs, licence (AGPL) and changelog — in the header
+  and the footer. Built only from this system's tokens (`tokens/`), components and [motion templates](motion.md)
+  (route transition, page enter, scroll reveal, theme reveal), in both themes, with reduced motion honoured.
+- **Feature docs.** A docs viewer inside the project (SpaceWorks: `/docs`) with one page per feature area: what
+  it does, who can use it (roles), how to switch it on or off, screenshots in both themes and the API reference
+  link (rule 9). Sources live in the repository's `docs/` folder, versioned with the code; no separate docs site.
+- **Native apps** (Android, iOS) have no landing page or docs of their own: they link to the SpaceWorks hub's
+  landing page and docs.
+- **Before shipping** a landing page or docs change: check it against the
+  [new-feature checklist](#new-feature-checklist), in light and dark, at phone and desktop widths.
 
 ---
 
@@ -759,6 +790,8 @@ rules now, change the repositories later).
 
 ## Where each product stands
 
+> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: this is the original per-product research snapshot, not a fresh implementation audit. Consult CR-RELEASE-01 for this repository’s release/VERSION evidence and retain §12.1’s per-product landing/feature-docs rule. (1A-N38) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
+
 Filled from the READMEs, agent guides, file trees and docs read on 2026-11-13. "Not checked" means the
 code was not read; it is not a claim either way. "n/a" means the rule does not apply to that product.
 
@@ -793,6 +826,8 @@ it or turn it into a change. Products will be updated later; this list is the wo
   `CLAUDE.md`, contributing guides, issue templates, links and badges (the `.github` repository's
   `CONTRIBUTING.md` included).
 - Link this page from each README and agent guide as the rules the product follows.
+- Give every project except Android and iOS its own landing page (with its GitHub, release, install and docs
+  links) and its own feature docs, built from this design system ([12.1](#121-landing-page-and-feature-docs-every-project-except-the-native-apps)).
 
 ### SpaceWorks
 
@@ -900,6 +935,11 @@ it or turn it into a change. Products will be updated later; this list is the wo
 - Verify: Razorpay and Stripe checkout both reachable from the server-selected flow, parity with Android.
 
 ### Website and Docs
+
+> **Current rule (v2.0.1, 13 November 2026):** the separate SpaceWorks-Docs site is retired. Each project
+> keeps its documentation in its own repository and serves it in its own docs viewer, beside its own landing
+> page ([12.1](#121-landing-page-and-feature-docs-every-project-except-the-native-apps)). The
+> Docs items below now apply to each product's in-app docs.
 
 - **Analytics:** verify whether either loads a provider. If so, it must be off until consent and listed;
   prefer a cookie-free option (Plausible or Umami) on the operator's own origin.

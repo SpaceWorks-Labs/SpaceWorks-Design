@@ -9,3 +9,8 @@
 [data-slide] a[aria-current="page"].sw-slide-item { background-color: transparent; border-color: transparent; }
 [data-slide] .desk-tab-active { border-bottom-color: transparent; }
 .sw-tab-indicator { border-bottom: 2px solid rgb(var(--color-accent-ink)); }
+
+/* Decision 399: reduced motion reaches the identical state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
