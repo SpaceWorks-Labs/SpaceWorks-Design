@@ -9,6 +9,8 @@ const base = import.meta.env.BASE_URL;
 // The design system version (VERSION at the repository root, e.g. 2.0.0) shown as "v2.0", linking to what changed.
 const [major, minor] = readFileSync(join(process.cwd(), '..', 'VERSION'), 'utf8').trim().split('.');
 const version = `v${major}.${minor}`;
+// The badge links to the notes for the version it shows: v2.0 -> /whats-new-v2/, v2.1 -> /whats-new-v2-1/ (DS-QA, v2.1.1).
+const notes = minor === '0' ? `whats-new-v${major}` : `whats-new-v${major}-${minor}`;
 ---
 
 <span class="sw-title-row">
@@ -16,7 +18,7 @@ const version = `v${major}.${minor}`;
     <BoxMark height={30} variant="once" />
     <Wordmark />
   </a>
-  <a href={`${base.replace(/\/$/, '')}/whats-new-v2/`} class="sw-version" title={`Space Works Design System ${version}: what's new`}>{version}</a>
+  <a href={`${base.replace(/\/$/, '')}/${notes}/`} class="sw-version" title={`Space Works Design System ${version}: what's new`}>{version}</a>
 </span>
 
 <script>

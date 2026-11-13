@@ -25,10 +25,16 @@ hero:
 ---
 
 import ReleaseInstall from '../../components/ReleaseInstall.astro';
+import { tag as currentTag } from '../../components/release';
 
 ## Current release target: v2.1
 
-[What’s new in v2.1](/whats-new-v2-1/) ? [Current rules](/current-rules/) ? [Named components](/components/) ? [Choose a platform](/adoption/) ? [Downloads](/downloads/)
+[What’s new in v2.1](/whats-new-v2-1/) · [Current rules](/current-rules/) · [Named components](/components/) · [Choose a platform](/adoption/) · [Downloads](/downloads/)
+
+> **Current release (note added 13 November 2026, v2.1.1):** the release in use now is **{currentTag}**, read from
+> `VERSION` on every build. The “Design System v2.0” badge and “What's new in v2.0” above and below name the v2
+> generation and its first release; what changed since is in [What’s new in v2.1](/whats-new-v2-1/) and
+> [Releases](/releases/).
 
 <ReleaseInstall />
 

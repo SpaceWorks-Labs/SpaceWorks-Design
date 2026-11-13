@@ -60,6 +60,22 @@ Include: product and pinned kit/app version; user task and affected people; scre
 - [ ] Relevant tests actually run; browser/AT/device/version evidence and honest gaps; product consumer review.
 - [ ] Semver, support/deprecation/migration/changelog and site placement; owner release approval, no unapproved delivery configuration.
 
+## Site checks to run before a release (added 13 November 2026, v2.1.1)
+
+Build the site first (`cd site && npm run build`: it runs the link check, the publication and integration checks and `scripts/check-encoding.mjs`). Then, from the repository root, with Microsoft Edge installed (`EDGE_PATH` overrides it):
+
+| Check | What it proves |
+| --- | --- |
+| `node scripts/check-box-grounds.mjs` | Every non-mono logo mark on every page shows exactly one artwork, the right one for its surface (colour on light, black-and-white on dark), in both page themes and through every demo theme switch. |
+| `node scripts/check-site-qa.mjs` | Every page and standalone demo at 390, 768, 1280 and 1680 in light and dark: fixed surfaces identical in both page themes, text contrast 4.5:1 (3:1 large), icon contrast 3:1, focus indicators visible and 3:1, no sideways page scroll, keyboard-reachable scroll regions, images with alt and no upscaling or squashing, 24 px targets, accessible names, unique ids, one main and h1, no skipped heading levels, radio groups and tab lists with one tab stop and arrow keys, nothing looping under reduced motion. `--only <part of a path>` narrows it (separate several with a vertical bar); findings and screenshots go to `site/verification/qa/`. |
+| `node scripts/check-encoding.mjs` | No character lost to a non-UTF-8 write (dashes, ×, ·, curly quotes shown as `?`). |
+| `node scripts/check-box-frames.mjs` | The box-open frames against the logo masters. |
+| `node scripts/check-motion-flow.mjs --browser --require-browser` | Motion tokens, choreography and the browser scenarios. |
+| `node site/scripts/check-integration-browser.mjs` | Runnable demos and their geometry. |
+| `node scripts/check-previews.mjs`, `node scripts/check-css-layer-imports.mjs`, `node scripts/tokens/validate.mjs`, `node site/scripts/check-tokens.mjs` | Previews are current, no component opens a CSS layer, tokens and exports agree. |
+
+Every check must report zero failures. The QA sweep takes about half an hour.
+
 ## Exceptions and mismatches
 
 Record the rule/criterion, user/task reason, affected product/version/platform, alternatives considered, impact, compensating behaviour, accountable owner and a review expiry **within 90 days or the next product release, whichever comes first**. The owner approves the scoped design exception; it is not a blanket WCAG waiver or a new default. Re-review before expiry, migrate to the shared contract when possible and keep the historical decision.

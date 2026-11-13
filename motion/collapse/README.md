@@ -1,6 +1,6 @@
 # Collapse and disclosure chevrons
 
-> **Current rule (v2.0.1, 2026-11-13):** The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base ? .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#collapse).
+> **Current rule (v2.0.1, 2026-11-13):** The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base × .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#collapse).
 
 Opening or closing a group animates its height through grid rows (1fr to 0fr, never `height`) with a fade, and its arrow turns with it. The inner padding and negative margin keep focus rings of edge items from being clipped.
 
@@ -68,7 +68,7 @@ Every other animation in the product, and the rules behind them: [`../../docs/mo
 
 ## Flow contract (decision 399)
 
-The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base ? .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout.
+The decision-399 version reserves the content footprint and animates the inner opacity/transform, avoiding grid/height animation and layout shift. Closed content remains mounted but inert and aria-hidden. Toggle reversals retarget the same transition, with base enter and base × .75 exit. This supersedes the retained grid-row/unmount recipe below. Where compact document flow is required, change layout instantly with a native disclosure; do not tween layout.
 
 [Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#collapse). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
 

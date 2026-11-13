@@ -16,7 +16,7 @@
   .card{background:rgb(var(--color-panel));border:1px solid rgb(var(--color-line));border-radius:16px;padding:16px}
   .stage{position:relative;height:300px;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;background:rgb(var(--color-surface))}
   .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid rgb(var(--color-focus));outline-offset:2px}
-.shell{display:grid;grid-template-columns:150px 1fr;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;min-height:260px;background:rgb(var(--color-bg))}.side{background:rgb(var(--color-sidebar,var(--color-surface)));border-right:1px solid rgb(var(--color-line));padding:12px;display:grid;gap:6px;align-content:start}.side a{padding:8px 10px;border-radius:8px;color:rgb(var(--color-ink));text-decoration:none;cursor:pointer}.side a[aria-current=page]{background:rgb(var(--color-accent-soft))}.pg{padding:20px;display:grid;gap:10px;align-content:start}.pg h3{margin:0;font-size:1.3rem}.bar{height:10px;border-radius:5px;background:rgb(var(--color-line))}</style>
+.shell{display:grid;grid-template-columns:150px 1fr;border:1px solid rgb(var(--color-line));border-radius:16px;overflow:hidden;min-height:260px;background:rgb(var(--color-bg))}.side{background:rgb(var(--color-sidebar,var(--color-surface)));border-right:1px solid rgb(var(--color-line));padding:12px;display:grid;gap:6px;align-content:start}.side a{padding:8px 10px;border-radius:8px;color:rgb(var(--color-ink));text-decoration:none;cursor:pointer}.side a[aria-current=page]{background:rgb(var(--color-accent-soft))}.pg{padding:20px;display:grid;gap:10px;align-content:start}.pg h2,.pg h3{margin:0;font-size:1.3rem}.bar{height:10px;border-radius:5px;background:rgb(var(--color-line))}</style>
 <link rel="stylesheet" href="../demo.css">
 
 <style data-ds-target-sizes>
@@ -41,7 +41,7 @@ var pages=[["Requests","Loans waiting for a handover."],["Inventory","Tools and 
 var main=document.getElementById("main"),dir=document.getElementById("dir"),cur=-1;
 var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.getElementById("mode").textContent=(document.startViewTransition&&!reduced)?"View Transition":"CSS fallback (.sw-route-enter)";
-function render(i){cur=i;main.innerHTML="<h3>"+pages[i][0]+"</h3><p>"+pages[i][1]+"</p><div class=bar></div><div class=bar style=width:70%></div><div class=bar style=width:45%></div>";
+function render(i){cur=i;main.innerHTML="<h2>"+pages[i][0]+"</h2><p>"+pages[i][1]+"</p><div class=bar></div><div class=bar style=width:70%></div><div class=bar style=width:45%></div>";
  document.querySelectorAll(".side a").forEach(function(a,k){k===i?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")})}
 var activeTransition=null, navigation=0;
 function go(i){if(i===cur)return;var version=++navigation;if(activeTransition)activeTransition.skipTransition();var h=document.documentElement;h.dataset.swNav=dir.value;main.dataset.swEnter=dir.value;

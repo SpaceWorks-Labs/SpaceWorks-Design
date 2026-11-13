@@ -3,6 +3,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { color-scheme: light; }
 html.dark { color-scheme: dark; }
+/* DS-QA v2.1.1: every focusable thing in a demo shows the brand focus ring (teal light, citron dark), not the
+   browser default; demos with their own ring keep it (same colour, same or higher specificity). */
+:focus-visible { outline: 2px solid rgb(var(--color-focus)); outline-offset: 2px; }
 body { overflow-wrap: break-word; }
 main, section, .row, .card { min-width: 0; }
 button, [role='button'], label, kbd, .stamp { white-space: nowrap; flex-shrink: 0; }
@@ -23,6 +26,8 @@ button { max-width: 100%; }
 .sw-preview-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 16px; }
 .sw-preview-gallery figure { margin: 0; padding: 12px; border: 1px solid rgb(var(--color-line)); border-radius: 12px; display: grid; gap: 8px; align-content: start; }
 .sw-preview-gallery img { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: contain; }
+/* DS-QA v2.1.1: never upscale a poster past its own pixels (a single 480px poster was stretched to 806px). */
+.sw-preview-gallery img { width: auto; max-width: 100%; justify-self: center; }
 .sw-preview-gallery button { justify-self: start; }
 .sw-preview-section { display: grid; gap: 12px; }
 button[role=menuitem] { font: inherit; border: 0; background: transparent; width: 100%; text-align: start; }

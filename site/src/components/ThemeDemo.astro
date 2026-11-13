@@ -11,7 +11,7 @@ import Wordmark from './Wordmark.astro';
     <button type="button" role="radio" aria-checked="false" data-mode="dark">Dark</button>
     <button type="button" role="radio" aria-checked="true" data-mode="system">System</button>
   </div>
-  <p class="sw-demo-cap" data-note>Following your system: light.</p>
+  <p class="sw-demo-cap" data-note role="status">Following your system: light.</p>
   <div class="sw-scope sw-sample" data-scope>
     <div class="sw-sample__logo" data-hover-logo>
       <BoxMark height={34} variant="once" />
@@ -57,6 +57,12 @@ import Wordmark from './Wordmark.astro';
 
 <script>
   import { bindLogoHover } from './logoHover';
+  // The card's theme is not the page theme: give its logo marks the kit's forced ground so they follow the card.
+  const syncGround = (scope: Element) => scope.querySelectorAll('.sw-box:not(.mono)').forEach((box) => {
+    const dark = scope.classList.contains('dark');
+    box.classList.toggle('g-dark', dark); box.classList.toggle('g-light', !dark);
+  });
+  document.querySelectorAll('[data-scope]').forEach(syncGround);
 
   class SwThemeDemo extends HTMLElement {
     connectedCallback() {
@@ -68,9 +74,22 @@ import Wordmark from './Wordmark.astro';
       const apply = () => {
         const isDark = mode === 'dark' || (mode === 'system' && dark.matches);
         scope.classList.toggle('dark', isDark);
+        syncGround(scope);
         note.textContent = mode === 'system' ? `Following your system: ${isDark ? 'dark' : 'light'}.` : `Forced ${mode}.`;
-        buttons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
+        // Radio group keyboard model (DSA-010, DS-QA v2.1.1): one tab stop on the checked radio.
+        buttons.forEach((b) => { b.setAttribute('aria-checked', String(b.dataset.mode === mode)); b.tabIndex = b.dataset.mode === mode ? 0 : -1; });
       };
+      // Arrow keys move to the next/previous radio and select it, wrapping; Home/End go to the first/last.
+      this.querySelector('[role="radiogroup"]')!.addEventListener('keydown', (event) => {
+        const e = event as KeyboardEvent;
+        const i = buttons.indexOf(document.activeElement as HTMLButtonElement);
+        const moves: Record<string, number> = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: buttons.length - 1 };
+        if (i < 0 || !(e.key in moves)) return;
+        e.preventDefault();
+        const target = buttons[(moves[e.key] + buttons.length) % buttons.length];
+        target.focus();
+        target.click();
+      });
       buttons.forEach((b) =>
         b.addEventListener('click', () => {
           const next = b.dataset.mode!;

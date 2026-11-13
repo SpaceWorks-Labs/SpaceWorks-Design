@@ -1,6 +1,6 @@
 # Toast
 
-> **Current rule (v2.0.1, 2026-11-13):** Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base ? .75 (180/135 ms), from the same 12 px origin. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#toast).
+> **Current rule (v2.0.1, 2026-11-13):** Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base × .75 (180/135 ms), from the same 12 px origin. Supersedes the retained implementation/timing claims below; see [docs/current-rules.md#cr-motion-01](../../docs/current-rules.md#cr-motion-01) and [motion-flow](../../docs/motion-flow.md#toast).
 
 A status toast arrives from just below its slot (12 px, fading in) and leaves by dropping 8 px while fading. It never steals focus; the message is announced through a polite live region (errors through an alert region).
 
@@ -67,7 +67,7 @@ Every other animation in the product, and the rules behind them: [`../../docs/mo
 
 ## Flow contract (decision 399)
 
-Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base ? .75 (180/135 ms), from the same 12 px origin.
+Success expires after 8,000 ms of reading time (UX P30); errors never expire automatically. Hover, focus and awaited Undo pause expiry. Undo failure persists and can be retried; Dismiss preserves focus. Use toast.js or react/ToastDemo.tsx for the complete portable lifecycle; ToastHost.tsx is an app integration reference. Entrance/exit use base and base × .75 (180/135 ms), from the same 12 px origin.
 
 [Complete rules, sequencing, keyboard and verification](../../docs/motion-flow.md#toast). The [demo](demo.html) includes real static posters and explicit image Play/Pause controls.
 

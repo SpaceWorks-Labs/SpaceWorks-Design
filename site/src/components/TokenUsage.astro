@@ -4,7 +4,10 @@ import { resolve } from 'node:path';
 const usage = JSON.parse(readFileSync(resolve(process.cwd(), '../tokens/usage.json'), 'utf8'));
 ---
 <sw-token-usage>
-  <label>Find a token by name, purpose, scope or contrast partner <input type="search" data-filter /></label>
+  {/* The long label wrapped (and was the squeeze audit's only flag at 390): a short label plus a hint, same words (DS-QA, v2.1.1). */}
+  <label for="sw-token-filter">Find a token</label>
+  <span class="sw-filter-hint" id="sw-token-filter-hint">by name, purpose, scope or contrast partner</span>
+  <input id="sw-token-filter" type="search" data-filter aria-describedby="sw-token-filter-hint" />
   <p role="status" data-count>{usage.tokens.length} roles</p>
   <div class="sw-table-scroll"><table>
     <thead><tr><th scope="col">DTCG / CSS / legacy</th><th scope="col">Purpose and use</th><th scope="col">Scope / override</th><th scope="col">Contrast partner / exclusions</th></tr></thead>
@@ -29,4 +32,4 @@ const usage = JSON.parse(readFileSync(resolve(process.cwd(), '../tokens/usage.js
   }
   customElements.define('sw-token-usage', TokenUsage);
 </script>
-<style>input{display:block;width:100%;min-height:44px;font:inherit}code{overflow-wrap:anywhere}.sw-table-scroll{overflow-x:auto}td{vertical-align:top}tr[hidden]{display:none}</style>
+<style>label{display:block;font-weight:600}.sw-filter-hint{display:block;font-size:0.875rem;color:var(--sl-color-gray-3)}input{display:block;width:100%;min-height:44px;font:inherit}code{overflow-wrap:anywhere}.sw-table-scroll{overflow-x:auto}td{vertical-align:top}tr[hidden]{display:none}</style>
