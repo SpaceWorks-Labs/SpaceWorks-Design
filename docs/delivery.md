@@ -1,14 +1,8 @@
 # Pipelines, versions and releases
 
-How every SpaceWorks-Labs repository checks, versions and ships its work, with the rules that all of them
-follow, the way each kind of stack does it, and an honest table of where each repository stands today.
-
-Researched 13 November 2026 from the live GitHub organisation (workflows, branch protection, releases) and,
-for the main SpaceWorks repository, from the current integration branch, which is one release ahead of
-`main` (it has the `version-bump` check, the signed installer assets and `docs/release-0.12.0.md`; `main`
-on GitHub is still at 0.9.3). Where something could not be verified it says **not checked**.
-
-> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: organisation tables below retain the original research snapshot, not live promises. The design-system VERSION/tag/release correction is recorded beside §§6–8; no new remote organisation audit was run by batch 1A. (1A-N30) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
+How every SpaceWorks-Labs repository checks, versions and ships its work: the uniform rules all of them follow
+and the way each kind of stack does it. These are rules, not a status report; nothing here says where a particular
+repository stands today.
 
 Plain words used below: a **workflow** is a script GitHub runs for us (GitHub Actions); a **job** is one
 step-group inside it; a **required check** is a job that must be green before GitHub allows a merge;
@@ -108,7 +102,7 @@ them, creates `docs/release-<version>.md` from a template and runs the check. Re
 
 ### Other files
 
-`.github/CODEOWNERS` (`* @Shaan-Shoukath`), `CHANGELOG.md`, issue and PR templates, `scripts/ghcr-retention.py`.
+`.github/CODEOWNERS` (`* @<maintainer>`), `CHANGELOG.md`, issue and PR templates, `scripts/ghcr-retention.py`.
 
 ## 3. Stack 2: Next.js and Prisma (Workspace, Events, Machines, Inventory, Bookings, Organization)
 
@@ -178,8 +172,10 @@ archives or uploads a `.ipa`, and **no GitHub Release is created** today. Both m
 | Site | Workflow | What it does |
 |---|---|---|
 | **Design System** (`SpaceWorks-Design-System`) | `deploy-site.yml` | On PRs: builds only, so a broken page or link fails before `main`. First runs `scripts/check-previews.mjs` (animated previews match the token and motion sources), then in `site/` runs `npm ci` and `npm run build`, which syncs the kit, runs `check-tokens.mjs` (site colours equal the tokens) and the Astro link validation. On `main`: uploads `site/dist` and deploys to GitHub Pages (environment `github-pages`, concurrency group `pages`). Site URL from the `DESIGN_SITE_URL` variable. |
-| **Docs** (`SpaceWorks-Docs`) | `deploy.yml` | Astro build on PRs; on `main` uploads `dist` and deploys to Pages. Site URL from `DOCS_SITE_URL`. Has `CODEOWNERS`. |
-| **Website** (`SpaceWorks-Labs-Website`) | none | Plain static files (`build.py` generates pages, `test_*.cjs` tests) served by GitHub Pages. No workflow runs the build or the tests, so a broken page is not caught before it publishes. |
+
+Every static site (a landing page, a docs site, this design system) builds on every pull request and publishes only from
+`main`. Its public URL and base path are configuration, never hard-coded; the design system is served at
+`system.<domain>` and product docs at `docs.<domain>`.
 
 Design System version: the kit is **Design System v2.0** (named in `README.md` and in the motion-kit note);
 there is **no `VERSION` file, no git tag and no GitHub Release yet**. The product release it tracks is the
@@ -188,54 +184,8 @@ SpaceWorks release it was synced to (for example "0.12.0 token sync"). Rule goin
 
 > **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: v2.0.0 was released 2026-11-13 (owner/lane record; local tag v2.0.0 exists). The v2.0.1 fix checkpoint calls for VERSION 2.0.1; this checkout still reads 2.0.0 at the batch baseline, so that bump is pending the release owner. Ledger 397 sets the phase-2 additions to v2.1.0. A target version is not a published release. (1A-N31) — supersedes the line above; see [docs/current-rules.md#cr-release-01](current-rules.md#cr-release-01).
 
-## 7. Where each repo stands
+## 7. Checklist for a new repository
 
-Legend: **yes**, **partial**, **no**, **n/a**, **not checked**. Checked on 13 November 2026.
-
-| Repo | CI on PRs | Version-bump check | Release on new VERSION | Docker images | GitHub Releases | Pages | CODEOWNERS | Branch protection on `main` | Security audit |
-|---|---|---|---|---|---|---|---|---|---|
-| **SpaceWorks** | yes (`checks.yml`; `tests.yml` on the integration branch) | yes (required; integration branch, `main` at 0.9.3 does not have the job yet) | yes, plus signed installer assets | yes, 2 images, amd64+arm64 | yes (0.9.1 to 0.9.3) | n/a | yes on the integration branch; **none on `main`** | yes: 5 required checks, admins enforced, maintainer-only push | yes, `pip-audit` weekly and on PRs |
-| **Workspace** | yes (Quality gate, CI) | **no** | yes (state-based) | yes, 2 images | yes (0.6.7 latest) | n/a | yes | partial: maintainer-only push, admins enforced, **no required checks** | partial: `npm audit` advisory |
-| **Events** | yes (CI, Quality gate) | **no** | yes | yes, 2 images | yes (0.12.0) | n/a | yes | partial (as Workspace) | yes, blocking `npm audit` |
-| **Machines** | yes (`tests.yml`) | **no** | yes | yes, 2 images (+`dev`) | yes (0.6.0) | n/a | yes | partial | yes (`security-audit.yml`) |
-| **Inventory** | yes (Quality gate, CI) | **no** | yes | yes, 2 images (+`dev`) | yes (0.6.0) | n/a | yes | partial | partial: advisory in CI, blocking in the cron package |
-| **Bookings** | yes (`tests.yml`) | **no** | yes | yes, 2 images (+`dev`) | yes (0.6.0) | n/a | yes | partial | yes |
-| **Organization** | yes (`tests.yml`) | **no** | yes | yes, 2 images (+`dev`) | yes (0.8.1) | n/a | **no** | yes (maintainer-only on `main` and `dev`, since 2026-11-13) | yes |
-| **Android** | yes (build, 2 UI jobs) | no (no `VERSION` file) | **no** | n/a | **no** (none published) | n/a | **no** | yes: 3 required checks, strict, admins enforced, maintainer-only | **no** |
-| **iOS** | yes (build and test x2) | no | **no** | n/a | **no** | n/a | **no** | yes: 2 required checks, strict, admins enforced, maintainer-only | **no** |
-| **Website** | **no** | n/a | n/a | n/a | n/a | yes (served, no workflow) | **no** | partial: maintainer-only push, no checks | n/a |
-| **Docs** | yes (build on PR) | n/a | n/a | n/a | n/a | yes (workflow) | yes | partial: maintainer-only push, no checks | **not checked** |
-| **Design System** | yes (build, previews, tokens) | no (no `VERSION`) | no (no tag) | n/a | **no** | yes (workflow) | **no** | partial: maintainer-only push, no checks | n/a |
-| **.github** | no workflows | n/a | n/a | n/a | n/a | n/a | n/a (community health files) | partial: maintainer-only push | n/a |
-
-> **Current rule (v2.0.1, 2026-11-13):** Observed at 2026-11-13: the Design System row’s “no VERSION”, “no tag” and “no GitHub Releases” cells are historical. v2.0.0 is the released baseline; the requested checkpoint is VERSION 2.0.1 (local baseline still 2.0.0), with phase 2 targeting v2.1.0. See the §6 observation for evidence boundaries. (1A-N33) — supersedes the line above; see [docs/current-rules.md#cr-release-01](current-rules.md#cr-release-01).
-
-"Partial" on branch protection means `main` is protected from force-push and limited to the maintainer (admins
-included) but GitHub is not told which checks must be green. Required checks on Docker/Next.js repos are a
-setting to apply, not code to write.
-
-## 8. Bringing each repo up to the rules
-
-Ordered by how much risk each gap leaves open.
-
-| Repo | Gap | Fix |
-|---|---|---|
-| **All server repos** | Cannot verify here that the integration branch's `version-bump` and signed assets are on `main` | Merge the integration branch to `main` (maintainer) so SpaceWorks `main` has `version-bump`, `tests.yml`, cosign signing and `CODEOWNERS`; the live protection already requires `version-bump`, so until the job exists on `main` a PR into `main` will wait on a check that never reports. Land it first. |
-| **Workspace, Events, Machines, Inventory, Bookings** | `main` has no required status checks | In branch protection, require the PR jobs by name (`Lint, typecheck, unit tests, build`, `PostgreSQL integration tests` or the Quality gate job, `shellcheck` and `images` where present) and enable "require branches to be up to date" as the mobile repos do. |
-| **Organization** | No `CODEOWNERS` and no required checks (branch protection added 2026-11-13: maintainer-only `main` and `dev`) | Add required checks and `.github/CODEOWNERS` with `* @Shaan-Shoukath`. |
-| **Next.js repos (6)** | No `version-bump` check, so a forgotten `VERSION` raise silently skips the release | Add a `version-bump` job and a `check_version_bump.py` like SpaceWorks, require it on PRs into `main`, and make "release note exists" part of it. Workspace's `VERSION` (0.10.0) is ahead of its last release (0.6.7); decide whether those versions were published or skipped and write that down. |
-| **Next.js repos (6)** | Installer assets are not signed | Extend the release workflow with the `release-assets.sh` and cosign `SHA256SUMS` steps from SpaceWorks so `install.sh` has the same verification story. |
-| **Android** | No version scheme, no signed release, no GitHub Release | Add a `VERSION` file; in a release workflow on `main`, derive `versionName` from it and `versionCode` from the run number, sign with an `upload` keystore stored as GitHub secrets (environment-protected), build the APK and bundle, and attach them with checksums to a GitHub Release titled `SpaceWorks Android X.Y.Z`. Add the `version-bump` check, `CODEOWNERS` and a dependency audit (Gradle dependency verification or an OSV scan). |
-| **iOS** | Same: no version scheme, no archive, no release | Add `VERSION`; feed `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` from it and the run number; add a release workflow that archives and exports a signed build (certificate and provisioning in secrets) and attaches it to a GitHub Release. Add the `version-bump` check, `CODEOWNERS`, and a Swift package audit. |
-| **Website** | No CI at all; the build and its tests never run before publish | Add a workflow that runs `python build.py` and the `test_*.cjs` tests on PRs, then deploys to Pages from `main` like Docs and the Design System. Add `CODEOWNERS`. |
-| **Docs** | Required checks not set; audit not checked | Require the `build` job; add `npm audit` to the build job. |
-| **Design System** | No `VERSION`, tag or release; no `CODEOWNERS`; no required checks | Add a `VERSION` file (start at `2.0.0`), tag `v2.0.0`, and a small workflow that creates a GitHub Release when `VERSION` changes. Add `CODEOWNERS`, and require the `build` job. |
-| **Machines, Bookings, Organization** | Security audit and tests run as separate PR workflows with no shared required list | Require `Lint, typecheck, unit tests, build`, `Integration and end-to-end tests` and `npm-audit` together. |
-| **Every repo** | The weekly audit exists only in SpaceWorks | Add a weekly `schedule:` trigger to each `npm audit` workflow so new advisories surface without a PR. |
-
-> **Current rule (v2.0.1, 2026-11-13):** The Design System gap row’s missing VERSION/tag/release claims are superseded by CR-RELEASE-01. SW-386 (2026-11-13) makes all proposed workflow/CODEOWNERS/required-check changes in this table rules only, deferred from implementation; this batch adds none. (1A-N34) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
-
-### Checklist for a new repository
 
 > **Current rule (v2.0.1, 2026-11-13):** This checklist states the desired pipeline, not authorisation to provision it now. SW-386 (2026-11-13) defers workflows, CODEOWNERS and branch-protection changes; preserve existing automation. (1A-N35) — supersedes the line above; see [docs/current-rules.md#cr-delivery-01](current-rules.md#cr-delivery-01).
 
@@ -243,13 +193,13 @@ Ordered by how much risk each gap leaves open.
 2. A PR workflow whose job names are the required checks.
 3. A `VERSION` file, a `version-bump` job and a release note per version.
 4. A release workflow that triggers on `main`, builds the artifacts, tags `vX.Y.Z-main.<run>.<sha>` and creates the GitHub Release.
-5. `.github/CODEOWNERS` with `* @Shaan-Shoukath`.
+5. `.github/CODEOWNERS` with `* @<maintainer>`.
 6. A dependency audit on PRs and weekly.
 7. Secrets and signing keys only in GitHub secrets or environments.
 
-## Branch protection across the org (applied 2026-11-13)
+## Branch protection (every repository)
 
-In every SpaceWorks-Labs repository, `main` and (where it exists) `dev` are protected: only `Shaan-Shoukath` may
+In every SpaceWorks-Labs repository, `main` and (where it exists) `dev` are protected: only the maintainer account may
 push or merge, the rule applies to admins too, and force-pushes and deletion are blocked. Required status checks are
-unchanged (they are listed per repository above); adding the missing ones is part of the CI/CD rule in
-[product rules section 14](product-rules.md), not yet applied.
+the jobs the repository's pull-request workflow names; adding the missing ones is part of the CI/CD rule in
+[product rules section 14](product-rules.md).

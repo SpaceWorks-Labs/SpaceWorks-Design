@@ -113,7 +113,7 @@ or the logo masters, never by hand. From the app's `frontend/` directory, run:
 
 ```powershell
 $env:UPDATE_SPLASH = '1'
-$env:SW_BOX_DESIGN_DIR = 'C:\Users\shaan\Music\SpaceWorks\SpaceWorks-Design'
+$env:SW_BOX_DESIGN_DIR = '<workspace>\SpaceWorks-Design'
 npx vitest run src/components/boxOpen/boxOpen.sync.test.ts --pool=forks --maxWorkers=1
 ```
 

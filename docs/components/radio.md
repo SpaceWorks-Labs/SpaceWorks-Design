@@ -7,7 +7,7 @@ description: Choose exactly one value from a visible set.
 
 ## 1. Title and support strip
 
-Choose exactly one value from a visible set. Stable ID: `SWC-radio`; source IDs: P19, P22, S20, L8, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner, Shaan Shoukath; product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
+Choose exactly one value from a visible set. Stable ID: `SWC-radio`; source IDs: P19, P22, S20, L8, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner (SpaceWorks Labs); product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
 
 ## 2. Use it for / choose something else
 

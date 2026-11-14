@@ -64,21 +64,33 @@
 </script>
 
 <style>
+	/* Tokens only. The boundary uses the control-outline token (the old hairline was about 1.4:1 against the
+	   canvas in both themes), the pressed state is shown with the accent pair, and hover and focus have
+	   their own tokens, so the toggle reads the same in light and dark. */
 	.sw-theme-toggle {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		width: 2.75rem;
 		height: 2.75rem;
-		border: 1px solid var(--sl-color-hairline);
+		border: 1px solid rgb(var(--color-outline));
 		border-radius: 999px;
-		background: transparent;
-		color: var(--sl-color-gray-2);
+		background: rgb(var(--color-panel));
+		color: rgb(var(--color-ink));
 		cursor: pointer;
+		transition: background-color var(--sw-dur-fast, 120ms), color var(--sw-dur-fast, 120ms);
 	}
 	.sw-theme-toggle:hover {
-		color: var(--sl-color-white);
-		border-color: var(--sl-color-gray-4);
+		background: rgb(var(--color-hover));
+	}
+	.sw-theme-toggle[aria-pressed='true'] {
+		background: rgb(var(--color-accent-soft));
+		border-color: rgb(var(--color-accent-ink));
+		color: rgb(var(--color-accent-ink));
+	}
+	.sw-theme-toggle:focus-visible {
+		outline: 2px solid rgb(var(--color-focus));
+		outline-offset: 2px;
 	}
 	.sw-theme-toggle :global(svg) {
 		width: 1.1rem;

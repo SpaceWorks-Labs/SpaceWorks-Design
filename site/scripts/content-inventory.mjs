@@ -2,13 +2,14 @@
 // source and link in page content (hero, page title, .sl-markdown-content; not the sidebar, header or footer).
 //   node inventory.mjs <distDir> <out.json>
 //   node inventory.mjs --compare <before.json> <after.json>
+import { base as siteBase } from './site-base.mjs';
 import { createRequire } from 'node:module';
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const require = createRequire(new URL('../package.json', import.meta.url));
-const BASE = '/SpaceWorks-Design-System';
+const BASE = siteBase;
 
 // Intentional renames (decision 382): applied to BEFORE text so a renamed label still counts as present.
 const RENAMES = [
@@ -79,8 +80,8 @@ async function extract(dist) {
 
 // Source text, BEFORE (snapshot taken before the restructure) and NOW, normalised the same way, to tell
 // "dropped by the restructure" from "rewritten in the source by another lane while this lane worked".
-const D = 'C:/Users/shaan/Music/SpaceWorks/SpaceWorks-Design';
-const SNAP = 'C:/Users/shaan/AppData/Local/Temp/claude/f735fd5b97394f07/91ba70c1-e231-47e5-a0e2-fd6bf3f6c4da/scratchpad/before';
+const D = '<workspace>/SpaceWorks-Design';
+const SNAP = '<scratchpad>/before';
 const plainSrc = (roots) => {
   const out = [];
   const walk = (d) => existsSync(d) && readdirSync(d).forEach((f) => { const p = join(d, f); if (f === 'node_modules') return; statSync(p).isDirectory() ? walk(p) : /\.(md|mdx)$/.test(f) && out.push(readFileSync(p, 'utf8')); });

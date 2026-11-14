@@ -11,8 +11,7 @@
 The Space Works design system: brand guidelines, logo masters, icons, fonts, design tokens and the UX
 pattern specs. Use it as a git submodule in any Space Works project so every surface draws from one source.
 
-**Version: Space Works Design System v2.0.1** (`VERSION` = `2.0.1`; v2.0 patch), which ships alongside SpaceWorks 0.12.0. What
-changed is in [`docs/whats-new-v2.0.md`](docs/whats-new-v2.0.md).
+**Version: Space Works Design System v2.5.0** (`VERSION` = `2.5.0`). What changed is in [`docs/whats-new-v2.5.md`](docs/whats-new-v2.5.md); earlier releases are in the changelog below.
 
 > **Current rule (v2.1.0, 2026-11-13):** `VERSION` now reads `2.1.0`; this is the additive publication target under decision 397, pending its tag and release. The v2.0.1 description above remains release history. (3-N01) — supersedes the version line above; see [current release guidance](docs/current-rules.md#cr-release-01) and [v2.1 notes](docs/whats-new-v2.1.md).
 
@@ -25,6 +24,8 @@ git submodule add https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System.gi
 ```
 
 **Browse it at [spaceworks-labs.github.io/SpaceWorks-Design-System](https://spaceworks-labs.github.io/SpaceWorks-Design-System/)**: the logo
+
+The intended host is `system.<domain>` (served at the root, with its own landing page). Until that exists the GitHub Pages deploy keeps working; the base path is configuration (`DESIGN_SITE_BASE`, `DESIGN_SITE_URL`), not hard-coded.
 masters, colours, type, voice, every design token and the UI specs, published from this repository by
 `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 
@@ -98,6 +99,8 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 `tokens/` folder.
 
 ## Changelog
+
+- **v2.5.0 — one uniform rule set, hosted at system.<domain> (2026-11-14).** The site is served at `system.<domain>` with its own landing page (base path configurable through `DESIGN_SITE_BASE` and `DESIGN_SITE_URL`; GitHub Pages keeps working by default). The landing page matches the SpaceWorks landing look with design-system content only. The rules are uniform: per-repository setup sections and "where each product stands" are removed, and roles are named generically. New rules: version-based releases (12.4), mobile apps have no landing page (12.5), one opt-in Mixpanel analytics rule (8.3). Credit is to SpaceWorks Labs only. The theme toggle's boundary, pressed state and focus ring now use tokens. See [`docs/whats-new-v2.5.md`](docs/whats-new-v2.5.md).
 
 - **v2.1.1 — QA patch: fixed surfaces, focus, encoding, rules (2026-11-13).** A full QA of the 157-page site at 390, 768, 1280 and 1680 in light and dark. **Fixed surfaces keep their own look:** a light demo card on a dark page drew its loader, inline and logo marks cream-on-cream (blank) because the kit reads `html.dark`; marks on themed cards now carry the kit's forced ground (`g-light` / `g-dark`), kept in step when a demo switches theme, and cards, logo stages and mascot frames keep their own focus ring and Play controls instead of the page theme's (a citron ring on cream measured 1.03:1). **Encoding repair:** em and en dashes, multiplication signs, middle dots and curly quotes written as `?` in v2.1.0 are restored in 27 files (wording unchanged). **Accessibility:** the theming demo's Light/Dark/System radios have one tab stop and arrow keys (DSA-010), task-list checkboxes are named, sideways-scrolling tables are keyboard-reachable, Play/Pause previews drop the contradictory `aria-pressed`, the four kit demos without one get the brand focus ring, and the install command no longer pushes the home, downloads and kit pages sideways on phones. The header badge links to the notes for the version it shows. **Rules:** product rules §2.5 (release images are the frontend and the backend only; object storage is Silo or any S3-compatible store; SW-433) and §12.3 (one README structure for every repository; SW-436). **New guards:** `scripts/check-box-grounds.mjs`, `scripts/check-site-qa.mjs` and `scripts/check-encoding.mjs` (run by the site build); lessons 42 and 43. Findings: `handover/reports/DS-QA-v2.1.1.md` in the SpaceWorks repository.
 

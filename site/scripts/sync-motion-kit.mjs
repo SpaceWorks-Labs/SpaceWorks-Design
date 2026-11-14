@@ -3,6 +3,7 @@
 //   motion/<family>/README.md   -> src/content/docs/motion/<family>.mdx (previews + live demo + the README sections)
 //   motion/README.md            -> src/content/docs/motion/kit.md (the index of every animation)
 // (docs/decisions.md is published by sync-split.mjs as an index plus one page per range.)
+import { base as siteBase } from './site-base.mjs';
 import { cpSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { MOTION_SCENES } from '../../scripts/motion-scenes.mjs';
@@ -17,7 +18,7 @@ export const KIT_FAMILIES = [
 export function syncMotionKit({ root, kit, docsDir, repo, prepare, splitTitle }) {
   cpSync(join(root, 'motion', 'demo.css'), join(kit, 'motion', 'demo.css'));
   for (const name of ['flow.js', 'flow-local-tokens.json', 'flow-content-inventory.json', 'previews.js']) cpSync(join(root, 'motion', name), join(kit, 'motion', name));
-  const base = '/SpaceWorks-Design-System/kit/motion';
+  const base = `${siteBase}/kit/motion`;
   const tree = `${repo}/tree/main/motion`;
   KIT_FAMILIES.forEach(([slug, label], index) => {
     const dir = join(root, 'motion', slug);

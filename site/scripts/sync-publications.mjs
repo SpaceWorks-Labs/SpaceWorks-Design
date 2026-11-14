@@ -1,3 +1,4 @@
+import { base } from './site-base.mjs';
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { PUBLICATIONS } from './publication-map.mjs';
@@ -37,7 +38,6 @@ export function syncPublications({ root, site, kit, docsDir, repo, prepare, spli
 export function applyIndexingPolicy({ site, pageRoutes }) {
   const pub = join(site, 'public');
   const origin = process.env.DESIGN_SITE_URL || 'https://spaceworks-labs.github.io';
-  const base = '/SpaceWorks-Design-System';
   writeFileSync(join(pub, 'robots.txt'), `User-agent: *\nAllow: ${base}/\nDisallow: ${base}/kit/\nDisallow: ${base}/examples/\nDisallow: ${base}/thumbs/\nSitemap: ${origin}${base}/sitemap-index.xml\n`);
   const walk = dir => existsSync(dir) ? readdirSync(dir).flatMap(f => statSync(join(dir, f)).isDirectory() ? walk(join(dir, f)) : [join(dir, f)]) : [];
   for (const file of [...walk(join(pub, 'kit')), ...walk(join(pub, 'examples'))].filter(f => f.endsWith('.html'))) {

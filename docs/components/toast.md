@@ -7,7 +7,7 @@ description: Confirm an off-screen effect or offer compensation for a reversible
 
 ## 1. Title and support strip
 
-Confirm an off-screen effect or offer compensation for a reversible change. Stable ID: `SWC-toast`; source IDs: P30, S5, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner, Shaan Shoukath; product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
+Confirm an off-screen effect or offer compensation for a reversible change. Stable ID: `SWC-toast`; source IDs: P30, S5, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner (SpaceWorks Labs); product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
 
 ## 2. Use it for / choose something else
 

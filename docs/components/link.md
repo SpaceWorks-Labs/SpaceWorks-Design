@@ -7,7 +7,7 @@ description: Navigate to a named destination or resource.
 
 ## 1. Title and support strip
 
-Navigate to a named destination or resource. Stable ID: `SWC-link`; source IDs: P11, P3, S6, L4, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner, Shaan Shoukath; product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
+Navigate to a named destination or resource. Stable ID: `SWC-link`; source IDs: P11, P3, S6, L4, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner (SpaceWorks Labs); product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
 
 ## 2. Use it for / choose something else
 

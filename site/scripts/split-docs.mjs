@@ -35,17 +35,15 @@ export const SPLITS = [
       { start: '12. Testing, docs and release', slug: 'testing-and-release', title: 'Testing, release, decisions and handover', label: 'Testing, release, handover', description: 'tests with every change, docs, releases, the decisions ledger and handover notes' },
       { start: '14. CI/CD pipeline', slug: 'ci-cd', label: 'CI/CD pipeline', description: 'the pipeline every repository runs, stage by stage', optional: true },
       { start: 'New-feature checklist', slug: 'checklist', label: 'New-feature checklist', description: 'the list to run before any new feature ships' },
-      { start: 'Where each product stands', slug: 'where-each-product-stands', label: 'Where each product stands', description: 'a rule-by-product matrix of what follows the rules today' },
-      { start: 'Bring each product up to the rules', slug: 'bring-up', label: 'Bring each product up', description: 'the work left, product by product' },
     ],
   },
   {
     file: 'docs/delivery.md',
     route: 'delivery',
-    description: 'How every Space Works repository checks, versions and releases its work, per stack, and where each one stands.',
+    description: 'How every Space Works repository checks, versions and releases its work, per stack.',
     parts: [
       { start: '2. Stack 1', slug: 'stacks', title: 'Pipelines per stack', label: 'Pipelines per stack', description: 'Django and React, Next.js and Prisma, Android, iOS and static sites' },
-      { start: '7. Where each repo stands', slug: 'status', title: 'Where each repository stands', label: 'Where each repo stands', description: 'the status table, the bring-up list, the new-repository checklist and branch protection' },
+      { start: '7. Checklist for a new repository', slug: 'status', title: 'New-repository checklist and branch protection', label: 'New-repository checklist', description: 'the checklist for a new repository and branch protection' },
     ],
   },
   {

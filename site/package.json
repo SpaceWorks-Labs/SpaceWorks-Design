@@ -1,7 +1,7 @@
 {
   "name": "spaceworks-design-site",
   "type": "module",
-  "version": "0.1.0",
+  "version": "2.5.0",
   "private": true,
   "description": "The Space Works design system site: brand, logo, colour, type, tokens and UI specs.",
   "license": "AGPL-3.0-or-later",

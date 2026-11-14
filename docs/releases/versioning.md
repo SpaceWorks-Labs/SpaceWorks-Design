@@ -4,7 +4,7 @@ description: Define breaking and compatible design-system changes across tokens,
 ---
 # Versioning and support
 
-**Policy for owner approval with planned v2.1.0; effective for releases adopting this policy.** Documentation date: 2026-11-13. Owner: Space Works design-system owner (Shaan Shoukath). This does not retroactively claim earlier release practices or an already staffed support service.
+**Policy for owner approval with planned v2.1.0; effective for releases adopting this policy.** Documentation date: 2026-11-13. Owner: Space Works design-system owner (SpaceWorks Labs). This does not retroactively claim earlier release practices or an already staffed support service.
 
 The design system uses MAJOR.MINOR.PATCH. Public contracts include token names/types/units/roles and allowed theme pairs, component API and behaviour, accessibility requirements, import paths, motion triggers/fallbacks, artwork identity and normative guidance. Evaluate the effect on consumers, not only file extensions. A stricter compatible bug correction can be a patch; a changed supported contract requiring consumer work is major even if made only in Markdown.
 

@@ -1725,7 +1725,7 @@ Organization analytics
 **D4 Makerspace picker**
 ```
 Wednesday, 15 October
-Good morning, Shaan                       [Search spaces……]
+Good morning, Alex                       [Search spaces……]
 Choose a space to work in.
 ┌[FL] Fab Lab        ┐┌[UL] Uni Lab        ┐┌[TS] Tinker Space         ┐
 │ FLAB · /m/fab-lab  ││ ULAB               ││ [Superadmin access: off] │

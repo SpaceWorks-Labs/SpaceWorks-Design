@@ -97,7 +97,7 @@ In a handover, keep the request, container and evidence context visible for veri
 
 ## Source map and review contract
 
-Read-only source root: `C:\Users\shaan\Music\SpaceWorks\SpaceWorks\.claude\worktrees\int-stage-r2final\frontend\src`. Observed 2026-11-13; line numbers are the inspection snapshot and may move. These are app examples, not files shipped by the design-system documentation. Paths remain code text so the built documentation does not pretend the sibling checkout is a downloadable asset.
+Read-only source root: `<workspace>\SpaceWorks\.claude\worktrees\int-stage-r2final\frontend\src`. Observed 2026-11-13; line numbers are the inspection snapshot and may move. These are app examples, not files shipped by the design-system documentation. Paths remain code text so the built documentation does not pretend the sibling checkout is a downloadable asset.
 
 | Example | Source relative to that root |
 |---|---|
