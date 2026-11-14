@@ -9,6 +9,7 @@ export const PUBLICATIONS = [
   { file: 'tokens/ARCHITECTURE.md', route: 'tokens/architecture', sidebar: 'Foundations > Token architecture' },
   { file: 'tokens/USAGE.md', route: 'tokens/usage', sidebar: 'Foundations > Token usage' },
   { file: 'tokens/contrast-matrix.md', route: 'tokens/contrast-matrix', sidebar: 'Foundations > Contrast matrix' },
+  { file: 'docs/whats-new-v2.5.md', route: 'whats-new-v2-5', sidebar: "Start here > What's new in v2.5" },
   { file: 'docs/whats-new-v2.1.md', route: 'whats-new-v2-1', sidebar: "Start here > What's new in v2.1" },
 ];
 

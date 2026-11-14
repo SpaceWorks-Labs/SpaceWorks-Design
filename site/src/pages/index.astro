@@ -1,0 +1,325 @@
+---
+// The design system's own landing page, served at the root of system.<domain>. Its LOOK follows the SpaceWorks product
+// landing page (the hero, the section rhythm, the quiet symbol pattern, the Deep Ink island, the reveal on scroll, the
+// box-open logo on hover); its CONTENT is only the design system: what it is, foundations, components, brand, the
+// uniform rules, how to use it, downloads and releases. Every colour is a token; every link stays inside the docs.
+import '../styles/fonts.css';
+import '../styles/generated/tokens.css';
+import '../styles/generated/box-open.css';
+import '../styles/generated/theme-reveal.css';
+import '../styles/landing.css';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BoxMark from '../components/BoxMark.astro';
+import Wordmark from '../components/Wordmark.astro';
+import ThemeSelect from '../components/ThemeSelect.astro';
+import { kitUrl } from '../components/kit-url';
+import { archiveUrl } from '../components/release';
+
+const root = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (path: string) => `${root}${path}`;
+const version = readFileSync(join(process.cwd(), '..', 'VERSION'), 'utf8').trim();
+const [major, minor] = version.split('.');
+const notes = u(`/whats-new-v${major}-${minor}/`);
+const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System';
+
+const nav = [
+  ['Foundations', '/foundations/'],
+  ['Components', '/components/'],
+  ['Brand', '/brand/introduction/'],
+  ['Rules', '/rules/'],
+  ['Downloads', '/downloads/'],
+];
+
+const promises = [
+  { title: 'One source of tokens', body: 'Colour, type, spacing, shape and motion live in tokens, as CSS variables and JSON. A product imports them and never types a value by hand.', icon: 'M4 7h16M4 12h16M4 17h10' },
+  { title: 'Light and dark are equals', body: 'Warm Cream and solid black are two complete themes with checked text pairs, not a light theme with a dark afterthought.', icon: 'M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z' },
+  { title: 'Rules, not opinions', body: 'The same uniform rules apply to every Space Works product and repository: accessibility, releases, analytics, language and testing.', icon: 'M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z' },
+];
+
+const foundations = [
+  { title: 'Colour tokens', body: 'Seven brand colours and every semantic token, paired for light and dark with computed contrast.', href: '/tokens/reference/', swatch: true },
+  { title: 'Typography', body: 'Gilroy ExtraBold leads, Outfit does the everyday work, Unbounded brings one bold moment.', href: '/brand/typography/' },
+  { title: 'Spacing, shape and icons', body: 'The spacing steps, radii, elevation and icon rules that keep every screen on one grid.', href: '/specs/ui-brand-spec/' },
+  { title: 'Motion', body: 'Durations, curves, the box-open loader and a catalogue of reusable animations, live.', href: '/motion/principles/' },
+  { title: 'Light and dark theming', body: 'The token layer, the pre-paint script and the circle-reveal switch, with a live demo.', href: '/theming/' },
+];
+
+const parts = [
+  { title: '19 named components', body: 'Buttons to toasts: each with states, accessibility notes and runnable examples.', href: '/components/' },
+  { title: '30 patterns and 10 layouts', body: 'Space Works UX: shells, forms, tables, auth and kiosk, with the quality bar every screen meets.', href: '/ux/introduction/' },
+  { title: 'States, pills and microcopy', body: 'Interaction states, status pills and the plain-language voice that goes with them.', href: '/brand/voice/' },
+];
+
+const rules = [
+  { title: 'Releases are version-based', body: 'Every release has a semantic version and a changelog entry. People pin, report and roll back by number.', href: '/rules/testing-and-release/' },
+  { title: 'Mobile apps have no landing page', body: 'A native app opens to sign-in, or to the member home. Landing pages belong to the web.', href: '/rules/testing-and-release/' },
+  { title: 'Analytics are opt-in', body: 'One rule for every web surface: off unless an operator sets a token, loaded only after consent, never personal data.', href: '/rules/audit-and-analytics/' },
+  { title: 'Accessibility is a floor', body: 'Contrast, focus, keyboard, reduced motion and plain language are required in both themes, not polish.', href: '/foundations/accessibility/' },
+];
+
+const downloads = [
+  { title: 'Brand guidelines v2', body: 'The 50-page PDF: logo, colour, type, motion and light and dark.', href: kitUrl('brand/space-works-brand-guidelines-v2.pdf') },
+  { title: 'Logos', body: 'Ten masters as SVG and PNG, light, reversed and one-colour.', href: u('/brand/logo/') },
+  { title: 'Fonts', body: 'The free Gilroy weights, Outfit and Unbounded, with their licences.', href: kitUrl('fonts/README.md') },
+  { title: 'Tokens', body: 'CSS, JSON, Tailwind preset and native exports with checksums.', href: u('/downloads/') },
+];
+
+const swatches = ['--brand-deep-ink', '--brand-maker-teal', '--brand-workshop-orange', '--brand-citron', '--brand-sky-blue', '--brand-warm-yellow', '--brand-warm-cream'];
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Space Works Design System</title>
+    <meta name="description" content="The Space Works Design System: tokens, components, brand, motion and the uniform rules every Space Works product follows." />
+    <link rel="icon" href={kitUrl('icons/favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content="Space Works Design System" />
+    <meta property="og:image" content={kitUrl('icons/og-1200x630.png')} />
+    {/* Light is the default; dark only after a reader chooses it, remembered under the docs' own key. */}
+    <script is:inline>
+      (() => {
+        let stored = null;
+        try { stored = localStorage.getItem('starlight-theme'); } catch {}
+        const root = document.documentElement;
+        root.dataset.theme = stored === 'dark' ? 'dark' : 'light';
+        const mirror = () => root.classList.toggle('dark', root.dataset.theme === 'dark');
+        mirror();
+        new MutationObserver(mirror).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+      })();
+    </script>
+    <script is:inline src={kitUrl('motion/theme-reveal/theme-reveal.js')}></script>
+  </head>
+  <body class="sw-land">
+    <a href="#land-main" class="sw-land-skip">Skip to content</a>
+    <header class="sw-land-header">
+      <div class="sw-land-bar">
+        <a href={u('/')} class="sw-land-logo" aria-label="Space Works Design System, home">
+          <BoxMark height={30} variant="once" />
+          <Wordmark />
+        </a>
+        <nav aria-label="Main" class="sw-land-nav">
+          {nav.map(([label, href]) => <a href={u(href)} class="sw-land-nav-link">{label}</a>)}
+          <a href={repo} class="sw-land-nav-link" rel="noreferrer noopener">GitHub</a>
+        </nav>
+        <div class="sw-land-tools">
+          <ThemeSelect />
+          <details class="sw-land-menu">
+            <summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
+            <div class="sw-land-menu-panel">
+              {nav.map(([label, href]) => <a href={u(href)} class="sw-land-nav-link">{label}</a>)}
+              <a href={repo} class="sw-land-nav-link" rel="noreferrer noopener">GitHub</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <main id="land-main" tabindex="-1">
+      <section aria-labelledby="land-title" class="sw-land-hero">
+        <div class="sw-land-pattern" aria-hidden="true"></div>
+        <div class="sw-land-wrap sw-land-hero-copy">
+          <BoxMark height={96} variant="loop" />
+          <p class="sw-land-badge">Design System v{major}.{minor}</p>
+          <h1 id="land-title" class="sw-land-title">Built from the box.</h1>
+          <p class="sw-land-hero-lede">The Space Works design system: the tokens, components, brand and rules that make every Space Works product look, move and sound like one family. It is for the designers and engineers building them.</p>
+          <div class="sw-land-actions">
+            <a href={u('/foundations/')} class="sw-land-cta-primary">Start with the foundations<span aria-hidden="true">→</span></a>
+            <a href={u('/tokens/using-the-kit/')} class="sw-land-cta-outline">Use it in a product</a>
+            <a href={notes} class="sw-land-more">What's new in v{major}.{minor} <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="sw-land-facts"><a href={repo} class="sw-land-source" rel="noreferrer noopener">Open source under AGPL-3.0</a><span aria-hidden="true">·</span><span>Tokens in light and dark</span><span aria-hidden="true">·</span><span>Maintained by SpaceWorks Labs</span></p>
+        </div>
+        <div class="sw-land-wrap">
+          <figure class="sw-land-preview" aria-label="A sample of the tokens in use">
+            <div class="sw-land-swatches">
+              {swatches.map((token) => <span class="sw-land-swatch" style={`background:var(${token})`} title={token}></span>)}
+            </div>
+            <div class="sw-land-sample">
+              <p class="sw-land-sample-title">Tokens, in the theme you are viewing</p>
+              <p class="sw-land-sample-body">Text, surfaces, lines and states all read from the same token set, so this panel changes with the theme switch above.</p>
+              <div class="sw-land-sample-row">
+                <span class="sw-land-pill sw-land-pill-ok">Passes contrast</span>
+                <span class="sw-land-pill sw-land-pill-warn">Needs a pair</span>
+                <span class="sw-land-pill sw-land-pill-info">Documented</span>
+                <span class="sw-land-sample-btn">Primary action</span>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <div data-reveal>
+        <section id="what" aria-labelledby="what-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="what-title" class="sw-land-h2">One system for everything Space Works looks, moves and says.</h2>
+              <p class="sw-land-lede">Designers get the brand, the colour pairs and the patterns. Engineers get tokens they can import, components they can follow and rules they can test against. Writers get the voice.</p>
+            </div>
+            <ul class="sw-land-promises">
+              {promises.map((p) => (
+                <li>
+                  <span class="sw-land-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={p.icon} /></svg></span>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="foundations" aria-labelledby="foundations-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="foundations-title" class="sw-land-h2">Foundations.</h2>
+              <p class="sw-land-lede">Colour tokens, typography, spacing, motion and theming: the values every screen is built from.</p>
+            </div>
+            <ul class="sw-land-cards">
+              {foundations.map((f) => (
+                <li><a href={u(f.href)} class="sw-land-card"><h3>{f.title}</h3><p>{f.body}</p><span class="sw-land-card-go" aria-hidden="true">→</span></a></li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="components" aria-labelledby="components-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="components-title" class="sw-land-h2">Components and patterns.</h2>
+              <p class="sw-land-lede">Named parts and the patterns that combine them, each with states, accessibility notes and examples.</p>
+            </div>
+            <ul class="sw-land-cards sw-land-cards-3">
+              {parts.map((f) => (
+                <li><a href={u(f.href)} class="sw-land-card"><h3>{f.title}</h3><p>{f.body}</p><span class="sw-land-card-go" aria-hidden="true">→</span></a></li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="brand" aria-labelledby="brand-title" class="sw-land-section">
+          <div class="sw-land-wrap sw-land-brand">
+            <div class="sw-land-brand-copy">
+              <h2 id="brand-title" class="sw-land-h2">Brand and logo.</h2>
+              <p class="sw-land-lede">The open box is the mark and the loader. Clear space, minimum sizes and the six things never to do are written down, with light, reversed and one-colour masters.</p>
+              <div class="sw-land-actions">
+                <a href={u('/brand/logo/')} class="sw-land-cta-outline">Logo usage</a>
+                <a href={u('/brand/guidelines/')} class="sw-land-cta-outline">Brand guidelines</a>
+              </div>
+            </div>
+            <div class="sw-land-logo-tile"><BoxMark height={120} variant="loop" /></div>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="rules" aria-labelledby="rules-title" class="sw-land-wrap sw-land-island-wrap">
+          <div class="sw-land-island">
+            <div class="sw-land-island-head">
+              <h2 id="rules-title" class="sw-land-h2">The same rules for every product.</h2>
+              <p class="sw-land-lede">Uniform rules, stated once. They apply to every Space Works product and repository, with no private versions.</p>
+            </div>
+            <ul class="sw-land-rules">
+              {rules.map((r) => (
+                <li><a href={u(r.href)} class="sw-land-rule"><h3>{r.title}</h3><p>{r.body}</p></a></li>
+              ))}
+            </ul>
+            <a href={u('/rules/')} class="sw-land-cta-primary sw-land-island-cta">Read all the rules<span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="use" aria-labelledby="use-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="use-title" class="sw-land-h2">Use it in a product.</h2>
+              <p class="sw-land-lede">Add the kit as a git submodule pinned to a release tag, import the tokens, and take colour, type and motion from them.</p>
+            </div>
+            <figure class="sw-land-terminal">
+              <figcaption>Add the kit and import the tokens</figcaption>
+              <pre tabindex="0"><code><span aria-hidden="true">$ </span>git submodule add {repo}.git design
+<span aria-hidden="true">$ </span>git -C design checkout v{version}
+
+/* index.css */
+@import "design/tokens/tokens.css";</code></pre>
+            </figure>
+            <div class="sw-land-actions">
+              <a href={u('/tokens/using-the-kit/')} class="sw-land-cta-primary">Read the guide<span aria-hidden="true">→</span></a>
+              <a href={u('/adoption/')} class="sw-land-cta-outline">Choose a platform</a>
+              <a href={archiveUrl} class="sw-land-cta-outline" rel="noreferrer noopener">Download v{version} (zip)</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="downloads" aria-labelledby="downloads-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="downloads-title" class="sw-land-h2">Downloads.</h2>
+              <p class="sw-land-lede">Brand guidelines, logos, fonts and tokens, versioned with the kit.</p>
+            </div>
+            <ul class="sw-land-cards">
+              {downloads.map((d) => (
+                <li><a href={d.href} class="sw-land-card"><h3>{d.title}</h3><p>{d.body}</p><span class="sw-land-card-go" aria-hidden="true">↓</span></a></li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section id="releases" aria-labelledby="releases-title" class="sw-land-section">
+          <div class="sw-land-wrap">
+            <div class="sw-land-split">
+              <h2 id="releases-title" class="sw-land-h2">Releases and versions.</h2>
+              <p class="sw-land-lede">The current release is v{version}. Every release has release notes, and breaking changes raise the major version.</p>
+            </div>
+            <div class="sw-land-actions">
+              <a href={notes} class="sw-land-cta-outline">What's new in v{major}.{minor}</a>
+              <a href={u('/releases/')} class="sw-land-cta-outline">Releases and versioning</a>
+              <a href={u('/current-rules/')} class="sw-land-cta-outline">Current rules</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="sw-land-footer">
+      <div class="sw-land-wrap sw-land-footer-grid">
+        <p class="sw-land-footer-note">Space Works Design System v{version}. Open source under the GNU AGPL v3 or later. Maintained by SpaceWorks Labs.</p>
+        <nav aria-label="Footer" class="sw-land-footer-links">
+          {nav.map(([label, href]) => <a href={u(href)} class="sw-land-footer-link">{label}</a>)}
+          <a href={u('/about/credits/')} class="sw-land-footer-link">Credits and licences</a>
+          <a href={repo} class="sw-land-footer-link" rel="noreferrer noopener">GitHub</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      import { bindLogoHover } from '../components/logoHover';
+      document.querySelectorAll<HTMLElement>('.sw-land-logo').forEach((link) => {
+        const mark = link.querySelector<HTMLElement>('.sw-box');
+        if (mark) bindLogoHover(link, mark);
+      });
+      // Reveal each section once as it arrives. The hiding CSS applies only after this marks the page ready, so without
+      // JavaScript or under reduced motion everything is simply visible.
+      const main = document.getElementById('land-main');
+      if (main && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) if (e.isIntersecting) { e.target.setAttribute('data-revealed', ''); io.unobserve(e.target); }
+        }, { rootMargin: '0px 0px -12% 0px' });
+        main.querySelectorAll('[data-reveal]').forEach((n) => io.observe(n));
+        main.setAttribute('data-reveal-ready', '');
+      }
+    </script>
+  </body>
+</html>

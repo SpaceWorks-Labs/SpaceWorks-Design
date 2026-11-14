@@ -14,7 +14,7 @@ The importer in `scripts/tokens/model.mjs` deduplicates palette samples into pri
 Descriptions and reference tables are generated from that same model, never independently typed into an export.
 
 The app sources were read only from
-`C:\Users\shaan\Music\SpaceWorks\SpaceWorks\.claude\worktrees\int-stage-r2final\frontend` on 2026-11-13.
+`<workspace>\SpaceWorks\.claude\worktrees\int-stage-r2final\frontend` on 2026-11-13.
 The generator does not depend on that checkout existing; the imported real values are captured here.
 
 | Scale | Values / source | Decisions where sources differ |

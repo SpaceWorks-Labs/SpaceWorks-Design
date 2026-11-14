@@ -7,7 +7,7 @@ description: Compare structured records while retaining headers, sorting and sel
 
 ## 1. Title and support strip
 
-Compare structured records while retaining headers, sorting and selection context. Stable ID: `SWC-table`; source IDs: P14, S5, S15, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner, Shaan Shoukath; product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
+Compare structured records while retaining headers, sorting and selection context. Stable ID: `SWC-table`; source IDs: P14, S5, S15, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner (SpaceWorks Labs); product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
 
 ## 2. Use it for / choose something else
 

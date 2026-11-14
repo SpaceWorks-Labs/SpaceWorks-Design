@@ -7,17 +7,19 @@ import { readFileSync } from 'node:fs';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
 import { splitItems } from './scripts/split-docs.mjs';
 import { publicationItems } from './scripts/publication-map.mjs';
+import { base, astroBase } from './scripts/site-base.mjs';
 
-// GitHub Pages serves the site at https://spaceworks-labs.github.io/SpaceWorks-Design-System/. Set
-// DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
+// The intended host is system.<domain> (decision 552), served at the root. Until that DNS exists the GitHub Pages
+// deploy keeps working at https://spaceworks-labs.github.io/SpaceWorks-Design-System/. Nothing is hard-coded:
+//   DESIGN_SITE_URL   the origin, for the sitemap and canonical links (e.g. https://system.example.org)
+//   DESIGN_SITE_BASE  the path the site is served under ("/" at system.<domain>); default /SpaceWorks-Design-System
 const site = process.env.DESIGN_SITE_URL || 'https://spaceworks-labs.github.io';
-const base = '/SpaceWorks-Design-System';
 const tokens = JSON.parse(readFileSync(new URL('../tokens/tokens.json', import.meta.url), 'utf8'));
 const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System';
 
 export default defineConfig({
   site,
-  base,
+  base: astroBase,
   markdown: { processor: satteri({ hastPlugins: [baseLinksPlugin(base)] }) },
   // "What's new in 0.12.0" became "What's new in v2.0" (decision 382); old links land on the new page.
   // Astro does not prefix the base onto a redirect destination, so it is written out.
@@ -69,7 +71,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Start here',
-          items: [{ label: 'Overview', link: '/' }, ...publicationItems('Start here'), 'tokens/using-the-kit', 'whats-new-v2'],
+          items: [{ label: 'Overview', link: '/overview/' }, ...publicationItems('Start here'), 'tokens/using-the-kit', 'whats-new-v2'],
         },
         {
           label: 'Foundations',

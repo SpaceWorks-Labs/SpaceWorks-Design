@@ -1,6 +1,6 @@
 {
   "verified": "2026-11-13",
-  "sourceWorktree": "C:\\Users\\shaan\\Music\\SpaceWorks\\SpaceWorks\\.claude\\worktrees\\int-stage-r2final\\frontend",
+  "sourceWorktree": "<workspace>\\SpaceWorks\\.claude\\worktrees\\int-stage-r2final\\frontend",
   "scope": "Read-only source inspection; no production, browser or assistive-technology certification implied. Worktree may differ from upstream main.",
   "files": [
     {

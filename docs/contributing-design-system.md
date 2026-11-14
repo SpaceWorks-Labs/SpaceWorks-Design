@@ -10,7 +10,7 @@ This workflow is prepared for owner approval with planned v2.1.0. It supplements
 
 | Role | Accountability |
 | --- | --- |
-| Design-system owner: Shaan Shoukath / Shaan-Shoukath | Approves shared contracts, exceptions, maturity, release scope and publication; owner-only commit/merge authority stays as recorded |
+| Design-system owner: SpaceWorks Labs maintainers | Approves shared contracts, exceptions, maturity, release scope and publication; owner-only commit/merge authority stays as recorded |
 | Proposing product maintainer | Supplies problem/evidence, implementation, consumer compatibility and migration owner |
 | Design reviewer assigned by owner | Checks task fit, brand/tokens, anatomy, responsive states and content |
 | Engineering reviewer assigned by owner | Checks API/controlled state, dependencies, performance, platform behaviour and adoption |

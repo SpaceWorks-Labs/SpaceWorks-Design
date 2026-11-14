@@ -1,5 +1,6 @@
 // Built-artifact checks supplement the Markdown link validator with component and demo URLs.
 // Run: node site/scripts/check-integration.mjs
+import { base } from './site-base.mjs';
 import { existsSync, readdirSync, readFileSync, statSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -7,7 +8,7 @@ import { fromHtml } from 'hast-util-from-html';
 import sharp from 'sharp';
 import { PUBLICATIONS } from './publication-map.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
-const dist = join(root, 'site/dist'), base = '/SpaceWorks-Design-System';
+const dist = join(root, 'site/dist');
 const walk = dir => readdirSync(dir).flatMap(f => statSync(join(dir, f)).isDirectory() ? walk(join(dir, f)) : [join(dir, f)]);
 const htmlFiles = walk(dist).filter(f => f.endsWith('.html') && !relative(dist, f).replaceAll('\\', '/').startsWith('kit/examples/'));
 const report = { htmlPages: htmlFiles.length, checkedLinks: 0, checkedAssets: 0, animatedPosters: 0, thumbnails: 0, newPages: PUBLICATIONS.length, failures: [] };

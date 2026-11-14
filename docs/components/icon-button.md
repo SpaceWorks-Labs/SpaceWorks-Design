@@ -7,7 +7,7 @@ description: Offer a compact, named action with a familiar icon.
 
 ## 1. Title and support strip
 
-Offer a compact, named action with a familiar icon. Stable ID: `SWC-icon-button`; source IDs: P11, P14, S5, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner, Shaan Shoukath; product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
+Offer a compact, named action with a familiar icon. Stable ID: `SWC-icon-button`; source IDs: P11, P14, S5, L3, B. Maturity: **proposed**; availability: **documented reference**, not a published component package. Owner: Space Works design-system owner (SpaceWorks Labs); product maintainers own app integration. Documentation introduced/updated for **v2.1.0, planned** under decision 397. Last source verification: **2026-11-13**. Web implementation is described below; Compose/SwiftUI are starter mappings with **no verified component parity**.
 
 ## 2. Use it for / choose something else
 

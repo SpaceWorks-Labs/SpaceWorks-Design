@@ -1,4 +1,5 @@
 // Dependency-free Edge/CDP harness. Node 22+; EDGE_PATH and DS_REPO may override host defaults.
+import { base as siteBase } from './site-base.mjs';
 import { spawn, spawnSync } from 'node:child_process';
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
@@ -6,7 +7,7 @@ import { join, resolve, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 export const ROOT = resolve(process.env.DS_REPO || fileURLToPath(new URL('../../', import.meta.url)));
-export const BASE = '/SpaceWorks-Design-System';
+export const BASE = siteBase;
 export const delay = ms => new Promise(r => setTimeout(r, ms));
 export async function browser(run) {
   const server = createServer((req, res) => {

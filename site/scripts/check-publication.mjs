@@ -1,5 +1,6 @@
 // Source-to-rendered inventory, including full new pages and explicit moved-section accounting.
 // Run after npm run build: node site/scripts/check-publication.mjs
+import { base } from './site-base.mjs';
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join, posix } from 'node:path';
@@ -14,7 +15,6 @@ import { KIT_FAMILIES } from './sync-motion-kit.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const dist = join(root, 'site/dist');
 const repo = 'https://github.com/SpaceWorks-Labs/SpaceWorks-Design-System';
-const base = '/SpaceWorks-Design-System';
 const moved = JSON.parse(readFileSync(join(dist, 'kit/moved-anchors.json'), 'utf8'));
 const sources = [
   ...PUBLICATIONS.map(p => ({ ...p, routes: [p.route] })),
